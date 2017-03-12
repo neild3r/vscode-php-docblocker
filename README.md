@@ -1,11 +1,8 @@
 # PHP DocBlocker README
 
-Basic PHP DocBlocking extension. This extension was hastily written to cover the temporary gap in a more comprehensive DocBlocking plugin
-that covers multiple languages.
+Basic PHP DocBlocking extension. This extension was hastily written to cover the temporary gap in a more comprehensive DocBlocking plugin that covers multiple languages.
 
-:exclamation: Please consider this as an alpha version as there has been very little real world testing. If there is further development 
-of this extension there will be unit tests and better infering of variables and return types but for now this will do. I also appreciate 
-that regex might not be the best approach but it's the easiest fastest dependency free way of getting this working.
+:exclamation: Please consider this as an alpha version as there has been very little real world testing. If there is further development of this extension there will be unit tests and better infering of variables and return types but for now this will do. I also appreciate that regex might not be the best approach but it's the easiest fastest dependency free way of getting this working
 
 ## Features
 
