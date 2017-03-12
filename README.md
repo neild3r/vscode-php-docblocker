@@ -17,5 +17,5 @@ This extension has no dependencies.
 
 This extension contributes the following settings:
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+* `php-docblocker.gap`: set to `false` to disable the gap between the description and tags
+* `php-docblocker.extra`: an array of extra tags to add to each DocBlock

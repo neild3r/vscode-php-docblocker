@@ -10,12 +10,16 @@ export class Documentor
         let snippet = new vscode.SnippetString();
 
         var stop = 1;
+        var gap = !this.getConfig().get('gap');
 
         snippet.appendText("\n * ");
         snippet.appendVariable('0', message);
-        snippet.appendText("\n * ");
 
         if (props.params) {
+            if (!gap) {
+                snippet.appendText("\n * ");
+                gap = true;
+            }
             props.params.forEach(param => {
                 snippet.appendText("\n * @param ");
                 snippet.appendVariable(stop++ + '', param.type);
@@ -25,18 +29,30 @@ export class Documentor
         }
 
         if (props.var) {
+            if (!gap) {
+                snippet.appendText("\n * ");
+                gap = true;
+            }
             snippet.appendText("\n * @var ");
             snippet.appendVariable(stop++ + '', props.var);
         }
 
         if (props.return) {
+            if (!gap) {
+                snippet.appendText("\n * ");
+                gap = true;
+            }
             snippet.appendText("\n * @return ");
             snippet.appendVariable(stop++ + '', props.return);
         }
 
         let extra = this.getConfig().get('extra');
 
-        if (Array.isArray(extra)) {
+        if (Array.isArray(extra) && extra.length > 0) {
+            if (!gap) {
+                snippet.appendText("\n * ");
+                gap = true;
+            }
             for (var index = 0; index < extra.length; index++) {
                 var element = extra[index];
                 snippet.appendText("\n * " + element);

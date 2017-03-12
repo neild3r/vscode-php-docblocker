@@ -19,6 +19,11 @@
             "type": "object",
             "title": "PHP DocBlocker configuration",
             "properties": {
+                "php-docblocker.gap": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "If there should be a gap between the description and tags"
+                },
                 "php-docblocker.extra": {
                     "type": "array",
                     "default": [],
