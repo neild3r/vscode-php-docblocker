@@ -11,6 +11,10 @@
     "categories": [
         "Snippets"
     ],
+    "keywords": [
+        "php",
+        "docblock"
+    ],
     "activationEvents": [
         "*"
     ],
