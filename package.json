@@ -15,10 +15,17 @@
     ],
     "main": "./out/src/extension",
     "contributes": {
-        "commands": [{
-            "command": "extension.sayHello",
-            "title": "Hello World"
-        }]
+        "configuration": {
+            "type": "object",
+            "title": "PHP DocBlocker configuration",
+            "properties": {
+                "php-docblocker.extra": {
+                    "type": "array",
+                    "default": [],
+                    "description": "Extra tags you wish to include in every DocBlock"
+                }
+            }
+        }
     },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",
