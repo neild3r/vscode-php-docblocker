@@ -3,6 +3,7 @@ import * as vscode from 'vscode';
 import { spawn, execFile, exec, ChildProcess } from 'child_process';
 import * as path from 'path';
 import { Documentor } from "./documentor";
+import { Completions } from "./completions";
 
 let documentor: Documentor;
 
@@ -29,6 +30,8 @@ export function activate(context: vscode.ExtensionContext) {
             }
         ]
     });
+
+    vscode.languages.registerCompletionItemProvider('php', new Completions());
 
     context.subscriptions.push(vscode.workspace.onDidChangeTextDocument(e => {
         if (e.document.languageId !== "php") {
@@ -61,7 +64,6 @@ export function activate(context: vscode.ExtensionContext) {
         if (func !== null) {
             let args = func[5].split(',');
 
-            let stop = 1;
             let props = {
                 params: [],
                 return: null

@@ -9,11 +9,11 @@ export class Documentor
     document(message: string, props, editor: vscode.TextEditor) {
         let snippet = new vscode.SnippetString();
 
-        var stop = 1;
-        var gap = !this.getConfig().get('gap');
+        let stop = 2;
+        let gap = !this.getConfig().get('gap');
 
         snippet.appendText("\n * ");
-        snippet.appendVariable('0', message);
+        snippet.appendVariable('1', message);
 
         if (props.params) {
             if (!gap) {

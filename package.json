@@ -39,11 +39,7 @@
                     "description": "Extra tags you wish to include in every DocBlock"
                 }
             }
-        },
-        "snippets": [{
-            "language": "php",
-            "path": "./snippets/php.json"
-        }]
+        }
     },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",
