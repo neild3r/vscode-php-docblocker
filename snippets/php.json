@@ -1,0 +1,43 @@
+{
+    "@param": {
+        "prefix": "@param",
+        "body": "@param ${1:mixed} ${0:\\$var}",
+        "description": "Param for PHP DocBlock"
+    },
+
+    "@return": {
+        "prefix": "@return",
+        "body": "@return ${1:mixed}",
+        "description": "Return for PHP DocBlock"
+    },
+
+    "@var": {
+        "prefix": "@var",
+        "body": "@var ${1:mixed} $2",
+        "description": "Var for PHP DocBlock"
+    },
+
+    "@throws": {
+        "prefix": "@throws",
+        "body": "@throws ${1:Exception}",
+        "description": "Throws for PHP DocBlock"
+    },
+
+    "@link": {
+        "prefix": "@link",
+        "body": "@link ${1:http://url.com}",
+        "description": "Link for PHP DocBlock"
+    },
+
+    "@author": {
+        "prefix": "@author",
+        "body": "@author ${1:Name} <${2:email@email.com}>",
+        "description": "Author for PHP DocBlock"
+    },
+
+    "@group": {
+        "prefix": "@group",
+        "body": "@group ${1:group}",
+        "description": "Group for PHP DocBlock"
+    }
+}
