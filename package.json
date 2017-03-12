@@ -2,8 +2,9 @@
     "name": "php-docblocker",
     "displayName": "php-docblocker",
     "description": "PHP DocBlocking tool",
-    "version": "0.0.1",
-    "publisher": "D3R",
+    "version": "0.1.0",
+    "publisher": "neilbrayfield",
+    "author": "Neil Brayfield <dev@brayfield.uk>",
     "engines": {
         "vscode": "^1.9.0"
     },
@@ -13,6 +14,14 @@
     "activationEvents": [
         "*"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/neild3r/vscode-php-docblocker.git"
+    },
+        "bugs": {
+        "url": "https://github.com/neild3r/vscode-php-docblocker/issues"
+    },
+    "icon": "images/logo.svg",
     "main": "./out/src/extension",
     "contributes": {
         "configuration": {
