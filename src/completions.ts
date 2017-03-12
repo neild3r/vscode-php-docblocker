@@ -1,6 +1,6 @@
-import * as vscode from "vscode";
+import {TextDocument, Position, CancellationToken, ProviderResult, CompletionItem, CompletionItemProvider, Range, SnippetString, CompletionItemKind} from "vscode";
 
-export class Completions implements vscode.CompletionItemProvider
+export class Completions implements CompletionItemProvider
 {
     protected tags = [
         {
@@ -33,7 +33,7 @@ export class Completions implements vscode.CompletionItemProvider
         }
     ];
 
-    provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken):vscode.ProviderResult<vscode.CompletionItem[]> {
+    provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken):ProviderResult<CompletionItem[]> {
         let line = document.lineAt(position.line).text;
         let part = line.substring(0, position.character);
         let match = part.match(/.*?(@[a-z])$/);
@@ -48,13 +48,13 @@ export class Completions implements vscode.CompletionItemProvider
             return tag.tag.match(prefix) !== null;
         });
 
-        let range:vscode.Range = document.getWordRangeAtPosition(position, /@[a-z]/);
+        let range:Range = document.getWordRangeAtPosition(position, /@[a-z]/);
 
         let result = [];
         potential.forEach(tag => {
-            let item = new vscode.CompletionItem(tag.tag, vscode.CompletionItemKind.Snippet);
+            let item = new CompletionItem(tag.tag, CompletionItemKind.Snippet);
             item.range = range;
-            item.insertText = new vscode.SnippetString(tag.snippet);
+            item.insertText = new SnippetString(tag.snippet);
 
             result.push(item);
         });
