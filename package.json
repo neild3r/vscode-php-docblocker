@@ -2,7 +2,7 @@
     "name": "php-docblocker",
     "displayName": "PHP DocBlocker",
     "description": "PHP DocBlocking tool",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "publisher": "neilbrayfield",
     "author": "Neil Brayfield <dev@brayfield.uk>",
     "engines": {
