@@ -1,4 +1,5 @@
-import {TextDocument, Position, CancellationToken, ProviderResult, CompletionItem, CompletionItemProvider, Range, SnippetString, CompletionItemKind} from "vscode";
+import {TextDocument, Position, CancellationToken, ProviderResult, CompletionItem, CompletionItemProvider, Range, SnippetString, CompletionItemKind, window} from "vscode";
+import { Documenter } from "./documenter";
 
 export class Completions implements CompletionItemProvider
 {
@@ -36,10 +37,25 @@ export class Completions implements CompletionItemProvider
     provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken):ProviderResult<CompletionItem[]> {
         let line = document.lineAt(position.line).text;
         let part = line.substring(0, position.character);
+        let result = [];
+
+        let db = part.match(/.*?(\/\*\*)$/);
+        if (db !== null) {
+            let pos = document.getWordRangeAtPosition(position, /\/\*\*/);
+            let documenter:Documenter = new Documenter(pos, window.activeTextEditor);
+
+
+            let block = new CompletionItem("/**", CompletionItemKind.Snippet);
+            block.range = document.getWordRangeAtPosition(position, /\/\*\*/);
+            block.insertText = documenter.autoDocument();
+
+            result.push(block);
+        }
+
         let match = part.match(/.*?(@[a-z])$/);
 
         if (match == null) {
-            return null;
+            return result;
         }
 
         let prefix = match[1];
@@ -50,7 +66,6 @@ export class Completions implements CompletionItemProvider
 
         let range:Range = document.getWordRangeAtPosition(position, /@[a-z]/);
 
-        let result = [];
         potential.forEach(tag => {
             let item = new CompletionItem(tag.tag, CompletionItemKind.Snippet);
             item.range = range;
