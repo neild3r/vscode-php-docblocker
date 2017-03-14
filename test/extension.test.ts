@@ -1,22 +1,60 @@
-//
-// Note: This example test is leveraging the Mocha test framework.
-// Please refer to their documentation on https://mochajs.org/ for help.
-//
-
-// The module 'assert' provides assertion methods from node
 import * as assert from 'assert';
-
-// You can import and use all API from the 'vscode' module
-// as well as import your extension to test it
 import * as vscode from 'vscode';
-import * as myExtension from '../src/extension';
+import Function from '../src/block/function';
 
-// Defines a Mocha test suite to group tests of similar kind together
-suite("Extension Tests", () => {
+suite("Function tests", () => {
 
-    // Defines a Mocha unit test
-    test("Something 1", () => {
-        assert.equal(-1, [1, 2, 3].indexOf(5));
-        assert.equal(-1, [1, 2, 3].indexOf(0));
+    let tests = [
+        {
+            line: "    public function getName()",
+            match: true
+        },
+        {
+            line: "    function __construct()",
+            match: true
+        },
+        {
+            line: "    function __construct() { ",
+            match: true
+        },
+        {
+            line: "    function __construct(){",
+            match: true
+        },
+        {
+            line: "    function __construct($edible, $color = \"green\")",
+            match: true
+        },
+        {
+            line: "   abstract public function getName();",
+            match: true
+        },
+        {
+            line: "   abstract static public function getName();",
+            match: true
+        },
+        {
+            line: "   static abstract protected function getName();",
+            match: true
+        },
+        {
+            line: "   abstract protected static function getName();",
+            match: true
+        },
+        {
+            line: "final private static function getName()",
+            match: true
+        },
+        {
+            line: "final public function getName()",
+            match: true
+        },
+    ];
+
+    tests.forEach(arg => {
+        test("Line matches " + arg.line, () => {
+            let func = new Function(arg.line);
+            let res = assert.equal(arg.match, func.test());
+        });
     });
 });

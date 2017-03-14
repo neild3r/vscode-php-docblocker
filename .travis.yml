@@ -1,0 +1,11 @@
+sudo: false
+
+os:
+  - osx
+
+install:
+  - npm install
+  - npm run vscode:prepublish
+
+script:
+  - npm test

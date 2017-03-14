@@ -3,15 +3,15 @@ import { Doc, Param } from "../doc";
 
 export default class Function extends Block {
 
-    protected pattern:RegExp = /^\s*(abstract|final|static)?\s*(protected|private|public)\s+(static)?\s*function\s+([A-Za-z0-9_]+)\s*\((.*?)\)\s*(\{)?\s*$/;
+    protected pattern:RegExp = /^\s*((.*)(protected|private|public))?(.*)?\s*function\s+([A-Za-z0-9_]+)\s*\((.*?)\)\s*[{;]?\s*$/;
 
     parse():Doc {
         let params = this.match();
 
         let doc = new Doc('Undocumented function');
 
-        if (params[5] != "") {
-            let args = params[5].split(',');
+        if (params[6] != "") {
+            let args = params[6].split(',');
             for (let index = 0; index < args.length; index++) {
                 let arg = args[index];
                 let parts = arg.match(/^\s*([A-Za-z0-9_]+)?\s*(\$[A-Za-z0-9_]+)\s*\=?\s*(.*)$/);
