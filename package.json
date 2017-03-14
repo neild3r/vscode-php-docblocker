@@ -1,7 +1,7 @@
 {
     "name": "php-docblocker",
     "displayName": "PHP DocBlocker",
-    "description": "PHP DocBlocking tool",
+    "description": "A simple, dependency free PHP specific DocBlocking package",
     "version": "0.2.0",
     "publisher": "neilbrayfield",
     "author": "Neil Brayfield <dev@brayfield.uk>",
@@ -9,14 +9,15 @@
         "vscode": "^1.9.0"
     },
     "categories": [
-        "Snippets"
+        "Languages"
     ],
     "keywords": [
         "php",
+        "autocomplete",
         "docblock"
     ],
     "activationEvents": [
-        "*"
+        "onLanguage:php"
     ],
     "repository": {
         "type": "git",

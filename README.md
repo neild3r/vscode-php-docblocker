@@ -1,14 +1,16 @@
-# PHP DocBlocker README
+# PHP DocBlocker
+
+[![Latest Release](https://vsmarketplacebadge.apphb.com/version-short/neilbrayfield.php-docblocker.svg)](https://marketplace.visualstudio.com/items?itemName=neilbrayfield.php-docblocker) [![Installs](https://vsmarketplacebadge.apphb.com/installs/neilbrayfield.php-docblocker.svg)](https://marketplace.visualstudio.com/items?itemName=neilbrayfield.php-docblocker) [![Rating](https://vsmarketplacebadge.apphb.com/rating-short/neilbrayfield.php-docblocker.svg)](https://marketplace.visualstudio.com/items?itemName=neilbrayfield.php-docblocker)
 
 Basic PHP DocBlocking extension. This extension was hastily written to cover the temporary gap in a more comprehensive DocBlocking plugin that covers multiple languages.
 
-:exclamation: Please consider this as an alpha version as there has been very little real world testing. If there is further development of this extension there will be unit tests and better infering of variables and return types but for now this will do. I also appreciate that regex might not be the best approach but it's the easiest fastest dependency free way of getting this working
+Please consider this as an alpha version as there has been very little real world testing. If there is further development of this extension there will be unit tests and better infering of variables and return types but for now this will do. I also appreciate that regex might not be the best approach but it's the easiest fastest dependency free way of getting this working
 
 ## Features
 
-* Tab completion after /** above a class, function, class property
+* Completion snippet after /** above a class, function, class property
 * Continuation of DocBlock when pressing enter when in a DocBlock
-* Completion of DocBlock tags such as @param, @return, @throws
+* Completion of DocBlock tags such as `@param`, `@return`, `@throws`
 
 ## Requirements
 
