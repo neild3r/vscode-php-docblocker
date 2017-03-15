@@ -53,10 +53,26 @@ suite("Function tests", () => {
             line: "public function getName('\n$var,\n$var2,\n$var3,\n) {",
             match: true
         },
+        {
+            line: "protected $var = [];",
+            match: false
+        },
+        {
+            line: "protected $var = array();",
+            match: false
+        },
+        {
+            line: "protected $var = ['test', 'test2'];",
+            match: false
+        },
+        {
+            line: "protected $var = [\n    'test',\n    'test2'\n];",
+            match: false
+        }
     ];
 
     tests.forEach(arg => {
-        test("Line matches " + arg.line.split("\n")[0], () => {
+        test("Line " + (arg.match ? "matches " : "doesn't match ")+ arg.line.split("\n")[0], () => {
             let func = new Function();
             func.setSigniture(arg.line);
             let res = assert.equal(arg.match, func.test());
