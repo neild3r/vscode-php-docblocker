@@ -6,11 +6,11 @@ suite("Function tests", () => {
 
     let tests = [
         {
-            line: "    public function getName()",
+            line: "    public function getName()\n    {",
             match: true
         },
         {
-            line: "    function __construct()",
+            line: "    function __construct()\n    {",
             match: true
         },
         {
@@ -22,7 +22,7 @@ suite("Function tests", () => {
             match: true
         },
         {
-            line: "    function __construct($edible, $color = \"green\")",
+            line: "    function __construct($edible, $color = \"green\")\n    {",
             match: true
         },
         {
@@ -42,18 +42,23 @@ suite("Function tests", () => {
             match: true
         },
         {
-            line: "final private static function getName()",
+            line: "final private static function getName()\n{",
             match: true
         },
         {
-            line: "final public function getName()",
+            line: "final public function getName()\n{",
+            match: true
+        },
+        {
+            line: "public function getName('\n$var,\n$var2,\n$var3,\n) {",
             match: true
         },
     ];
 
     tests.forEach(arg => {
-        test("Line matches " + arg.line, () => {
-            let func = new Function(arg.line);
+        test("Line matches " + arg.line.split("\n")[0], () => {
+            let func = new Function();
+            func.setSigniture(arg.line);
             let res = assert.equal(arg.match, func.test());
         });
     });
