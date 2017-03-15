@@ -29,6 +29,10 @@ export class Completions implements CompletionItemProvider
             snippet: '@throws ${1:Exception}'
         },
         {
+            tag: '@package',
+            snippet: '@package ${1:category}'
+        },
+        {
             tag: '@link',
             snippet: '@link ${1:http://url.com}'
         }

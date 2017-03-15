@@ -7,14 +7,10 @@ import {Doc, Param} from "./doc";
 export class Documenter
 {
     protected targetPosition:Position;
-    protected triggerLine:string;
-    protected targetLine:string;
     protected editor:TextEditor;
 
     constructor(range:Range, editor:TextEditor) {
         this.targetPosition = range.start;
-        this.triggerLine = editor.document.lineAt(range.start.line).text;
-        this.targetLine = editor.document.lineAt(range.start.line+1).text;
         this.editor = editor;
     }
 
@@ -22,23 +18,18 @@ export class Documenter
         return workspace.getConfiguration('php-docblocker');
     }
 
-    isValid() {
-        return this.triggerLine.search(/^\s*\/\*\*\s+$/) !== -1
-            && this.targetLine.search(/^\s*\*/) === -1;
-    }
-
     autoDocument() {
-        let func = new Function(this.targetLine);
+        let func = new Function(this.targetPosition, this.editor);
         if (func.test()) {
             return this.buildSnippet(func.parse());
         }
 
-        let prop = new Property(this.targetLine);
+        let prop = new Property(this.targetPosition, this.editor);
         if (prop.test()) {
             return this.buildSnippet(prop.parse());
         }
 
-        let cla = new Class(this.targetLine);
+        let cla = new Class(this.targetPosition, this.editor);
         if (cla.test()) {
             return this.buildSnippet(cla.parse());
         }
@@ -107,19 +98,5 @@ export class Documenter
         snippet.appendText("\n */");
 
         return snippet;
-    }
-
-    insertSnippet(snippet:SnippetString) {
-        this.editor.insertSnippet(snippet);
-
-        let pos = this.triggerLine.search(/(\/\*\*\s*)$/);
-        let start = new Position(this.targetPosition.line, pos+3);
-        let target = this.targetPosition;
-        this.editor.edit(function(edit) {
-            edit.delete(new Range(start, target));
-        }, {
-            undoStopAfter: false,
-            undoStopBefore: false
-        });
     }
 }
