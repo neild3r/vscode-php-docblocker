@@ -11,7 +11,7 @@ export default class Function extends Block {
         let doc = new Doc('Undocumented function');
         let argString = this.getEnclosed(params[6], "(", ")");
 
-        if (params[6] != "") {
+        if (argString != "") {
             let args = argString.split(',');
             for (let index = 0; index < args.length; index++) {
                 let arg = args[index];
