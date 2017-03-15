@@ -33,7 +33,7 @@ export abstract class Block
         let line = initial.line+1;
         let part = this.editor.document.lineAt(line).text;
         let start = new Position(initial.line+1, part.search(/[^\s]/));
-        while (!/\{/.test(part)) {
+        while (!endChar.test(part)) {
             line++;
             part = this.editor.document.lineAt(line).text;
         }
