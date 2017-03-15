@@ -2,6 +2,9 @@
 
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
+## [0.3.1] - 2017-03-15
+- Fixed regression in functions without params not triggering
+
 ## [0.3.0] - 2017-03-15
 - Added unit tests for function signatures and continuous integration
 - Added `@package` to completions
