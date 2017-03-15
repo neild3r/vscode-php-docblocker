@@ -3,9 +3,9 @@
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
 ## [0.3.0] - 2017-03-15
-- Added unit tests for function signitures and continuous integration
+- Added unit tests for function signatures and continuous integration
 - Fixed issue where functions weren't detected in abstract/interface methods
-- Fixed support for multiline function signitures
+- Fixed support for multiline function signatures
 
 ## [0.2.0] - 2017-03-13
 - Refactored for potential unit testing
