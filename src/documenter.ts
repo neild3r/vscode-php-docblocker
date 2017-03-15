@@ -34,24 +34,26 @@ export class Documenter
             return this.buildSnippet(cla.parse());
         }
 
-        return this.buildSnippet(new Doc());
+        return this.buildSnippet();
     }
 
     buildSnippet(props:Doc = null) {
         let snippet = new SnippetString();
+        let extra = this.getConfig().get('extra');
+        let gap = !this.getConfig().get('gap');
 
         if (props == null) {
             props = new Doc();
+            extra = [];
         }
 
         let stop = 2;
-        let gap = !this.getConfig().get('gap');
 
         snippet.appendText("/**");
         snippet.appendText("\n * ");
         snippet.appendVariable('1', props.message);
 
-        if (props.params) {
+        if (props.params && props.params.length) {
             if (!gap) {
                 snippet.appendText("\n * ");
                 gap = true;
@@ -81,8 +83,6 @@ export class Documenter
             snippet.appendText("\n * @return ");
             snippet.appendVariable(stop++ + '', props.return);
         }
-
-        let extra = this.getConfig().get('extra');
 
         if (Array.isArray(extra) && extra.length > 0) {
             if (!gap) {

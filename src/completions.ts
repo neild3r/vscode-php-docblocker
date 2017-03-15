@@ -48,15 +48,13 @@ export class Completions implements CompletionItemProvider
             let pos = document.getWordRangeAtPosition(position, /\/\*\*/);
             let documenter:Documenter = new Documenter(pos, window.activeTextEditor);
 
-
             let block = new CompletionItem("/**", CompletionItemKind.Snippet);
             block.range = document.getWordRangeAtPosition(position, /\/\*\*/);
             block.insertText = documenter.autoDocument();
-
             result.push(block);
         }
 
-        let match = part.match(/.*?(@[a-z])$/);
+            let match = part.match(/.*?(@[a-z])$/);
 
         if (match == null) {
             return result;
