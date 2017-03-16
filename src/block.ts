@@ -69,5 +69,40 @@ export abstract class Block
         return context.substr(0, endPos);
     }
 
+    getTypeFromValue(value:string) {
+
+        let result:Array<string>;
+
+        // Check for cast
+        if (result = value.match(/^\s*(\([a-z]\))/)) {
+            return result[1];
+        }
+
+        // Check for bool
+        if (value.match(/^\s*(false|true)\s*$/i) !== null) {
+            return 'boolean';
+        }
+
+        // Check for int
+        if (value.match(/^\s*([\d-]+)\s*$/) !== null) {
+            return 'int';
+        }
+
+        // Check for float
+        if (value.match(/^\s*([\d.-])\s*$/) !== null) {
+            return 'float';
+        }
+
+        // Check for string
+        if (value.match(/^\s*(["'])/) !== null) {
+            return 'string';
+        }
+
+        // Check for array
+        if (value.match(/^\s*(array\(|\[)/) !== null) {
+            return 'array';
+        }
+    }
+
     abstract parse():Doc;
 }

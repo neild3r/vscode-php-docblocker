@@ -1,50 +1,62 @@
 [
     {
         "key": "public",
-        "name": "Public"
+        "name": "Public",
+        "var": "[type]"
     },
     {
         "key": "protected",
-        "name": "Protected"
+        "name": "Protected",
+        "var": "[type]"
     },
     {
         "key": "static",
-        "name": "Static"
+        "name": "Static",
+        "var": "[type]"
     },
     {
         "key": "static-alternate",
-        "name": "Static Alternate"
+        "name": "Static Alternate",
+        "var": "[type]"
     },
     {
         "key": "default-string",
-        "name": "Default String"
+        "name": "Default String",
+        "var": "string"
     },
     {
         "key": "default-string-alternate",
-        "name": "Default String Alternate"
+        "name": "Default String Alternate",
+        "var": "string"
     },
     {
         "key": "default-bool",
-        "name": "Default Bool"
+        "name": "Default Bool",
+        "var": "boolean"
     },
     {
         "key": "default-bool-alternate",
-        "name": "Default Bool Alternate"
+        "name": "Default Bool Alternate",
+        "var": "boolean"
     },
     {
         "key": "default-array",
-        "name": "Default Array"
+        "name": "Default Array",
+        "var": "array"
     },
     {
         "key": "default-array-alternate",
-        "name": "Default Array Alternate"
+        "name": "Default Array Alternate",
+        "var": "array"
     },
     {
         "key": "multiline",
-        "name": "Multiline"
+        "name": "Multiline",
+        "var": "array"
     },
     {
         "key": "multiline-alternate",
-        "name": "Multiline Alternate"
+        "name": "Multiline Alternate",
+        "var": "array"
     }
 ]
