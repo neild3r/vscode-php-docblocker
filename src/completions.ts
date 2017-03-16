@@ -14,7 +14,7 @@ export class Completions implements CompletionItemProvider
         },
         {
             tag: '@param',
-            snippet: '@var ${1:mixed} \$${2:name}'
+            snippet: '@param ${1:mixed} \$${2:name}'
         },
         {
             tag: '@author',
