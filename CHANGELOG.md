@@ -7,6 +7,7 @@ All notable changes to the "php-docblocker" extension will be documented in this
 - Fix the falling back to a simple block
 - Fix issue with multiline arguments with type hints
 - Fix `@param` completion spitting out `@var`
+- Fix Interface class not triggering
 - Refactor unit tests and add more checks and a more comprehensive realworld test
 
 ## [0.3.2] - 2017-03-15
