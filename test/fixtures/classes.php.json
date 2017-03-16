@@ -1,0 +1,14 @@
+[
+    {
+        "key": "simple",
+        "name": "Simple"
+    },
+    {
+        "key": "interface",
+        "name": "Interface"
+    },
+    {
+        "key": "trait",
+        "name": "Trait"
+    }
+]

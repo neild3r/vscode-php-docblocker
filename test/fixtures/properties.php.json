@@ -1,0 +1,10 @@
+[
+    {
+        "key": "public",
+        "name": "Public"
+    },
+    {
+        "key": "protected",
+        "name": "Protected"
+    }
+]
