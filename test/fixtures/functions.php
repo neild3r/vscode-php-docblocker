@@ -37,11 +37,29 @@ abstract class Test
     {
     }
 
-    ////=> Final Multiline
-    public function getMultilineName(
+    ////=> Basic params
+    public function getParams($var, $var2, $var3)
+    {
+    }
+
+    ////=> Complex params
+    final protected static function getComplexParams($var, Hint $var2, $var3 = false)
+    {
+    }
+
+    ////=> Basic Multiline
+    public function getMultiline(
         $var,
         $var2,
         $var3
+    ) {
+    }
+
+    ////=> Complex Multiline
+    final static public function getComplexMultiline(
+        TypeHint $var,
+        $var2,
+        $var3 = "default"
     ) {
     }
 }

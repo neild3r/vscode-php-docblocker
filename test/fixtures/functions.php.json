@@ -32,11 +32,62 @@
         "params": []
     },
     {
-        "name": "Final Multiline",
+        "name": "Basic params",
         "params": [
             {
                 "name": "$var",
                 "type": "[type]"
+            },
+            {
+                "name": "$var2",
+                "type": "[type]"
+            },
+            {
+                "name": "$var3",
+                "type": "[type]"
+            }
+        ]
+    },
+    {
+        "name": "Complex params",
+        "params": [
+            {
+                "name": "$var",
+                "type": "[type]"
+            },
+            {
+                "name": "$var2",
+                "type": "Hint"
+            },
+            {
+                "name": "$var3",
+                "type": "[type]"
+            }
+        ]
+    },
+    {
+        "name": "Basic Multiline",
+        "params": [
+            {
+                "name": "$var",
+                "type": "[type]"
+            },
+            {
+                "name": "$var2",
+                "type": "[type]"
+            },
+            {
+                "name": "$var3",
+                "type": "[type]"
+            }
+        ]
+    },
+    {
+        "name": "Complex Multiline",
+        "params": [
+            {
+                "name": "$var",
+                "type": "TypeHint"
             },
             {
                 "name": "$var2",
