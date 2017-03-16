@@ -12,3 +12,8 @@ before_install:
 install:
   - npm install
   - npm run vscode:prepublish
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
