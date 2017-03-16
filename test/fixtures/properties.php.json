@@ -6,5 +6,45 @@
     {
         "key": "protected",
         "name": "Protected"
+    },
+    {
+        "key": "static",
+        "name": "Static"
+    },
+    {
+        "key": "static-alternate",
+        "name": "Static Alternate"
+    },
+    {
+        "key": "default-string",
+        "name": "Default String"
+    },
+    {
+        "key": "default-string-alternate",
+        "name": "Default String Alternate"
+    },
+    {
+        "key": "default-bool",
+        "name": "Default Bool"
+    },
+    {
+        "key": "default-bool-alternate",
+        "name": "Default Bool Alternate"
+    },
+    {
+        "key": "default-array",
+        "name": "Default Array"
+    },
+    {
+        "key": "default-array-alternate",
+        "name": "Default Array Alternate"
+    },
+    {
+        "key": "multiline",
+        "name": "Multiline"
+    },
+    {
+        "key": "multiline-alternate",
+        "name": "Multiline Alternate"
     }
 ]
