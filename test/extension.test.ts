@@ -7,7 +7,7 @@ import * as fs from 'fs';
 suite("Function tests", function(){
     let editor:vscode.TextEditor;
     let document:vscode.TextDocument;
-    let testPositions:Array<{ name:string, position:vscode.Position}> = [];
+    let testPositions:any = {};
 
     let map = JSON.parse(fs.readFileSync(__dirname + '/../../test/fixtures/functions.php.json').toString());
 
@@ -21,12 +21,10 @@ suite("Function tests", function(){
                     if (!lineText.isEmptyOrWhitespace) {
                         let pos = lineText.text.search(/\/\/\/\/=>/);
                         if (pos !== -1) {
-                            let name = lineText.text.match(/\/\/\/\/=>\s*([A-Za-z0-9 ]+)\s*$/);
-                            testPositions.push({
-                                name: name[1],
-                                position: new vscode.Position(line, pos)
-                            });
-
+                            let name = lineText.text.match(/\/\/\/\/=>\s*([a-z0-9-]+)\s*$/);
+                            if (name !== null) {
+                                testPositions[name[1]] = new vscode.Position(line, pos);
+                            }
                         }
                     }
                 }
@@ -39,23 +37,19 @@ suite("Function tests", function(){
         });
     });
 
-    for (let testNum = 0; testNum < map.length; testNum++) {
-        let testData = map[testNum];
+    map.forEach(testData => {
         test("Match Test: "+ testData.name, function() {
-            let test = testPositions[testNum];
-            let func = new Function(test.position, editor);
-            assert.equal(true, func.test(), test.name);
+            let func = new Function(testPositions[testData.key], editor);
+            assert.equal(func.test(), true, test.name);
         });
 
         test("Parse Test: "+ testData.name, function() {
-            let test = testPositions[testNum];
-            let func = new Function(test.position, editor);
+            let func = new Function(testPositions[testData.key], editor);
             assert.ok(func.parse(), test.name);
         });
 
         test("Param Test: "+ testData.name, function() {
-            let test = testPositions[testNum];
-            let func = new Function(test.position, editor);
+            let func = new Function(testPositions[testData.key], editor);
             let actual:Doc = func.parse();
             let expected:Doc = new Doc();
             expected.fromObject({
@@ -63,5 +57,5 @@ suite("Function tests", function(){
             });
             assert.deepEqual(actual.params, expected.params);
         });
-    }
+    });
 });

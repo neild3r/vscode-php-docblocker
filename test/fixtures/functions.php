@@ -2,52 +2,52 @@
 
 abstract class Test
 {
-    ////=> Simple public
+    ////=> simple
     public function test()
     {
     }
 
-    ////=> Simple public static
+    ////=> simple-static
     public static function test2()
     {
     }
 
-    ////=> Constructor with no visibility
+    ////=> constructor-no-vis
     function __construct()
     {
     }
 
-    ////=> Abstract method simple
+    ////=> abstract-simple
     abstract public function getName();
 
-    ////=> Abstract method static
+    ////=> abstract-static
     abstract static public function getStaticName();
 
-    ////=> Abstract method static alternate
+    ////=> abstract-static-alt
     static abstract protected function getNameStatic();
 
 
-    ////=> Final static method
+    ////=> final-static
     final private static function getFinalPrivateName()
     {
     }
 
-    ////=> Final method
+    ////=> final
     final public function getFinalName()
     {
     }
 
-    ////=> Basic params
+    ////=> params
     public function getParams($var, $var2, $var3)
     {
     }
 
-    ////=> Complex params
+    ////=> params-complex
     final protected static function getComplexParams($var, Hint $var2, $var3 = false)
     {
     }
 
-    ////=> Basic Multiline
+    ////=> multiline
     public function getMultiline(
         $var,
         $var2,
@@ -55,7 +55,7 @@ abstract class Test
     ) {
     }
 
-    ////=> Complex Multiline
+    ////=> multiline-complex
     final static public function getComplexMultiline(
         TypeHint $var,
         $var2,

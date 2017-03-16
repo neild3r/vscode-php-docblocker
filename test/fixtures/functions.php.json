@@ -1,37 +1,46 @@
 [
     {
+        "key": "simple",
         "name": "Simple public",
         "params": []
     },
     {
+        "key": "simple-static",
         "name": "Simple public static",
         "params": []
     },
     {
+        "key": "constructor-no-vis",
         "name": "Constructor with no visibility",
         "params": []
     },
     {
+        "key": "abstract-simple",
         "name": "Abstract method simple",
         "params": []
     },
     {
+        "key": "abstract-static",
         "name": "Abstract method static",
         "params": []
     },
     {
+        "key": "abstract-static-alt",
         "name": "Abstract method static alternate",
         "params": []
     },
     {
+        "key": "final-static",
         "name": "Final static method",
         "params": []
     },
     {
+        "key": "final",
         "name": "Final method",
         "params": []
     },
     {
+        "key": "params",
         "name": "Basic params",
         "params": [
             {
@@ -49,6 +58,7 @@
         ]
     },
     {
+        "key": "params-complex",
         "name": "Complex params",
         "params": [
             {
@@ -66,6 +76,7 @@
         ]
     },
     {
+        "key": "multiline",
         "name": "Basic Multiline",
         "params": [
             {
@@ -83,6 +94,7 @@
         ]
     },
     {
+        "key": "multiline-complex",
         "name": "Complex Multiline",
         "params": [
             {
