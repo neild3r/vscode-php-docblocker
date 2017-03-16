@@ -2,8 +2,11 @@
 
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
-## [0.3.3] - 2017-03-15
+## [0.3.3] - 2017-03-16
 - Fix matching of multiline class properties
+- Fix the falling back to a simple block
+- Fix issue with multiline arguments with type hints
+- Refactor unit tests and add more checks and a more comprehensive realworld test
 
 ## [0.3.2] - 2017-03-15
 - Fixed overflow of function capture meaning it was being applied to properties
