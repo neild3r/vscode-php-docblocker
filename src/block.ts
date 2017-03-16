@@ -32,7 +32,13 @@ export abstract class Block
     getBlock(initial:Position, endChar:RegExp) {
         let line = initial.line+1;
         let part = this.editor.document.lineAt(line).text;
-        let start = new Position(initial.line+1, part.search(/[^\s]/));
+
+        let initialCharacter = part.search(/[^\s]/);
+        if (initialCharacter === -1) {
+            return "";
+        }
+
+        let start = new Position(initial.line+1, initialCharacter);
         while (!endChar.test(part)) {
             line++;
             part = this.editor.document.lineAt(line).text;

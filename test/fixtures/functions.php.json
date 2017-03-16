@@ -1,0 +1,114 @@
+[
+    {
+        "key": "simple",
+        "name": "Simple public",
+        "params": []
+    },
+    {
+        "key": "simple-static",
+        "name": "Simple public static",
+        "params": []
+    },
+    {
+        "key": "constructor-no-vis",
+        "name": "Constructor with no visibility",
+        "params": []
+    },
+    {
+        "key": "abstract-simple",
+        "name": "Abstract method simple",
+        "params": []
+    },
+    {
+        "key": "abstract-static",
+        "name": "Abstract method static",
+        "params": []
+    },
+    {
+        "key": "abstract-static-alt",
+        "name": "Abstract method static alternate",
+        "params": []
+    },
+    {
+        "key": "final-static",
+        "name": "Final static method",
+        "params": []
+    },
+    {
+        "key": "final",
+        "name": "Final method",
+        "params": []
+    },
+    {
+        "key": "params",
+        "name": "Basic params",
+        "params": [
+            {
+                "name": "$var",
+                "type": "[type]"
+            },
+            {
+                "name": "$var2",
+                "type": "[type]"
+            },
+            {
+                "name": "$var3",
+                "type": "[type]"
+            }
+        ]
+    },
+    {
+        "key": "params-complex",
+        "name": "Complex params",
+        "params": [
+            {
+                "name": "$var",
+                "type": "[type]"
+            },
+            {
+                "name": "$var2",
+                "type": "Hint"
+            },
+            {
+                "name": "$var3",
+                "type": "[type]"
+            }
+        ]
+    },
+    {
+        "key": "multiline",
+        "name": "Basic Multiline",
+        "params": [
+            {
+                "name": "$var",
+                "type": "[type]"
+            },
+            {
+                "name": "$var2",
+                "type": "[type]"
+            },
+            {
+                "name": "$var3",
+                "type": "[type]"
+            }
+        ]
+    },
+    {
+        "key": "multiline-complex",
+        "name": "Complex Multiline",
+        "params": [
+            {
+                "name": "$var",
+                "type": "TypeHint"
+            },
+            {
+                "name": "$var2",
+                "type": "[type]"
+            },
+            {
+                "name": "$var3",
+                "type": "[type]"
+            }
+        ]
+    }
+]

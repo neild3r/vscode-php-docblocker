@@ -3,7 +3,7 @@ import { Doc, Param } from "../doc";
 
 export default class Class extends Block {
 
-    protected pattern:RegExp = /^\s*(abstract|final)?\s*(class|trait|inerface)\s+([A-Za-z0-9_]+)\s*/;
+    protected pattern:RegExp = /^\s*(abstract|final)?\s*(class|trait|interface)\s+([A-Za-z0-9_]+)\s*/;
 
     parse():Doc {
         let params = this.match();

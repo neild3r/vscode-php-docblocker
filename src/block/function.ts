@@ -15,7 +15,7 @@ export default class Function extends Block {
             let args = argString.split(',');
             for (let index = 0; index < args.length; index++) {
                 let arg = args[index];
-                let parts = arg.match(/^\s*([A-Za-z0-9_]+)?\s*(\$[A-Za-z0-9_]+)\s*\=?\s*(.*)$/);
+                let parts = arg.match(/^\s*([A-Za-z0-9_]+)?\s*(\$[A-Za-z0-9_]+)\s*\=?\s*(.*)$/m);
                 doc.params.push(new Param(parts[1] ? parts[1] : '[type]', parts[2]));
             }
         }
