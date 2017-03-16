@@ -1,0 +1,51 @@
+[
+    {
+        "name": "Simple public",
+        "params": []
+    },
+    {
+        "name": "Simple public static",
+        "params": []
+    },
+    {
+        "name": "Constructor with no visibility",
+        "params": []
+    },
+    {
+        "name": "Abstract method simple",
+        "params": []
+    },
+    {
+        "name": "Abstract method static",
+        "params": []
+    },
+    {
+        "name": "Abstract method static alternate",
+        "params": []
+    },
+    {
+        "name": "Final static method",
+        "params": []
+    },
+    {
+        "name": "Final method",
+        "params": []
+    },
+    {
+        "name": "Final Multiline",
+        "params": [
+            {
+                "name": "$var",
+                "type": "[type]"
+            },
+            {
+                "name": "$var2",
+                "type": "[type]"
+            },
+            {
+                "name": "$var3",
+                "type": "[type]"
+            }
+        ]
+    }
+]

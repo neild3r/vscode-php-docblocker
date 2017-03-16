@@ -1,81 +1,67 @@
 import * as assert from 'assert';
 import * as vscode from 'vscode';
 import Function from '../src/block/function';
+import {Doc, Param} from '../src/doc';
+import * as fs from 'fs';
 
-suite("Function tests", () => {
+suite("Function tests", function(){
+    let editor:vscode.TextEditor;
+    let document:vscode.TextDocument;
+    let testPositions:Array<{ name:string, position:vscode.Position}> = [];
 
-    let tests = [
-        {
-            line: "    public function getName()\n    {",
-            match: true
-        },
-        {
-            line: "    function __construct()\n    {",
-            match: true
-        },
-        {
-            line: "    function __construct() { ",
-            match: true
-        },
-        {
-            line: "    function __construct(){",
-            match: true
-        },
-        {
-            line: "    function __construct($edible, $color = \"green\")\n    {",
-            match: true
-        },
-        {
-            line: "   abstract public function getName();",
-            match: true
-        },
-        {
-            line: "   abstract static public function getName();",
-            match: true
-        },
-        {
-            line: "   static abstract protected function getName();",
-            match: true
-        },
-        {
-            line: "   abstract protected static function getName();",
-            match: true
-        },
-        {
-            line: "final private static function getName()\n{",
-            match: true
-        },
-        {
-            line: "final public function getName()\n{",
-            match: true
-        },
-        {
-            line: "public function getName('\n$var,\n$var2,\n$var3,\n) {",
-            match: true
-        },
-        {
-            line: "protected $var = [];",
-            match: false
-        },
-        {
-            line: "protected $var = array();",
-            match: false
-        },
-        {
-            line: "protected $var = ['test', 'test2'];",
-            match: false
-        },
-        {
-            line: "protected $var = [\n    'test',\n    'test2'\n];",
-            match: false
-        }
-    ];
+    let map = JSON.parse(fs.readFileSync(__dirname + '/../../test/fixtures/functions.php.json').toString());
 
-    tests.forEach(arg => {
-        test("Line " + (arg.match ? "matches " : "doesn't match ")+ arg.line.split("\n")[0], () => {
-            let func = new Function();
-            func.setSigniture(arg.line);
-            let res = assert.equal(arg.match, func.test());
+    suiteSetup(function(done) {
+        vscode.workspace.openTextDocument(__dirname + '/../../test/fixtures/functions.php').then(textDocument => {
+            vscode.window.showTextDocument(textDocument).then(textEditor => {
+                document = textDocument;
+                editor = textEditor;
+                for (let line = 0; line < document.lineCount; line++) {
+                    let lineText = document.lineAt(line);
+                    if (!lineText.isEmptyOrWhitespace) {
+                        let pos = lineText.text.search(/\/\/\/\/=>/);
+                        if (pos !== -1) {
+                            let name = lineText.text.match(/\/\/\/\/=>\s*([A-Za-z0-9 ]+)\s*$/);
+                            testPositions.push({
+                                name: name[1],
+                                position: new vscode.Position(line, pos)
+                            });
+
+                        }
+                    }
+                }
+                done();
+            }, error => {
+                console.log(error);
+            });
+        }, error => {
+            console.log(error);
         });
     });
+
+    for (let testNum = 0; testNum < map.length; testNum++) {
+        let testData = map[testNum];
+        test("Match Test: "+ testData.name, function() {
+            let test = testPositions[testNum];
+            let func = new Function(test.position, editor);
+            assert.equal(true, func.test(), test.name);
+        });
+
+        test("Parse Test: "+ testData.name, function() {
+            let test = testPositions[testNum];
+            let func = new Function(test.position, editor);
+            assert.ok(func.parse(), test.name);
+        });
+
+        test("Param Test: "+ testData.name, function() {
+            let test = testPositions[testNum];
+            let func = new Function(test.position, editor);
+            let actual:Doc = func.parse();
+            let expected:Doc = new Doc();
+            expected.fromObject({
+                params: testData.params
+            });
+            assert.deepEqual(actual.params, expected.params);
+        });
+    }
 });
