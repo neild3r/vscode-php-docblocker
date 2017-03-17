@@ -28,8 +28,28 @@ export default class Function extends Block {
             }
         }
 
-        doc.return = 'void';
+        doc.return = this.getReturnFromName(params[5]);
 
         return doc;
+    }
+
+    getReturnFromName(name:string) {
+        switch (name) {
+            case '__construct':
+            case '__destruct':
+            case '__set':
+            case '__unset':
+            case '__wakeup':
+                return null;
+            case '__isset':
+                return 'boolean';
+            case '__sleep':
+            case '__debugInfo':
+                return 'array';
+            case '__toString':
+                return 'string';
+        }
+
+        return 'void';
     }
 }
