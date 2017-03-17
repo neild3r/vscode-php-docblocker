@@ -43,7 +43,7 @@ abstract class Test
     }
 
     ////=> params-complex
-    final protected static function getComplexParams($var, Hint $var2, $var3 = false)
+    final protected static function getComplexParams(&$var, Hint $var2, $var3 = false)
     {
     }
 
@@ -58,7 +58,7 @@ abstract class Test
     ////=> multiline-complex
     final static public function getComplexMultiline(
         TypeHint $var,
-        $var2,
+        &$var2,
         $var3 = "default"
     ) {
     }
