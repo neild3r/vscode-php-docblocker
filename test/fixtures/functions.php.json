@@ -71,7 +71,7 @@
             },
             {
                 "name": "$var3",
-                "type": "[type]"
+                "type": "boolean"
             }
         ]
     },
@@ -107,7 +107,45 @@
             },
             {
                 "name": "$var3",
-                "type": "[type]"
+                "type": "string"
+            }
+        ]
+    },
+    {
+        "key": "param-types",
+        "name": "All param types",
+        "params": [
+            {
+                "name": "$hint",
+                "type": "TypeHint"
+            },
+            {
+                "name": "$boolean",
+                "type": "boolean"
+            },
+            {
+                "name": "$string",
+                "type": "string"
+            },
+            {
+                "name": "$string2",
+                "type": "string"
+            },
+            {
+                "name": "$int",
+                "type": "int"
+            },
+            {
+                "name": "$float",
+                "type": "float"
+            },
+            {
+                "name": "$array",
+                "type": "array"
+            },
+            {
+                "name": "$array2",
+                "type": "array"
             }
         ]
     }

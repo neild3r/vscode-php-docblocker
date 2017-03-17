@@ -4,6 +4,7 @@ All notable changes to the "php-docblocker" extension will be documented in this
 
 ## [0.4.0] - 2017-03-17
 - Add Inferring of types in properties
+- Add Inferring of types using function param defaults
 
 ## [0.3.3] - 2017-03-16
 - Fix matching of multiline class properties

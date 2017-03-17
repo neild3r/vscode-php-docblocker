@@ -62,4 +62,17 @@ abstract class Test
         $var3 = "default"
     ) {
     }
+
+    ////=> param-types
+    public function getParamTypes(
+        TypeHint $hint,
+        $boolean = true,
+        $string = 'single quotes',
+        $string2 = "double quotes",
+        $int = 42141513,
+        $float = 109.50,
+        $array = [],
+        $array2 = array()
+    ) {
+    }
 }

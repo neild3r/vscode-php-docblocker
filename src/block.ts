@@ -89,7 +89,7 @@ export abstract class Block
         }
 
         // Check for float
-        if (value.match(/^\s*([\d.-])\s*$/) !== null) {
+        if (value.match(/^\s*([\d.-]+)\s*$/) !== null) {
             return 'float';
         }
 
@@ -102,6 +102,8 @@ export abstract class Block
         if (value.match(/^\s*(array\(|\[)/) !== null) {
             return 'array';
         }
+
+        return '[type]';
     }
 
     abstract parse():Doc;

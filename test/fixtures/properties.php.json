@@ -58,5 +58,20 @@
         "key": "multiline-alternate",
         "name": "Multiline Alternate",
         "var": "array"
+    },
+    {
+        "key": "default-float",
+        "name": "Default Float",
+        "var": "float"
+    },
+    {
+        "key": "default-int",
+        "name": "Default Int",
+        "var": "int"
+    },
+    {
+        "key": "default-null",
+        "name": "Default Null",
+        "var": "[type]"
     }
 ]

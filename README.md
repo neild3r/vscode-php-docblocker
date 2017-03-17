@@ -9,7 +9,7 @@ Please consider this as an alpha version as there has been very little real worl
 
 ## Features
 
-* Completion snippet after /** above a class, function, class property
+* Completion snippet after `/**` above a class, function, class property
 * Continuation of DocBlock when pressing enter when in a DocBlock
 * Completion of DocBlock tags such as `@param`, `@return`, `@throws`
 
