@@ -15,13 +15,41 @@ export default class Function extends Block {
             let args = argString.split(',');
             for (let index = 0; index < args.length; index++) {
                 let arg = args[index];
-                let parts = arg.match(/^\s*([A-Za-z0-9_]+)?\s*(\$[A-Za-z0-9_]+)\s*\=?\s*(.*)$/m);
-                doc.params.push(new Param(parts[1] ? parts[1] : '[type]', parts[2]));
+                let parts = arg.match(/^\s*([A-Za-z0-9_]+)?\s*\&?(\$[A-Za-z0-9_]+)\s*\=?\s*(.*)\s*/m);
+                var type = '[type]';
+
+                if (parts[1] != null) {
+                    type = parts[1];
+                } else if (parts[3] != null && parts[3] != "") {
+                    type = this.getTypeFromValue(parts[3]);
+                }
+
+                doc.params.push(new Param(type, parts[2]));
             }
         }
 
-        doc.return = 'void';
+        doc.return = this.getReturnFromName(params[5]);
 
         return doc;
+    }
+
+    getReturnFromName(name:string) {
+        switch (name) {
+            case '__construct':
+            case '__destruct':
+            case '__set':
+            case '__unset':
+            case '__wakeup':
+                return null;
+            case '__isset':
+                return 'boolean';
+            case '__sleep':
+            case '__debugInfo':
+                return 'array';
+            case '__toString':
+                return 'string';
+        }
+
+        return 'void';
     }
 }

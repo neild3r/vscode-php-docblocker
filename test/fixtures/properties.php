@@ -43,4 +43,15 @@ abstract class Test
         'value',
         'value2'
     );
+
+    ////=> default-float
+    public $defaultFloat = -124124.50;
+
+
+    ////=> default-int
+    public $defaultInt = -214221;
+
+
+    ////=> default-null
+    public $defaultNull = null;
 }

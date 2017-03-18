@@ -43,7 +43,7 @@ abstract class Test
     }
 
     ////=> params-complex
-    final protected static function getComplexParams($var, Hint $var2, $var3 = false)
+    final protected static function getComplexParams(&$var, Hint $var2, $var3 = false)
     {
     }
 
@@ -58,8 +58,21 @@ abstract class Test
     ////=> multiline-complex
     final static public function getComplexMultiline(
         TypeHint $var,
-        $var2,
+        &$var2,
         $var3 = "default"
+    ) {
+    }
+
+    ////=> param-types
+    public function getParamTypes(
+        TypeHint $hint,
+        $boolean = true,
+        $string = 'single quotes',
+        $string2 = "double quotes",
+        $int = 42141513,
+        $float = 109.50,
+        $array = [],
+        $array2 = array()
     ) {
     }
 }

@@ -30,5 +30,11 @@ suite("Property tests", () => {
             let func = new Function(testPositions[testData.key], editor);
             assert.ok(func.parse(), test.name);
         });
+
+        test("Type Test: "+ testData.name, () => {
+            let func = new Function(testPositions[testData.key], editor);
+            let doc:Doc = func.parse();
+            assert.equal(doc.var, testData.var, test.name);
+        });
     });
 });
