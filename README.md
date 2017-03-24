@@ -5,13 +5,14 @@
 
 Basic PHP DocBlocking extension. This extension was hastily written to cover the temporary gap in a more comprehensive DocBlocking plugin that covers multiple languages.
 
-Please consider this as an alpha version as there has been very little real world testing. If there is further development of this extension there will be unit tests and better infering of variables and return types but for now this will do. I also appreciate that regex might not be the best approach but it's the easiest fastest dependency free way of getting this working
+We now have a set of unit tests and some decent coverage on the parsing of signitures as well as some continuous integration. This should ensure the extension remains stable as development progresses.
 
 ## Features
 
 * Completion snippet after `/**` above a class, function, class property
 * Continuation of DocBlock when pressing enter when in a DocBlock
 * Completion of DocBlock tags such as `@param`, `@return`, `@throws`
+* Inferring of param and return types from signitures
 
 ## Requirements
 
