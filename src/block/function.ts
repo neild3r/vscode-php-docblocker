@@ -1,7 +1,7 @@
 import { Block } from "../block";
 import { Doc, Param } from "../doc";
 
-export default class Function extends Block {
+export default class FunctionBlock extends Block {
 
     protected pattern:RegExp = /^\s*((.*)(protected|private|public))?(.*)?\s*function\s+([A-Za-z0-9_]+)\s*\(([^{;]*)/m;
 
