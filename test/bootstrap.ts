@@ -6,10 +6,9 @@ declare var __coverage__:any;
 
 var istanbul = require('istanbul'),
     hook = istanbul.hook,
-    config = istanbul.config.loadFile(__dirname + '/../../.istanbul.yml'),
     collector = new istanbul.Collector(),
     instrumenter = new istanbul.Instrumenter(),
-    reporter = new istanbul.Reporter(config, __dirname + '/../../coverage/'),
+    reporter = new istanbul.Reporter(false, __dirname + '/../../coverage/'),
     sync = true;
 
 
