@@ -13,13 +13,9 @@ install:
   - npm install
   - npm run vscode:prepublish
 
-addons:
-  code_climate:
-    repo_token: 807f7c62e057c6ac6c618062fcb5f56f89d622a6f7de41d73273998b6a0606a5
-
 after_success:
-  - npm install -g codeclimate-test-reporter
-  - codeclimate-test-reporter < coverage/lcov.info
+  - npm install -g coveralls
+  - coveralls < coverage/lcov.info
 
 notifications:
   email:
