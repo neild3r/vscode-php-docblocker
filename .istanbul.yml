@@ -1,0 +1,9 @@
+verbose: false
+instrumentation:
+    root: .
+    default-excludes: true
+    excludes: ['test/**/*', 'node_modules/**/*']
+reporting:
+    print: summary
+    reports:
+        - lcov

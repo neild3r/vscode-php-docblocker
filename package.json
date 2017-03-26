@@ -1,62 +1,63 @@
 {
-    "name": "php-docblocker",
-    "displayName": "PHP DocBlocker",
-    "description": "A simple, dependency free PHP specific DocBlocking package",
-    "version": "0.4.0",
-    "publisher": "neilbrayfield",
-    "author": "Neil Brayfield <dev@brayfield.uk>",
-    "engines": {
-        "vscode": "^1.9.0"
-    },
-    "categories": [
-        "Languages"
-    ],
-    "keywords": [
-        "php",
-        "autocomplete",
-        "docblock"
-    ],
-    "activationEvents": [
-        "onLanguage:php"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/neild3r/vscode-php-docblocker.git"
-    },
-        "bugs": {
-        "url": "https://github.com/neild3r/vscode-php-docblocker/issues"
-    },
-    "icon": "images/logo.svg",
-    "main": "./out/src/extension",
-    "contributes": {
-        "configuration": {
-            "type": "object",
-            "title": "PHP DocBlocker configuration",
-            "properties": {
-                "php-docblocker.gap": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "If there should be a gap between the description and tags"
-                },
-                "php-docblocker.extra": {
-                    "type": "array",
-                    "default": [],
-                    "description": "Extra tags you wish to include in every DocBlock"
-                }
-            }
+  "name": "php-docblocker",
+  "displayName": "PHP DocBlocker",
+  "description": "A simple, dependency free PHP specific DocBlocking package",
+  "version": "0.4.0",
+  "publisher": "neilbrayfield",
+  "author": "Neil Brayfield <dev@brayfield.uk>",
+  "engines": {
+    "vscode": "^1.9.0"
+  },
+  "categories": [
+    "Languages"
+  ],
+  "keywords": [
+    "php",
+    "autocomplete",
+    "docblock"
+  ],
+  "activationEvents": [
+    "onLanguage:php"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/neild3r/vscode-php-docblocker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/neild3r/vscode-php-docblocker/issues"
+  },
+  "icon": "images/logo.svg",
+  "main": "./out/src/extension",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "PHP DocBlocker configuration",
+      "properties": {
+        "php-docblocker.gap": {
+          "type": "boolean",
+          "default": true,
+          "description": "If there should be a gap between the description and tags"
+        },
+        "php-docblocker.extra": {
+          "type": "array",
+          "default": [],
+          "description": "Extra tags you wish to include in every DocBlock"
         }
-    },
-    "scripts": {
-        "vscode:prepublish": "tsc -p ./",
-        "compile": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "node ./node_modules/vscode/bin/test"
-    },
-    "devDependencies": {
-        "typescript": "^2.2.0",
-        "vscode": "^1.0.3",
-        "mocha": "^2.3.3",
-        "@types/node": "^6.0.40",
-        "@types/mocha": "^2.2.32"
+      }
     }
+  },
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.32",
+    "@types/node": "^6.0.40",
+    "istanbul": "^0.4.5",
+    "mocha": "^2.3.3",
+    "typescript": "^2.2.0",
+    "vscode": "^1.0.3"
+  }
 }
