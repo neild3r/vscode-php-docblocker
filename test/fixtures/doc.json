@@ -93,5 +93,27 @@
             " * @author John Smith <john@smith.com>",
             " */"
         ]
+    },
+    {
+        "name": "Function no gap",
+        "config": {
+            "gap": false,
+            "extra": []
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$name",
+                    "type": "int"
+                }
+            ]
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " * @param ${2:int} ${3:\\$name}",
+            " */"
+        ]
     }
 ]
