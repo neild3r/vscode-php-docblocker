@@ -48,5 +48,26 @@
             " * @return ${4:void}",
             " */"
         ]
+    },
+    {
+        "name": "Extra",
+        "config": {
+            "gap": true,
+            "extra": [
+                "@author John Smith <john@smith.com>"
+            ]
+        },
+        "input": {
+            "message": "Undocumented var",
+            "var": "int"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented var}",
+            " *",
+            " * @var ${2:int}",
+            " * @author John Smith <john@smith.com>",
+            " */"
+        ]
     }
 ]
