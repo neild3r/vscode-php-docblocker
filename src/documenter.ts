@@ -30,6 +30,6 @@ export default class Documenter
             return cla.parse().build();
         }
 
-        return new Doc().build();
+        return new Doc().build(true);
     }
 }

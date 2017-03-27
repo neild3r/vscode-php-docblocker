@@ -31,10 +31,15 @@ export class Doc {
         return workspace.getConfiguration('php-docblocker');
     }
 
-    build():SnippetString {
+    build(isEmpty:boolean = false):SnippetString {
         let snippet = new SnippetString();
         let extra = this.getConfig().get('extra');
         let gap = !this.getConfig().get('gap');
+
+        if (isEmpty) {
+            gap = true;
+            extra = [];
+        }
 
         let stop = 2;
 
