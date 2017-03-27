@@ -58,6 +58,7 @@
     "@types/node": "^6.0.40",
     "istanbul": "^0.4.5",
     "mocha": "^2.3.3",
+    "remap-istanbul": "^0.9.5",
     "typescript": "^2.2.0",
     "vscode": "^1.0.3"
   }
