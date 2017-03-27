@@ -197,6 +197,22 @@
         }
     },
     {
+        "key": "sleep",
+        "name": "Magic sleep return type",
+        "result": {
+            "return": "array",
+            "params": []
+        }
+    },
+    {
+        "key": "wakeup",
+        "name": "Magic wakeup return type",
+        "result": {
+            "return": null,
+            "params": []
+        }
+    },
+    {
         "key": "isset",
         "name": "isset return type",
         "result": {
@@ -216,5 +232,35 @@
             "return": "string",
             "params": []
         }
-    }
+    },
+    {
+        "key": "set",
+        "name": "Magic set",
+        "result": {
+            "return": null,
+            "params": [
+                {
+                    "name": "$name",
+                    "type": "[type]"
+                },
+                {
+                    "name": "$value",
+                    "type": "[type]"
+                }
+            ]
+        }
+    },
+    {
+        "key": "unset",
+        "name": "unset return type",
+        "result": {
+            "return": null,
+            "params": [
+                {
+                    "name": "$name",
+                    "type": "[type]"
+                }
+            ]
+        }
+    },
 ]
