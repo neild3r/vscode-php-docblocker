@@ -14,7 +14,7 @@ var istanbul = require('istanbul'),
 
 hook.hookRequire(function(file) {
     return file.indexOf(path.resolve(__dirname + '/../..') + '/out/src') !== -1;
-}, instrumenter.instrumentSync);
+}, instrumenter.instrumentSync.bind(instrumenter));
 
 export function callback() {
     collector.add(__coverage__);
