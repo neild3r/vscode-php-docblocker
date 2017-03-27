@@ -9,12 +9,10 @@ export abstract class Block
     protected signiture:string;
     protected signitureEnd:RegExp = /[\{;]/;
 
-    constructor(position:Position = null, editor:TextEditor = null) {
+    constructor(position:Position, editor:TextEditor) {
         this.position = position;
         this.editor = editor;
-        if (editor != null && position != null) {
-            this.setSigniture(this.getBlock(position, this.signitureEnd));
-        }
+        this.setSigniture(this.getBlock(position, this.signitureEnd));
     }
 
     test():boolean {
