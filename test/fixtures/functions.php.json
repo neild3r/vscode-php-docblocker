@@ -2,151 +2,219 @@
     {
         "key": "simple",
         "name": "Simple public",
-        "params": []
+        "result": {
+            "return": "void",
+            "params": []
+        }
     },
     {
         "key": "simple-static",
         "name": "Simple public static",
-        "params": []
+        "result": {
+            "return": "void",
+            "params": []
+        }
     },
     {
         "key": "constructor-no-vis",
         "name": "Constructor with no visibility",
-        "params": []
+        "result": {
+            "return": null,
+            "params": []
+        }
     },
     {
         "key": "abstract-simple",
         "name": "Abstract method simple",
-        "params": []
+        "result": {
+            "return": "void",
+            "params": []
+        }
     },
     {
         "key": "abstract-static",
         "name": "Abstract method static",
-        "params": []
+        "result": {
+            "return": "void",
+            "params": []
+        }
     },
     {
         "key": "abstract-static-alt",
         "name": "Abstract method static alternate",
-        "params": []
+        "result": {
+            "return": "void",
+            "params": []
+        }
     },
     {
         "key": "final-static",
         "name": "Final static method",
-        "params": []
+        "result": {
+            "return": "void",
+            "params": []
+        }
     },
     {
         "key": "final",
         "name": "Final method",
-        "params": []
+        "result": {
+            "return": "void",
+            "params": []
+        }
     },
     {
         "key": "params",
         "name": "Basic params",
-        "params": [
-            {
-                "name": "$var",
-                "type": "[type]"
-            },
-            {
-                "name": "$var2",
-                "type": "[type]"
-            },
-            {
-                "name": "$var3",
-                "type": "[type]"
-            }
-        ]
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$var",
+                    "type": "[type]"
+                },
+                {
+                    "name": "$var2",
+                    "type": "[type]"
+                },
+                {
+                    "name": "$var3",
+                    "type": "[type]"
+                }
+            ]
+        }
     },
     {
         "key": "params-complex",
         "name": "Complex params",
-        "params": [
-            {
-                "name": "$var",
-                "type": "[type]"
-            },
-            {
-                "name": "$var2",
-                "type": "Hint"
-            },
-            {
-                "name": "$var3",
-                "type": "boolean"
-            }
-        ]
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$var",
+                    "type": "[type]"
+                },
+                {
+                    "name": "$var2",
+                    "type": "Hint"
+                },
+                {
+                    "name": "$var3",
+                    "type": "boolean"
+                }
+            ]
+        }
     },
     {
         "key": "multiline",
         "name": "Basic Multiline",
-        "params": [
-            {
-                "name": "$var",
-                "type": "[type]"
-            },
-            {
-                "name": "$var2",
-                "type": "[type]"
-            },
-            {
-                "name": "$var3",
-                "type": "[type]"
-            }
-        ]
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$var",
+                    "type": "[type]"
+                },
+                {
+                    "name": "$var2",
+                    "type": "[type]"
+                },
+                {
+                    "name": "$var3",
+                    "type": "[type]"
+                }
+            ]
+        }
     },
     {
         "key": "multiline-complex",
         "name": "Complex Multiline",
-        "params": [
-            {
-                "name": "$var",
-                "type": "TypeHint"
-            },
-            {
-                "name": "$var2",
-                "type": "[type]"
-            },
-            {
-                "name": "$var3",
-                "type": "string"
-            }
-        ]
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$var",
+                    "type": "TypeHint"
+                },
+                {
+                    "name": "$var2",
+                    "type": "[type]"
+                },
+                {
+                    "name": "$var3",
+                    "type": "string"
+                }
+            ]
+        }
     },
     {
         "key": "param-types",
         "name": "All param types",
-        "params": [
-            {
-                "name": "$hint",
-                "type": "TypeHint"
-            },
-            {
-                "name": "$boolean",
-                "type": "boolean"
-            },
-            {
-                "name": "$string",
-                "type": "string"
-            },
-            {
-                "name": "$string2",
-                "type": "string"
-            },
-            {
-                "name": "$int",
-                "type": "int"
-            },
-            {
-                "name": "$float",
-                "type": "float"
-            },
-            {
-                "name": "$array",
-                "type": "array"
-            },
-            {
-                "name": "$array2",
-                "type": "array"
-            }
-        ]
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$hint",
+                    "type": "TypeHint"
+                },
+                {
+                    "name": "$boolean",
+                    "type": "boolean"
+                },
+                {
+                    "name": "$string",
+                    "type": "string"
+                },
+                {
+                    "name": "$string2",
+                    "type": "string"
+                },
+                {
+                    "name": "$int",
+                    "type": "int"
+                },
+                {
+                    "name": "$float",
+                    "type": "float"
+                },
+                {
+                    "name": "$array",
+                    "type": "array"
+                },
+                {
+                    "name": "$array2",
+                    "type": "array"
+                }
+            ]
+        }
+    },
+    {
+        "key": "debug-info",
+        "name": "Debug info return type",
+        "result": {
+            "return": "array",
+            "params": []
+        }
+    },
+    {
+        "key": "isset",
+        "name": "isset return type",
+        "result": {
+            "return": "boolean",
+            "params": [
+                {
+                    "name": "$name",
+                    "type": "[type]"
+                }
+            ]
+        }
+    },
+    {
+        "key": "to-string",
+        "name": "toString return type",
+        "result": {
+            "return": "string",
+            "params": []
+        }
     }
 ]

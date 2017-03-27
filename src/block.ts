@@ -13,7 +13,7 @@ export abstract class Block
         this.position = position;
         this.editor = editor;
         if (editor != null && position != null) {
-            this.signiture = this.getBlock(position, this.signitureEnd);
+            this.setSigniture(this.getBlock(position, this.signitureEnd));
         }
     }
 
