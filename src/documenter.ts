@@ -1,5 +1,5 @@
 import {Range, Position, TextEditor, TextEditorEdit, workspace, SnippetString} from "vscode";
-import Function from "./block/function";
+import FunctionBlock from "./block/function";
 import Property from "./block/property";
 import Class from "./block/class";
 import {Doc, Param} from "./doc";
@@ -19,7 +19,7 @@ export class Documenter
     }
 
     autoDocument() {
-        let func = new Function(this.targetPosition, this.editor);
+        let func = new FunctionBlock(this.targetPosition, this.editor);
         if (func.test()) {
             return this.buildSnippet(func.parse());
         }

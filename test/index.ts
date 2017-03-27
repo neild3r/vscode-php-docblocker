@@ -1,3 +1,5 @@
+import * as bootstrap from './bootstrap';
+
 //
 // PLEASE DO NOT MODIFY / DELETE UNLESS YOU KNOW WHAT YOU ARE DOING
 //
@@ -19,4 +21,11 @@ testRunner.configure({
     useColors: true // colored output from test results
 });
 
-module.exports = testRunner;
+module.exports = {
+    run: function(testsRoot:string, callback: (error:Error) => void) {
+        testRunner.run(testsRoot, (error) => {
+            bootstrap.callback();
+            callback(error);
+        });
+    }
+};
