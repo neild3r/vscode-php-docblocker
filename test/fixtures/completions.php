@@ -30,3 +30,6 @@
  class Blah
  {
  }
+
+ ////=> empty
+ /**

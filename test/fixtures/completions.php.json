@@ -53,5 +53,12 @@
         "result": [
             "/**"
         ]
+    },
+    {
+        "key": "empty",
+        "name": "Empty trigger",
+        "result": [
+            "/**"
+        ]
     }
 ]
