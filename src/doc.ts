@@ -5,6 +5,7 @@ export class Doc {
     public return:string;
     public var:string;
     public message:string;
+    protected config:{};
 
     constructor(message:string = '') {
         this.message = message;
@@ -27,14 +28,21 @@ export class Doc {
         }
     }
 
-    getConfig():WorkspaceConfiguration {
-        return workspace.getConfiguration('php-docblocker');
+    getConfig():any {
+        if (this.config == null) {
+            this.config = workspace.getConfiguration().get('php-docblocker');
+        }
+        return this.config;
+    }
+
+    setConfig(config:any) {
+        this.config = config;
     }
 
     build(isEmpty:boolean = false):SnippetString {
         let snippet = new SnippetString();
-        let extra = this.getConfig().get('extra');
-        let gap = !this.getConfig().get('gap');
+        let extra = this.getConfig().extra;
+        let gap = !this.getConfig().gap;
 
         if (isEmpty) {
             gap = true;

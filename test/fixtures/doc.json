@@ -1,9 +1,26 @@
 [
     {
-        "name": "empty",
+        "name": "Empty",
         "expected": [
             "/**",
             " * ${1}",
+            " */"
+        ]
+    },
+    {
+        "name": "Property",
+        "config": {
+            "gap": false,
+            "extra": []
+        },
+        "input": {
+            "message": "Undocumented var",
+            "var": "mixed"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented var}",
+            " * @var ${2:mixed}",
             " */"
         ]
     }
