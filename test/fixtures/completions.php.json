@@ -1,0 +1,17 @@
+[
+    {
+        "key": "param",
+        "name": "Param tag",
+        "tag": "@param"
+    },
+    {
+        "key": "return",
+        "name": "Return tag",
+        "tag": "@return"
+    },
+    {
+        "key": "package",
+        "name": "Package tag",
+        "tag": "@package"
+    }
+]
