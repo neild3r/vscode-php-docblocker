@@ -67,5 +67,31 @@
             " * @author John Smith <john@smith.com>",
             " */"
         ]
+    },
+    {
+        "name": "Function params no return",
+        "config": {
+            "gap": true,
+            "extra": [
+                "@author John Smith <john@smith.com>"
+            ]
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$name",
+                    "type": "int"
+                }
+            ]
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param ${2:int} ${3:\\$name}",
+            " * @author John Smith <john@smith.com>",
+            " */"
+        ]
     }
 ]
