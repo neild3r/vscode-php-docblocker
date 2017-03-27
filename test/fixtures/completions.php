@@ -8,3 +8,13 @@
 
 ////=> package
  * @pack
+
+////=> var
+ * @va
+
+////=> nothing
+ * &
+
+////=> function
+ /**
+ protected $name;

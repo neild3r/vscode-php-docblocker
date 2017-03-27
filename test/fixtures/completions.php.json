@@ -2,16 +2,42 @@
     {
         "key": "param",
         "name": "Param tag",
-        "tag": "@param"
+        "result": [
+            "@param"
+        ]
     },
     {
         "key": "return",
         "name": "Return tag",
-        "tag": "@return"
+        "result": [
+            "@return"
+        ]
     },
     {
         "key": "package",
         "name": "Package tag",
-        "tag": "@package"
+        "result": [
+            "@package"
+        ]
+    },
+    {
+        "key": "var",
+        "name": "Var tag",
+        "result": [
+            "@var"
+        ]
+    },
+    {
+        "key": "nothing",
+        "name": "Nothing",
+        "result": [
+        ]
+    },
+    {
+        "key": "function",
+        "name": "Function trigger",
+        "result": [
+            "/**"
+        ]
     }
 ]

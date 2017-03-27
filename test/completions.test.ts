@@ -23,13 +23,18 @@ suite("Completion tests", () => {
     map.forEach(testData => {
         test("Completion: "+ testData.name, () => {
             let pos:Position = testPositions[testData.key];
-            let result:ProviderResult<CompletionItem[]> = completions.provideCompletionItems(
+            let result:any = completions.provideCompletionItems(
                 document,
                 document.lineAt(pos.line+1).range.end,
                 new CancellationTokenSource().token
             );
 
-            assert.equal(testData.tag, result[0].label);
+            let matched:Array<string> = [];
+            result.forEach(data => {
+                matched.push(data.label);
+            });
+
+            assert.deepEqual(testData.result, matched);
         });
     });
 });
