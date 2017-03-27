@@ -15,6 +15,18 @@
 ////=> nothing
  * &
 
-////=> function
+////=> property
  /**
  protected $name;
+
+////=> function
+ /**
+ protected function name()
+ {
+ }
+
+////=> class
+ /**
+ class Blah
+ {
+ }

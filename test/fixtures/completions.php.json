@@ -34,8 +34,22 @@
         ]
     },
     {
+        "key": "property",
+        "name": "Property trigger",
+        "result": [
+            "/**"
+        ]
+    },
+    {
         "key": "function",
         "name": "Function trigger",
+        "result": [
+            "/**"
+        ]
+    },
+    {
+        "key": "class",
+        "name": "Class trigger",
         "result": [
             "/**"
         ]
