@@ -14,15 +14,11 @@ var istanbul = require('istanbul'),
 
 hook.hookRequire(function(file) {
     return file.indexOf(path.resolve(__dirname + '/../..') + '/out/src') !== -1;
-}, function(code, filename) {
-    var ret = instrumenter.instrumentSync(code, filename);
-    return ret;
-});
+}, instrumenter.instrumentSync);
 
 export function callback() {
     collector.add(__coverage__);
     reporter.addAll(['json']);
-
 
     reporter.write(collector, false, function () {
         let collect = remap(loadCoverage(coverageDir + '/coverage-final.json'));
