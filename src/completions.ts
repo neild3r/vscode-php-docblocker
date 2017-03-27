@@ -1,5 +1,5 @@
 import {TextDocument, Position, CancellationToken, ProviderResult, CompletionItem, CompletionItemProvider, Range, SnippetString, CompletionItemKind, window} from "vscode";
-import { Documenter } from "./documenter";
+import Documenter from "./documenter";
 
 export default class Completions implements CompletionItemProvider
 {

@@ -2,7 +2,7 @@
 import * as vscode from 'vscode';
 import { spawn, execFile, exec, ChildProcess } from 'child_process';
 import * as path from 'path';
-import { Documenter } from "./documenter";
+import Documenter from "./documenter";
 import Completions from "./completions";
 
 export function activate(context: vscode.ExtensionContext) {
