@@ -1,0 +1,119 @@
+[
+    {
+        "name": "Empty",
+        "expected": [
+            "/**",
+            " * ${1}",
+            " */"
+        ]
+    },
+    {
+        "name": "Property",
+        "config": {
+            "gap": false,
+            "extra": []
+        },
+        "input": {
+            "message": "Undocumented var",
+            "var": "mixed"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented var}",
+            " * @var ${2:mixed}",
+            " */"
+        ]
+    },
+    {
+        "name": "Function",
+        "config": {
+            "gap": true,
+            "extra": []
+        },
+        "input": {
+            "message": "Undocumented function",
+            "return": "void",
+            "params": [
+                {
+                    "name": "$name",
+                    "type": "int"
+                }
+            ]
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param ${2:int} ${3:\\$name}",
+            " * @return ${4:void}",
+            " */"
+        ]
+    },
+    {
+        "name": "Extra",
+        "config": {
+            "gap": true,
+            "extra": [
+                "@author John Smith <john@smith.com>"
+            ]
+        },
+        "input": {
+            "message": "Undocumented function"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @author John Smith <john@smith.com>",
+            " */"
+        ]
+    },
+    {
+        "name": "Function params no return",
+        "config": {
+            "gap": true,
+            "extra": [
+                "@author John Smith <john@smith.com>"
+            ]
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$name",
+                    "type": "int"
+                }
+            ]
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param ${2:int} ${3:\\$name}",
+            " * @author John Smith <john@smith.com>",
+            " */"
+        ]
+    },
+    {
+        "name": "Function no gap",
+        "config": {
+            "gap": false,
+            "extra": []
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$name",
+                    "type": "int"
+                }
+            ]
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " * @param ${2:int} ${3:\\$name}",
+            " */"
+        ]
+    }
+]

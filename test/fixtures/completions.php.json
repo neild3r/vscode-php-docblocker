@@ -1,0 +1,64 @@
+[
+    {
+        "key": "param",
+        "name": "Param tag",
+        "result": [
+            "@param"
+        ]
+    },
+    {
+        "key": "return",
+        "name": "Return tag",
+        "result": [
+            "@return"
+        ]
+    },
+    {
+        "key": "package",
+        "name": "Package tag",
+        "result": [
+            "@package"
+        ]
+    },
+    {
+        "key": "var",
+        "name": "Var tag",
+        "result": [
+            "@var"
+        ]
+    },
+    {
+        "key": "nothing",
+        "name": "Nothing",
+        "result": [
+        ]
+    },
+    {
+        "key": "property",
+        "name": "Property trigger",
+        "result": [
+            "/**"
+        ]
+    },
+    {
+        "key": "function",
+        "name": "Function trigger",
+        "result": [
+            "/**"
+        ]
+    },
+    {
+        "key": "class",
+        "name": "Class trigger",
+        "result": [
+            "/**"
+        ]
+    },
+    {
+        "key": "empty",
+        "name": "Empty trigger",
+        "result": [
+            "/**"
+        ]
+    }
+]

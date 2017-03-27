@@ -75,4 +75,39 @@ abstract class Test
         $array2 = array()
     ) {
     }
+
+    ////=> debug-info
+    public function __debugInfo()
+    {
+    }
+
+    ////=> wakeup
+    public function __wakeup()
+    {
+    }
+
+    ////=> sleep
+    public function __sleep()
+    {
+    }
+
+    ////=> isset
+    public function __isset($name)
+    {
+    }
+
+    ////=> unset
+    public function __unset($name)
+    {
+    }
+
+    ////=> set
+    public function __set($name, $value)
+    {
+    }
+
+    ////=> to-string
+    public function __toString()
+    {
+    }
 }

@@ -9,12 +9,10 @@ export abstract class Block
     protected signiture:string;
     protected signitureEnd:RegExp = /[\{;]/;
 
-    constructor(position:Position = null, editor:TextEditor = null) {
+    constructor(position:Position, editor:TextEditor) {
         this.position = position;
         this.editor = editor;
-        if (editor != null && position != null) {
-            this.signiture = this.getBlock(position, this.signitureEnd);
-        }
+        this.setSigniture(this.getBlock(position, this.signitureEnd));
     }
 
     test():boolean {
@@ -72,11 +70,6 @@ export abstract class Block
     getTypeFromValue(value:string) {
 
         let result:Array<string>;
-
-        // Check for cast
-        if (result = value.match(/^\s*(\([a-z]\))/)) {
-            return result[1];
-        }
 
         // Check for bool
         if (value.match(/^\s*(false|true)\s*$/i) !== null) {

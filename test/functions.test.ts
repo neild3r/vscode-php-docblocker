@@ -34,11 +34,9 @@ suite("Function tests", () => {
         test("Param Test: "+ testData.name, () => {
             let func = new Function(testPositions[testData.key], editor);
             let actual:Doc = func.parse();
-            let expected:Doc = new Doc();
-            expected.fromObject({
-                params: testData.params
-            });
-            assert.deepEqual(actual.params, expected.params);
+            let expected:Doc = new Doc('Undocumented function');
+            expected.fromObject(testData.result);
+            assert.deepEqual(actual, expected);
         });
     });
 });
