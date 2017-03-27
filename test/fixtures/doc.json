@@ -23,5 +23,30 @@
             " * @var ${2:mixed}",
             " */"
         ]
+    },
+    {
+        "name": "Function",
+        "config": {
+            "gap": true,
+            "extra": []
+        },
+        "input": {
+            "message": "Undocumented function",
+            "return": "void",
+            "params": [
+                {
+                    "name": "$name",
+                    "type": "int"
+                }
+            ]
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param ${2:int} ${3:\\$name}",
+            " * @return ${4:void}",
+            " */"
+        ]
     }
 ]

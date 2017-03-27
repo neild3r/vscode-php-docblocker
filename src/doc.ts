@@ -57,7 +57,7 @@ export class Doc {
 
         if (this.params && this.params.length) {
             if (!gap) {
-                snippet.appendText("\n * ");
+                snippet.appendText("\n *");
                 gap = true;
             }
             this.params.forEach(param => {
@@ -70,7 +70,7 @@ export class Doc {
 
         if (this.var) {
             if (!gap) {
-                snippet.appendText("\n * ");
+                snippet.appendText("\n *");
                 gap = true;
             }
             snippet.appendText("\n * @var ");
@@ -79,7 +79,7 @@ export class Doc {
 
         if (this.return) {
             if (!gap) {
-                snippet.appendText("\n * ");
+                snippet.appendText("\n *");
                 gap = true;
             }
             snippet.appendText("\n * @return ");
@@ -88,7 +88,7 @@ export class Doc {
 
         if (Array.isArray(extra) && extra.length > 0) {
             if (!gap) {
-                snippet.appendText("\n * ");
+                snippet.appendText("\n *");
                 gap = true;
             }
             for (var index = 0; index < extra.length; index++) {
