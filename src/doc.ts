@@ -55,7 +55,7 @@ export class Doc {
         snippet.appendText("\n * ");
         snippet.appendVariable('1', this.message);
 
-        if (this.params && this.params.length) {
+        if (this.params.length) {
             if (!gap) {
                 snippet.appendText("\n *");
                 gap = true;

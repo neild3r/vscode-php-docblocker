@@ -58,14 +58,12 @@
             ]
         },
         "input": {
-            "message": "Undocumented var",
-            "var": "int"
+            "message": "Undocumented function"
         },
         "expected": [
             "/**",
-            " * ${1:Undocumented var}",
+            " * ${1:Undocumented function}",
             " *",
-            " * @var ${2:int}",
             " * @author John Smith <john@smith.com>",
             " */"
         ]

@@ -73,11 +73,6 @@ export abstract class Block
 
         let result:Array<string>;
 
-        // Check for cast
-        if (result = value.match(/^\s*(\([a-z]\))/)) {
-            return result[1];
-        }
-
         // Check for bool
         if (value.match(/^\s*(false|true)\s*$/i) !== null) {
             return 'boolean';
