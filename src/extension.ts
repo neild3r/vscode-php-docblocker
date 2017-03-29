@@ -7,6 +7,7 @@ import Completions from "./completions";
 
 export function activate(context: vscode.ExtensionContext) {
     vscode.languages.setLanguageConfiguration('php', {
+        wordPattern: /(-?\d*\.\d\w*)|([^\-\`\~\!\@\#\%\^\&\*\(\)\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\?\s]+)/g,
         onEnterRules: [
             {
                 // e.g. /** | */
@@ -29,12 +30,7 @@ export function activate(context: vscode.ExtensionContext) {
         ]
     });
 
-    vscode.languages.registerCompletionItemProvider(
-        'php',
-        new Completions(),
-        '*', '@', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
-        'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u','v', 'w', 'x', 'y'
-    );
+    vscode.languages.registerCompletionItemProvider('php', new Completions(), '*', '@');
 }
 
 // this method is called when your extension is deactivated
