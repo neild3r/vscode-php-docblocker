@@ -39,38 +39,31 @@ export default class Completions implements CompletionItemProvider
     ];
 
     provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken):ProviderResult<CompletionItem[]> {
-        let line = document.lineAt(position.line).text;
-        let part = line.substring(0, position.character);
         let result = [];
+        let match;
 
-        let db = part.match(/.*?(\/\*\*)$/);
-        if (db !== null) {
-            let pos = document.getWordRangeAtPosition(position, /\/\*\*/);
-            let documenter:Documenter = new Documenter(pos, window.activeTextEditor);
+        if ((match = document.getWordRangeAtPosition(position, /\/\*\*/)) !== undefined) {
+            let documenter:Documenter = new Documenter(match, window.activeTextEditor);
 
             let block = new CompletionItem("/**", CompletionItemKind.Snippet);
-            block.range = document.getWordRangeAtPosition(position, /\/\*\*/);
+            block.range = match;
             block.insertText = documenter.autoDocument();
             result.push(block);
-        }
 
-        let match = part.match(/.*?\* (@[a-z]*)$/);
-
-        if (match == null) {
             return result;
         }
 
-        let prefix = match[1];
+        if ((match = document.getWordRangeAtPosition(position, /\@[a-z]*/)) === undefined) {
+            return result;
+        }
 
-        let potential = this.tags.filter(function(tag) {
-            return tag.tag.match(prefix) !== null;
+        let potential = this.tags.filter((tag) => {
+            return tag.tag.match(match) !== null;
         });
-
-        let range:Range = document.getWordRangeAtPosition(position, /@[a-z]*/);
 
         potential.forEach(tag => {
             let item = new CompletionItem(tag.tag, CompletionItemKind.Snippet);
-            item.range = range;
+            item.range = match;
             item.insertText = new SnippetString(tag.snippet);
 
             result.push(item);
