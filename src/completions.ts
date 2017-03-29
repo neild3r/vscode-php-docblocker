@@ -54,7 +54,7 @@ export default class Completions implements CompletionItemProvider
             result.push(block);
         }
 
-        let match = part.match(/.*?\* (@[a-z]+)$/);
+        let match = part.match(/.*?\* (@[a-z]*)$/);
 
         if (match == null) {
             return result;
@@ -66,7 +66,7 @@ export default class Completions implements CompletionItemProvider
             return tag.tag.match(prefix) !== null;
         });
 
-        let range:Range = document.getWordRangeAtPosition(position, /@[a-z]+/);
+        let range:Range = document.getWordRangeAtPosition(position, /@[a-z]*/);
 
         potential.forEach(tag => {
             let item = new CompletionItem(tag.tag, CompletionItemKind.Snippet);
