@@ -1,8 +1,16 @@
 import {TextDocument, Position, CancellationToken, ProviderResult, CompletionItem, CompletionItemProvider, Range, SnippetString, CompletionItemKind, window} from "vscode";
 import Documenter from "./documenter";
 
+/**
+ * Completions provider that can be registered to the language
+ */
 export default class Completions implements CompletionItemProvider
 {
+    /**
+     * List of tags and snippets that are filled in docblocks
+     *
+     * @type {Array}
+     */
     protected tags = [
         {
             tag: '@return',
@@ -38,7 +46,16 @@ export default class Completions implements CompletionItemProvider
         }
     ];
 
-    provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken):ProviderResult<CompletionItem[]> {
+    /**
+     * Implemented function to find and return completions either from
+     * the tag list or initiate a complex completion
+     *
+     * @param {TextDocument} document
+     * @param {Position} position
+     * @param {CancellationToken} token
+     * @returns {ProviderResult<CompletionItem[]>}
+     */
+    public provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken):ProviderResult<CompletionItem[]> {
         let result = [];
         let match;
 

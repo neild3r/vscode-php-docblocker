@@ -4,17 +4,44 @@ import Property from "./block/property";
 import Class from "./block/class";
 import {Doc, Param} from "./doc";
 
+/**
+ * Check which type of docblock we need and instruct the components to build the
+ * snippet and pass it back
+ */
 export default class Documenter
 {
+    /**
+     * The target position of the comment block
+     *
+     * @type {Position}
+     */
     protected targetPosition:Position;
+
+    /**
+     * We'll need an editor to pass to each editor
+     *
+     * @type {TextEditor}
+     */
     protected editor:TextEditor;
 
-    constructor(range:Range, editor:TextEditor) {
+    /**
+     * Creates an instance of Documenter.
+     *
+     * @param {Range} range
+     * @param {TextEditor} editor
+     */
+    public constructor(range:Range, editor:TextEditor) {
         this.targetPosition = range.start;
         this.editor = editor;
     }
 
-    autoDocument():SnippetString {
+    /**
+     * Load and test each type of signiture to see if they can trigger and
+     * if not load an empty block
+     *
+     * @returns {SnippetString}
+     */
+    public autoDocument():SnippetString {
         let func = new FunctionBlock(this.targetPosition, this.editor);
         if (func.test()) {
             return func.parse().build();
