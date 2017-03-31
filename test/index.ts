@@ -25,8 +25,8 @@ module.exports = {
     run: function(testsRoot:string, callback: (error:Error) => void) {
         testRunner.run(testsRoot, (e, failures) => {
             bootstrap.callback();
-            callback(e);
             if (failures > 0) {
+                callback(new Error(failures + ' test(s) failed'));
                 process.exitCode = 1;
             }
         });
