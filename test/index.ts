@@ -26,6 +26,8 @@ export function run(testsRoot:string, callback: (error:Error, failures?:number) 
         bootstrap.callback(() => {
             if (failures > 0) {
                 callback(new Error(failures + ' test(s) failed'), failures);
+            } else {
+                callback(null);
             }
         });
     });
