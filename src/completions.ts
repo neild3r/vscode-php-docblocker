@@ -74,8 +74,10 @@ export default class Completions implements CompletionItemProvider
             return result;
         }
 
+        let search = document.getText(match);
+
         let potential = this.tags.filter((tag) => {
-            return tag.tag.match(match) !== null;
+            return tag.tag.match(search) !== null;
         });
 
         potential.forEach(tag => {
