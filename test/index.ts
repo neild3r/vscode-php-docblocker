@@ -21,14 +21,12 @@ testRunner.configure({
     useColors: true // colored output from test results
 });
 
-module.exports = {
-    run: function(testsRoot:string, callback: (error:Error) => void) {
-        testRunner.run(testsRoot, (e, failures) => {
-            bootstrap.callback();
+export function run(testsRoot:string, callback: (error:Error, failures?:number) => void):void {
+    testRunner.run(testsRoot, (e, failures) => {
+        bootstrap.callback(() => {
             if (failures > 0) {
-                callback(new Error(failures + ' test(s) failed'));
-                process.exitCode = 1;
+                callback(new Error(failures + ' test(s) failed'), failures);
             }
         });
-    }
+    });
 };

@@ -16,14 +16,15 @@ hook.hookRequire(function(file) {
     return file.indexOf(path.resolve(__dirname + '/../..') + '/out/src') !== -1;
 }, instrumenter.instrumentSync.bind(instrumenter));
 
-export function callback() {
+export function callback(cb:() => void) {
     collector.add(__coverage__);
     reporter.addAll(['json']);
 
-    reporter.write(collector, false, function () {
+    reporter.write(collector, true, function () {
         let collect = remap(loadCoverage(coverageDir + '/coverage-final.json'));
         writeReport(collect, 'lcovonly', {}, coverageDir + '/lcov.info').then(function () {
             console.log('Coverage report generated');
+            cb.call(this);
         });
     });
 }
