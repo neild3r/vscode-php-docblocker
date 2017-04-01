@@ -6,11 +6,41 @@ import {workspace, SnippetString, WorkspaceConfiguration} from 'vscode';
  * This class collects data about the snippet then builds
  * it with the appropriate tags
  */
-export class Doc {
+export class Doc
+{
+    /**
+     * List of param tags
+     *
+     * @type {Array<Param>}
+     */
     public params:Array<Param> = [];
+
+    /**
+     * Return tag
+     *
+     * @type {string}
+     */
     public return:string;
+
+    /**
+     * Var tag
+     *
+     * @type {string}
+     */
     public var:string;
+
+    /**
+     * The message portion of the block
+     *
+     * @type {string}
+     */
     public message:string;
+
+    /**
+     * A config which will modify the result of the docblock
+     *
+     * @type {{}}
+     */
     protected config:{};
 
     /**
@@ -18,7 +48,8 @@ export class Doc {
      *
      * @param {string} [message='']
      */
-    public constructor(message:string = '') {
+    public constructor(message:string = '')
+    {
         this.message = message;
     }
 
@@ -27,7 +58,8 @@ export class Doc {
      *
      * @param {*} input
      */
-    public fromObject(input:any):void {
+    public fromObject(input:any):void
+    {
         if (input.return !== undefined) {
             this.return = input.return;
         }
@@ -49,7 +81,8 @@ export class Doc {
      *
      * @returns {*}
      */
-    public getConfig():any {
+    public getConfig():any
+    {
         if (this.config == null) {
             this.config = workspace.getConfiguration().get('php-docblocker');
         }
@@ -61,7 +94,8 @@ export class Doc {
      *
      * @param {*} config
      */
-    public setConfig(config:any):void {
+    public setConfig(config:any):void
+    {
         this.config = config;
     }
 
@@ -71,7 +105,8 @@ export class Doc {
      * @param {boolean} [isEmpty=false]
      * @returns {SnippetString}
      */
-    public build(isEmpty:boolean = false):SnippetString {
+    public build(isEmpty:boolean = false):SnippetString
+    {
         let snippet = new SnippetString();
         let extra = this.getConfig().extra;
         let gap = !this.getConfig().gap;
@@ -138,9 +173,21 @@ export class Doc {
 /**
  * A simple paramter object
  */
-export class Param {
-    public type;
-    public name;
+export class Param
+{
+    /**
+     * The type of the parameter
+     *
+     * @type {string}
+     */
+    public type:string;
+
+    /**
+     * The parameter name
+     *
+     * @type {string}
+     */
+    public name:string;
 
     /**
      * Creates an instance of Param.
@@ -148,7 +195,8 @@ export class Param {
      * @param {string} type
      * @param {string} name
      */
-    public constructor(type:string, name:string) {
+    public constructor(type:string, name:string)
+    {
         this.type = type;
         this.name = name;
     }

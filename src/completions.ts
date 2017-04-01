@@ -55,7 +55,8 @@ export default class Completions implements CompletionItemProvider
      * @param {CancellationToken} token
      * @returns {ProviderResult<CompletionItem[]>}
      */
-    public provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken):ProviderResult<CompletionItem[]> {
+    public provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken):ProviderResult<CompletionItem[]>
+    {
         let result = [];
         let match;
 

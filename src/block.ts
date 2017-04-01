@@ -10,10 +10,40 @@ import {Param, Doc} from './doc';
  */
 export abstract class Block
 {
+    /**
+     * Regex pattern for the basic signiture match
+     *
+     * @type {RegExp}
+     */
     protected pattern:RegExp;
+
+    /**
+     * The position of the starting signiture
+     *
+     * @type {Position}
+     */
     protected position:Position;
+
+    /**
+     * Text editor instance which we'll need to do things like
+     * get text and ranges and things between ranges
+     *
+     * @type {TextEditor}
+     */
     protected editor:TextEditor;
+
+    /**
+     * The whole signiture string ready for parsing
+     *
+     * @type {string}
+     */
     protected signiture:string;
+
+    /**
+     * Default signiture end pattern
+     *
+     * @type {RegExp}
+     */
     protected signitureEnd:RegExp = /[\{;]/;
 
     /**
@@ -22,7 +52,8 @@ export abstract class Block
      * @param {Position} position
      * @param {TextEditor} editor
      */
-    public constructor(position:Position, editor:TextEditor) {
+    public constructor(position:Position, editor:TextEditor)
+    {
         this.position = position;
         this.editor = editor;
         this.setSigniture(this.getBlock(position, this.signitureEnd));
@@ -35,7 +66,8 @@ export abstract class Block
      *
      * @returns {boolean}
      */
-    public test():boolean {
+    public test():boolean
+    {
         return this.pattern.test(this.signiture)
     }
 
@@ -44,7 +76,8 @@ export abstract class Block
      *
      * @returns {object}
      */
-    public match():object {
+    public match():object
+    {
         return this.signiture.match(this.pattern);
     }
 
@@ -55,7 +88,8 @@ export abstract class Block
      *
      * @param {string} signiture
      */
-    public setSigniture(signiture:string):void {
+    public setSigniture(signiture:string):void
+    {
         this.signiture = signiture;
     }
 
@@ -68,7 +102,8 @@ export abstract class Block
      * @param {RegExp} endChar
      * @returns {string}
      */
-    public getBlock(initial:Position, endChar:RegExp):string {
+    public getBlock(initial:Position, endChar:RegExp):string
+    {
         let line = initial.line+1;
         let part = this.editor.document.lineAt(line).text;
 
@@ -96,7 +131,8 @@ export abstract class Block
      * @param {string} [closing="}"]
      * @returns {string}
      */
-    public getEnclosed(context:string, opening:string = "{", closing:string = "}"):string {
+    public getEnclosed(context:string, opening:string = "{", closing:string = "}"):string
+    {
         let opened = 0;
         let contextArray:Array<string> = context.split("");
         let endPos = 0;
@@ -122,8 +158,8 @@ export abstract class Block
      * @param {string} value
      * @returns {string}
      */
-    public getTypeFromValue(value:string):string {
-
+    public getTypeFromValue(value:string):string
+    {
         let result:Array<string>;
 
         // Check for bool

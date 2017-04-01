@@ -30,7 +30,8 @@ export default class Documenter
      * @param {Range} range
      * @param {TextEditor} editor
      */
-    public constructor(range:Range, editor:TextEditor) {
+    public constructor(range:Range, editor:TextEditor)
+    {
         this.targetPosition = range.start;
         this.editor = editor;
     }
@@ -41,7 +42,8 @@ export default class Documenter
      *
      * @returns {SnippetString}
      */
-    public autoDocument():SnippetString {
+    public autoDocument():SnippetString
+    {
         let func = new FunctionBlock(this.targetPosition, this.editor);
         if (func.test()) {
             return func.parse().build();
