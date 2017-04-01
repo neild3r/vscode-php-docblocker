@@ -189,6 +189,52 @@
         }
     },
     {
+        "key": "php7-return",
+        "name": "PHP7 return type",
+        "result": {
+            "return": "TypeHint",
+            "params": []
+        }
+    },
+    {
+        "key": "php7-return-alt",
+        "name": "PHP7 return type alternate",
+        "result": {
+            "return": "float",
+            "params": []
+        }
+    },
+    {
+        "key": "php7-return-param",
+        "name": "PHP7 return type with param",
+        "result": {
+            "return": "int",
+            "params": [
+                {
+                    "name": "$param",
+                    "type": "float"
+                }
+            ]
+        }
+    },
+    {
+        "key": "php7-return-multiline",
+        "name": "PHP7 return type multi-line",
+        "result": {
+            "return": "int",
+            "params": [
+                {
+                    "name": "$param",
+                    "type": "float"
+                },
+                {
+                    "name": "$boolean",
+                    "type": "bool"
+                }
+            ]
+        }
+    },
+    {
         "key": "debug-info",
         "name": "Debug info return type",
         "result": {
