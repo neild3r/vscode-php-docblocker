@@ -1,33 +1,109 @@
 import {Range, Position, TextEditor, workspace, SnippetString} from "vscode";
 import {Param, Doc} from './doc';
 
+/**
+ * Represents a potential code block.
+ *
+ * This abstract class serves as a base class that includes lots of
+ * helpers for dealing with blocks of code and has the basic interface
+ * for working with the documenter object
+ */
 export abstract class Block
 {
+    /**
+     * Regex pattern for the basic signiture match
+     *
+     * @type {RegExp}
+     */
     protected pattern:RegExp;
+
+    /**
+     * The position of the starting signiture
+     *
+     * @type {Position}
+     */
     protected position:Position;
+
+    /**
+     * Text editor instance which we'll need to do things like
+     * get text and ranges and things between ranges
+     *
+     * @type {TextEditor}
+     */
     protected editor:TextEditor;
+
+    /**
+     * The whole signiture string ready for parsing
+     *
+     * @type {string}
+     */
     protected signiture:string;
+
+    /**
+     * Default signiture end pattern
+     *
+     * @type {RegExp}
+     */
     protected signitureEnd:RegExp = /[\{;]/;
 
-    constructor(position:Position, editor:TextEditor) {
+    /**
+     * Creates an instance of Block.
+     *
+     * @param {Position} position
+     * @param {TextEditor} editor
+     */
+    public constructor(position:Position, editor:TextEditor)
+    {
         this.position = position;
         this.editor = editor;
         this.setSigniture(this.getBlock(position, this.signitureEnd));
     }
 
-    test():boolean {
+    /**
+     * This should be a simple test to determine wether this matches
+     * our intended block signiture and we can proceed to properly
+     * match
+     *
+     * @returns {boolean}
+     */
+    public test():boolean
+    {
         return this.pattern.test(this.signiture)
     }
 
-    match():object {
+    /**
+     * Run a match to break the signiture into the constituent parts
+     *
+     * @returns {object}
+     */
+    public match():object
+    {
         return this.signiture.match(this.pattern);
     }
 
-    setSigniture(signiture:string) {
+    /**
+     * Set up the signiture string.
+     *
+     * This is usually detected from the position
+     *
+     * @param {string} signiture
+     */
+    public setSigniture(signiture:string):void
+    {
         this.signiture = signiture;
     }
 
-    getBlock(initial:Position, endChar:RegExp) {
+    /**
+     * This matches a block and tries to find everything up to the
+     * end character which is a regex to determine if it's the right
+     * character
+     *
+     * @param {Position} initial
+     * @param {RegExp} endChar
+     * @returns {string}
+     */
+    public getBlock(initial:Position, endChar:RegExp):string
+    {
         let line = initial.line+1;
         let part = this.editor.document.lineAt(line).text;
 
@@ -47,7 +123,16 @@ export abstract class Block
         return this.editor.document.getText(block);
     }
 
-    getEnclosed(context:string, opening:string = "{", closing:string = "}") {
+    /**
+     * Parse a nested block of code
+     *
+     * @param {string} context
+     * @param {string} [opening="{"]
+     * @param {string} [closing="}"]
+     * @returns {string}
+     */
+    public getEnclosed(context:string, opening:string = "{", closing:string = "}"):string
+    {
         let opened = 0;
         let contextArray:Array<string> = context.split("");
         let endPos = 0;
@@ -67,8 +152,14 @@ export abstract class Block
         return context.substr(0, endPos);
     }
 
-    getTypeFromValue(value:string) {
-
+    /**
+     * Take the value and parse and try to infer its type
+     *
+     * @param {string} value
+     * @returns {string}
+     */
+    public getTypeFromValue(value:string):string
+    {
         let result:Array<string>;
 
         // Check for bool
@@ -99,5 +190,11 @@ export abstract class Block
         return '[type]';
     }
 
-    abstract parse():Doc;
+    /**
+     * This is where we parse the code block into a Doc
+     * object which represents our snippet
+     *
+     * @returns {Doc}
+     */
+    public abstract parse():Doc;
 }

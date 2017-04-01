@@ -1,11 +1,26 @@
 import { Block } from "../block";
 import { Doc, Param } from "../doc";
 
-export default class FunctionBlock extends Block {
+/**
+ * Represents a function code block
+ *
+ * This is probably going to be the most complicated of all the
+ * blocks as function signitures tend to be the most complex and
+ * varied
+ */
+export default class FunctionBlock extends Block
+{
 
+    /**
+     * @inheritdoc
+     */
     protected pattern:RegExp = /^\s*((.*)(protected|private|public))?(.*)?\s*function\s+([A-Za-z0-9_]+)\s*\(([^{;]*)/m;
 
-    parse():Doc {
+    /**
+     * @inheritdoc
+     */
+    public parse():Doc
+    {
         let params = this.match();
 
         let doc = new Doc('Undocumented function');
@@ -33,7 +48,16 @@ export default class FunctionBlock extends Block {
         return doc;
     }
 
-    getReturnFromName(name:string) {
+    /**
+     * We can usually assume that these function names will
+     * be certain return types and we can save ourselves some
+     * effort by checking these
+     *
+     * @param {string} name
+     * @returns {string}
+     */
+    public getReturnFromName(name:string):string
+    {
         switch (name) {
             case '__construct':
             case '__destruct':

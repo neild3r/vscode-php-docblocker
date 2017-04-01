@@ -9,7 +9,8 @@ import Completions from "./completions";
  *
  * @param {vscode.ExtensionContext} context
  */
-export function activate(context: vscode.ExtensionContext) {
+export function activate(context: vscode.ExtensionContext)
+{
     vscode.languages.setLanguageConfiguration('php', {
         wordPattern: /(-?\d*\.\d\w*)|([^\-\`\~\!\@\#\%\^\&\*\(\)\=\+\[\{\]\}\\\|\;\:\'\"\,\.\<\>\/\?\s]+)/g,
         onEnterRules: [
@@ -40,5 +41,6 @@ export function activate(context: vscode.ExtensionContext) {
 /**
  * Shutdown method for the extension
  */
-export function deactivate() {
+export function deactivate()
+{
 }
