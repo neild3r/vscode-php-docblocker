@@ -1,5 +1,11 @@
 import {workspace, SnippetString, WorkspaceConfiguration} from 'vscode';
 
+/**
+ * Represents a comment block.
+ *
+ * This class collects data about the snippet then builds
+ * it with the appropriate tags
+ */
 export class Doc {
     public params:Array<Param> = [];
     public return:string;
@@ -7,11 +13,21 @@ export class Doc {
     public message:string;
     protected config:{};
 
-    constructor(message:string = '') {
+    /**
+     * Creates an instance of Doc.
+     *
+     * @param {string} [message='']
+     */
+    public constructor(message:string = '') {
         this.message = message;
     }
 
-    fromObject(input:any) {
+    /**
+     * Set class properties from a standard object
+     *
+     * @param {*} input
+     */
+    public fromObject(input:any):void {
         if (input.return !== undefined) {
             this.return = input.return;
         }
@@ -28,18 +44,34 @@ export class Doc {
         }
     }
 
-    getConfig():any {
+    /**
+     * Get the config from either vs code or the manually set one
+     *
+     * @returns {*}
+     */
+    public getConfig():any {
         if (this.config == null) {
             this.config = workspace.getConfiguration().get('php-docblocker');
         }
         return this.config;
     }
 
-    setConfig(config:any) {
+    /**
+     * Set the config object
+     *
+     * @param {*} config
+     */
+    public setConfig(config:any):void {
         this.config = config;
     }
 
-    build(isEmpty:boolean = false):SnippetString {
+    /**
+     * Build all the set values into a SnippetString ready for use
+     *
+     * @param {boolean} [isEmpty=false]
+     * @returns {SnippetString}
+     */
+    public build(isEmpty:boolean = false):SnippetString {
         let snippet = new SnippetString();
         let extra = this.getConfig().extra;
         let gap = !this.getConfig().gap;
@@ -103,11 +135,20 @@ export class Doc {
     }
 }
 
+/**
+ * A simple paramter object
+ */
 export class Param {
     public type;
     public name;
 
-    constructor(type:string, name:string) {
+    /**
+     * Creates an instance of Param.
+     *
+     * @param {string} type
+     * @param {string} name
+     */
+    public constructor(type:string, name:string) {
         this.type = type;
         this.name = name;
     }
