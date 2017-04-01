@@ -4,6 +4,6 @@ out/test/**
 test/**
 src/**
 **/*.map
+.travis.yml
 .gitignore
 tsconfig.json
-vsc-extension-quickstart.md
