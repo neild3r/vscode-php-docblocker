@@ -98,6 +98,16 @@ abstract class Test
     }
 
 
+    ////=> is
+    public function isSomething()
+    {
+    }
+
+    ////=> has
+    public function hasValue()
+    {
+    }
+
     ////=> debug-info
     public function __debugInfo()
     {
