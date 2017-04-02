@@ -76,6 +76,28 @@ abstract class Test
     ) {
     }
 
+    ////=> php7-return
+    public function getPHP7Return(): TypeHint {
+    }
+
+    ////=> php7-return-alt
+    public function getPHP7ReturnAlt():float
+    {
+    }
+
+    ////=> php7-return-param
+    public function getPHP7ReturnParam(float $param) :int
+    {
+    }
+
+    ////=> php7-return-multiline
+    public function getPHP7ReturnMultiline(
+        float $param,
+        bool $boolean = false
+    ) : int {
+    }
+
+
     ////=> debug-info
     public function __debugInfo()
     {

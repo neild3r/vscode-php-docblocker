@@ -31,7 +31,7 @@ suite("Function tests", () => {
             assert.ok(func.parse(), test.name);
         });
 
-        test("Param Test: "+ testData.name, () => {
+        test("Result Test: "+ testData.name, () => {
             let func = new Function(testPositions[testData.key], editor);
             let actual:Doc = func.parse();
             let expected:Doc = new Doc('Undocumented function');
