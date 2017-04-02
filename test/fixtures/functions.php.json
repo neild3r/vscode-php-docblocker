@@ -189,6 +189,32 @@
         }
     },
     {
+        "key": "args",
+        "name": "Arguments with ...$args",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "...$args",
+                    "type": "[type]"
+                }
+            ]
+        }
+    },
+    {
+        "key": "args-typed",
+        "name": "Arguments with ...$args",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "...$args",
+                    "type": "int"
+                }
+            ]
+        }
+    },
+    {
         "key": "php7-return",
         "name": "PHP7 return type",
         "result": {

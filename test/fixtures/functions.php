@@ -76,6 +76,15 @@ abstract class Test
     ) {
     }
 
+    ////=> args
+    public function dotArgs(...$args) {
+    }
+
+    ////=> args-typed
+    public function dotArgsTyped(int ...$args) {
+    }
+
+
     ////=> php7-return
     public function getPHP7Return(): TypeHint {
     }
@@ -96,7 +105,6 @@ abstract class Test
         bool $boolean = false
     ) : int {
     }
-
 
     ////=> is
     public function isSomething()
