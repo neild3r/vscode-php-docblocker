@@ -235,6 +235,22 @@
         }
     },
     {
+        "key": "is",
+        "name": "Check is prefix",
+        "result": {
+            "return": "boolean",
+            "params": []
+        }
+    },
+    {
+        "key": "has",
+        "name": "Check has prefix",
+        "result": {
+            "return": "boolean",
+            "params": []
+        }
+    },
+    {
         "key": "debug-info",
         "name": "Debug info return type",
         "result": {

@@ -64,6 +64,10 @@ export default class FunctionBlock extends Block
      */
     public getReturnFromName(name:string):string
     {
+        if (/^(is|has)/.test(name)) {
+            return 'boolean';
+        }
+
         switch (name) {
             case '__construct':
             case '__destruct':
