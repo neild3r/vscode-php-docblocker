@@ -190,7 +190,7 @@
     },
     {
         "key": "args",
-        "name": "Arguments with ...$args",
+        "name": "Argument with ...$args",
         "result": {
             "return": "void",
             "params": [
@@ -203,7 +203,7 @@
     },
     {
         "key": "args-typed",
-        "name": "Arguments with ...$args",
+        "name": "Arguments with ...$args that are typed",
         "result": {
             "return": "void",
             "params": [
