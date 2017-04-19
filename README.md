@@ -24,8 +24,6 @@ This extension contributes the following settings:
 * `php-docblocker.gap`: set to `false` to disable the gap between the description and tags
 * `php-docblocker.extra`: an array of extra tags to add to each DocBlock
 
-
 ## Future development
 
-It probably wouldn't be too much work to expand this to work with multiple languages. If this is something you are interested in
-please pop over to github and add your feedback to the issue [neild3r/vscode-php-docblocker#17](https://github.com/neild3r/vscode-php-docblocker/issues/17)
+It probably wouldn't be too much work to expand this to work with multiple languages. If this is something you are interested in, please pop over to github and add your feedback to the issue [neild3r/vscode-php-docblocker#17](https://github.com/neild3r/vscode-php-docblocker/issues/17)
