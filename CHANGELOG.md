@@ -7,6 +7,7 @@ All notable changes to the "php-docblocker" extension will be documented in this
 - Support PHP7 return types
 - Infer boolean return type for methods that start is or has
 - Add more @ tags from the PHPDoc documentaion
+- Fix issue with function typehints using namespaces
 
 ## [0.4.2] - 2017-03-31
 - Fix travis not getting the right status code back when tests fail
