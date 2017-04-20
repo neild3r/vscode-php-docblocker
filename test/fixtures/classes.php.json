@@ -38,5 +38,17 @@
     {
         "key": "complex",
         "name": "Abstract extension with multline implementation"
+    },
+    {
+        "key": "extends-namespace",
+        "name": "Extend a class with a namespace"
+    },
+    {
+        "key": "implments-namespace",
+        "name": "Implement a class with a namespace"
+    },
+    {
+        "key": "extends-implements-namespace",
+        "name": "Implement and implmentes classes with a namespaces"
     }
 ]
