@@ -52,8 +52,8 @@ class ImplementedSubClass extends ImplementedParentClass implements ClassInterfa
 ////=> multiline
 abstract class Multiline implements
     ImplementedClass1,
-    ImplementedClass2,
-    ImplementedClass3
+    App\Model\ImplementedClass2,
+    \ImplementedClass3
 {
 
 }
@@ -62,6 +62,24 @@ abstract class Multiline implements
 abstract class Complex extends MultilineParent implements
     ImplementedClass1,
     ImplementedClass2
+{
+
+}
+
+////=> extends-namespace
+class SubClass extends \ParentClass
+{
+
+}
+
+////=> implements-namespace
+class ImplementedClass implements \ClassInterface
+{
+
+}
+
+////=> extends-implements-namespace
+class ImplementedSubClass extends App\Model\ImplementedParentClass implements App\Model\ClassInterface
 {
 
 }

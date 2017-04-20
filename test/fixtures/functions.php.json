@@ -189,6 +189,42 @@
         }
     },
     {
+        "key": "param-namespace",
+        "name": "Param with namespaced typehint",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$hint",
+                    "type": "\\TypeHint"
+                },
+
+                {
+                    "name": "$test",
+                    "type": "[type]"
+                }
+            ]
+        }
+    },
+    {
+        "key": "param-namespace-full",
+        "name": "Param with fully namespaced typehint",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$hint",
+                    "type": "App\\Model\\TypeHint"
+                },
+
+                {
+                    "name": "$test",
+                    "type": "[type]"
+                }
+            ]
+        }
+    },
+    {
         "key": "args",
         "name": "Argument with ...$args",
         "result": {
@@ -227,6 +263,22 @@
         "name": "PHP7 return type alternate",
         "result": {
             "return": "float",
+            "params": []
+        }
+    },
+    {
+        "key": "php7-return-namespace",
+        "name": "PHP7 return namespace type",
+        "result": {
+            "return": "\\TypeHint",
+            "params": []
+        }
+    },
+    {
+        "key": "php7-return-namespace-full",
+        "name": "PHP7 return namespace type",
+        "result": {
+            "return": "App\\Model\\TypeHint",
             "params": []
         }
     },

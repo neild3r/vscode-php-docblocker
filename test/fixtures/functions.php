@@ -76,6 +76,16 @@ abstract class Test
     ) {
     }
 
+    ////=> param-namespace
+    public function paramNamespaced(\TypeHint $hint, $test)
+    {
+    }
+
+    ////=> param-namespace-full
+    public function paramNamespacedFull(App\Model\TypeHint $hint, $test)
+    {
+    }
+
     ////=> args
     public function dotArgs(...$args) {
     }
@@ -104,6 +114,16 @@ abstract class Test
         float $param,
         bool $boolean = false
     ) : int {
+    }
+
+    ////=> php7-return-namespace
+    public function getPHP7ReturnNamespace():\TypeHint
+    {
+    }
+
+    ////=> php7-return-namespace-full
+    public function getPHP7ReturnNamespaceFull():App\Model\TypeHint
+    {
     }
 
     ////=> is
