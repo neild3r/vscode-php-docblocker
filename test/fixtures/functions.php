@@ -117,12 +117,12 @@ abstract class Test
     }
 
     ////=> php7-return-namespace
-    public function getPHP7ReturnNamespace():\Typehint
+    public function getPHP7ReturnNamespace():\TypeHint
     {
     }
 
     ////=> php7-return-namespace-full
-    public function getPHP7ReturnNamespaceFull():App\Model\Typehint
+    public function getPHP7ReturnNamespaceFull():App\Model\TypeHint
     {
     }
 
