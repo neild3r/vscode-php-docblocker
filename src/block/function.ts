@@ -12,7 +12,7 @@ import { workspace } from "vscode";
 export default class FunctionBlock extends Block
 {
 
-    protected useBool:any;
+    protected useBool:boolean;
 
     /**
      * @inheritdoc
