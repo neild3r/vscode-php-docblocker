@@ -49,6 +49,10 @@ export default class Completions implements CompletionItemProvider
             snippet: '@ignore ${1:desciption}'
         },
         {
+            tag: '@inheritDoc',
+            snippet: '@inheritDoc'
+        },
+        {
             tag: '@internal',
             snippet: '@internal ${1:desciption}'
         },
