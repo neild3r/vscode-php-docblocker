@@ -17,6 +17,10 @@ export default class Completions implements CompletionItemProvider
             snippet: '@api'
         },
         {
+            tag: '@abstract',
+            snippet: '@abstract'
+        },
+        {
             tag: '@author',
             snippet: '@author ${1:Name} <${2:email@email.com}>'
         },
@@ -41,8 +45,16 @@ export default class Completions implements CompletionItemProvider
             snippet: '@filesource'
         },
         {
+            tag: '@final',
+            snippet: '@final'
+        },
+        {
             tag: '@group',
             snippet: '@group ${1:group}'
+        },
+        {
+            tag: '@global',
+            snippet: '@global'
         },
         {
             tag: '@ignore',
@@ -99,6 +111,10 @@ export default class Completions implements CompletionItemProvider
         {
             tag: '@source',
             snippet: '@source ${1:location} ${2:description}'
+        },
+        {
+            tag: '@static',
+            snippet: '@static'
         },
         {
             tag: '@subpackage',
