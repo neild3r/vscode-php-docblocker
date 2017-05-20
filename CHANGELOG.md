@@ -2,6 +2,9 @@
 
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
+## [1.1.0] - 2017-05-20
+- Add extra snippets. Thanks @jens1o
+
 ## [1.0.0] - 2017-04-20
 - Add support for ...$args
 - Support PHP7 return types
@@ -53,7 +56,8 @@ All notable changes to the "php-docblocker" extension will be documented in this
 ## 0.1.0 - 2017-03-12
 - Initial release
 
-[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v0.4.2...v1.0.0
 [0.4.2]: https://github.com/neild3r/vscode-php-docblocker/compare/v0.4.1...v0.4.2
 [0.4.1]: https://github.com/neild3r/vscode-php-docblocker/compare/v0.4.0...v0.4.1
