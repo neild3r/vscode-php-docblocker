@@ -1,5 +1,6 @@
 import { Block } from "../block";
 import { Doc, Param } from "../doc";
+import { workspace } from "vscode";
 
 /**
  * Represents a function code block
@@ -10,6 +11,8 @@ import { Doc, Param } from "../doc";
  */
 export default class FunctionBlock extends Block
 {
+
+    protected useBool:any;
 
     /**
      * @inheritdoc
@@ -64,8 +67,14 @@ export default class FunctionBlock extends Block
      */
     public getReturnFromName(name:string):string
     {
+        if (this.useBool === null) {
+            let config:any = workspace.getConfiguration().get('php-docblocker') || {};
+
+            this.useBool = config.bool || false;
+        }
+
         if (/^(is|has)/.test(name)) {
-            return 'boolean';
+            return this.useBool ? 'bool' : 'boolean';
         }
 
         switch (name) {
