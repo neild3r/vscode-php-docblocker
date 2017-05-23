@@ -17,7 +17,7 @@ export default class TypeUtil {
      * @param {string} name
      */
     public static getFormattedTypeByName(name:string) {
-        if(this.useLongName == null) {
+        if (this.useLongName == null) {
             let config: any = workspace.getConfiguration().get('php-docblocker');
 
             this.useLongName = config.useLongNames || true;
