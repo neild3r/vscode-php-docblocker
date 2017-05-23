@@ -69,10 +69,6 @@ export default class FunctionBlock extends Block
             return TypeUtil.getFormattedTypeByName('bool');
         }
 
-        // if (/^get/.test(name)) {
-        //     return 'mixed';
-        // }
-
         switch (name) {
             case '__construct':
             case '__destruct':
