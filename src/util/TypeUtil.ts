@@ -9,7 +9,7 @@ export default class TypeUtil {
     *
     * @type {bool}
     */
-    static useLongName: any;
+    static useShortNames: any;
 
     /**
      * Returns the user configuration based name for the given type
@@ -17,22 +17,22 @@ export default class TypeUtil {
      * @param {string} name
      */
     public static getFormattedTypeByName(name:string) {
-        if (this.useLongName == null) {
+        if (this.useShortNames == null) {
             let config: any = workspace.getConfiguration().get('php-docblocker');
 
-            this.useLongName = config.useLongNames || true;
+            this.useShortNames = config.useShortNames || true;
         }
 
         switch(name) {
             case 'bool':
             case 'boolean':
-                if (this.useLongName) {
+                if (this.useShortNames) {
                     return 'boolean';
                 }
                 return 'bool';
             case 'int':
             case 'integer':
-                if (this.useLongName) {
+                if (this.useShortNames) {
                     return 'integer';
                 }
                 return 'int';

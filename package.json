@@ -43,7 +43,7 @@
           "default": [],
           "description": "Extra tags you wish to include in every DocBlock"
         },
-        "php-docblocker.useLongNames": {
+        "php-docblocker.useShortNames": {
           "type": "boolean",
           "default": true,
           "description": "Wether you want to use integer instead of int and bool instead of boolean."
