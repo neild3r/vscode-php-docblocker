@@ -26,7 +26,7 @@ export default class TypeUtil {
         switch(name) {
             case 'bool':
             case 'boolean':
-                if(this.useLongName) {
+                if (this.useLongName) {
                     return 'boolean';
                 }
                 return 'bool';
