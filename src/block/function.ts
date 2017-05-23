@@ -65,8 +65,6 @@ export default class FunctionBlock extends Block
      */
     public getReturnFromName(name:string):string
     {
-        name = name.toLowerCase();
-
         if (/^(is|has)/.test(name)) {
             return TypeUtil.getFormattedTypeByName('bool');
         }
