@@ -33,18 +33,18 @@ export abstract class Block
     protected editor:TextEditor;
 
     /**
-     * The whole signiture string ready for parsing
+     * The whole signature string ready for parsing
      *
      * @type {string}
      */
-    protected signiture:string;
+    protected signature:string;
 
     /**
-     * Default signiture end pattern
+     * Default signature end pattern
      *
      * @type {RegExp}
      */
-    protected signitureEnd:RegExp = /[\{;]/;
+    protected signatureEnd:RegExp = /[\{;]/;
 
     /**
      * Creates an instance of Block.
@@ -56,7 +56,7 @@ export abstract class Block
     {
         this.position = position;
         this.editor = editor;
-        this.setSigniture(this.getBlock(position, this.signitureEnd));
+        this.setSignature(this.getBlock(position, this.signatureEnd));
     }
 
     /**
@@ -68,7 +68,7 @@ export abstract class Block
      */
     public test():boolean
     {
-        return this.pattern.test(this.signiture)
+        return this.pattern.test(this.signature)
     }
 
     /**
@@ -78,7 +78,7 @@ export abstract class Block
      */
     public match():object
     {
-        return this.signiture.match(this.pattern);
+        return this.signature.match(this.pattern);
     }
 
     /**
@@ -88,9 +88,9 @@ export abstract class Block
      *
      * @param {string} signiture
      */
-    public setSigniture(signiture:string):void
+    public setSignature(signiture:string):void
     {
-        this.signiture = signiture;
+        this.signature = signiture;
     }
 
     /**
@@ -164,12 +164,12 @@ export abstract class Block
 
         // Check for bool
         if (value.match(/^\s*(false|true)\s*$/i) !== null) {
-            return 'boolean';
+            return TypeUtil.getFormattedTypeByName('bool');
         }
 
         // Check for int
         if (value.match(/^\s*([\d-]+)\s*$/) !== null) {
-            return 'int';
+            return TypeUtil.getFormattedTypeByName('int');
         }
 
         // Check for float
