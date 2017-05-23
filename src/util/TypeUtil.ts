@@ -26,13 +26,13 @@ export default class TypeUtil {
         switch(name) {
             case 'bool':
             case 'boolean':
-                if (this.useShortNames) {
+                if (!this.useShortNames) {
                     return 'boolean';
                 }
                 return 'bool';
             case 'int':
             case 'integer':
-                if (this.useShortNames) {
+                if (!this.useShortNames) {
                     return 'integer';
                 }
                 return 'int';
