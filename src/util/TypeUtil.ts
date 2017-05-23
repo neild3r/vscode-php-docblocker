@@ -12,6 +12,13 @@ export default class TypeUtil {
     static useShortNames: any;
 
     /**
+     * Clears the cache of the `useShortNames` function.
+     */
+    public static clearCache() {
+        this.useShortNames = null;
+    }
+
+    /**
      * Returns the user configuration based name for the given type
      *
      * @param {string} name
