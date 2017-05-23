@@ -45,8 +45,8 @@
         },
         "php-docblocker.useShortNames": {
           "type": "boolean",
-          "default": true,
-          "description": "Wether you want to use integer instead of int and bool instead of boolean."
+          "default": false,
+          "description": "Wether you want to use integer instead of int and boolean instead of bool."
         }
       }
     }
