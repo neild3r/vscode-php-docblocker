@@ -9,7 +9,7 @@ suite("TypeUtil tests", () => {
         assert.equal(TypeUtil.getFormattedTypeByName('int'), 'integer');
     });
 
-    test("With default settings the boolean type formatted is bool", () => {
+    test("With default settings the boolean type formatted is boolean", () => {
         workspace.getConfiguration().update('php-docblocker.useShortNames', false);
         assert.equal(TypeUtil.getFormattedTypeByName('bool'), 'boolean');
     });
