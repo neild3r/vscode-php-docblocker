@@ -43,10 +43,10 @@ export default class FunctionBlock extends Block
             }
         }
 
-        let returnType:Array<string> = this.signiture.match(/.*\)\s*\:\s*([a-zA-Z\\]+)\s*$/m);
+        let returnType:Array<string> = this.signiture.match(/.*\)\s*\:\s*(\?)?\s*([a-zA-Z\\]+)\s*$/m);
 
         if (returnType != null) {
-            doc.return = returnType[1];
+            doc.return = (returnType[1] === '?') ? returnType[2]+'|null' : returnType[2];
         } else {
             doc.return = this.getReturnFromName(params[5]);
         }
