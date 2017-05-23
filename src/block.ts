@@ -1,5 +1,6 @@
 import {Range, Position, TextEditor, workspace, SnippetString} from "vscode";
 import {Param, Doc} from './doc';
+import TypeUtil from "./util/TypeUtil";
 
 /**
  * Represents a potential code block.
