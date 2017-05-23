@@ -168,7 +168,7 @@ export default class Completions implements CompletionItemProvider
     public getConfig():any
     {
         if (this.config == null) {
-            this.config = workspace.getConfiguration().get('php-docblocker');
+            this.setConfig(workspace.getConfiguration().get('php-docblocker'));
         }
         return this.config;
     }
