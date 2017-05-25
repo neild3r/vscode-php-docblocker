@@ -5,17 +5,41 @@ import { workspace } from "vscode";
  */
 export default class TypeUtil {
     /**
-    * Wether to use long names or not
+    * Holds the current instance
     *
-    * @type {bool}
+    * @type {TypeUtil}
     */
-    static useShortNames: any;
+    private static _instance: TypeUtil;
 
     /**
-     * Clears the cache of the `useShortNames` function.
+     * Holds wether we use short names or not
+     *
+     * @type bool|null
      */
-    public static clearCache() {
-        this.useShortNames = null;
+    private _useShortNames: any;
+
+    private constructor() {
+        let config: any = workspace.getConfiguration().get('php-docblocker');
+
+        this._useShortNames = config.useShortNames || false;
+    }
+
+    /**
+     * Returns the instance for this util
+     *
+     * @returns {TypeUtil}
+     */
+    public static get instance(): TypeUtil {
+        return this._instance || (this._instance = new this());
+    }
+
+    /**
+     * Overwrites the value
+     *
+     * @param {boolean} value
+     */
+    public set useShortNames(value:boolean) {
+        this._useShortNames = value;
     }
 
     /**
@@ -23,23 +47,17 @@ export default class TypeUtil {
      *
      * @param {string} name
      */
-    public static getFormattedTypeByName(name:string) {
-        if (this.useShortNames == null) {
-            let config: any = workspace.getConfiguration().get('php-docblocker');
-
-            this.useShortNames = config.useShortNames || false;
-        }
-
+    public getFormattedTypeByName(name:string) {
         switch(name) {
             case 'bool':
             case 'boolean':
-                if (!this.useShortNames) {
+                if (!this._useShortNames) {
                     return 'boolean';
                 }
                 return 'bool';
             case 'int':
             case 'integer':
-                if (!this.useShortNames) {
+                if (!this._useShortNames) {
                     return 'integer';
                 }
                 return 'int';

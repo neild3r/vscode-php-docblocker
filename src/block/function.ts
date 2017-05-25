@@ -66,7 +66,7 @@ export default class FunctionBlock extends Block
     public getReturnFromName(name:string):string
     {
         if (/^(is|has)/.test(name)) {
-            return TypeUtil.getFormattedTypeByName('bool');
+            return TypeUtil.instance.getFormattedTypeByName('bool');
         }
 
         switch (name) {
@@ -77,7 +77,7 @@ export default class FunctionBlock extends Block
             case '__wakeup':
                 return null;
             case '__isset':
-                return TypeUtil.getFormattedTypeByName('bool');
+                return TypeUtil.instance.getFormattedTypeByName('bool');
             case '__sleep':
             case '__debugInfo':
                 return 'array';

@@ -165,12 +165,12 @@ export abstract class Block
 
         // Check for bool
         if (value.match(/^\s*(false|true)\s*$/i) !== null) {
-            return TypeUtil.getFormattedTypeByName('bool');
+            return TypeUtil.instance.getFormattedTypeByName('bool');
         }
 
         // Check for int
         if (value.match(/^\s*([\d-]+)\s*$/) !== null) {
-            return TypeUtil.getFormattedTypeByName('int');
+            return TypeUtil.instance.getFormattedTypeByName('int');
         }
 
         // Check for float
