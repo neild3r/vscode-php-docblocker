@@ -14,7 +14,7 @@ export default class TypeUtil {
     /**
      * Holds wether we use short names or not
      *
-     * @type bool|null
+     * @type {bool|null}
      */
     private _useShortNames: any;
 
