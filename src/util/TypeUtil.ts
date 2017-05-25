@@ -18,12 +18,6 @@ export default class TypeUtil {
      */
     private _useShortNames: any;
 
-    private constructor() {
-        let config: any = workspace.getConfiguration().get('php-docblocker');
-
-        this._useShortNames = config.useShortNames || false;
-    }
-
     /**
      * Returns the instance for this util
      *
@@ -43,6 +37,18 @@ export default class TypeUtil {
     }
 
     /**
+     * Returns wether we use long names or not.
+     */
+    public get useShortNames() {
+        if(this._useShortNames === null) {
+            let config: any = workspace.getConfiguration().get('php-docblocker');
+            this._useShortNames = config.useShortNames || false;
+        }
+
+        return this._useShortNames;
+    }
+
+    /**
      * Returns the user configuration based name for the given type
      *
      * @param {string} name
@@ -51,13 +57,13 @@ export default class TypeUtil {
         switch(name) {
             case 'bool':
             case 'boolean':
-                if (!this._useShortNames) {
+                if (!this.useShortNames) {
                     return 'boolean';
                 }
                 return 'bool';
             case 'int':
             case 'integer':
-                if (!this._useShortNames) {
+                if (!this.useShortNames) {
                     return 'integer';
                 }
                 return 'int';
