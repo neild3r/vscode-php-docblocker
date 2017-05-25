@@ -63,6 +63,16 @@ abstract class Test
     ) {
     }
 
+    ////=> nullable-return-type
+    public function nullableReturnType(): ?string
+    {
+    }
+
+    ////=> nullable-args
+    public function nullableArgs(?TypeHint $var, ?\Type2 $var2, ?string $var3)
+    {
+    }
+
     ////=> param-types
     public function getParamTypes(
         TypeHint $hint,

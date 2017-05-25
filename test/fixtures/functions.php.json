@@ -148,6 +148,35 @@
         }
     },
     {
+        "key": "nullable-return-type",
+        "name": "Nullable return type",
+        "result": {
+            "return": "string|null",
+            "params": []
+        }
+    },
+    {
+        "key": "nullable-args",
+        "name": "Nullable args",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$var",
+                    "type": "TypeHint|null"
+                },
+                {
+                    "name": "$var2",
+                    "type": "\\Type2|null"
+                },
+                {
+                    "name": "$var3",
+                    "type": "string|null"
+                }
+            ]
+        }
+    },
+    {
         "key": "param-types",
         "name": "All param types",
         "result": {

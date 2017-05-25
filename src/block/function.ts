@@ -30,23 +30,25 @@ export default class FunctionBlock extends Block
             let args = argString.split(',');
             for (let index = 0; index < args.length; index++) {
                 let arg = args[index];
-                let parts = arg.match(/^\s*([A-Za-z0-9_\\]+)?\s*\&?((?:[.]{3})?\$[A-Za-z0-9_]+)\s*\=?\s*(.*)\s*/m);
+                let parts = arg.match(/^\s*(\?)?\s*([A-Za-z0-9_\\]+)?\s*\&?((?:[.]{3})?\$[A-Za-z0-9_]+)\s*\=?\s*(.*)\s*/m);
                 var type = '[type]';
 
-                if (parts[1] != null) {
-                    type = parts[1];
-                } else if (parts[3] != null && parts[3] != "") {
-                    type = this.getTypeFromValue(parts[3]);
+                if (parts[2] != null && parts[1] === '?') {
+                    type = parts[2]+'|null';
+                } else if (parts[2] != null) {
+                    type = parts[2];
+                } else if (parts[4] != null && parts[4] != "") {
+                    type = this.getTypeFromValue(parts[4]);
                 }
 
-                doc.params.push(new Param(type, parts[2]));
+                doc.params.push(new Param(type, parts[3]));
             }
         }
 
-        let returnType:Array<string> = this.signiture.match(/.*\)\s*\:\s*([a-zA-Z\\]+)\s*$/m);
+        let returnType:Array<string> = this.signiture.match(/.*\)\s*\:\s*(\?)?\s*([a-zA-Z\\]+)\s*$/m);
 
         if (returnType != null) {
-            doc.return = returnType[1];
+            doc.return = (returnType[1] === '?') ? returnType[2]+'|null' : returnType[2];
         } else {
             doc.return = this.getReturnFromName(params[5]);
         }
