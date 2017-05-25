@@ -40,7 +40,7 @@ export default class TypeUtil {
      * Returns wether we use long names or not.
      */
     public get useShortNames() {
-        if(this._useShortNames === null) {
+        if(this._useShortNames == null) {
             let config: any = workspace.getConfiguration().get('php-docblocker');
             this._useShortNames = config.useShortNames || false;
         }
