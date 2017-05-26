@@ -23,6 +23,7 @@ This extension contributes the following settings:
 
 * `php-docblocker.gap`: set to `false` to disable the gap between the description and tags
 * `php-docblocker.extra`: an array of extra tags to add to each DocBlock
+* `php-docblocker.useShortNames`: Wether we should use short type names. e.g. bool or boolean
 
 ## Future development
 
