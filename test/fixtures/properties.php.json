@@ -67,7 +67,7 @@
     {
         "key": "default-int",
         "name": "Default Int",
-        "var": "int"
+        "var": "integer"
     },
     {
         "key": "default-null",

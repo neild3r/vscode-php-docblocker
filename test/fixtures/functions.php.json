@@ -200,7 +200,7 @@
                 },
                 {
                     "name": "$int",
-                    "type": "int"
+                    "type": "integer"
                 },
                 {
                     "name": "$float",

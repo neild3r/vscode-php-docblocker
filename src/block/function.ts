@@ -1,11 +1,12 @@
 import { Block } from "../block";
 import { Doc, Param } from "../doc";
+import TypeUtil from "../util/TypeUtil";
 
 /**
  * Represents a function code block
  *
  * This is probably going to be the most complicated of all the
- * blocks as function signitures tend to be the most complex and
+ * blocks as function signatures tend to be the most complex and
  * varied
  */
 export default class FunctionBlock extends Block
@@ -45,7 +46,7 @@ export default class FunctionBlock extends Block
             }
         }
 
-        let returnType:Array<string> = this.signiture.match(/.*\)\s*\:\s*(\?)?\s*([a-zA-Z\\]+)\s*$/m);
+        let returnType:Array<string> = this.signature.match(/.*\)\s*\:\s*(\?)?\s*([a-zA-Z\\]+)\s*$/m);
 
         if (returnType != null) {
             doc.return = (returnType[1] === '?') ? returnType[2]+'|null' : returnType[2];
@@ -67,7 +68,7 @@ export default class FunctionBlock extends Block
     public getReturnFromName(name:string):string
     {
         if (/^(is|has)/.test(name)) {
-            return 'boolean';
+            return TypeUtil.instance.getFormattedTypeByName('bool');
         }
 
         switch (name) {
@@ -78,7 +79,7 @@ export default class FunctionBlock extends Block
             case '__wakeup':
                 return null;
             case '__isset':
-                return 'boolean';
+                return TypeUtil.instance.getFormattedTypeByName('bool');
             case '__sleep':
             case '__debugInfo':
                 return 'array';
