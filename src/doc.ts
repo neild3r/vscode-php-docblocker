@@ -110,6 +110,7 @@ export class Doc
         let snippet = new SnippetString();
         let extra = this.getConfig().extra;
         let gap = !this.getConfig().gap;
+        let separator = this.getConfig().prependTagContent;
 
         if (isEmpty) {
             gap = true;
@@ -128,9 +129,10 @@ export class Doc
                 gap = true;
             }
             this.params.forEach(param => {
-                snippet.appendText("\n * @param ");
+                snippet.appendText("\n * @param");
+                snippet.appendText(separator);
                 snippet.appendVariable(stop++ + '', param.type);
-                snippet.appendText(" ");
+                snippet.appendText(separator);
                 snippet.appendVariable(stop++ + '', param.name);
             });
         }
