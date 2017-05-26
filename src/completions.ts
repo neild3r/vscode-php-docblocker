@@ -22,7 +22,7 @@ export default class Completions implements CompletionItemProvider
         },
         {
             tag: '@category',
-            snippet: '@category ${1:desciption}'
+            snippet: '@category ${1:description}'
         },
         {
             tag: '@copyright',
@@ -46,11 +46,11 @@ export default class Completions implements CompletionItemProvider
         },
         {
             tag: '@ignore',
-            snippet: '@ignore ${1:desciption}'
+            snippet: '@ignore ${1:description}'
         },
         {
             tag: '@internal',
-            snippet: '@internal ${1:desciption}'
+            snippet: '@internal ${1:description}'
         },
         {
             tag: '@license',
