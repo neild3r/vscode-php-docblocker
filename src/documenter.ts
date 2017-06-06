@@ -37,7 +37,7 @@ export default class Documenter
     }
 
     /**
-     * Load and test each type of signiture to see if they can trigger and
+     * Load and test each type of signature to see if they can trigger and
      * if not load an empty block
      *
      * @returns {SnippetString}
