@@ -17,7 +17,8 @@
     "docblock"
   ],
   "activationEvents": [
-    "onLanguage:php"
+    "onLanguage:php",
+    "onLanguage:hack"
   ],
   "repository": {
     "type": "git",
