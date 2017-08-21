@@ -78,7 +78,7 @@ export default class Completions implements CompletionItemProvider
         },
         {
             tag: '@method',
-            snippet: '@method ${1:mixed} \$${2:methodName()}'
+            snippet: '@method ${1:mixed} ${2:methodName()}'
         },
         {
             tag: '@package',
