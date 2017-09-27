@@ -15,7 +15,7 @@ export default class FunctionBlock extends Block
     /**
      * @inheritdoc
      */
-    protected pattern:RegExp = /^\s*((.*)(protected|private|public))?(.*)?\s*function\s+([A-Za-z0-9_]+)\s*\(([^{;]*)/m;
+    protected pattern:RegExp = /^\s*((.*)(protected|private|public))?(.*)?\s*function\s+&?([A-Za-z0-9_]+)\s*\(([^{;]*)/m;
 
     /**
      * @inheritdoc
