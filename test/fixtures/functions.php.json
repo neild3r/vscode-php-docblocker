@@ -312,6 +312,14 @@
         }
     },
     {
+        "key": "function-reference",
+        "name": "Function with reference ampersand",
+        "result": {
+            "return": "void",
+            "params": []
+        }
+    },
+    {
         "key": "php7-return-param",
         "name": "PHP7 return type with param",
         "result": {

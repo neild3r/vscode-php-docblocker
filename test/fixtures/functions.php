@@ -136,6 +136,11 @@ abstract class Test
     {
     }
 
+    ////=> function-reference
+    public function &someFunction()
+    {
+    }
+
     ////=> is
     public function isSomething()
     {
