@@ -2,6 +2,11 @@
 
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
+## [1.3.0] - 2017-09-29
+- Add basic HHVM/Hack support
+- Change @method snippet to not include a $
+- Fix issue when using a referenced function
+
 ## [1.2.0] - 2017-05-26
 - Add support for PHP7.1 nullable types
 - Add config option to allow enforcing short named return types. Thanks @jens1o
@@ -60,7 +65,8 @@ All notable changes to the "php-docblocker" extension will be documented in this
 ## 0.1.0 - 2017-03-12
 - Initial release
 
-[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.3.0...HEAD
+[1.2.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v0.4.2...v1.0.0

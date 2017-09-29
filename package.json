@@ -2,7 +2,7 @@
   "name": "php-docblocker",
   "displayName": "PHP DocBlocker",
   "description": "A simple, dependency free PHP specific DocBlocking package",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "publisher": "neilbrayfield",
   "author": "Neil Brayfield <dev@brayfield.uk>",
   "engines": {
@@ -27,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/neild3r/vscode-php-docblocker/issues"
   },
-  "icon": "images/logo.svg",
+  "icon": "images/logo.png",
   "main": "./out/src/extension",
   "contributes": {
     "configuration": {
