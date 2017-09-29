@@ -27,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/neild3r/vscode-php-docblocker/issues"
   },
-  "icon": "images/logo.svg",
+  "icon": "images/logo.png",
   "main": "./out/src/extension",
   "contributes": {
     "configuration": {
