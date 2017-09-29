@@ -3,8 +3,8 @@
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
 ## [1.3.0] - 2017-09-29
-- Add basic HHVM/Hack support
-- Change @method snippet to not include a $
+- Add basic HHVM/Hack support - Thanks @beefsack
+- Change @method snippet to not include a $ - Thanks @ADmad
 - Fix issue when using a referenced function
 
 ## [1.2.0] - 2017-05-26
