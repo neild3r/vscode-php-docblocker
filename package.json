@@ -6,7 +6,7 @@
   "publisher": "neilbrayfield",
   "author": "Neil Brayfield <dev@brayfield.uk>",
   "engines": {
-    "vscode": "^1.9.0"
+    "vscode": "^1.17.0"
   },
   "categories": [
     "Languages"
