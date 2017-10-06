@@ -2,6 +2,9 @@
 
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
+## [1.3.1] - 2017-10-06
+- Fix compatibility issues with vscode v1.17 now language config has been merged into the core
+
 ## [1.3.0] - 2017-09-29
 - Add basic HHVM/Hack support - Thanks @beefsack
 - Change @method snippet to not include a $ - Thanks @ADmad
@@ -65,7 +68,8 @@ All notable changes to the "php-docblocker" extension will be documented in this
 ## 0.1.0 - 2017-03-12
 - Initial release
 
-[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.3.1...HEAD
+[1.3.1]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.0.0...v1.1.0
