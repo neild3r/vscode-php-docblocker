@@ -164,7 +164,7 @@ export class Doc
             }
         }
 
-        snippet.appendText("\n */");
+        snippet.appendText("\n");
 
         return snippet;
     }
