@@ -150,6 +150,11 @@ abstract class Test
     public function hasValue()
     {
     }
+    
+    ////=> can
+    public function canValue()
+    {
+    }
 
     ////=> debug-info
     public function __debugInfo()
