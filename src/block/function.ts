@@ -67,7 +67,7 @@ export default class FunctionBlock extends Block
      */
     public getReturnFromName(name:string):string
     {
-        if (/^(is|has)/.test(name)) {
+        if (/^(is|has|can)/.test(name)) {
             return TypeUtil.instance.getFormattedTypeByName('bool');
         }
 
