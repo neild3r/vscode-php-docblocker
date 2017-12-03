@@ -366,6 +366,14 @@
         }
     },
     {
+        "key": "can",
+        "name": "Check can prefix",
+        "result": {
+            "return": "boolean",
+            "params": []
+        }
+    },
+    {
         "key": "debug-info",
         "name": "Debug info return type",
         "result": {
