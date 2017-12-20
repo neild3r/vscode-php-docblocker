@@ -269,6 +269,9 @@
     {
         "key": "args-typed",
         "name": "Arguments with ...$args that are typed",
+        "config": {
+            "useShortNames": true
+        },
         "result": {
             "return": "void",
             "params": [
@@ -322,6 +325,9 @@
     {
         "key": "php7-return-param",
         "name": "PHP7 return type with param",
+        "config": {
+            "useShortNames": true
+        },
         "result": {
             "return": "int",
             "params": [
@@ -335,6 +341,9 @@
     {
         "key": "php7-return-multiline",
         "name": "PHP7 return type multi-line",
+        "config": {
+            "useShortNames": true
+        },
         "result": {
             "return": "int",
             "params": [
