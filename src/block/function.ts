@@ -49,9 +49,11 @@ export default class FunctionBlock extends Block
         let returnType:Array<string> = this.signature.match(/.*\)\s*\:\s*(\?)?\s*([a-zA-Z\\]+)\s*$/m);
 
         if (returnType != null) {
-            doc.return = (returnType[1] === '?') ? returnType[2]+'|null' : returnType[2];
+            doc.return = (returnType[1] === '?')
+                ? TypeUtil.instance.getFormattedTypeByName(returnType[2])+'|null'
+                : TypeUtil.instance.getFormattedTypeByName(returnType[2]);
         } else {
-            doc.return = this.getReturnFromName(params[5]);
+            doc.return = TypeUtil.instance.getFormattedTypeByName(this.getReturnFromName(params[5]));
         }
 
         return doc;
