@@ -283,6 +283,19 @@
         }
     },
     {
+        "key": "args-typed-long",
+        "name": "Arguments with ...$args that are typed long form",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "...$args",
+                    "type": "integer"
+                }
+            ]
+        }
+    },
+    {
         "key": "php7-return",
         "name": "PHP7 return type",
         "result": {
@@ -339,6 +352,19 @@
         }
     },
     {
+        "key": "php7-return-param-long",
+        "name": "PHP7 return type with param long form",
+        "result": {
+            "return": "integer",
+            "params": [
+                {
+                    "name": "$param",
+                    "type": "float"
+                }
+            ]
+        }
+    },
+    {
         "key": "php7-return-multiline",
         "name": "PHP7 return type multi-line",
         "config": {
@@ -354,6 +380,23 @@
                 {
                     "name": "$boolean",
                     "type": "bool"
+                }
+            ]
+        }
+    },
+    {
+        "key": "php7-return-multiline-long",
+        "name": "PHP7 return type multi-line long from",
+        "result": {
+            "return": "integer",
+            "params": [
+                {
+                    "name": "$param",
+                    "type": "float"
+                },
+                {
+                    "name": "$boolean",
+                    "type": "boolean"
                 }
             ]
         }

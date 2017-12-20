@@ -104,6 +104,10 @@ abstract class Test
     public function dotArgsTyped(int ...$args) {
     }
 
+    ////=> args-typed-long
+    public function dotArgsTypedLong(int ...$args) {
+    }
+
 
     ////=> php7-return
     public function getPHP7Return(): TypeHint {
@@ -119,8 +123,20 @@ abstract class Test
     {
     }
 
+    ////=> php7-return-param-long
+    public function getPHP7ReturnParamLong(float $param) :int
+    {
+    }
+
     ////=> php7-return-multiline
     public function getPHP7ReturnMultiline(
+        float $param,
+        bool $boolean = false
+    ) : int {
+    }
+
+    ////=> php7-return-multiline-long
+    public function getPHP7ReturnMultilineLong(
         float $param,
         bool $boolean = false
     ) : int {
