@@ -53,7 +53,7 @@ export default class FunctionBlock extends Block
                 ? TypeUtil.instance.getFormattedTypeByName(returnType[2])+'|null'
                 : TypeUtil.instance.getFormattedTypeByName(returnType[2]);
         } else {
-            doc.return = TypeUtil.instance.getFormattedTypeByName(this.getReturnFromName(params[5]));
+            doc.return = this.getReturnFromName(params[5]);
         }
 
         return doc;
