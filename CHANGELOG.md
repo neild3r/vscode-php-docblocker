@@ -2,6 +2,11 @@
 
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
+## [1.3.3] - 2017-12-22
+- Fixed typo in readme. - Thanks Dominik Liebler
+- Fixed missing canDo return type - Thanks @jens1o
+- Fixed transforming short names with PHP7 typehints into their long form when useShortNames is false
+
 ## [1.3.2] - 2017-10-07
 - Improve compatibility with vscode v1.17 by resolving the issue with the snippet end being before the closing */
 
@@ -71,7 +76,8 @@ All notable changes to the "php-docblocker" extension will be documented in this
 ## 0.1.0 - 2017-03-12
 - Initial release
 
-[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.3.2...HEAD
+[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.3.3...HEAD
+[1.3.3]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.3.2...v1.3.3
 [1.3.2]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.3.1...v1.3.2
 [1.3.1]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.2.0...v1.3.0
