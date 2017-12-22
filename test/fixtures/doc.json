@@ -8,6 +8,22 @@
         ]
     },
     {
+        "name": "Empty Function",
+        "config": {
+            "gap": false,
+            "extra": []
+        },
+        "input": {
+            "return": "void"
+        },
+        "expected": [
+            "/**",
+            " * ${1}",
+            " * @return ${2:void}",
+            " */"
+        ]
+    },
+    {
         "name": "Property",
         "config": {
             "gap": false,

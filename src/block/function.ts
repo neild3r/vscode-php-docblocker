@@ -35,11 +35,11 @@ export default class FunctionBlock extends Block
                 var type = '[type]';
 
                 if (parts[2] != null && parts[1] === '?') {
-                    type = parts[2]+'|null';
+                    type = TypeUtil.instance.getFormattedTypeByName(parts[2])+'|null';
                 } else if (parts[2] != null) {
-                    type = parts[2];
+                    type = TypeUtil.instance.getFormattedTypeByName(parts[2]);
                 } else if (parts[4] != null && parts[4] != "") {
-                    type = this.getTypeFromValue(parts[4]);
+                    type = TypeUtil.instance.getFormattedTypeByName(this.getTypeFromValue(parts[4]));
                 }
 
                 doc.params.push(new Param(type, parts[3]));
@@ -49,7 +49,9 @@ export default class FunctionBlock extends Block
         let returnType:Array<string> = this.signature.match(/.*\)\s*\:\s*(\?)?\s*([a-zA-Z\\]+)\s*$/m);
 
         if (returnType != null) {
-            doc.return = (returnType[1] === '?') ? returnType[2]+'|null' : returnType[2];
+            doc.return = (returnType[1] === '?')
+                ? TypeUtil.instance.getFormattedTypeByName(returnType[2])+'|null'
+                : TypeUtil.instance.getFormattedTypeByName(returnType[2]);
         } else {
             doc.return = this.getReturnFromName(params[5]);
         }
