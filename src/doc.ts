@@ -160,7 +160,8 @@ export class Doc
             }
             for (var index = 0; index < extra.length; index++) {
                 var element = extra[index];
-                snippet.appendText("\n * " + element);
+                snippet.appendText("\n * ");
+                snippet.value += element;
             }
         }
 
