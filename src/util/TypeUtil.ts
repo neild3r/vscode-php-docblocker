@@ -98,10 +98,10 @@ export default class TypeUtil {
         let range = new Range(new Position(0, 0), end);
         let head = document.getText(range);
 
-        let useEx = new RegExp("use\\s+(.*?)((?:\\s+as\\s+))?"+type+";", 'gm');
+        let useEx = new RegExp("use\\s+([^ ]*?)((?:\\s+as\\s+))?("+type+");", 'gm');
         let full = useEx.exec(head);
 
-        if (full != null) {
+        if (full != null && full[3] == type) {
             if (full[2] != null) {
                 return full[1];
             }

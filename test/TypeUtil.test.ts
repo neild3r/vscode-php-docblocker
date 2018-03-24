@@ -15,6 +15,11 @@ suite("TypeUtil tests: ", () => {
         });
     });
 
+    test("Ensure typehint is not mismatched", () => {
+        let type = new TypeUtil;
+        type.qualifyClassNames = true;
+        assert.equal(type.getFullyQualifiedType('Example', textDocument), 'Example');
+    });
 
     test("Fully qualify typehint from namespace", () => {
         let type = new TypeUtil;
