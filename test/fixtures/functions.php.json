@@ -66,6 +66,9 @@
     {
         "key": "params",
         "name": "Basic params",
+        "config": {
+            "qualifyClassNames": true
+        },
         "result": {
             "return": "void",
             "params": [
