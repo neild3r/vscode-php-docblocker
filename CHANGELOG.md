@@ -2,6 +2,11 @@
 
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
+## [1.5.0] - 2018-03-24
+- Add author configuration so the Author tag pulls in your name/email
+- Add returnGap option which adds a space between your @params and @return tags
+- Add list of completion tags to the README.md
+
 ## [1.4.0] - 2018-03-23
 - Allow using vscode variables in your extra tags see list of variables [here](https://code.visualstudio.com/docs/editor/userdefinedsnippets#_variables) for the docs 
 
@@ -79,7 +84,8 @@ All notable changes to the "php-docblocker" extension will be documented in this
 ## 0.1.0 - 2017-03-12
 - Initial release
 
-[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.5.0...HEAD
+[1.5.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.3.3...v1.4.0
 [1.3.3]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.3.2...v1.3.3
 [1.3.2]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.3.1...v1.3.2
