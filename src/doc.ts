@@ -154,7 +154,8 @@ export class Doc
             } else if (returnGap && this.params.length) {
                 snippet.appendText("\n *");
             }
-            snippet.appendText("\n * @return ");
+            snippet.appendText("\n * @return");
+            snippet.appendText(separator);
             snippet.appendVariable(stop++ + '', this.return);
         }
 
