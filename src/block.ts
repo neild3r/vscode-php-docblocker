@@ -161,8 +161,6 @@ export abstract class Block
      */
     public getTypeFromValue(value:string):string
     {
-        let result:Array<string>;
-
         // Check for bool
         if (value.match(/^\s*(false|true)\s*$/i) !== null) {
             return TypeUtil.instance.getFormattedTypeByName('bool');

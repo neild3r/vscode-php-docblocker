@@ -54,6 +54,11 @@
           "default": false,
           "description": "Wether you want to use integer instead of int and boolean instead of bool."
         },
+        "php-docblocker.prependTagContent": {
+          "type": "string",
+          "default": " ",
+          "description": "What you want between parts when using @param tag."
+        },
         "php-docblocker.author": {
           "type": "object",
           "default": {

@@ -110,6 +110,7 @@ export class Doc
         let snippet = new SnippetString();
         let extra = this.getConfig().extra;
         let gap = !this.getConfig().gap;
+        let separator = this.getConfig().prependTagContent;
         let returnGap = this.getConfig().returnGap;
 
         if (isEmpty) {
@@ -129,9 +130,10 @@ export class Doc
                 gap = true;
             }
             this.params.forEach(param => {
-                snippet.appendText("\n * @param ");
+                snippet.appendText("\n * @param");
+                snippet.appendText(separator);
                 snippet.appendVariable(stop++ + '', param.type);
-                snippet.appendText(" ");
+                snippet.appendText(separator);
                 snippet.appendVariable(stop++ + '', param.name);
             });
         }
@@ -152,7 +154,8 @@ export class Doc
             } else if (returnGap && this.params.length) {
                 snippet.appendText("\n *");
             }
-            snippet.appendText("\n * @return ");
+            snippet.appendText("\n * @return");
+            snippet.appendText(separator);
             snippet.appendVariable(stop++ + '', this.return);
         }
 
