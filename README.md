@@ -25,6 +25,7 @@ This extension contributes the following settings:
 * `php-docblocker.returnGap`: set to `true` to add a gap between the param and return tags
 * `php-docblocker.extra`: an array of extra tags to add to each DocBlock (These can include tabstops and snippet variables)
 * `php-docblocker.useShortNames`: Whether we should use short type names. e.g. bool or boolean
+* `php-docblocker.qualifyClassNames`: When adding type hints for class names search namespace use statements and qualify the class 
 * `php-docblocker.author`: An object containing your default author tag settings
 
 ## Supported DocBlock tags

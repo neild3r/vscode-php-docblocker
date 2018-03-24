@@ -1,4 +1,4 @@
-import { workspace } from "vscode";
+import { workspace, TextEditor, Range, Position, TextDocument } from "vscode";
 
 /**
  * Provides helper function to types
@@ -46,6 +46,42 @@ export default class TypeUtil {
         }
 
         return this._useShortNames;
+    }
+
+    /**
+     * Get the full qualified class namespace for a type
+     * we'll need to access the document
+     *
+     * @param {string} type
+     * @param {TextDocument} document
+     * @returns {string}
+     */
+    public getFullyQualifiedType(type:string, document:TextDocument):string
+    {
+        let config: any = workspace.getConfiguration().get('php-docblocker');
+        if (!config.qualifyClassNames) {
+            return type;
+        }
+
+        let text = document.getText();
+        let regex = /\s*(abstract|final)?\s*(class|trait|interface)/gm;
+        let match = regex.exec(text);
+        let end = document.positionAt(match.index);
+        let range = new Range(new Position(0, 0), end);
+        let head = document.getText(range);
+
+        let useEx = new RegExp("use\\s+(.*)(?:\\s+as\\s+)?"+type+";", 'gm');
+        let full = useEx.exec(head);
+
+        if (full != null) {
+            if (full[2] != null) {
+                return full[1];
+            }
+
+            return full[1] + type;
+        }
+
+        return type;
     }
 
     /**

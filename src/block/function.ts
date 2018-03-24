@@ -36,7 +36,7 @@ export default class FunctionBlock extends Block
                 var type = '[type]';
 
                 if (parts[2] != null) {
-                    parts[2] = this.getFullyQualifiedType(parts[2]);
+                    parts[2] = TypeUtil.instance.getFullyQualifiedType(parts[2], this.editor.document);
                 }
 
                 if (parts[2] != null && parts[1] === '?') {
@@ -62,37 +62,6 @@ export default class FunctionBlock extends Block
         }
 
         return doc;
-    }
-
-    /**
-     * Get the full qualified class namespace for a type
-     * we'll need to access the document
-     *
-     * @param {string} type
-     * @returns {string}
-     */
-    public getFullyQualifiedType(type:string):string
-    {
-        let text = this.editor.document.getText();
-        let regex = /\s*(abstract|final)?\s*(class|trait|interface)/gm;
-        let match = regex.exec(text);
-        let end = this.editor.document.positionAt(match.index);
-
-        let range = new Range(new Position(0, 0), end);
-        let head = this.editor.document.getText(range);
-
-        let useEx = new RegExp("use\\s+(.*)(?:\\s+as\\s+)?"+type+";", 'gm');
-        let full = useEx.exec(head);
-
-        if (full != null) {
-            if (full[2] != null) {
-                return full[1];
-            }
-
-            return full[1] + type;
-        }
-
-        return type;
     }
 
     /**
