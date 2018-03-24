@@ -131,5 +131,59 @@
             " * @param ${2:int} ${3:\\$name}",
             " */"
         ]
+    },
+    {
+        "name": "Empty extra string",
+        "config": {
+            "gap": true,
+            "extra": [
+                "",
+                "@author John Smith <john@smith.com>"
+            ]
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$name",
+                    "type": "int"
+                }
+            ]
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param ${2:int} ${3:\\$name}",
+            " *",
+            " * @author John Smith <john@smith.com>",
+            " */"
+        ]
+    },
+    {
+        "name": "Return gap",
+        "config": {
+            "gap": true,
+            "returnGap": true
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$name",
+                    "type": "int"
+                }
+            ],
+            "return": "void"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param ${2:int} ${3:\\$name}",
+            " *",
+            " * @return ${4:void}",
+            " */"
+        ]
     }
 ]
