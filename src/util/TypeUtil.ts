@@ -12,11 +12,19 @@ export default class TypeUtil {
     private static _instance: TypeUtil;
 
     /**
-     * Holds wether we use short names or not
+     * Holds whether we use short names or not
      *
      * @type {bool|null}
      */
     private _useShortNames: any;
+
+
+    /**
+     * Whether we should qualify class names or not
+     *
+     * @type {bool|null}
+     */
+    private _qualifyClassNames: any;
 
     /**
      * Returns the instance for this util
@@ -49,6 +57,27 @@ export default class TypeUtil {
     }
 
     /**
+     * Overwrites the value
+     *
+     * @param {boolean} value
+     */
+    public set qualifyClassNames(value:boolean) {
+        this._qualifyClassNames = value;
+    }
+
+    /**
+     * Should we qualify class names
+     */
+    public get qualifyClassNames() {
+        if (this._qualifyClassNames == null) {
+            let config: any = workspace.getConfiguration().get('php-docblocker');
+            this._qualifyClassNames = config.qualifyClassNames || false;
+        }
+
+        return this._qualifyClassNames;
+    }
+
+    /**
      * Get the full qualified class namespace for a type
      * we'll need to access the document
      *
@@ -58,8 +87,7 @@ export default class TypeUtil {
      */
     public getFullyQualifiedType(type:string, document:TextDocument):string
     {
-        let config: any = workspace.getConfiguration().get('php-docblocker');
-        if (!config.qualifyClassNames) {
+        if (!this.qualifyClassNames) {
             return type;
         }
 
@@ -70,7 +98,7 @@ export default class TypeUtil {
         let range = new Range(new Position(0, 0), end);
         let head = document.getText(range);
 
-        let useEx = new RegExp("use\\s+(.*)(?:\\s+as\\s+)?"+type+";", 'gm');
+        let useEx = new RegExp("use\\s+(.*?)((?:\\s+as\\s+))?"+type+";", 'gm');
         let full = useEx.exec(head);
 
         if (full != null) {
