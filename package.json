@@ -39,6 +39,11 @@
           "default": true,
           "description": "If there should be a gap between the description and tags"
         },
+        "php-docblocker.returnGap": {
+          "type": "boolean",
+          "default": false,
+          "description": "If there should be a gap between params and return"
+        },
         "php-docblocker.extra": {
           "type": "array",
           "default": [],
