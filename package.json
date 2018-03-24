@@ -48,6 +48,14 @@
           "type": "boolean",
           "default": false,
           "description": "Wether you want to use integer instead of int and boolean instead of bool."
+        },
+        "php-docblocker.author": {
+          "type": "object",
+          "default": {
+            "name": "Name",
+            "email": "email@email.com"
+          },
+          "description": "Default author tag"
         }
       }
     }
