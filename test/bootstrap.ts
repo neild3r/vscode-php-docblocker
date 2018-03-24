@@ -23,8 +23,11 @@ export function callback(cb:() => void) {
     reporter.write(collector, true, function () {
         let collect = remap(loadCoverage(coverageDir + '/coverage-final.json'));
         writeReport(collect, 'lcovonly', {}, coverageDir + '/lcov.info').then(function () {
-            console.log('Coverage report generated');
-            cb.call(this);
+            console.log('Coverage lcov report generated');
+            writeReport(collect, 'html', {}, coverageDir + '/html').then(function () {
+                console.log('Coverage html report generated');
+                cb.call(this);
+            });
         });
     });
 }

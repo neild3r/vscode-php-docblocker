@@ -2,11 +2,11 @@
   "name": "php-docblocker",
   "displayName": "PHP DocBlocker",
   "description": "A simple, dependency free PHP specific DocBlocking package",
-  "version": "1.2.0",
+  "version": "1.5.0",
   "publisher": "neilbrayfield",
   "author": "Neil Brayfield <dev@brayfield.uk>",
   "engines": {
-    "vscode": "^1.9.0"
+    "vscode": "^1.17.0"
   },
   "categories": [
     "Languages"
@@ -17,7 +17,8 @@
     "docblock"
   ],
   "activationEvents": [
-    "onLanguage:php"
+    "onLanguage:php",
+    "onLanguage:hack"
   ],
   "repository": {
     "type": "git",
@@ -26,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/neild3r/vscode-php-docblocker/issues"
   },
-  "icon": "images/logo.svg",
+  "icon": "images/logo.png",
   "main": "./out/src/extension",
   "contributes": {
     "configuration": {
@@ -37,6 +38,11 @@
           "type": "boolean",
           "default": true,
           "description": "If there should be a gap between the description and tags"
+        },
+        "php-docblocker.returnGap": {
+          "type": "boolean",
+          "default": false,
+          "description": "If there should be a gap between params and return"
         },
         "php-docblocker.extra": {
           "type": "array",
@@ -52,6 +58,14 @@
           "type": "string",
           "default": " ",
           "description": "What you want between parts when using @param tag."
+        },
+        "php-docblocker.author": {
+          "type": "object",
+          "default": {
+            "name": "Name",
+            "email": "email@email.com"
+          },
+          "description": "Default author tag"
         }
       }
     }

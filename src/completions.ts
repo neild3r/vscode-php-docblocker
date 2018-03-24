@@ -1,4 +1,4 @@
-import {TextDocument, Position, CancellationToken, ProviderResult, CompletionItem, CompletionItemProvider, Range, SnippetString, CompletionItemKind, window} from "vscode";
+import {workspace, TextDocument, Position, CancellationToken, ProviderResult, CompletionItem, CompletionItemProvider, Range, SnippetString, CompletionItemKind, window} from "vscode";
 import Documenter from "./documenter";
 
 /**
@@ -6,6 +6,13 @@ import Documenter from "./documenter";
  */
 export default class Completions implements CompletionItemProvider
 {
+    /**
+     * A config which will modify the result of the docblock
+     *
+     * @type {{}}
+     */
+    protected config:{};
+
     /**
      * List of tags and snippets that are filled in docblocks
      *
@@ -22,11 +29,11 @@ export default class Completions implements CompletionItemProvider
         },
         {
             tag: '@author',
-            snippet: '@author ${1:Name} <${2:email@email.com}>'
+            snippet: '@author ${1:{{name}}} <${2:{{email}}}>'
         },
         {
             tag: '@category',
-            snippet: '@category ${1:desciption}'
+            snippet: '@category ${1:description}'
         },
         {
             tag: '@copyright',
@@ -58,7 +65,7 @@ export default class Completions implements CompletionItemProvider
         },
         {
             tag: '@ignore',
-            snippet: '@ignore ${1:desciption}'
+            snippet: '@ignore ${1:description}'
         },
         {
             tag: '@inheritDoc',
@@ -66,7 +73,7 @@ export default class Completions implements CompletionItemProvider
         },
         {
             tag: '@internal',
-            snippet: '@internal ${1:desciption}'
+            snippet: '@internal ${1:description}'
         },
         {
             tag: '@license',
@@ -78,7 +85,7 @@ export default class Completions implements CompletionItemProvider
         },
         {
             tag: '@method',
-            snippet: '@method ${1:mixed} \$${2:methodName()}'
+            snippet: '@method ${1:mixed} ${2:methodName()}'
         },
         {
             tag: '@package',
@@ -147,6 +154,36 @@ export default class Completions implements CompletionItemProvider
     ];
 
     /**
+     * Have we injected in tag data yet
+     *
+     * @type {{}}
+     */
+    protected formatted = false;
+
+    /**
+     * Get the config from either vs code or the manually set one
+     *
+     * @returns {*}
+     */
+    public getConfig():any
+    {
+        if (this.config == null) {
+            this.setConfig(workspace.getConfiguration().get('php-docblocker'));
+        }
+        return this.config;
+    }
+
+    /**
+     * Set the config object
+     *
+     * @param {*} config
+     */
+    public setConfig(config:any):void
+    {
+        this.config = config;
+    }
+
+    /**
      * Implemented function to find and return completions either from
      * the tag list or initiate a complex completion
      *
@@ -164,7 +201,8 @@ export default class Completions implements CompletionItemProvider
             let documenter:Documenter = new Documenter(match, window.activeTextEditor);
 
             let block = new CompletionItem("/**", CompletionItemKind.Snippet);
-            block.range = match;
+            let range = document.getWordRangeAtPosition(position, /\/\*\* \*\//);
+            block.range = range;
             block.insertText = documenter.autoDocument();
             result.push(block);
 
@@ -177,7 +215,7 @@ export default class Completions implements CompletionItemProvider
 
         let search = document.getText(match);
 
-        let potential = this.tags.filter((tag) => {
+        let potential = this.getTags().filter((tag) => {
             return tag.tag.match(search) !== null;
         });
 
@@ -190,5 +228,27 @@ export default class Completions implements CompletionItemProvider
         });
 
         return result;
+    }
+
+    /**
+     * Get the tag list for completions
+     *
+     * @returns {Array<{tag:string, snippet:string}>}
+     */
+    protected getTags():Array<{tag:string, snippet:string}>
+    {
+        if (!this.formatted) {
+            this.tags.forEach((tag, index) => {
+                if (tag.tag == '@author') {
+                    tag.snippet = tag.snippet.replace("{{name}}", this.getConfig().author.name);
+                    tag.snippet = tag.snippet.replace("{{email}}", this.getConfig().author.email);
+                    this.tags[index] = tag;
+                }
+            });
+
+            this.formatted = true;
+        }
+
+        return this.tags;
     }
 }

@@ -111,6 +111,7 @@ export class Doc
         let extra = this.getConfig().extra;
         let gap = !this.getConfig().gap;
         let separator = this.getConfig().prependTagContent;
+        let returnGap = this.getConfig().returnGap;
 
         if (isEmpty) {
             gap = true;
@@ -150,6 +151,8 @@ export class Doc
             if (!gap) {
                 snippet.appendText("\n *");
                 gap = true;
+            } else if (returnGap && this.params.length) {
+                snippet.appendText("\n *");
             }
             snippet.appendText("\n * @return ");
             snippet.appendVariable(stop++ + '', this.return);
@@ -162,7 +165,11 @@ export class Doc
             }
             for (var index = 0; index < extra.length; index++) {
                 var element = extra[index];
-                snippet.appendText("\n * " + element);
+                if (element != "") {
+                    element = " " + element;
+                }
+                snippet.appendText("\n *");
+                snippet.value += element;
             }
         }
 
