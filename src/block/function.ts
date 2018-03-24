@@ -12,7 +12,6 @@ import { Range, Position } from "vscode";
  */
 export default class FunctionBlock extends Block
 {
-
     /**
      * @inheritdoc
      */
@@ -28,15 +27,22 @@ export default class FunctionBlock extends Block
         let doc = new Doc('Undocumented function');
         let argString = this.getEnclosed(params[6], "(", ")");
 
+
         if (argString != "") {
+            let head:string;
             let args = argString.split(',');
+
+            if (TypeUtil.instance.qualifyClassNames) {
+                head = this.getClassHead();
+            }
+
             for (let index = 0; index < args.length; index++) {
                 let arg = args[index];
                 let parts = arg.match(/^\s*(\?)?\s*([A-Za-z0-9_\\]+)?\s*\&?((?:[.]{3})?\$[A-Za-z0-9_]+)\s*\=?\s*(.*)\s*/m);
                 var type = '[type]';
 
                 if (parts[2] != null) {
-                    parts[2] = TypeUtil.instance.getFullyQualifiedType(parts[2], this.editor.document);
+                    parts[2] = TypeUtil.instance.getFullyQualifiedType(parts[2], head);
                 }
 
                 if (parts[2] != null && parts[1] === '?') {

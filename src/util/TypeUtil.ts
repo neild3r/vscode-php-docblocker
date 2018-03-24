@@ -82,21 +82,14 @@ export default class TypeUtil {
      * we'll need to access the document
      *
      * @param {string} type
-     * @param {TextDocument} document
+     * @param {string} head
      * @returns {string}
      */
-    public getFullyQualifiedType(type:string, document:TextDocument):string
+    public getFullyQualifiedType(type:string, head:string):string
     {
         if (!this.qualifyClassNames) {
             return type;
         }
-
-        let text = document.getText();
-        let regex = /\s*(abstract|final)?\s*(class|trait|interface)/gm;
-        let match = regex.exec(text);
-        let end = document.positionAt(match.index);
-        let range = new Range(new Position(0, 0), end);
-        let head = document.getText(range);
 
         let useEx = new RegExp("use\\s+([^ ]*?)((?:\\s+as\\s+))?("+type+");", 'gm');
         let full = useEx.exec(head);

@@ -1,15 +1,23 @@
 import * as assert from 'assert';
 import TypeUtil from "../src/util/TypeUtil";
-import { window, workspace, TextDocument } from 'vscode';
+import { window, workspace, TextDocument, Position, TextEditor } from 'vscode';
 import Helper from './helpers';
+import FunctionBlock from '../src/block/function';
 
 suite("TypeUtil tests: ", () => {
-    let textDocument:TextDocument;
+    let editor:TextEditor;
+    let head:string;
 
     suiteSetup(function(done) {
         workspace.openTextDocument(Helper.fixturePath+'namespace.php').then(doc => {
-            textDocument = doc;
-            done();
+            window.showTextDocument(doc).then(textEditor => {
+                editor = textEditor;
+                let block = new FunctionBlock(new Position(0, 0), editor);
+                head = block.getClassHead();
+                done();
+            }, error => {
+                console.log(error);
+            })
         }, error => {
             console.log(error);
         });
@@ -18,19 +26,19 @@ suite("TypeUtil tests: ", () => {
     test("Ensure typehint is not mismatched", () => {
         let type = new TypeUtil;
         type.qualifyClassNames = true;
-        assert.equal(type.getFullyQualifiedType('Example', textDocument), 'Example');
+        assert.equal(type.getFullyQualifiedType('Example', head), 'Example');
     });
 
     test("Fully qualify typehint from namespace", () => {
         let type = new TypeUtil;
         type.qualifyClassNames = true;
-        assert.equal(type.getFullyQualifiedType('FilterInterface', textDocument), 'App\\Test\\Model\\FilterInterface');
+        assert.equal(type.getFullyQualifiedType('FilterInterface', head), 'App\\Test\\Model\\FilterInterface');
     });
 
     test("Fully qualify typehint from namespace use with alias", () => {
         let type = new TypeUtil;
         type.qualifyClassNames = true;
-        assert.equal(type.getFullyQualifiedType('BaseExample', textDocument), 'App\\Test\\Model\\Example');
+        assert.equal(type.getFullyQualifiedType('BaseExample', head), 'App\\Test\\Model\\Example');
     });
 
     test("With default settings the integer type formatted is integer", () => {

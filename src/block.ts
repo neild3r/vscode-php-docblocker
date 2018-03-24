@@ -154,6 +154,23 @@ export abstract class Block
     }
 
     /**
+     * Get the header for the class
+     *
+     * @returns {string}
+     */
+    public getClassHead():string
+    {
+        let text = this.editor.document.getText();
+        let regex = /\s*(abstract|final)?\s*(class|trait|interface)/gm;
+        let match = regex.exec(text);
+        let end = this.editor.document.positionAt(match.index);
+        let range = new Range(new Position(0, 0), end);
+        let head = this.editor.document.getText(range);
+
+        return head;
+    }
+
+    /**
      * Take the value and parse and try to infer its type
      *
      * @param {string} value
