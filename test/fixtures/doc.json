@@ -31,7 +31,10 @@
         },
         "input": {
             "message": "Undocumented var",
-            "var": "mixed"
+            "var": {
+                "type" : "mixed",
+                "name" : "$prop"
+            }
         },
         "expected": [
             "/**",
@@ -184,6 +187,22 @@
             " *",
             " * @return ${4:void}",
             " */"
+        ]
+    },
+    {
+        "name": "Single line property",
+        "config": {
+            "singleLineProperty": true
+        },
+        "input": {
+            "message": "Undocumented variable",
+            "var": {
+                "type" : "array",
+                "name" : "$prop"
+            }
+        },
+        "expected": [
+            "/** @var ${1:array} ${2:\\$prop} ${3:Undocumented variable} */"
         ]
     }
 ]
