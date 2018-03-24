@@ -25,6 +25,48 @@ This extension contributes the following settings:
 * `php-docblocker.returnGap`: set to `true` to add a gap between the param and return tags
 * `php-docblocker.extra`: an array of extra tags to add to each DocBlock (These can include tabstops and snippet variables)
 * `php-docblocker.useShortNames`: Whether we should use short type names. e.g. bool or boolean
+* `php-docblocker.author`: An object containing your default author tag settings
+
+## Supported DocBlock tags
+
+Please see below for a list of supported tags and their snippets. These tags are available within a DocBlock
+and can be triggered by typing @ then another characted (Provided your vscode settings allow).
+
+| Tag             | Snippet                                 |
+|-----------------|-----------------------------------------|
+| @api            | @api                                    |
+| @abstract       | @abstract                               |
+| @author         | @author ${1:{{name}}} <${2:{{email}}}>  |
+| @category       | @category ${1:description}              |
+| @copyright      | @copyright ${1:2018} ${2:Name}          |
+| @deprecated     | @deprecated ${1:version}                |
+| @example        | @example ${1:location} ${2:description} |
+| @filesource     | @filesource                             |
+| @final          | @final                                  |
+| @group          | @group ${1:group}                       |
+| @global         | @global                                 |
+| @ignore         | @ignore ${1:description}                |
+| @inheritDoc     | @inheritDoc                             |
+| @internal       | @internal ${1:description}              |
+| @license        | @license ${1:MIT}                       |
+| @link           | @link ${1:http://url.com}               |
+| @method         | @method ${1:mixed} ${2:methodName()}    |
+| @package        | @package ${1:category}                  |
+| @param          | @param ${1:mixed} $${2:name}            |
+| @property       | @property ${1:mixed} $${2:name}         |
+| @property-read  | @property-read ${1:mixed} $${2:name}    |
+| @property-write | @property-write ${1:mixed} $${2:name}   |
+| @return         | @return ${1:mixed}                      |
+| @see            | @see ${1:http://url.com}                |
+| @since          | @since ${1:1.0.0}                       |
+| @source         | @source ${1:location} ${2:description}  |
+| @static         | @static                                 |
+| @subpackage     | @subpackage ${1:category}               |
+| @throws         | @throws ${1:Exception}                  |
+| @todo           | @todo ${1:Something}                    |
+| @uses           | @uses ${1:MyClass::function} ${2:Name}  |
+| @var            | @var ${1:mixed}                         |
+| @version        | @version ${1:1.0.0}                     |
 
 ## Future development
 
