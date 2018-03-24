@@ -1,5 +1,6 @@
-import {TextEditor, TextDocument, workspace, window, Position} from 'vscode';
+import {TextEditor, TextDocument, WorkspaceConfiguration, workspace, window, Position} from 'vscode';
 import * as fs from 'fs';
+import TypeUtil from '../src/util/TypeUtil';
 
 export default class Helper {
     static fixturePath = __dirname + '/../../test/fixtures/';
@@ -38,5 +39,22 @@ export default class Helper {
 
     public static getFixtureMap(fixture:string):any {
         return JSON.parse(fs.readFileSync(Helper.fixturePath + fixture).toString());
+    }
+
+    public static getConfig():WorkspaceConfiguration {
+        return workspace.getConfiguration('php-docblocker');
+    }
+
+    public static setConfig(config:any, overrides:any, callback: () => any) {
+        let current:WorkspaceConfiguration = workspace.getConfiguration();
+
+        if (overrides !== undefined) {
+            config = {...config, ...overrides};
+        }
+
+        TypeUtil.instance.useShortNames = null;
+        current.update('php-docblocker', config).then(callback, error => {
+            console.log(error);
+        });
     }
 }

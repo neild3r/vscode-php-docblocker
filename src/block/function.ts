@@ -1,11 +1,12 @@
 import { Block } from "../block";
 import { Doc, Param } from "../doc";
+import TypeUtil from "../util/TypeUtil";
 
 /**
  * Represents a function code block
  *
  * This is probably going to be the most complicated of all the
- * blocks as function signitures tend to be the most complex and
+ * blocks as function signatures tend to be the most complex and
  * varied
  */
 export default class FunctionBlock extends Block
@@ -14,7 +15,7 @@ export default class FunctionBlock extends Block
     /**
      * @inheritdoc
      */
-    protected pattern:RegExp = /^\s*((.*)(protected|private|public))?(.*)?\s*function\s+([A-Za-z0-9_]+)\s*\(([^{;]*)/m;
+    protected pattern:RegExp = /^\s*((.*)(protected|private|public))?(.*)?\s*function\s+&?([A-Za-z0-9_]+)\s*\(([^{;]*)/m;
 
     /**
      * @inheritdoc
@@ -30,23 +31,27 @@ export default class FunctionBlock extends Block
             let args = argString.split(',');
             for (let index = 0; index < args.length; index++) {
                 let arg = args[index];
-                let parts = arg.match(/^\s*([A-Za-z0-9_\\]+)?\s*\&?((?:[.]{3})?\$[A-Za-z0-9_]+)\s*\=?\s*(.*)\s*/m);
+                let parts = arg.match(/^\s*(\?)?\s*([A-Za-z0-9_\\]+)?\s*\&?((?:[.]{3})?\$[A-Za-z0-9_]+)\s*\=?\s*(.*)\s*/m);
                 var type = '[type]';
 
-                if (parts[1] != null) {
-                    type = parts[1];
-                } else if (parts[3] != null && parts[3] != "") {
-                    type = this.getTypeFromValue(parts[3]);
+                if (parts[2] != null && parts[1] === '?') {
+                    type = TypeUtil.instance.getFormattedTypeByName(parts[2])+'|null';
+                } else if (parts[2] != null) {
+                    type = TypeUtil.instance.getFormattedTypeByName(parts[2]);
+                } else if (parts[4] != null && parts[4] != "") {
+                    type = TypeUtil.instance.getFormattedTypeByName(this.getTypeFromValue(parts[4]));
                 }
 
-                doc.params.push(new Param(type, parts[2]));
+                doc.params.push(new Param(type, parts[3]));
             }
         }
 
-        let returnType:Array<string> = this.signiture.match(/.*\)\s*\:\s*([a-zA-Z\\]+)\s*$/m);
+        let returnType:Array<string> = this.signature.match(/.*\)\s*\:\s*(\?)?\s*([a-zA-Z\\]+)\s*$/m);
 
         if (returnType != null) {
-            doc.return = returnType[1];
+            doc.return = (returnType[1] === '?')
+                ? TypeUtil.instance.getFormattedTypeByName(returnType[2])+'|null'
+                : TypeUtil.instance.getFormattedTypeByName(returnType[2]);
         } else {
             doc.return = this.getReturnFromName(params[5]);
         }
@@ -64,8 +69,8 @@ export default class FunctionBlock extends Block
      */
     public getReturnFromName(name:string):string
     {
-        if (/^(is|has)/.test(name)) {
-            return 'boolean';
+        if (/^(is|has|can)/.test(name)) {
+            return TypeUtil.instance.getFormattedTypeByName('bool');
         }
 
         switch (name) {
@@ -76,7 +81,7 @@ export default class FunctionBlock extends Block
             case '__wakeup':
                 return null;
             case '__isset':
-                return 'boolean';
+                return TypeUtil.instance.getFormattedTypeByName('bool');
             case '__sleep':
             case '__debugInfo':
                 return 'array';

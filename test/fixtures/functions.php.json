@@ -148,6 +148,35 @@
         }
     },
     {
+        "key": "nullable-return-type",
+        "name": "Nullable return type",
+        "result": {
+            "return": "string|null",
+            "params": []
+        }
+    },
+    {
+        "key": "nullable-args",
+        "name": "Nullable args",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$var",
+                    "type": "TypeHint|null"
+                },
+                {
+                    "name": "$var2",
+                    "type": "\\Type2|null"
+                },
+                {
+                    "name": "$var3",
+                    "type": "string|null"
+                }
+            ]
+        }
+    },
+    {
         "key": "param-types",
         "name": "All param types",
         "result": {
@@ -171,7 +200,7 @@
                 },
                 {
                     "name": "$int",
-                    "type": "int"
+                    "type": "integer"
                 },
                 {
                     "name": "$float",
@@ -240,12 +269,28 @@
     {
         "key": "args-typed",
         "name": "Arguments with ...$args that are typed",
+        "config": {
+            "useShortNames": true
+        },
         "result": {
             "return": "void",
             "params": [
                 {
                     "name": "...$args",
                     "type": "int"
+                }
+            ]
+        }
+    },
+    {
+        "key": "args-typed-long",
+        "name": "Arguments with ...$args that are typed long form",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "...$args",
+                    "type": "integer"
                 }
             ]
         }
@@ -283,8 +328,19 @@
         }
     },
     {
+        "key": "function-reference",
+        "name": "Function with reference ampersand",
+        "result": {
+            "return": "void",
+            "params": []
+        }
+    },
+    {
         "key": "php7-return-param",
         "name": "PHP7 return type with param",
+        "config": {
+            "useShortNames": true
+        },
         "result": {
             "return": "int",
             "params": [
@@ -296,8 +352,24 @@
         }
     },
     {
+        "key": "php7-return-param-long",
+        "name": "PHP7 return type with param long form",
+        "result": {
+            "return": "integer",
+            "params": [
+                {
+                    "name": "$param",
+                    "type": "float"
+                }
+            ]
+        }
+    },
+    {
         "key": "php7-return-multiline",
         "name": "PHP7 return type multi-line",
+        "config": {
+            "useShortNames": true
+        },
         "result": {
             "return": "int",
             "params": [
@@ -313,6 +385,23 @@
         }
     },
     {
+        "key": "php7-return-multiline-long",
+        "name": "PHP7 return type multi-line long from",
+        "result": {
+            "return": "integer",
+            "params": [
+                {
+                    "name": "$param",
+                    "type": "float"
+                },
+                {
+                    "name": "$boolean",
+                    "type": "boolean"
+                }
+            ]
+        }
+    },
+    {
         "key": "is",
         "name": "Check is prefix",
         "result": {
@@ -323,6 +412,14 @@
     {
         "key": "has",
         "name": "Check has prefix",
+        "result": {
+            "return": "boolean",
+            "params": []
+        }
+    },
+    {
+        "key": "can",
+        "name": "Check can prefix",
         "result": {
             "return": "boolean",
             "params": []

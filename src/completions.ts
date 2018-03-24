@@ -33,7 +33,7 @@ export default class Completions implements CompletionItemProvider
         },
         {
             tag: '@category',
-            snippet: '@category ${1:desciption}'
+            snippet: '@category ${1:description}'
         },
         {
             tag: '@copyright',
@@ -65,7 +65,7 @@ export default class Completions implements CompletionItemProvider
         },
         {
             tag: '@ignore',
-            snippet: '@ignore ${1:desciption}'
+            snippet: '@ignore ${1:description}'
         },
         {
             tag: '@inheritDoc',
@@ -73,7 +73,7 @@ export default class Completions implements CompletionItemProvider
         },
         {
             tag: '@internal',
-            snippet: '@internal ${1:desciption}'
+            snippet: '@internal ${1:description}'
         },
         {
             tag: '@license',
@@ -85,7 +85,7 @@ export default class Completions implements CompletionItemProvider
         },
         {
             tag: '@method',
-            snippet: '@method ${1:mixed} \$${2:methodName()}'
+            snippet: '@method ${1:mixed} ${2:methodName()}'
         },
         {
             tag: '@package',
@@ -201,7 +201,8 @@ export default class Completions implements CompletionItemProvider
             let documenter:Documenter = new Documenter(match, window.activeTextEditor);
 
             let block = new CompletionItem("/**", CompletionItemKind.Snippet);
-            block.range = match;
+            let range = document.getWordRangeAtPosition(position, /\/\*\* \*\//);
+            block.range = range;
             block.insertText = documenter.autoDocument();
             result.push(block);
 

@@ -2,11 +2,11 @@
   "name": "php-docblocker",
   "displayName": "PHP DocBlocker",
   "description": "A simple, dependency free PHP specific DocBlocking package",
-  "version": "1.1.0",
+  "version": "1.3.3",
   "publisher": "neilbrayfield",
   "author": "Neil Brayfield <dev@brayfield.uk>",
   "engines": {
-    "vscode": "^1.9.0"
+    "vscode": "^1.17.0"
   },
   "categories": [
     "Languages"
@@ -17,7 +17,8 @@
     "docblock"
   ],
   "activationEvents": [
-    "onLanguage:php"
+    "onLanguage:php",
+    "onLanguage:hack"
   ],
   "repository": {
     "type": "git",
@@ -26,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/neild3r/vscode-php-docblocker/issues"
   },
-  "icon": "images/logo.svg",
+  "icon": "images/logo.png",
   "main": "./out/src/extension",
   "contributes": {
     "configuration": {
@@ -42,6 +43,11 @@
           "type": "array",
           "default": [],
           "description": "Extra tags you wish to include in every DocBlock"
+        },
+        "php-docblocker.useShortNames": {
+          "type": "boolean",
+          "default": false,
+          "description": "Wether you want to use integer instead of int and boolean instead of bool."
         },
         "php-docblocker.author": {
           "type": "object",
