@@ -2,6 +2,10 @@
 
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
+## [1.6.0] - 2018-03-26
+- Add configuration option to full qualify class names in param and returns
+- Rework internal config value fetching to allow better testing
+
 ## [1.5.0] - 2018-03-24
 - Add author configuration so the Author tag pulls in your name/email
 - Add returnGap option which adds a space between your @params and @return tags
@@ -84,7 +88,8 @@ All notable changes to the "php-docblocker" extension will be documented in this
 ## 0.1.0 - 2017-03-12
 - Initial release
 
-[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.5.0...HEAD
+[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.6.0...HEAD
+[1.6.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.3.3...v1.4.0
 [1.3.3]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.3.2...v1.3.3
