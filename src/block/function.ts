@@ -1,6 +1,8 @@
 import { Block } from "../block";
 import { Doc, Param } from "../doc";
 import TypeUtil from "../util/TypeUtil";
+import { Range, Position } from "vscode";
+import Config from "../util/config";
 
 /**
  * Represents a function code block
@@ -11,7 +13,6 @@ import TypeUtil from "../util/TypeUtil";
  */
 export default class FunctionBlock extends Block
 {
-
     /**
      * @inheritdoc
      */
@@ -26,13 +27,24 @@ export default class FunctionBlock extends Block
 
         let doc = new Doc('Undocumented function');
         let argString = this.getEnclosed(params[6], "(", ")");
+        let head:string;
+
 
         if (argString != "") {
             let args = argString.split(',');
+
+            if (Config.instance.get('qualifyClassNames')) {
+                head = this.getClassHead();
+            }
+
             for (let index = 0; index < args.length; index++) {
                 let arg = args[index];
                 let parts = arg.match(/^\s*(\?)?\s*([A-Za-z0-9_\\]+)?\s*\&?((?:[.]{3})?\$[A-Za-z0-9_]+)\s*\=?\s*(.*)\s*/m);
                 var type = '[type]';
+
+                if (parts[2] != null) {
+                    parts[2] = TypeUtil.instance.getFullyQualifiedType(parts[2], head);
+                }
 
                 if (parts[2] != null && parts[1] === '?') {
                     type = TypeUtil.instance.getFormattedTypeByName(parts[2])+'|null';
@@ -49,6 +61,10 @@ export default class FunctionBlock extends Block
         let returnType:Array<string> = this.signature.match(/.*\)\s*\:\s*(\?)?\s*([a-zA-Z\\]+)\s*$/m);
 
         if (returnType != null) {
+            if (Config.instance.get('qualifyClassNames')) {
+                returnType[2] = TypeUtil.instance.getFullyQualifiedType(returnType[2], this.getClassHead());
+            }
+
             doc.return = (returnType[1] === '?')
                 ? TypeUtil.instance.getFormattedTypeByName(returnType[2])+'|null'
                 : TypeUtil.instance.getFormattedTypeByName(returnType[2]);

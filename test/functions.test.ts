@@ -4,13 +4,14 @@ import Helper from './helpers';
 import Function from '../src/block/function';
 import {Doc, Param} from '../src/doc';
 import { callback } from './bootstrap';
+import Config from '../src/util/config';
 
 suite("Function tests", () => {
     let editor:TextEditor;
     let document:TextDocument;
     let testPositions:any = {};
 
-    let defaults:WorkspaceConfiguration = Helper.getConfig();
+    let defaults:Config = Helper.getConfig();
     let map = Helper.getFixtureMap('functions.php.json');
 
     suiteSetup(function(done) {
@@ -34,13 +35,12 @@ suite("Function tests", () => {
         });
 
         test("Result Test: "+ testData.name, () => {
-            Helper.setConfig(defaults, testData.config, () => {
-                let func = new Function(testPositions[testData.key], editor);
-                let actual:Doc = func.parse();
-                let expected:Doc = new Doc('Undocumented function');
-                expected.fromObject(testData.result);
-                assert.deepEqual(actual, expected);
-            });
+            Helper.setConfig(testData.config);
+            let func = new Function(testPositions[testData.key], editor);
+            let actual:Doc = func.parse();
+            let expected:Doc = new Doc('Undocumented function');
+            expected.fromObject(testData.result);
+            assert.deepEqual(actual, expected);
         });
     });
 });

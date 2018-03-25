@@ -1,4 +1,5 @@
-import { workspace } from "vscode";
+import { workspace, TextEditor, Range, Position, TextDocument } from "vscode";
+import Config from "./config";
 
 /**
  * Provides helper function to types
@@ -12,13 +13,6 @@ export default class TypeUtil {
     private static _instance: TypeUtil;
 
     /**
-     * Holds wether we use short names or not
-     *
-     * @type {bool|null}
-     */
-    private _useShortNames: any;
-
-    /**
      * Returns the instance for this util
      *
      * @returns {TypeUtil}
@@ -28,24 +22,35 @@ export default class TypeUtil {
     }
 
     /**
-     * Overwrites the value
+     * Get the full qualified class namespace for a type
+     * we'll need to access the document
      *
-     * @param {boolean} value
+     * @param {string} type
+     * @param {string} head
+     * @returns {string}
      */
-    public set useShortNames(value:boolean) {
-        this._useShortNames = value;
-    }
-
-    /**
-     * Returns wether we use long names or not.
-     */
-    public get useShortNames() {
-        if (this._useShortNames == null) {
-            let config: any = workspace.getConfiguration().get('php-docblocker');
-            this._useShortNames = config.useShortNames || false;
+    public getFullyQualifiedType(type:string, head:string):string
+    {
+        if (!Config.instance.get('qualifyClassNames')) {
+            return type;
         }
 
-        return this._useShortNames;
+        let useEx = new RegExp("use\\s+([^ ]*?)((?:\\s+as\\s+))?("+type+");", 'gm');
+        let full = useEx.exec(head);
+
+        if (full != null && full[3] == type) {
+            if (full[1].charAt(0) != '\\') {
+                full[1] = '\\' + full[1];
+            }
+
+            if (full[2] != null) {
+                return full[1];
+            }
+
+            return full[1] + type;
+        }
+
+        return type;
     }
 
     /**
@@ -57,13 +62,13 @@ export default class TypeUtil {
         switch (name) {
             case 'bool':
             case 'boolean':
-                if (!this.useShortNames) {
+                if (!Config.instance.get('useShortNames')) {
                     return 'boolean';
                 }
                 return 'bool';
             case 'int':
             case 'integer':
-                if (!this.useShortNames) {
+                if (!Config.instance.get('useShortNames')) {
                     return 'integer';
                 }
                 return 'int';

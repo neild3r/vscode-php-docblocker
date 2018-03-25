@@ -54,6 +54,11 @@
           "default": false,
           "description": "Wether you want to use integer instead of int and boolean instead of bool."
         },
+        "php-docblocker.qualifyClassNames": {
+          "type": "boolean",
+          "default": false,
+          "description": "Fully qualifies any data types used in param and returns by reading the namespaces."
+        },
         "php-docblocker.author": {
           "type": "object",
           "default": {

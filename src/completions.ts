@@ -1,18 +1,12 @@
 import {workspace, TextDocument, Position, CancellationToken, ProviderResult, CompletionItem, CompletionItemProvider, Range, SnippetString, CompletionItemKind, window} from "vscode";
 import Documenter from "./documenter";
+import Config from "./util/config";
 
 /**
  * Completions provider that can be registered to the language
  */
 export default class Completions implements CompletionItemProvider
 {
-    /**
-     * A config which will modify the result of the docblock
-     *
-     * @type {{}}
-     */
-    protected config:{};
-
     /**
      * List of tags and snippets that are filled in docblocks
      *
@@ -161,29 +155,6 @@ export default class Completions implements CompletionItemProvider
     protected formatted = false;
 
     /**
-     * Get the config from either vs code or the manually set one
-     *
-     * @returns {*}
-     */
-    public getConfig():any
-    {
-        if (this.config == null) {
-            this.setConfig(workspace.getConfiguration().get('php-docblocker'));
-        }
-        return this.config;
-    }
-
-    /**
-     * Set the config object
-     *
-     * @param {*} config
-     */
-    public setConfig(config:any):void
-    {
-        this.config = config;
-    }
-
-    /**
      * Implemented function to find and return completions either from
      * the tag list or initiate a complex completion
      *
@@ -240,8 +211,8 @@ export default class Completions implements CompletionItemProvider
         if (!this.formatted) {
             this.tags.forEach((tag, index) => {
                 if (tag.tag == '@author') {
-                    tag.snippet = tag.snippet.replace("{{name}}", this.getConfig().author.name);
-                    tag.snippet = tag.snippet.replace("{{email}}", this.getConfig().author.email);
+                    tag.snippet = tag.snippet.replace("{{name}}", Config.instance.get('author').name);
+                    tag.snippet = tag.snippet.replace("{{email}}", Config.instance.get('author').email);
                     this.tags[index] = tag;
                 }
             });

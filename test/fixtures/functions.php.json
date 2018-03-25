@@ -58,6 +58,9 @@
     {
         "key": "final",
         "name": "Final method",
+        "config": {
+            "qualifyClassNames": true
+        },
         "result": {
             "return": "void",
             "params": []
@@ -66,6 +69,9 @@
     {
         "key": "params",
         "name": "Basic params",
+        "config": {
+            "qualifyClassNames": true
+        },
         "result": {
             "return": "void",
             "params": [
@@ -306,6 +312,9 @@
     {
         "key": "php7-return-alt",
         "name": "PHP7 return type alternate",
+        "config": {
+            "qualifyClassNames": true
+        },
         "result": {
             "return": "float",
             "params": []
@@ -354,6 +363,9 @@
     {
         "key": "php7-return-param-long",
         "name": "PHP7 return type with param long form",
+        "config": {
+            "qualifyClassNames": true
+        },
         "result": {
             "return": "integer",
             "params": [

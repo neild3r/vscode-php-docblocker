@@ -2,6 +2,7 @@ import * as assert from 'assert';
 import {SnippetString} from 'vscode';
 import Helper from './helpers';
 import {Doc, Param} from '../src/doc';
+import Config from '../src/util/config';
 
 suite("Snippet build tests", () => {
     let map = Helper.getFixtureMap('doc.json');
@@ -11,7 +12,9 @@ suite("Snippet build tests", () => {
             let doc = new Doc();
             let empty = false;
             if (testData.config != undefined) {
-                doc.setConfig(testData.config);
+                Helper.setConfig(testData.config);
+            } else {
+                Config.instance.load();
             }
             if (testData.input != undefined) {
                 doc.fromObject(testData.input);
