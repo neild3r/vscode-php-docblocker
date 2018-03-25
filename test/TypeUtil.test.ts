@@ -35,6 +35,12 @@ suite("TypeUtil tests: ", () => {
         assert.equal(type.getFullyQualifiedType('FilterInterface', head), '\\App\\Test\\Model\\FilterInterface');
     });
 
+    test("Fully qualify typehint from namespace with prefix", () => {
+        let type = new TypeUtil;
+        Helper.setConfig({qualifyClassNames: true});
+        assert.equal(type.getFullyQualifiedType('StreamHandler', head), '\\Monolog\\Handler\\StreamHandler');
+    });
+
     test("Fully qualify typehint from namespace use with alias", () => {
         let type = new TypeUtil;
         Helper.setConfig({qualifyClassNames: true});

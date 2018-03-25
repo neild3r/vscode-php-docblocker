@@ -8,7 +8,7 @@ use App\Test\Model\FilterInterface;
 use App\Test\Model\Example as BaseExample;
 
 use Monolog\Handler\HandlerInterface;
-use Monolog\Handler\StreamHandler;
+use \Monolog\Handler\StreamHandler;
 use Psr\Log\LoggerInterface;
 use Psr\Log\InvalidArgumentException;
 
