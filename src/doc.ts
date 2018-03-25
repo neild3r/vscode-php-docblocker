@@ -38,13 +38,6 @@ export class Doc
     public message:string;
 
     /**
-     * A config which will modify the result of the docblock
-     *
-     * @type {{}}
-     */
-    protected config:{};
-
-    /**
      * Creates an instance of Doc.
      *
      * @param {string} [message='']
