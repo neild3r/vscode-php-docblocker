@@ -32,13 +32,13 @@ suite("TypeUtil tests: ", () => {
     test("Fully qualify typehint from namespace", () => {
         let type = new TypeUtil;
         Helper.setConfig({qualifyClassNames: true});
-        assert.equal(type.getFullyQualifiedType('FilterInterface', head), 'App\\Test\\Model\\FilterInterface');
+        assert.equal(type.getFullyQualifiedType('FilterInterface', head), '\\App\\Test\\Model\\FilterInterface');
     });
 
     test("Fully qualify typehint from namespace use with alias", () => {
         let type = new TypeUtil;
         Helper.setConfig({qualifyClassNames: true});
-        assert.equal(type.getFullyQualifiedType('BaseExample', head), 'App\\Test\\Model\\Example');
+        assert.equal(type.getFullyQualifiedType('BaseExample', head), '\\App\\Test\\Model\\Example');
     });
 
     test("With default settings the integer type formatted is integer", () => {

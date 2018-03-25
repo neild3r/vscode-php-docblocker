@@ -39,6 +39,10 @@ export default class TypeUtil {
         let full = useEx.exec(head);
 
         if (full != null && full[3] == type) {
+            if (full[1].charAt(0) != '\\') {
+                full[1] = '\\' + full[1];
+            }
+
             if (full[2] != null) {
                 return full[1];
             }
