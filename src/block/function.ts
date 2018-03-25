@@ -27,10 +27,10 @@ export default class FunctionBlock extends Block
 
         let doc = new Doc('Undocumented function');
         let argString = this.getEnclosed(params[6], "(", ")");
+        let head:string;
 
 
         if (argString != "") {
-            let head:string;
             let args = argString.split(',');
 
             if (Config.instance.get('qualifyClassNames')) {
@@ -61,6 +61,11 @@ export default class FunctionBlock extends Block
         let returnType:Array<string> = this.signature.match(/.*\)\s*\:\s*(\?)?\s*([a-zA-Z\\]+)\s*$/m);
 
         if (returnType != null) {
+            if (head == null && Config.instance.get('qualifyClassNames')) {
+                head = this.getClassHead();
+            }
+            returnType[2] = TypeUtil.instance.getFullyQualifiedType(returnType[2], head);
+
             doc.return = (returnType[1] === '?')
                 ? TypeUtil.instance.getFormattedTypeByName(returnType[2])+'|null'
                 : TypeUtil.instance.getFormattedTypeByName(returnType[2]);
