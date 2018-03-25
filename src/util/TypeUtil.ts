@@ -1,4 +1,5 @@
 import { workspace, TextEditor, Range, Position, TextDocument } from "vscode";
+import Config from "./config";
 
 /**
  * Provides helper function to types
@@ -12,69 +13,12 @@ export default class TypeUtil {
     private static _instance: TypeUtil;
 
     /**
-     * Holds whether we use short names or not
-     *
-     * @type {bool|null}
-     */
-    private _useShortNames: any;
-
-
-    /**
-     * Whether we should qualify class names or not
-     *
-     * @type {bool|null}
-     */
-    private _qualifyClassNames: any;
-
-    /**
      * Returns the instance for this util
      *
      * @returns {TypeUtil}
      */
     public static get instance(): TypeUtil {
         return this._instance || (this._instance = new this());
-    }
-
-    /**
-     * Overwrites the value
-     *
-     * @param {boolean} value
-     */
-    public set useShortNames(value:boolean) {
-        this._useShortNames = value;
-    }
-
-    /**
-     * Returns wether we use long names or not.
-     */
-    public get useShortNames() {
-        if (this._useShortNames == null) {
-            let config: any = workspace.getConfiguration().get('php-docblocker');
-            this._useShortNames = config.useShortNames || false;
-        }
-
-        return this._useShortNames;
-    }
-
-    /**
-     * Overwrites the value
-     *
-     * @param {boolean} value
-     */
-    public set qualifyClassNames(value:boolean) {
-        this._qualifyClassNames = value;
-    }
-
-    /**
-     * Should we qualify class names
-     */
-    public get qualifyClassNames() {
-        if (this._qualifyClassNames == null) {
-            let config: any = workspace.getConfiguration().get('php-docblocker');
-            this._qualifyClassNames = config.qualifyClassNames || false;
-        }
-
-        return this._qualifyClassNames;
     }
 
     /**
@@ -87,7 +31,7 @@ export default class TypeUtil {
      */
     public getFullyQualifiedType(type:string, head:string):string
     {
-        if (!this.qualifyClassNames) {
+        if (!Config.instance.get('qualifyClassNames')) {
             return type;
         }
 
@@ -114,13 +58,13 @@ export default class TypeUtil {
         switch (name) {
             case 'bool':
             case 'boolean':
-                if (!this.useShortNames) {
+                if (!Config.instance.get('useShortNames')) {
                     return 'boolean';
                 }
                 return 'bool';
             case 'int':
             case 'integer':
-                if (!this.useShortNames) {
+                if (!Config.instance.get('useShortNames')) {
                     return 'integer';
                 }
                 return 'int';

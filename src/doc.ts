@@ -1,4 +1,5 @@
 import {workspace, SnippetString, WorkspaceConfiguration} from 'vscode';
+import Config from './util/config';
 
 /**
  * Represents a comment block.
@@ -77,29 +78,6 @@ export class Doc
     }
 
     /**
-     * Get the config from either vs code or the manually set one
-     *
-     * @returns {*}
-     */
-    public getConfig():any
-    {
-        if (this.config == null) {
-            this.config = workspace.getConfiguration().get('php-docblocker');
-        }
-        return this.config;
-    }
-
-    /**
-     * Set the config object
-     *
-     * @param {*} config
-     */
-    public setConfig(config:any):void
-    {
-        this.config = config;
-    }
-
-    /**
      * Build all the set values into a SnippetString ready for use
      *
      * @param {boolean} [isEmpty=false]
@@ -108,9 +86,9 @@ export class Doc
     public build(isEmpty:boolean = false):SnippetString
     {
         let snippet = new SnippetString();
-        let extra = this.getConfig().extra;
-        let gap = !this.getConfig().gap;
-        let returnGap = this.getConfig().returnGap;
+        let extra = Config.instance.get('extra');
+        let gap = !Config.instance.get('gap');
+        let returnGap = Config.instance.get('returnGap');
 
         if (isEmpty) {
             gap = true;

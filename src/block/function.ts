@@ -2,6 +2,7 @@ import { Block } from "../block";
 import { Doc, Param } from "../doc";
 import TypeUtil from "../util/TypeUtil";
 import { Range, Position } from "vscode";
+import Config from "../util/config";
 
 /**
  * Represents a function code block
@@ -32,7 +33,7 @@ export default class FunctionBlock extends Block
             let head:string;
             let args = argString.split(',');
 
-            if (TypeUtil.instance.qualifyClassNames) {
+            if (Config.instance.get('qualifyClassNames')) {
                 head = this.getClassHead();
             }
 

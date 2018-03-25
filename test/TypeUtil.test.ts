@@ -25,19 +25,19 @@ suite("TypeUtil tests: ", () => {
 
     test("Ensure typehint is not mismatched", () => {
         let type = new TypeUtil;
-        type.qualifyClassNames = true;
+        Helper.setConfig({qualifyClassNames: true});
         assert.equal(type.getFullyQualifiedType('Example', head), 'Example');
     });
 
     test("Fully qualify typehint from namespace", () => {
         let type = new TypeUtil;
-        type.qualifyClassNames = true;
+        Helper.setConfig({qualifyClassNames: true});
         assert.equal(type.getFullyQualifiedType('FilterInterface', head), 'App\\Test\\Model\\FilterInterface');
     });
 
     test("Fully qualify typehint from namespace use with alias", () => {
         let type = new TypeUtil;
-        type.qualifyClassNames = true;
+        Helper.setConfig({qualifyClassNames: true});
         assert.equal(type.getFullyQualifiedType('BaseExample', head), 'App\\Test\\Model\\Example');
     });
 
@@ -53,13 +53,13 @@ suite("TypeUtil tests: ", () => {
 
     test('With special settings the integer type formatted is int', () => {
         let type = new TypeUtil;
-        type.useShortNames = true;
+        Helper.setConfig({useShortNames: true});
         assert.equal(type.getFormattedTypeByName('int'), 'int');
     })
 
     test('With special settings the boolean type formatted is bool', () => {
         let type = new TypeUtil;
-        type.useShortNames = true;
+        Helper.setConfig({useShortNames: true});
         assert.equal(type.getFormattedTypeByName('bool'), 'bool');
     })
 
