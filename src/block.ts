@@ -167,7 +167,7 @@ export abstract class Block
      */
     public getClassHead():string
     {
-        if (this.classHead == null) {
+        if (this.classHead === null) {
             let text = this.editor.document.getText();
             let regex = /\s*(abstract|final)?\s*(class|trait|interface)/gm;
             let match = regex.exec(text);

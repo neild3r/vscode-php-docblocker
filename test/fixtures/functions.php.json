@@ -363,6 +363,9 @@
     {
         "key": "php7-return-param-long",
         "name": "PHP7 return type with param long form",
+        "config": {
+            "qualifyClassNames": true
+        },
         "result": {
             "return": "integer",
             "params": [
