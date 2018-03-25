@@ -168,7 +168,7 @@ export abstract class Block
     public getClassHead():string
     {
         if (this.classHead === undefined) {
-            let text = this.editor.document.getText();
+            let text = this.editor.document.getText(new Range(new Position(0, 0), new Position(150,0)));
             let regex = /\s*(abstract|final)?\s*(class|trait|interface)/gm;
             let match = regex.exec(text);
             let end = this.editor.document.positionAt(match.index);
