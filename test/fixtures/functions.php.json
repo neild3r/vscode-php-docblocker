@@ -58,6 +58,9 @@
     {
         "key": "final",
         "name": "Final method",
+        "config": {
+            "qualifyClassNames": true
+        },
         "result": {
             "return": "void",
             "params": []
