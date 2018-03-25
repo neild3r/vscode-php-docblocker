@@ -63,8 +63,8 @@ export default class FunctionBlock extends Block
         if (returnType != null) {
             if (head == null && Config.instance.get('qualifyClassNames')) {
                 head = this.getClassHead();
+                returnType[2] = TypeUtil.instance.getFullyQualifiedType(returnType[2], head);
             }
-            returnType[2] = TypeUtil.instance.getFullyQualifiedType(returnType[2], head);
 
             doc.return = (returnType[1] === '?')
                 ? TypeUtil.instance.getFormattedTypeByName(returnType[2])+'|null'

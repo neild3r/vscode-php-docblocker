@@ -312,6 +312,9 @@
     {
         "key": "php7-return-alt",
         "name": "PHP7 return type alternate",
+        "config": {
+            "qualifyClassNames": true
+        },
         "result": {
             "return": "float",
             "params": []
