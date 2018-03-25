@@ -8,13 +8,6 @@ import Config from "./util/config";
 export default class Completions implements CompletionItemProvider
 {
     /**
-     * A config which will modify the result of the docblock
-     *
-     * @type {{}}
-     */
-    protected config:{};
-
-    /**
      * List of tags and snippets that are filled in docblocks
      *
      * @type {Array}

@@ -14,11 +14,18 @@ export default class Config {
     private static _instance: Config;
 
     /**
-     * List of defaults
+     * Data to use when we aren't in live mode
      *
      * @type {Object}
      */
     private data:{}
+
+    /**
+     * Are we in test mode or live
+     *
+     * @type {boolean}
+     */
+    private isLive:boolean = true;
 
     /**
      * Returns the instance for this util
@@ -34,24 +41,31 @@ export default class Config {
     }
 
     /**
+     * Set whether this is live mode or not
+     *
+     * @param {boolean} bool
+     */
+    public set live(bool:boolean)
+    {
+        this.isLive = bool;
+    }
+
+    /**
      * Load in the defaults or the config
      */
-    public load(force:boolean = false)
+    public load()
     {
-        let current:WorkspaceConfiguration = workspace.getConfiguration();
-        let config = current.get('php-docblocker');
-
-        if (config == null || force) {
-            config = {};
+        if (!this.isLive) {
+            let config = {};
             let packageJson = JSON.parse(fs.readFileSync(__dirname + '/../../../package.json').toString());
             let props = packageJson.contributes.configuration.properties;
             for (var key in props) {
                 var item = props[key];
                 config[key.replace('php-docblocker.', '')] = item.default;
             }
-        }
 
-        this.data = config;
+            this.data = config;
+        }
     }
 
     /**
@@ -71,6 +85,10 @@ export default class Config {
      */
     public get(setting:string)
     {
+        if (this.isLive) {
+            return workspace.getConfiguration('php-docblocker').get(setting);
+        }
+
         return this.data[setting];
     }
 }
