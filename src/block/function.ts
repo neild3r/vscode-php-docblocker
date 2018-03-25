@@ -61,9 +61,8 @@ export default class FunctionBlock extends Block
         let returnType:Array<string> = this.signature.match(/.*\)\s*\:\s*(\?)?\s*([a-zA-Z\\]+)\s*$/m);
 
         if (returnType != null) {
-            if (head == null && Config.instance.get('qualifyClassNames')) {
-                head = this.getClassHead();
-                returnType[2] = TypeUtil.instance.getFullyQualifiedType(returnType[2], head);
+            if (Config.instance.get('qualifyClassNames')) {
+                returnType[2] = TypeUtil.instance.getFullyQualifiedType(returnType[2], this.getClassHead());
             }
 
             doc.return = (returnType[1] === '?')

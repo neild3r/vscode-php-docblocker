@@ -48,6 +48,13 @@ export abstract class Block
     protected signatureEnd:RegExp = /[\{;]/;
 
     /**
+     * Class heading
+     *
+     * @type {string}
+     */
+    protected classHead:string;
+
+    /**
      * Creates an instance of Block.
      *
      * @param {Position} position
@@ -160,14 +167,16 @@ export abstract class Block
      */
     public getClassHead():string
     {
-        let text = this.editor.document.getText();
-        let regex = /\s*(abstract|final)?\s*(class|trait|interface)/gm;
-        let match = regex.exec(text);
-        let end = this.editor.document.positionAt(match.index);
-        let range = new Range(new Position(0, 0), end);
-        let head = this.editor.document.getText(range);
+        if (this.classHead == null) {
+            let text = this.editor.document.getText();
+            let regex = /\s*(abstract|final)?\s*(class|trait|interface)/gm;
+            let match = regex.exec(text);
+            let end = this.editor.document.positionAt(match.index);
+            let range = new Range(new Position(0, 0), end);
+            this.classHead = this.editor.document.getText(range);
+        }
 
-        return head;
+        return this.classHead;
     }
 
     /**
