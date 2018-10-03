@@ -103,7 +103,7 @@ export class Doc
                 snippet.appendText("\n * @param ");
                 snippet.appendVariable(stop++ + '', param.type);
                 snippet.appendText(" ");
-                snippet.appendVariable(stop++ + '', param.name);
+                snippet.appendText(param.name);
             });
         }
 
