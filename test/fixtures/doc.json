@@ -60,8 +60,8 @@
             "/**",
             " * ${1:Undocumented function}",
             " *",
-            " * @param ${2:int} ${3:\\$name}",
-            " * @return ${4:void}",
+            " * @param ${2:int} \\$name",
+            " * @return ${3:void}",
             " */"
         ]
     },
@@ -105,7 +105,7 @@
             "/**",
             " * ${1:Undocumented function}",
             " *",
-            " * @param ${2:int} ${3:\\$name}",
+            " * @param ${2:int} \\$name",
             " * @author John Smith <john@smith.com>",
             " */"
         ]
@@ -128,7 +128,7 @@
         "expected": [
             "/**",
             " * ${1:Undocumented function}",
-            " * @param ${2:int} ${3:\\$name}",
+            " * @param ${2:int} \\$name",
             " */"
         ]
     },
@@ -154,7 +154,7 @@
             "/**",
             " * ${1:Undocumented function}",
             " *",
-            " * @param ${2:int} ${3:\\$name}",
+            " * @param ${2:int} \\$name",
             " *",
             " * @author John Smith <john@smith.com>",
             " */"
@@ -180,9 +180,9 @@
             "/**",
             " * ${1:Undocumented function}",
             " *",
-            " * @param ${2:int} ${3:\\$name}",
+            " * @param ${2:int} \\$name",
             " *",
-            " * @return ${4:void}",
+            " * @return ${3:void}",
             " */"
         ]
     }
