@@ -172,6 +172,8 @@ export default class Completions implements CompletionItemProvider
             let documenter:Documenter = new Documenter(match, window.activeTextEditor);
 
             let block = new CompletionItem("/**", CompletionItemKind.Snippet);
+            block.detail = "PHP DocBlocker";
+            block.documentation = "Generate a PHP DocBlock from the code snippet below.";
             let range = document.getWordRangeAtPosition(position, /\/\*\* \*\//);
             block.range = range;
             block.insertText = documenter.autoDocument();
