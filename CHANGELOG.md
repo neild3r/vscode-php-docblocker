@@ -5,6 +5,7 @@ All notable changes to the "php-docblocker" extension will be documented in this
 ## [1.7.0] - 2018-12-23
 - Add description to snippet to avoid confusion 
 - Add option to turn of void return type when the return could not be detected
+- Remove tabstop on variable names generating DocBlocks - Thanks @markjaquith
 
 ## [1.6.0] - 2018-03-26
 - Add configuration option to full qualify class names in param and returns
