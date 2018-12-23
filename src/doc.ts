@@ -116,7 +116,7 @@ export class Doc
             snippet.appendVariable(stop++ + '', this.var);
         }
 
-        if (this.return) {
+        if (this.return && (this.return != 'void' || Config.instance.get('returnVoid'))) {
             if (!gap) {
                 snippet.appendText("\n *");
                 gap = true;
