@@ -2,14 +2,14 @@
   "name": "php-docblocker",
   "displayName": "PHP DocBlocker",
   "description": "A simple, dependency free PHP specific DocBlocking package",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "publisher": "neilbrayfield",
   "author": "Neil Brayfield <dev@brayfield.uk>",
   "engines": {
     "vscode": "^1.17.0"
   },
   "categories": [
-    "Languages"
+    "Programming Languages"
   ],
   "keywords": [
     "php",
@@ -43,6 +43,11 @@
           "type": "boolean",
           "default": false,
           "description": "If there should be a gap between params and return"
+        },
+        "php-docblocker.returnVoid": {
+          "type": "boolean",
+          "default": true,
+          "description": "Should we return void if there is no detectable return type?"
         },
         "php-docblocker.extra": {
           "type": "array",
