@@ -11,6 +11,7 @@
         "name": "Empty Function",
         "config": {
             "gap": false,
+            "returnVoid": true,
             "extra": []
         },
         "input": {
@@ -183,6 +184,45 @@
             " * @param ${2:int} \\$name",
             " *",
             " * @return ${3:void}",
+            " */"
+        ]
+    },
+    {
+        "name": "No void",
+        "config": {
+            "returnVoid": false
+        },
+        "input": {
+            "message": "Undocumented function",
+            "return": "void"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " */"
+        ]
+    },
+    {
+        "name": "No void with param & gap",
+        "config": {
+            "gap": true,
+            "returnVoid": false
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$name",
+                    "type": "int"
+                }
+            ],
+            "return": "void"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param ${2:int} \\$name",
             " */"
         ]
     }
