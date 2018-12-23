@@ -2,6 +2,10 @@
 
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
+## [1.7.0] - 2018-12-23
+- Add description to snippet to avoid confusion 
+- Add option to turn of void return type when the return could not be detected
+
 ## [1.6.0] - 2018-03-26
 - Add configuration option to full qualify class names in param and returns
 - Rework internal config value fetching to allow better testing
@@ -88,7 +92,8 @@ All notable changes to the "php-docblocker" extension will be documented in this
 ## 0.1.0 - 2017-03-12
 - Initial release
 
-[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.6.0...HEAD
+[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.7.0...HEAD
+[1.7.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.3.3...v1.4.0
