@@ -222,7 +222,7 @@
             "/**",
             " * ${1:Undocumented function}",
             " *",
-            " * @param ${2:int} ${3:\\$name}",
+            " * @param ${2:int} \\$name",
             " */"
         ]
     }
