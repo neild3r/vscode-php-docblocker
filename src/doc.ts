@@ -38,6 +38,13 @@ export class Doc
     public message:string;
 
     /**
+     * Define the template for the documentor
+     *
+     * @type {Array<string>}
+     */
+    protected _template:Array<string>;
+
+    /**
      * Creates an instance of Doc.
      *
      * @param {string} [message='']
@@ -78,73 +85,120 @@ export class Doc
      */
     public build(isEmpty:boolean = false):SnippetString
     {
-        let snippet = new SnippetString();
+
         let extra = Config.instance.get('extra');
-        let gap = !Config.instance.get('gap');
+        let gap = Config.instance.get('gap');
         let returnGap = Config.instance.get('returnGap');
+
+        let returnString = "-";
+        let varString = "-";
+        let gapString = gap ? "" : "-";
+        let returnGapString = "-";
+        let paramString = "-";
+        let extraString = "-";
+        let messageString = "-";
 
         if (isEmpty) {
             gap = true;
             extra = [];
         }
 
-        let stop = 2;
-
-        snippet.appendText("/**");
-        snippet.appendText("\n * ");
-        snippet.appendVariable('1', this.message);
+        if (this.message != null) {
+            messageString = "\${###" + (this.message != "" ? ':' : '') + this.message + "}";
+        }
 
         if (this.params.length) {
-            if (!gap) {
-                snippet.appendText("\n *");
-                gap = true;
-            }
+            paramString = "";
             this.params.forEach(param => {
-                snippet.appendText("\n * @param ");
-                snippet.appendVariable(stop++ + '', param.type);
-                snippet.appendText(" ");
-                snippet.appendText(param.name);
+                if (paramString != "") {
+                    paramString += "\n";
+                }
+                paramString += "@param \${###:"+param.type+"} " + param.name.replace('$', '\\$');
             });
         }
 
         if (this.var) {
-            if (!gap) {
-                snippet.appendText("\n *");
-                gap = true;
-            }
-            snippet.appendText("\n * @var ");
-            snippet.appendVariable(stop++ + '', this.var);
+            varString = "@var \${###:" +this.var + "}";
         }
 
         if (this.return && (this.return != 'void' || Config.instance.get('returnVoid'))) {
-            if (!gap) {
-                snippet.appendText("\n *");
-                gap = true;
-            } else if (returnGap && this.params.length) {
-                snippet.appendText("\n *");
-            }
-            snippet.appendText("\n * @return ");
-            snippet.appendVariable(stop++ + '', this.return);
+            returnString = "@return \${###:" +this.return + "}";
         }
 
         if (Array.isArray(extra) && extra.length > 0) {
-            if (!gap) {
-                snippet.appendText("\n *");
-                gap = true;
-            }
+            extraString = "";
             for (var index = 0; index < extra.length; index++) {
                 var element = extra[index];
-                if (element != "") {
-                    element = " " + element;
+                if (index > 0) {
+                    extraString += "\n";
                 }
-                snippet.appendText("\n *");
-                snippet.value += element;
+                extraString += element;
             }
         }
 
-        snippet.appendText("\n */");
+        if (gap && varString == "-" && returnString == "-" && extraString == "-"  && paramString == "-") {
+            gapString = "-";
+        }
+
+        if (returnGap && returnString != "-" && paramString != "-") {
+            returnGapString = "";
+        }
+
+        let templateString:string = this.template.join("\n");
+        templateString = "/**\n" + templateString + "\n */";
+        templateString = templateString.replace(/{message}/gm, messageString);
+        templateString = templateString.replace(/{var}/gm, varString);
+        templateString = templateString.replace(/{return}/gm, returnString);
+        templateString = templateString.replace(/{params}/gm, paramString);
+        templateString = templateString.replace(/{gap}/gm, gapString);
+        templateString = templateString.replace(/{returnGap}/gm, returnGapString);
+        templateString = templateString.replace(/{extra}/gm, extraString);
+
+        let stop = 0;
+        templateString = templateString.replace(/###/gm, function():string {
+            stop++;
+            return stop + "";
+        });
+
+        templateString = templateString.replace(/\n-(?=\n)/gm, "");
+        templateString = templateString.replace(/^(?!(\s\*|\/\*))/gm, " * $1");
+        templateString = templateString.replace(/^\s\*\s\n/gm, " *\n");
+
+        let snippet = new SnippetString(templateString);
 
         return snippet;
+    }
+
+    /**
+     * Set the template for rendering
+     *
+     * @param {Array<string>} template
+     */
+    public set template(template:Array<string>)
+    {
+        this._template = template;
+    }
+
+    /**
+     * Get the template
+     *
+     * @type {Array<string>}
+     */
+    public get template():Array<string>
+    {
+        if (this._template == null) {
+            return [
+                "{message}",
+                "{gap}",
+                "{var}",
+                "{params}",
+                "{returnGap}",
+                "{return}",
+                "{extra}"
+            ];
+        }
+
+        return this._template;
     }
 }
 
