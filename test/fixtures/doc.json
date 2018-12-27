@@ -67,6 +67,36 @@
         ]
     },
     {
+        "name": "Function multiple params",
+        "config": {
+            "gap": true,
+            "extra": []
+        },
+        "input": {
+            "message": "Undocumented function",
+            "return": "void",
+            "params": [
+                {
+                    "name": "$name",
+                    "type": "int"
+                },
+                {
+                    "name": "$message",
+                    "type": "string"
+                }
+            ]
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param ${2:int} \\$name",
+            " * @param ${3:string} \\$message",
+            " * @return ${4:void}",
+            " */"
+        ]
+    },
+    {
         "name": "Extra",
         "config": {
             "gap": true,
