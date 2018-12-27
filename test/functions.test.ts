@@ -40,6 +40,7 @@ suite("Function tests", () => {
             let actual:Doc = func.parse();
             let expected:Doc = new Doc('Undocumented function');
             expected.fromObject(testData.result);
+            expected.template = Helper.getConfig().get('functionTemplate');
             assert.deepEqual(actual, expected);
         });
     });
