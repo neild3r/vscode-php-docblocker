@@ -55,7 +55,7 @@ export class Doc
     }
 
     /**
-     * Set class properties from a standard*
+     * Set class properties from a standard object
      *
      * @param {*} input
      */
@@ -101,9 +101,7 @@ export class Doc
             extra = [];
         }
 
-        if (this.message != '') {
-            messageString = "\${###" + (this.message != "" ? ':' : '') + this.message + "}";
-        }
+        messageString = "\${###" + (this.message != "" ? ':' : '') + this.message + "}";
 
         if (this.params.length) {
             paramString = "";
@@ -223,7 +221,7 @@ export class Doc
 }
 
 /**
- * A simple paramter*
+ * A simple paramter object
  */
 export class Param
 {
