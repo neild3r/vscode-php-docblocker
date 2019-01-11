@@ -68,12 +68,28 @@
           "type": "object",
           "default": {
             "message": {},
-            "var": {},
             "param": {},
             "return": {},
             "extra": {}
           },
           "description": "Specify the default template for functions."
+        },
+        "php-docblocker.propertyTemplate": {
+          "type": "object",
+          "default": {
+            "message": {},
+            "var": {},
+            "extra": {}
+          },
+          "description": "Specify the default template for class variables."
+        },
+        "php-docblocker.classTemplate": {
+          "type": "object",
+          "default": {
+            "message": {},
+            "extra": {}
+          },
+          "description": "Specify the default template for classes."
         },
         "php-docblocker.author": {
           "type": "object",
