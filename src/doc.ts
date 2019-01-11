@@ -40,9 +40,9 @@ export class Doc
     /**
      * Define the template for the documentor
      *
-     * @type {Array<string>}
+     * @type {Object}
      */
-    protected _template:Array<string>;
+    protected _template:Object;
 
     /**
      * Creates an instance of Doc.
@@ -55,7 +55,7 @@ export class Doc
     }
 
     /**
-     * Set class properties from a standard object
+     * Set class properties from a standard*
      *
      * @param {*} input
      */
@@ -90,13 +90,11 @@ export class Doc
         let gap = Config.instance.get('gap');
         let returnGap = Config.instance.get('returnGap');
 
-        let returnString = "-";
-        let varString = "-";
-        let gapString = gap ? "" : "-";
-        let returnGapString = "-";
-        let paramString = "-";
-        let extraString = "-";
-        let messageString = "-";
+        let returnString = "";
+        let varString = "";
+        let paramString = "";
+        let extraString = "";
+        let messageString = "";
 
         if (isEmpty) {
             gap = true;
@@ -136,23 +134,48 @@ export class Doc
             }
         }
 
-        if (gap && varString == "-" && returnString == "-" && extraString == "-"  && paramString == "-") {
-            gapString = "-";
+
+        let templateArray = [];
+        for (let key in this.template) {
+            let propConfig = this.template[key];
+            let propString:string;
+            if (key == 'message' && messageString) {
+                propString = messageString;
+                if (gap) {
+                    propConfig.gapAfter = true;
+                }
+            } else if (key == 'var' && varString) {
+                propString = varString;
+            } else if (key == 'return' && returnString) {
+                propString = returnString;
+                if (returnGap) {
+                    propConfig.gapBefore = true;
+                }
+            } else if (key == 'param' && paramString) {
+                propString = paramString;
+            } else if (key == 'extra' && extraString) {
+                propString = extraString;
+            }
+
+            if (propString && propConfig.gapBefore) {
+                templateArray.push("");
+            }
+
+            if (propString) {
+                templateArray.push(propString);
+            }
+
+            if (propString && propConfig.gapAfter) {
+                templateArray.push("");
+            }
         }
 
-        if (returnGap && returnString != "-" && paramString != "-") {
-            returnGapString = "";
+        if (templateArray[templateArray.length - 1] == "") {
+            templateArray.pop();
         }
 
-        let templateString:string = this.template.join("\n");
+        let templateString:string = templateArray.join("\n");
         templateString = "/**\n" + templateString + "\n */";
-        templateString = templateString.replace(/{message}/gm, messageString);
-        templateString = templateString.replace(/{var}/gm, varString);
-        templateString = templateString.replace(/{return}/gm, returnString);
-        templateString = templateString.replace(/{params}/gm, paramString);
-        templateString = templateString.replace(/{gap}/gm, gapString);
-        templateString = templateString.replace(/{returnGap}/gm, returnGapString);
-        templateString = templateString.replace(/{extra}/gm, extraString);
 
         let stop = 0;
         templateString = templateString.replace(/###/gm, function():string {
@@ -160,9 +183,8 @@ export class Doc
             return stop + "";
         });
 
-        templateString = templateString.replace(/\n-(?=\n)/gm, "");
+        templateString = templateString.replace(/^$/gm, " *");
         templateString = templateString.replace(/^(?!(\s\*|\/\*))/gm, " * $1");
-        templateString = templateString.replace(/^\s\*\s\n/gm, " *\n");
 
         let snippet = new SnippetString(templateString);
 
@@ -172,9 +194,9 @@ export class Doc
     /**
      * Set the template for rendering
      *
-     * @param {Array<string>} template
+     * @param {Object} template
      */
-    public set template(template:Array<string>)
+    public set template(template:Object)
     {
         this._template = template;
     }
@@ -182,20 +204,18 @@ export class Doc
     /**
      * Get the template
      *
-     * @type {Array<string>}
+     * @type {Object}
      */
-    public get template():Array<string>
+    public get template():Object
     {
         if (this._template == null) {
-            return [
-                "{message}",
-                "{gap}",
-                "{var}",
-                "{params}",
-                "{returnGap}",
-                "{return}",
-                "{extra}"
-            ];
+            return {
+                message: {},
+                var: {},
+                param: {},
+                return: {},
+                extra: {}
+            }
         }
 
         return this._template;
@@ -203,7 +223,7 @@ export class Doc
 }
 
 /**
- * A simple paramter object
+ * A simple paramter*
  */
 export class Param
 {

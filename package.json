@@ -65,14 +65,14 @@
           "description": "Fully qualifies any data types used in param and returns by reading the namespaces."
         },
         "php-docblocker.functionTemplate": {
-          "type": "array",
-          "default": [
-            "{message}",
-            "{gap}",
-            "{params}",
-            "{returnGap}",
-            "{return}"
-          ],
+          "type": "object",
+          "default": {
+            "message": {},
+            "var": {},
+            "param": {},
+            "return": {},
+            "extra": {}
+          },
           "description": "Specify the default template for functions."
         },
         "php-docblocker.author": {
