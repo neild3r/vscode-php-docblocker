@@ -101,7 +101,7 @@ export class Doc
             extra = [];
         }
 
-        if (this.message != null) {
+        if (this.message != '') {
             messageString = "\${###" + (this.message != "" ? ':' : '') + this.message + "}";
         }
 
