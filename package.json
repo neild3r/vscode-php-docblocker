@@ -30,6 +30,10 @@
   "icon": "images/logo.png",
   "main": "./out/src/extension",
   "contributes": {
+    "commands": [{
+      "command": "php-docblocker.trigger",
+      "title": "Insert PHP Docblock"
+    }],
     "configuration": {
       "type": "object",
       "title": "PHP DocBlocker configuration",
