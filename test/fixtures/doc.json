@@ -290,5 +290,40 @@
             " * @param ${2:int} \\$name",
             " */"
         ]
+    },
+    {
+        "name": "Function template with placeholders",
+        "config": {
+            "template": {
+                "message": {
+                    "gapAfter": true
+                },
+                "author": {
+                    "content": "@author ${###:Neil Brayfield} <${###:neil@test.com}>"
+                },
+                "param": {
+                    "gapBefore": true
+                }
+            }
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$name",
+                    "type": "int"
+                }
+            ],
+            "return": "void"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @author ${2:Neil Brayfield} <${3:neil@test.com}>",
+            " *",
+            " * @param ${4:int} \\$name",
+            " */"
+        ]
     }
 ]

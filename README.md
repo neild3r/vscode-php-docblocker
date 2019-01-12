@@ -91,6 +91,26 @@ to true.
     }
 ```
 
+#### Configured function with extra content and placeholders
+
+The example below won't have a return tag and will add in an author tag with correct placeholders depending on 
+how many options you have. You can put in placeholders by using `###` in place of the tab stop number and it 
+will be calculated at generation time.
+
+```json
+    {
+        "message": {
+            "gapAfter": true
+        },
+        "param": {
+            "gapBefore": true
+        },
+        "author": {
+            "content": "@author ${###:Neil Brayfield} <${###:neil@test.com}>"
+        }
+    }
+```
+
 ## Supported DocBlock tags
 
 Please see below for a list of supported tags and their snippets. These tags are available within a DocBlock
