@@ -39,11 +39,16 @@ export function activate(context: vscode.ExtensionContext)
         vscode.languages.registerCompletionItemProvider(lang, new Completions(), '*', '@');
     });
 
-    vscode.commands.registerTextEditorCommand('php-docblocker.trigger', (textEditor:vscode.TextEditor) => {
+    vscode.commands.registerTextEditorCommand('php-docblocker.trigger', (textEditor:vscode.TextEditor, edit:vscode.TextEditorEdit, callback:any) => {
         textEditor.selection = new vscode.Selection(textEditor.selection.start, textEditor.selection.start);
         let range = new vscode.Range(textEditor.selection.start, textEditor.selection.end);
         let documenter = new Documenter(range, textEditor);
-        textEditor.insertSnippet(documenter.autoDocument());
+        let snippet = documenter.autoDocument();
+        textEditor.insertSnippet(snippet);
+
+        if (callback) {
+            callback(snippet);
+        }
     });
 }
 
