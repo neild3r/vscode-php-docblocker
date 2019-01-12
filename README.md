@@ -55,13 +55,14 @@ config option per key to add additional control.
 
 #### Supported template keys
 
-| Key             | Aplies to type  | Description                                    |
-|-----------------|-----------------|------------------------------------------------|
-| message         | All             | Space for entering a description of your block |
-| extra           | All             | Adds in your custom tags from the extra config |
-| param           | Function        | Function @param items                          |
-| return          | Function        | Function @return item                          |
-| var             | Property        | Property @var item                             |
+| Key             | Aplies to type  | Description                                                                       |
+|-----------------|-----------------|-----------------------------------------------------------------------------------|
+| message         | All             | Space for entering a description of your block                                    |
+| extra           | All             | Adds in your custom tags from the extra config                                    |
+| param           | Function        | Function @param items                                                             |
+| return          | Function        | Function @return item                                                             |
+| var             | Property        | Property @var item                                                                |
+| *               | All             | This is for any key that is unmatched you can use the content option to add a tag |
 
 #### Supported template config options
 
@@ -69,6 +70,7 @@ config option per key to add additional control.
 |-----------------|------------------|------------------------------------------------|
 | gapBefore       | All              | Adds a gap before the tag section starts       |
 | gapAfter        | All              | Adds a gap after the tag section ends          |
+| content         | *                | Adds a gap after the tag section ends          |
 
 #### Configured function template example
 

@@ -122,14 +122,7 @@ export class Doc
         }
 
         if (Array.isArray(extra) && extra.length > 0) {
-            extraString = "";
-            for (var index = 0; index < extra.length; index++) {
-                var element = extra[index];
-                if (index > 0) {
-                    extraString += "\n";
-                }
-                extraString += element;
-            }
+            extraString = extra.join("\n");
         }
 
 
@@ -153,6 +146,8 @@ export class Doc
                 propString = paramString;
             } else if (key == 'extra' && extraString) {
                 propString = extraString;
+            } else if (propConfig.content !== undefined) {
+                propString = propConfig.content;
             }
 
             if (propString && propConfig.gapBefore && templateArray[templateArray.length - 1] != "") {
