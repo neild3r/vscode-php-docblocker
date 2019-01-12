@@ -52,7 +52,7 @@ config option per key to add additional control.
     }
 ```
 
-##### Supported template keys
+#### Supported template keys
 
 | Key             | Aplies to type  | Description                                    |
 |-----------------|-----------------|------------------------------------------------|
@@ -62,14 +62,14 @@ config option per key to add additional control.
 | return          | Function        | Function @return item                          |
 | var             | Property        | Property @var item                             |
 
-##### Supported template config options
+#### Supported template config options
 
 | Option          | Aplies to key(s) | Description                                    |
 |-----------------|------------------|------------------------------------------------|
 | gapBefore       | All              | Adds a gap before the tag section starts       |
 | gapAfter        | All              | Adds a gap after the tag section ends          |
 
-##### Configured function template example
+#### Configured function template example
 
 In the example below we have added some gap configuration and removed the return tag for our template as well as 
 changing the default order. This means we'll never have a @return tag and extra comes before the params. It's also
