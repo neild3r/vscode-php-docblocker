@@ -155,7 +155,7 @@ export class Doc
                 propString = extraString;
             }
 
-            if (propString && propConfig.gapBefore) {
+            if (propString && propConfig.gapBefore && templateArray[templateArray.length - 1] != "") {
                 templateArray.push("");
             }
 
