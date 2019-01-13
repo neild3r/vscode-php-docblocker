@@ -28,6 +28,7 @@ This extension contributes the following settings:
 * `php-docblocker.useShortNames`: Whether we should use short type names. e.g. bool or boolean
 * `php-docblocker.qualifyClassNames`: When adding type hints for class names search namespace use statements and qualify the class 
 * `php-docblocker.author`: An object containing your default author tag settings
+* `php-docblocker.singleLineProperty`: Enables the single line variable syntax
 
 ## Supported DocBlock tags
 

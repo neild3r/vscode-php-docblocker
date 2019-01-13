@@ -26,9 +26,9 @@ export class Doc
     /**
      * Var tag
      *
-     * @type {string}
+     * @type {Param}
      */
-    public var:string;
+    public var:Param;
 
     /**
      * The message portion of the block
@@ -58,7 +58,7 @@ export class Doc
             this.return = input.return;
         }
         if (input.var !== undefined) {
-            this.var = input.var;
+            this.var = new Param(input.var.type, input.var.name);
         }
         if (input.message !== undefined) {
             this.message = input.message;
@@ -91,6 +91,19 @@ export class Doc
         let stop = 2;
 
         snippet.appendText("/**");
+
+        if (this.var && this.getConfig().singleLineProperty) {
+            snippet.appendText(" @var ");
+            snippet.appendVariable('1', this.var.type);
+            snippet.appendText(" ");
+            snippet.appendVariable('2', this.var.name);
+            snippet.appendText(" ");
+            snippet.appendVariable('3', this.message);
+            snippet.appendText(" */");
+
+            return snippet;
+        }
+
         snippet.appendText("\n * ");
         snippet.appendVariable('1', this.message);
 
@@ -113,7 +126,7 @@ export class Doc
                 gap = true;
             }
             snippet.appendText("\n * @var ");
-            snippet.appendVariable(stop++ + '', this.var);
+            snippet.appendVariable(stop++ + '', this.var.type);
         }
 
         if (this.return && (this.return != 'void' || Config.instance.get('returnVoid'))) {

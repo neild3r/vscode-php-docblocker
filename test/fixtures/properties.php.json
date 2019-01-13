@@ -2,76 +2,121 @@
     {
         "key": "public",
         "name": "Public",
-        "var": "[type]"
+        "var": {
+            "type": "[type]",
+            "name": "$public"
+        }
     },
     {
         "key": "protected",
         "name": "Protected",
-        "var": "[type]"
+        "var": {
+            "type": "[type]",
+            "name": "$protected"
+        }
     },
     {
         "key": "static",
         "name": "Static",
-        "var": "[type]"
+        "var": {
+            "type": "[type]",
+            "name": "$static"
+        }
     },
     {
         "key": "static-alternate",
         "name": "Static Alternate",
-        "var": "[type]"
+        "var": {
+            "type": "[type]",
+            "name": "$staticAlt"
+        }
     },
     {
         "key": "default-string",
         "name": "Default String",
-        "var": "string"
+        "var": {
+            "type": "string",
+            "name": "$defaultString"
+        }
     },
     {
         "key": "default-string-alternate",
         "name": "Default String Alternate",
-        "var": "string"
+        "var": {
+            "type": "string",
+            "name": "$defaultStringAlternate"
+        }
     },
     {
         "key": "default-bool",
         "name": "Default Bool",
-        "var": "boolean"
+        "var": {
+            "type": "boolean",
+            "name": "$defaultBool"
+        }
     },
     {
         "key": "default-bool-alternate",
         "name": "Default Bool Alternate",
-        "var": "boolean"
+        "var": {
+            "type": "boolean",
+            "name": "$defaultBoolAlternate"
+        }
     },
     {
         "key": "default-array",
         "name": "Default Array",
-        "var": "array"
+        "var": {
+            "type": "array",
+            "name": "$defaultArray"
+        }
     },
     {
         "key": "default-array-alternate",
         "name": "Default Array Alternate",
-        "var": "array"
+        "var": {
+            "type": "array",
+            "name": "$defaultArrayAlternate"
+        }
     },
     {
         "key": "multiline",
         "name": "Multiline",
-        "var": "array"
+        "var": {
+            "type": "array",
+            "name": "$multiline"
+        }
     },
     {
         "key": "multiline-alternate",
         "name": "Multiline Alternate",
-        "var": "array"
+        "var": {
+            "type": "array",
+            "name": "$multilineAlternate"
+        }
     },
     {
         "key": "default-float",
         "name": "Default Float",
-        "var": "float"
+        "var": {
+            "type": "float",
+            "name": "$defaultFloat"
+        }
     },
     {
         "key": "default-int",
         "name": "Default Int",
-        "var": "integer"
+        "var": {
+            "type": "integer",
+            "name": "$defaultInt"
+        }
     },
     {
         "key": "default-null",
         "name": "Default Null",
-        "var": "[type]"
+        "var": {
+            "type": "[type]",
+            "name": "$defaultNull"
+        }
     }
 ]

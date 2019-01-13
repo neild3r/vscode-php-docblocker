@@ -20,12 +20,15 @@ export default class Property extends Block
         let params = this.match();
 
         let doc = new Doc('Undocumented variable');
+        let type;
 
         if (params[5]) {
-            doc.var = this.getTypeFromValue(params[5]);
+            type = this.getTypeFromValue(params[5]);
         } else {
-            doc.var = '[type]';
+            type = '[type]';
         }
+
+        doc.var = new Param(type, params[4]);
 
         return doc;
     }
