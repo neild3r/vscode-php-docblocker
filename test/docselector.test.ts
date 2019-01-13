@@ -42,4 +42,22 @@ suite("Docblock selector tests", () => {
         assert.deepStrictEqual(selector.find(new Position(7, 2)), expected);
         assert.deepStrictEqual(selector.find(new Position(7, 3)), expected);
     });
+
+    test("No block", () => {
+        assert.throws(() => {
+            selector.find(new Position(1, 0));
+        }, /^Error: Unable to find docblock start$/);
+    });
+
+    test("No start", () => {
+        assert.throws(() => {
+            selector.find(new Position(15, 0));
+        }, /^Error: Unable to find docblock start$/);
+    });
+
+    test("No end", () => {
+        assert.throws(() => {
+            selector.find(new Position(19, 0));
+        }, /^Error: Unable to find docblock end$/);
+    });
 });
