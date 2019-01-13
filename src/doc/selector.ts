@@ -37,7 +37,7 @@ export default class DocSelector
         if (position instanceof Range) {
             start = position.start;
             end = position.end;
-        } else if (position instanceof Position) {
+        } else {
             start = position;
             end = position;
         }
