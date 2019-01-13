@@ -69,26 +69,4 @@ export default class Documenter
 
         return new Doc().build(true);
     }
-
-    /**
-     * Find an existing docblock and pass it's properties into a Doc object
-     */
-    public parseExisting():Doc
-    {
-        let line = this.targetPosition.line;
-        let part = this.editor.document.lineAt(line).text;
-        if (!part.search(/^\s*(\*|\/\*\*)/)) {
-            return null;
-        }
-
-        // Find the start position
-        while (!part.search(/^\s*\/\*\*\s*/) && line > 1) {
-            line--;
-            part = this.editor.document.lineAt(line).text;
-        }
-
-        console.log(part);
-
-        return new Doc();
-    }
 }
