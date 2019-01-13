@@ -23,6 +23,9 @@ suite("Docblock selector tests", () => {
         assert.deepStrictEqual(selector.find(new Position(2, 0)), expected);
         assert.deepStrictEqual(selector.find(new Position(2, 2)), expected);
         assert.deepStrictEqual(selector.find(new Position(2, 3)), expected);
+        assert.deepStrictEqual(selector.find(new Range(new Position(2, 0), new Position(7, 3))), expected);
+        assert.deepStrictEqual(selector.find(new Range(new Position(2, 0), new Position(8, 3))), expected);
+        assert.deepStrictEqual(selector.find(new Range(new Position(2, 0), new Position(3, 3))), expected);
     });
 
     test("Find by middle", () => {
@@ -30,6 +33,8 @@ suite("Docblock selector tests", () => {
         assert.deepStrictEqual(selector.find(new Position(3, 2)), expected);
         assert.deepStrictEqual(selector.find(new Position(4, 3)), expected);
         assert.deepStrictEqual(selector.find(new Position(6, 10)), expected);
+        assert.deepStrictEqual(selector.find(new Range(new Position(4, 0), new Position(5, 3))), expected);
+        assert.deepStrictEqual(selector.find(new Range(new Position(4, 0), new Position(7, 3))), expected);
     });
 
     test("Find by end", () => {

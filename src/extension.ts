@@ -51,11 +51,12 @@ export function activate(context: ExtensionContext)
     commands.registerTextEditorCommand('php-docblocker.re-parse', (textEditor:TextEditor) => {
         textEditor.selection = new Selection(textEditor.selection.start, textEditor.selection.start);
         let range = new Range(textEditor.selection.start, textEditor.selection.end);
-        let documenter = new Documenter(range, textEditor);
-        let snippet = documenter.autoDocument();
 
         let selector:DocSelector = new DocSelector(textEditor);
         let existing:Range = selector.find(range);
+
+        let documenter = new Documenter(new Range(existing.end, existing.end), textEditor);
+        let snippet = documenter.autoDocument();
 
         textEditor.insertSnippet(snippet);
     });
