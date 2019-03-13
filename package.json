@@ -61,7 +61,7 @@
         "php-docblocker.useShortNames": {
           "type": "boolean",
           "default": false,
-          "description": "Wether you want to use integer instead of int and boolean instead of bool."
+          "description": "Whether you want to use int instead of integer and bool instead of boolean."
         },
         "php-docblocker.qualifyClassNames": {
           "type": "boolean",
