@@ -34,41 +34,67 @@ This extension contributes the following settings:
 Please see below for a list of supported tags and their snippets. These tags are available within a DocBlock
 and can be triggered by typing @ then another characted (Provided your vscode settings allow).
 
-| Tag             | Snippet                                 |
-|-----------------|-----------------------------------------|
-| @api            | @api                                    |
-| @abstract       | @abstract                               |
-| @author         | @author ${1:{{name}}} <${2:{{email}}}>  |
-| @category       | @category ${1:description}              |
-| @copyright      | @copyright ${1:2018} ${2:Name}          |
-| @deprecated     | @deprecated ${1:version}                |
-| @example        | @example ${1:location} ${2:description} |
-| @filesource     | @filesource                             |
-| @final          | @final                                  |
-| @group          | @group ${1:group}                       |
-| @global         | @global                                 |
-| @ignore         | @ignore ${1:description}                |
-| @inheritDoc     | @inheritDoc                             |
-| @internal       | @internal ${1:description}              |
-| @license        | @license ${1:MIT}                       |
-| @link           | @link ${1:http://url.com}               |
-| @method         | @method ${1:mixed} ${2:methodName()}    |
-| @package        | @package ${1:category}                  |
-| @param          | @param ${1:mixed} $${2:name}            |
-| @property       | @property ${1:mixed} $${2:name}         |
-| @property-read  | @property-read ${1:mixed} $${2:name}    |
-| @property-write | @property-write ${1:mixed} $${2:name}   |
-| @return         | @return ${1:mixed}                      |
-| @see            | @see ${1:http://url.com}                |
-| @since          | @since ${1:1.0.0}                       |
-| @source         | @source ${1:location} ${2:description}  |
-| @static         | @static                                 |
-| @subpackage     | @subpackage ${1:category}               |
-| @throws         | @throws ${1:Exception}                  |
-| @todo           | @todo ${1:Something}                    |
-| @uses           | @uses ${1:MyClass::function} ${2:Name}  |
-| @var            | @var ${1:mixed}                         |
-| @version        | @version ${1:1.0.0}                     |
+| Tag                          | Snippet                                 |
+| ---------------------------- | --------------------------------------- |
+| @api                         | @api                                    |
+| @abstract                    | @abstract                               |
+| @after                       | @after                                  |
+| @afterClass                  | @afterClass                             |
+| @author                      | @author ${1:{{name}}} <${2:{{email}}}>  |
+| @backupGlobals               | @backupGlobals ${1:switch}              |
+| @backupStaticAttributes      | @backupStaticAttributes ${1:switch}     |
+| @before                      | @before                                 |
+| @beforeClass                 | @beforeClass                            |
+| @category                    | @category ${1:description}              |
+| @codeCoverageIgnore          | @codeCoverageIgnore                     |
+| @codeCoverageIgnoreEnd       | @codeCoverageIgnoreEnd                  |
+| @codeCoverageIgnoreStart     | @codeCoverageIgnoreStart                |
+| @copyright                   | @copyright ${1:2018} ${2:Name}          |
+| @covers                      | @covers ${1:fqcn}                       |
+| @coversDefaultClass          | @coversDefaultClass ${1:fqcn}           |
+| @coversNothing               | @coversNothing                          |
+| @dataProvider                | @dataProvider ${1:methodName}           |
+| @depends                     | @depends ${1:methodName}                |
+| @deprecated                  | @deprecated ${1:version}                |
+| @doesNotPerformAssertions    | @doesNotPerformAssertions               |
+| @example                     | @example ${1:location} ${2:description} |
+| @filesource                  | @filesource                             |
+| @final                       | @final                                  |
+| @group                       | @group ${1:group}                       |
+| @global                      | @global                                 |
+| @ignore                      | @ignore ${1:description}                |
+| @inheritDoc                  | @inheritDoc                             |
+| @internal                    | @internal ${1:description}              |
+| @large                       | @large                                  |
+| @license                     | @license ${1:MIT}                       |
+| @link                        | @link ${1:http://url.com}               |
+| @medium                      | @medium                                 |
+| @method                      | @method ${1:mixed} ${2:methodName()}    |
+| @package                     | @package ${1:category}                  |
+| @param                       | @param ${1:mixed} $${2:name}            |
+| @preserveGlobalState         | @preserveGlobalState                    |
+| @property                    | @property ${1:mixed} $${2:name}         |
+| @property-read               | @property-read ${1:mixed} $${2:name}    |
+| @property-write              | @property-write ${1:mixed} $${2:name}   |
+| @requires                    | @requires ${1:mixed}                    |
+| @return                      | @return ${1:mixed}                      |
+| @runInSeparateProcess        | @runInSeparateProcess                   |
+| @runTestsInSeparateProcesses | @runTestsInSeparateProcesses            |
+| @see                         | @see ${1:http://url.com}                |
+| @since                       | @since ${1:1.0.0}                       |
+| @small                       | @small                                  |
+| @source                      | @source ${1:location} ${2:description}  |
+| @static                      | @static                                 |
+| @subpackage                  | @subpackage ${1:category}               |
+| @test                        | @test                                   |
+| @testdox                     | @testdox ${1:description}               |
+| @testWith                    | @testWith ${1:elements}                 |
+| @throws                      | @throws ${1:Exception}                  |
+| @ticket                      | @ticket ${1:ticket}                     |
+| @todo                        | @todo ${1:Something}                    |
+| @uses                        | @uses ${1:MyClass::function} ${2:Name}  |
+| @var                         | @var ${1:mixed}                         |
+| @version                     | @version ${1:1.0.0}                     |
 
 ## Future development
 
