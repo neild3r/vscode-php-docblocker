@@ -12,6 +12,7 @@ We now have a set of unit tests and some full coverage on the parsing of signatu
 * Continuation of DocBlock when pressing enter when in a DocBlock
 * Completion of DocBlock tags such as `@param`, `@return`, `@throws`
 * Inferring of param and return types from signatures
+* Configuration of template for each type of docblock completion
 
 ## Requirements
 
@@ -28,6 +29,87 @@ This extension contributes the following settings:
 * `php-docblocker.useShortNames`: Whether we should use short type names. e.g. bool or boolean
 * `php-docblocker.qualifyClassNames`: When adding type hints for class names search namespace use statements and qualify the class 
 * `php-docblocker.author`: An object containing your default author tag settings
+* `php-docblocker.functionTemplate`: See below for how to set up docblock templates
+* `php-docblocker.propertyTemplate`: See below for how to set up docblock templates
+* `php-docblocker.classTemplate`: See below for how to set up docblock templates
+
+### Templating
+
+If you want more control over the order or gap settings on your docblocks or you want different things for properties vs class templates
+you can start customising the template configuration objects. These are the config options `functionTemplate`, `propertyTemplate` and
+`classTemplate`.
+
+#### Default set up for function
+
+The below is the default set up for a function. The order of the keys represents the output order. There are no specific options in each
+config option per key to add additional control.
+
+```json
+    {
+        "message": {},
+        "param": {},
+        "return": {},
+        "extra": {}
+    }
+```
+
+#### Supported template keys
+
+| Key             | Aplies to type  | Description                                                                       |
+|-----------------|-----------------|-----------------------------------------------------------------------------------|
+| message         | All             | Space for entering a description of your block                                    |
+| extra           | All             | Adds in your custom tags from the extra config                                    |
+| param           | Function        | Function @param items                                                             |
+| return          | Function        | Function @return item                                                             |
+| var             | Property        | Property @var item                                                                |
+| *               | All             | This is for any key that is unmatched you can use the content option to add a tag |
+
+#### Supported template config options
+
+| Option          | Aplies to key(s) | Description                                    |
+|-----------------|------------------|------------------------------------------------|
+| gapBefore       | All              | Adds a gap before the tag section starts       |
+| gapAfter        | All              | Adds a gap after the tag section ends          |
+| content         | *                | Adds a gap after the tag section ends          |
+
+#### Configured function template example
+
+In the example below we have added some gap configuration and removed the return tag for our template as well as 
+changing the default order. This means we'll never have a @return tag and extra comes before the params. It's also
+worth pointing out that the gapAfter in the message is the same as setting the gap config option in the main config
+to true.
+
+```json
+    {
+        "message": {
+            "gapAfter": true
+        },
+        "extra": {},
+        "param": {
+            "gapBefore": true
+        },
+    }
+```
+
+#### Configured function with extra content and placeholders
+
+The example below won't have a return tag and will add in an author tag with correct placeholders depending on 
+how many options you have. You can put in placeholders by using `###` in place of the tab stop number and it 
+will be calculated at generation time.
+
+```json
+    {
+        "message": {
+            "gapAfter": true
+        },
+        "param": {
+            "gapBefore": true
+        },
+        "author": {
+            "content": "@author ${###:Neil Brayfield} <${###:neil@test.com}>"
+        }
+    }
+```
 
 ## Supported DocBlock tags
 

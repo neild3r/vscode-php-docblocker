@@ -1,5 +1,6 @@
 import { Block } from "../block";
 import { Doc, Param } from "../doc";
+import Config from "../util/config";
 
 /**
  * Represents a class block
@@ -18,6 +19,7 @@ export default class Class extends Block
     {
         let params = this.match();
         let doc = new Doc('Undocumented '+ params[2]);
+        doc.template = Config.instance.get('classTemplate');
 
         return doc;
     }

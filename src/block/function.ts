@@ -26,6 +26,7 @@ export default class FunctionBlock extends Block
         let params = this.match();
 
         let doc = new Doc('Undocumented function');
+        doc.template = Config.instance.get('functionTemplate');
         let argString = this.getEnclosed(params[6], "(", ")");
         let head:string;
 

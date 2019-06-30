@@ -21,6 +21,9 @@ suite("Snippet build tests", () => {
             } else {
                 empty = true;
             }
+            if (Config.instance.get('template')) {
+                doc.template = Config.instance.get('template');
+            }
             assert.equal(doc.build(empty).value, testData.expected.join("\n"));
         });
     });

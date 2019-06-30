@@ -68,6 +68,33 @@
           "default": false,
           "description": "Fully qualifies any data types used in param and returns by reading the namespaces."
         },
+        "php-docblocker.functionTemplate": {
+          "type": "object",
+          "default": {
+            "message": {},
+            "param": {},
+            "return": {},
+            "extra": {}
+          },
+          "description": "Specify the default template for functions."
+        },
+        "php-docblocker.propertyTemplate": {
+          "type": "object",
+          "default": {
+            "message": {},
+            "var": {},
+            "extra": {}
+          },
+          "description": "Specify the default template for class variables."
+        },
+        "php-docblocker.classTemplate": {
+          "type": "object",
+          "default": {
+            "message": {},
+            "extra": {}
+          },
+          "description": "Specify the default template for classes."
+        },
         "php-docblocker.author": {
           "type": "object",
           "default": {
