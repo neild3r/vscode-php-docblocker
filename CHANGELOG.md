@@ -2,6 +2,9 @@
 
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
+## [1.9.0] - 2019-06-30
+- Add PHPUnit annotations to docblock completions - Thanks @goodjack
+
 ## [1.8.0] - 2019-03-13
 - Add a command to trigger DocBlocking
 - Update configuration description around short names - Thanks @dave470003
