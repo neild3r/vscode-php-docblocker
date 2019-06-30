@@ -2,6 +2,9 @@
 
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
+## [2.0.0] - 2019-06-30
+- Add templating system to handle how DocBlocks are created. While not strictly a breaking change it is a major update so this is why it has been released as 2.0.0
+
 ## [1.9.0] - 2019-06-30
 - Add PHPUnit annotations to docblock completions - Thanks @goodjack
 
@@ -100,7 +103,9 @@ All notable changes to the "php-docblocker" extension will be documented in this
 ## 0.1.0 - 2017-03-12
 - Initial release
 
-[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.8.0...HEAD
+[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.9.0...v2.0.0
+[1.9.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.8.0...v1.9.0
 [1.8.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.5.0...v1.6.0
