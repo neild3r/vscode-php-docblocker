@@ -70,29 +70,17 @@
         },
         "php-docblocker.functionTemplate": {
           "type": "object",
-          "default": {
-            "message": {},
-            "param": {},
-            "return": {},
-            "extra": {}
-          },
+          "default": null,
           "description": "Specify the default template for functions."
         },
         "php-docblocker.propertyTemplate": {
           "type": "object",
-          "default": {
-            "message": {},
-            "var": {},
-            "extra": {}
-          },
+          "default": null,
           "description": "Specify the default template for class variables."
         },
         "php-docblocker.classTemplate": {
           "type": "object",
-          "default": {
-            "message": {},
-            "extra": {}
-          },
+          "default": null,
           "description": "Specify the default template for classes."
         },
         "php-docblocker.author": {
