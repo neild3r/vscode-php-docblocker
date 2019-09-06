@@ -3,6 +3,7 @@
   "displayName": "PHP DocBlocker",
   "description": "A simple, dependency free PHP specific DocBlocking package",
   "version": "2.0.1",
+  "license": "MIT",
   "publisher": "neilbrayfield",
   "author": "Neil Brayfield <dev@brayfield.uk>",
   "engines": {
@@ -109,9 +110,8 @@
     "@types/mocha": "^2.2.32",
     "@types/node": "^6.0.40",
     "@types/vscode": "^1.17",
-    "istanbul": "^0.4.5",
-    "mocha": "^2.3.3",
-    "remap-istanbul": "^0.9.5",
+    "mocha": "^6.1.4",
+    "nyc": "^14.1.1",
     "typescript": "^3.5.1",
     "vscode-test": "^1.2.0"
   }
