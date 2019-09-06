@@ -5,6 +5,7 @@ node_js:
 addons:
   apt:
     packages:
+      - unzip
       - libsecret-1-dev
 
 before_install:
