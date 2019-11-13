@@ -438,6 +438,14 @@
         }
     },
     {
+        "key": "should",
+        "name": "Check should prefix",
+        "result": {
+            "return": "boolean",
+            "params": []
+        }
+    },
+    {
         "key": "debug-info",
         "name": "Debug info return type",
         "result": {

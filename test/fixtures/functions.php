@@ -166,9 +166,14 @@ abstract class Test
     public function hasValue()
     {
     }
-    
+
     ////=> can
     public function canValue()
+    {
+    }
+
+    ////=> should
+    public function shouldDoSomething()
     {
     }
 
