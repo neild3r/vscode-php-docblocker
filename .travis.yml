@@ -19,7 +19,7 @@ install:
   - npm run vscode:prepublish
 
 after_success:
-  - npm coverage
+  - npm run coverage
 
 notifications:
   email:
