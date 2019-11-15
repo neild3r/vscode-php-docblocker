@@ -103,13 +103,14 @@
     "lint": "tslint -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile",
-    "test": "node ./out/test/runTest.js"
+    "test": "node ./out/test/runTest.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "devDependencies": {
-    "@types/istanbul": "^0.4.29",
-    "@types/mocha": "^2.2.32",
+    "@types/mocha": "^5.2.6",
     "@types/node": "^6.0.40",
     "@types/vscode": "^1.17",
+    "coveralls": "^3.0.7",
     "mocha": "^6.1.4",
     "nyc": "^14.1.1",
     "typescript": "^3.5.1",
