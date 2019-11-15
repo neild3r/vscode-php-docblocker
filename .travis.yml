@@ -2,12 +2,6 @@ language: node_js
 node_js:
   - "12"
 
-addons:
-  apt:
-    packages:
-      - unzip
-      - libsecret-1-dev
-
 before_install:
   - |
     if [ $TRAVIS_OS_NAME == "linux" ]; then
