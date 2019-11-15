@@ -21,6 +21,10 @@ install:
 after_success:
   - npm run coverage
 
+cache:
+  directories:
+    - .vscode-test
+
 notifications:
   email:
     on_success: never
