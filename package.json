@@ -112,7 +112,7 @@
     "@types/vscode": "^1.17",
     "coveralls": "^3.0.7",
     "mocha": "^6.1.4",
-    "nyc": "^14.1.1",
+    "nyc": "^13.0.0",
     "typescript": "^3.5.1",
     "vscode-test": "^1.2.0"
   }
