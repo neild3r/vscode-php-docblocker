@@ -3,7 +3,6 @@ import {TextEditor, TextDocument, WorkspaceConfiguration} from 'vscode';
 import Helper from './helpers';
 import Function from '../src/block/function';
 import {Doc, Param} from '../src/doc';
-import { callback } from './bootstrap';
 import Config from '../src/util/config';
 
 suite("Function tests", () => {
