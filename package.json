@@ -104,7 +104,7 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile",
     "test": "node ./out/test/runTest.js",
-    "coverage": "nyc report --reporter=json > coverage.json"
+    "coverage": "nyc report --reporter=json"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.6",
