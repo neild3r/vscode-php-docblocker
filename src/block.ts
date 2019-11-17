@@ -198,8 +198,6 @@ export abstract class Block
 
         result.push(context.substr(startPos, endPos - startPos + 1));
 
-        console.log(result);
-
         return result;
     }
 
