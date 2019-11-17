@@ -20,7 +20,7 @@ install:
 
 after_success:
   - npm run coverage
-  - codecov
+  - codecov -f coverage/coverage-final.json
 
 cache:
   directories:
