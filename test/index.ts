@@ -54,6 +54,5 @@ export async function run(): Promise<void> {
     } finally {
         nyc.writeCoverageFile();
         nyc.report();
-        console.log(nyc);
     }
 }
