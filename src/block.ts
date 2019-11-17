@@ -135,11 +135,11 @@ export abstract class Block
      * Parse a nested block of code
      *
      * @param {string} context
-     * @param {string} [opening="{"]
-     * @param {string} [closing="}"]
+     * @param {string} [opening]
+     * @param {string} [closing]
      * @returns {string}
      */
-    public getEnclosed(context:string, opening:string = "{", closing:string = "}"):string
+    public getEnclosed(context:string, opening:string, closing:string):string
     {
         let opened = 0;
         let contextArray:Array<string> = context.split("");
