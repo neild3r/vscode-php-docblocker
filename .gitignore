@@ -3,5 +3,4 @@
 .nyc_output
 out
 node_modules
-coverage
 .coveralls.yml
