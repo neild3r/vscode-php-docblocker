@@ -115,5 +115,8 @@
     "nyc": "^13.0.0",
     "typescript": "^3.5.1",
     "vscode-test": "^1.2.0"
+  },
+  "dependencies": {
+    "codecov": "^3.6.1"
   }
 }

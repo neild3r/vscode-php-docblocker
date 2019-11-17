@@ -20,6 +20,7 @@ install:
 
 after_success:
   - npm run coverage
+  - codecov
 
 cache:
   directories:
