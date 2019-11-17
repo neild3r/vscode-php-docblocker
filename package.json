@@ -115,5 +115,8 @@
     "typescript": "^3.5.1",
     "vscode-test": "^1.2.0",
     "codecov": "^3.6.1"
+  },
+  "dependencies": {
+    "coveralls": "^3.0.7"
   }
 }
