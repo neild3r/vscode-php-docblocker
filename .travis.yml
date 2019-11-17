@@ -19,8 +19,7 @@ install:
   - npm run vscode:prepublish
 
 after_success:
-  - npm run coverage
-  - codecov -f coverage/coverage-final.json
+  - codecov
 
 cache:
   directories:
