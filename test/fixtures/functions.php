@@ -183,7 +183,7 @@ abstract class Test
     }
 
     ////=> has-only
-    public function hash()
+    public function has()
     {
     }
 
