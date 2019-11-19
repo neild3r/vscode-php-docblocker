@@ -310,6 +310,14 @@
         }
     },
     {
+        "key": "php7-return-snake",
+        "name": "PHP7 return snake case",
+        "result": {
+            "return": "Type_Hint3",
+            "params": []
+        }
+    },
+    {
         "key": "php7-return-alt",
         "name": "PHP7 return type alternate",
         "config": {
