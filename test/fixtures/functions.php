@@ -166,13 +166,58 @@ abstract class Test
     {
     }
 
+    ////=> is-void
+    public function isotope()
+    {
+    }
+
+    ////=> is-only
+    public function is()
+    {
+    }
+
     ////=> has
     public function hasValue()
     {
     }
 
+    ////=> has-void
+    public function hashed()
+    {
+    }
+
+    ////=> has-only
+    public function has()
+    {
+    }
+
     ////=> can
     public function canValue()
+    {
+    }
+
+    ////=> can-void
+    public function cancel()
+    {
+    }
+
+    ////=> can-only
+    public function can()
+    {
+    }
+
+    ////=> should
+    public function shouldDoSomething()
+    {
+    }
+
+    ////=> should-void
+    public function shouldasdf()
+    {
+    }
+
+    ////=> should-only
+    public function should()
     {
     }
 
