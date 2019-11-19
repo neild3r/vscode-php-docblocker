@@ -113,6 +113,10 @@ abstract class Test
     public function getPHP7Return(): TypeHint {
     }
 
+    ////=> php7-return-snake
+    public function getPHP7ReturnSnake(): Type_Hint3 {
+    }
+
     ////=> php7-return-alt
     public function getPHP7ReturnAlt():float
     {
@@ -166,7 +170,7 @@ abstract class Test
     public function hasValue()
     {
     }
-    
+
     ////=> can
     public function canValue()
     {
