@@ -90,6 +90,8 @@ export class Doc
         let gap = Config.instance.get('gap');
         let returnGap = Config.instance.get('returnGap');
         let alignParams = Config.instance.get('alignParams');
+        // Align return is false if align params is not active.
+        let alignReturn = alignParams ? Config.instance.get('alignReturn') : false;
 
         let returnString = "";
         let varString = "";
@@ -104,12 +106,10 @@ export class Doc
 
         messageString = "\${###" + (this.message != "" ? ':' : '') + this.message + "}";
 
+        // Loop through params and find max length of type and name.
+        let maxParamTypeLength = 0;
+        let maxParamNameLength = 0;
         if (this.params.length) {
-            paramString = "";
-
-            // Loop through params and find max length of type and name.
-            let maxParamTypeLength = 0;
-            let maxParamNameLength = 0;
             this.params.forEach(param => {
                 let paramType = param.type;
                 if (paramType.length > maxParamTypeLength) {
@@ -120,6 +120,16 @@ export class Doc
                     maxParamNameLength = paramName.length;
                 }
             });
+        }
+        if (this.return && (this.return != 'void' || Config.instance.get('returnVoid')) && alignReturn) {
+            let returnType = this.return;
+            if (returnType.length > maxParamTypeLength) {
+                maxParamTypeLength = returnType.length;
+            }
+        }
+
+        if (this.params.length) {
+            paramString = "";
 
             this.params.forEach(param => {
                 if (paramString != "") {
@@ -129,14 +139,21 @@ export class Doc
                 let paramType = param.type;
                 let paramName = param.name.replace('$', '\\$');
 
-                if (alignParams) {
-                    // Append additional spaces on param type and param name.
-                    paramType = paramType + (Array(maxParamTypeLength - paramType.length).fill(' ').join(''));
-                    // Add 1 to array size, so there is already a space appended for typing comments.
-                    paramName = paramName + (Array(1 + maxParamNameLength - paramName.length).fill(' ').join(''));
+                // Prepend space to align '@param' and '@return'.
+                let prependSpace = '';
+                if (alignReturn) {
+                    prependSpace = ' ';
                 }
 
-                paramString += "@param \${###:"+paramType+"} " + paramName;
+                let appendSpace = '';
+                if (alignParams) {
+                    // Append additional spaces on param type and param name.
+                    appendSpace = Array(maxParamTypeLength - paramType.length).fill(' ').join('');
+                    // Add 1 to array size, so there is already a space appended for typing comments.
+                    paramName += (Array(1 + maxParamNameLength - paramName.length).fill(' ').join(''));
+                }
+
+                paramString += "@param "+prependSpace+"\${###:"+paramType+"} " + appendSpace + paramName;
             });
         }
 
@@ -145,7 +162,11 @@ export class Doc
         }
 
         if (this.return && (this.return != 'void' || Config.instance.get('returnVoid'))) {
-            returnString = "@return \${###:" +this.return + "}";
+            let appendSpace = '';
+            if (alignReturn) {
+                appendSpace = (Array(1 + maxParamNameLength).fill(' ').join(''));
+            }
+            returnString = "@return \${###:" +this.return + "}" + appendSpace;
         }
 
         if (Array.isArray(extra) && extra.length > 0) {

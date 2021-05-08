@@ -73,12 +73,12 @@
         },
         "php-docblocker.alignParams": {
           "type": "boolean",
-          "default": true,
+          "default": false,
           "description": "Vertically aligns param types and names with additional spaces."
         },
         "php-docblocker.alignReturn": {
           "type": "boolean",
-          "default": true,
+          "default": false,
           "description": "Vertically aligns return with above param statements."
         },
         "php-docblocker.functionTemplate": {
