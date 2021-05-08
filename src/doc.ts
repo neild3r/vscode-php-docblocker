@@ -89,6 +89,7 @@ export class Doc
         let extra = Config.instance.get('extra');
         let gap = Config.instance.get('gap');
         let returnGap = Config.instance.get('returnGap');
+        let alignParams = Config.instance.get('alignParams');
 
         let returnString = "";
         let varString = "";
@@ -105,11 +106,37 @@ export class Doc
 
         if (this.params.length) {
             paramString = "";
+
+            // Loop through params and find max length of type and name.
+            let maxParamTypeLength = 0;
+            let maxParamNameLength = 0;
+            this.params.forEach(param => {
+                let paramType = param.type;
+                if (paramType.length > maxParamTypeLength) {
+                    maxParamTypeLength = paramType.length;
+                }
+                let paramName = param.name.replace('$', '\\$')
+                if (paramName.length > maxParamNameLength) {
+                    maxParamNameLength = paramName.length;
+                }
+            });
+
             this.params.forEach(param => {
                 if (paramString != "") {
                     paramString += "\n";
                 }
-                paramString += "@param \${###:"+param.type+"} " + param.name.replace('$', '\\$');
+
+                let paramType = param.type;
+                let paramName = param.name.replace('$', '\\$');
+
+                if (alignParams) {
+                    // Append additional spaces on param type and param name.
+                    paramType = paramType + (Array(maxParamTypeLength - paramType.length).fill(' ').join(''));
+                    // Add 1 to array size, so there is already a space appended for typing comments.
+                    paramName = paramName + (Array(1 + maxParamNameLength - paramName.length).fill(' ').join(''));
+                }
+
+                paramString += "@param \${###:"+paramType+"} " + paramName;
             });
         }
 
