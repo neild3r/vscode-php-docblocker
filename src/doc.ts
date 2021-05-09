@@ -121,6 +121,7 @@ export class Doc
                 }
             });
         }
+        // If align return is active, check if it has a longer type.
         if (this.return && (this.return != 'void' || Config.instance.get('returnVoid')) && alignReturn) {
             let returnType = this.return;
             if (returnType.length > maxParamTypeLength) {
@@ -130,7 +131,6 @@ export class Doc
 
         if (this.params.length) {
             paramString = "";
-
             this.params.forEach(param => {
                 if (paramString != "") {
                     paramString += "\n";
@@ -139,21 +139,21 @@ export class Doc
                 let paramType = param.type;
                 let paramName = param.name.replace('$', '\\$');
 
-                // Prepend space to align '@param' and '@return'.
                 let prependSpace = '';
-                if (alignReturn) {
-                    prependSpace = ' ';
-                }
-
                 let appendSpace = '';
                 if (alignParams) {
                     // Append additional spaces on param type and param name.
-                    appendSpace = Array(maxParamTypeLength - paramType.length).fill(' ').join('');
+                    prependSpace = Array(maxParamTypeLength - paramType.length).fill(' ').join('');
                     // Add 1 to array size, so there is already a space appended for typing comments.
-                    paramName += (Array(1 + maxParamNameLength - paramName.length).fill(' ').join(''));
+                    appendSpace = Array(1 + maxParamNameLength - paramName.length).fill(' ').join('');
                 }
 
-                paramString += "@param "+prependSpace+"\${###:"+paramType+"} " + appendSpace + paramName;
+                paramString +=
+                    "@param " +
+                    // Add extra space to align '@param' and '@return'.
+                    (alignReturn ? ' ' : '') +
+                    "\${###:"+paramType+"} " +
+                    prependSpace + paramName + appendSpace;
             });
         }
 
@@ -164,7 +164,7 @@ export class Doc
         if (this.return && (this.return != 'void' || Config.instance.get('returnVoid'))) {
             let appendSpace = '';
             if (alignReturn) {
-                appendSpace = (Array(1 + maxParamNameLength).fill(' ').join(''));
+                appendSpace = Array(1 + maxParamNameLength).fill(' ').join('');
             }
             returnString = "@return \${###:" +this.return + "}" + appendSpace;
         }

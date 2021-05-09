@@ -29,6 +29,7 @@ This extension contributes the following settings:
 * `php-docblocker.useShortNames`: Whether we should use short type names. e.g. bool or boolean
 * `php-docblocker.qualifyClassNames`: When adding type hints for class names search namespace use statements and qualify the class
 * `php-docblocker.alignParams`: set to `true` to align params vertically and add appropriate spaces after param names
+* `php-docblocker.alignReturn`: set to `true` to align return vertically with above params statements, this setting requires align params to also be active
 * `php-docblocker.author`: An object containing your default author tag settings
 * `php-docblocker.functionTemplate`: See below for how to set up docblock templates
 * `php-docblocker.propertyTemplate`: See below for how to set up docblock templates
