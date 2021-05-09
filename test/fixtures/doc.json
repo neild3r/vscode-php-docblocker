@@ -373,6 +373,10 @@
                 {
                     "name": "$name",
                     "type": "string"
+                },
+                {
+                    "name": "$nameEvenLonger",
+                    "type": "LongClassName"
                 }
             ],
             "return": "void"
@@ -381,8 +385,9 @@
             "/**",
             " * ${1:Undocumented function}",
             " *",
-            " * @param ${2:int}    \\$nameLong ",
-            " * @param ${3:string} \\$name     ",
+            " * @param ${2:int}           \\$nameLong       ",
+            " * @param ${3:string}        \\$name           ",
+            " * @param ${4:LongClassName} \\$nameEvenLonger ",
             " */"
         ]
     },
