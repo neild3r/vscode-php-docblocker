@@ -351,8 +351,8 @@
             " * ${1:Undocumented function}",
             " *",
             " * @param ${2:int}    \\$nameLong ",
-            " * @param ${2:string} \\$name     ",
-            " * @return ${3:LongClassName}",
+            " * @param ${3:string} \\$name     ",
+            " * @return ${4:LongClassName}",
             " */"
         ]
     },
@@ -382,7 +382,7 @@
             " * ${1:Undocumented function}",
             " *",
             " * @param ${2:int}    \\$nameLong ",
-            " * @param ${2:string} \\$name     ",
+            " * @param ${3:string} \\$name     ",
             " */"
         ]
     },
@@ -412,8 +412,8 @@
             " * ${1:Undocumented function}",
             " *",
             " * @param  ${2:int}           \\$nameLong ",
-            " * @param  ${2:string}        \\$name     ",
-            " * @return ${3:LongClassName}           ",
+            " * @param  ${3:string}        \\$name     ",
+            " * @return ${4:LongClassName}           ",
             " */"
         ]
     }
