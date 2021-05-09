@@ -325,5 +325,55 @@
             " * @param ${4:int} \\$name",
             " */"
         ]
+    },
+    {
+        "name": "Align params",
+        "config": {
+            "gap": true,
+            "alignParams": true
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$name",
+                    "type": "int"
+                }
+            ],
+            "return": "void"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param ${2:int} \\$name",
+            " * @return ${3:void}",
+            " */"
+        ]
+    },
+    {
+        "name": "Align params and return statement",
+        "config": {
+            "gap": true,
+            "alignParams": true
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$name",
+                    "type": "int"
+                }
+            ],
+            "return": "void"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param  ${2:int} \\$name ",
+            " * @return ${3:void}        ",
+            " */"
+        ]
     }
 ]

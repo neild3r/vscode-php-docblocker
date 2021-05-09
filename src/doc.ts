@@ -109,7 +109,7 @@ export class Doc
         // Loop through params and find max length of type and name.
         let maxParamTypeLength = 0;
         let maxParamNameLength = 0;
-        if (this.params.length) {
+        if (this.params.length && alignParams) {
             this.params.forEach(param => {
                 let paramType = param.type;
                 if (paramType.length > maxParamTypeLength) {
