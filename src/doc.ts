@@ -164,7 +164,9 @@ export class Doc
         if (this.return && (this.return != 'void' || Config.instance.get('returnVoid'))) {
             let appendSpace = '';
             if (alignReturn) {
-                appendSpace = Array(1 + maxParamNameLength).fill(' ').join('');
+                appendSpace =
+                    Array(1 + maxParamTypeLength - this.return.length).fill(' ').join('') +
+                    Array(maxParamNameLength).fill(' ').join('');
             }
             returnString = "@return \${###:" +this.return + "}" + appendSpace;
         }
