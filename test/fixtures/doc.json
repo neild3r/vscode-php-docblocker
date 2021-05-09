@@ -377,6 +377,10 @@
                 {
                     "name": "$nameEvenLonger",
                     "type": "LongClassName"
+                },
+                {
+                    "name": "$n",
+                    "type": "bool"
                 }
             ],
             "return": "void"
@@ -388,6 +392,7 @@
             " * @param ${2:int}           \\$nameLong       ",
             " * @param ${3:string}        \\$name           ",
             " * @param ${4:LongClassName} \\$nameEvenLonger ",
+            " * @param ${5:bool}          \\$n              ",
             " */"
         ]
     },
