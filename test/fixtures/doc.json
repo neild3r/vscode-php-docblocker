@@ -336,8 +336,43 @@
             "message": "Undocumented function",
             "params": [
                 {
-                    "name": "$name",
+                    "name": "$nameLong",
                     "type": "int"
+                },
+                {
+                    "name": "$name",
+                    "type": "string"
+                }
+            ],
+            "return": "LongClassName"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param ${2:int}    \\$nameLong ",
+            " * @param ${2:string} \\$name     ",
+            " * @return ${3:LongClassName}",
+            " */"
+        ]
+    },
+    {
+        "name": "Align params without return statement",
+        "config": {
+            "gap": true,
+            "alignParams": true,
+            "returnVoid": false
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$nameLong",
+                    "type": "int"
+                },
+                {
+                    "name": "$name",
+                    "type": "string"
                 }
             ],
             "return": "void"
@@ -346,8 +381,8 @@
             "/**",
             " * ${1:Undocumented function}",
             " *",
-            " * @param ${2:int} \\$name",
-            " * @return ${3:void}",
+            " * @param ${2:int}    \\$nameLong ",
+            " * @param ${2:string} \\$name     ",
             " */"
         ]
     },
@@ -355,24 +390,30 @@
         "name": "Align params and return statement",
         "config": {
             "gap": true,
-            "alignParams": true
+            "alignParams": true,
+            "alignReturn": true
         },
         "input": {
             "message": "Undocumented function",
             "params": [
                 {
-                    "name": "$name",
+                    "name": "$nameLong",
                     "type": "int"
+                },
+                {
+                    "name": "$name",
+                    "type": "string"
                 }
             ],
-            "return": "void"
+            "return": "LongClassName"
         },
         "expected": [
             "/**",
             " * ${1:Undocumented function}",
             " *",
-            " * @param  ${2:int} \\$name ",
-            " * @return ${3:void}        ",
+            " * @param  ${2:int}           \\$nameLong ",
+            " * @param  ${2:string}        \\$name     ",
+            " * @return ${3:LongClassName}           ",
             " */"
         ]
     }
