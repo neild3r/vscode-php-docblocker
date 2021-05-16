@@ -49,6 +49,8 @@ export default class FunctionBlock extends Block
 
                 if (parts[2] != null && parts[1] === '?') {
                     type = TypeUtil.instance.getFormattedTypeByName(parts[2])+'|null';
+                } else if (parts[2] != null && parts[1] === undefined && parts[4] === "null") {// int $var = null
+                    type = TypeUtil.instance.getFormattedTypeByName(parts[2])+'|null';
                 } else if (parts[2] != null) {
                     type = TypeUtil.instance.getFormattedTypeByName(parts[2]);
                 } else if (parts[4] != null && parts[4] != "") {
