@@ -260,6 +260,19 @@
         }
     },
     {
+        "key": "param-default-null",
+        "name": "Param with default null",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$arg",
+                    "type": "int|null"
+                }
+            ]
+        }
+    },
+    {
         "key": "args",
         "name": "Argument with ...$args",
         "result": {
@@ -341,6 +354,14 @@
         "name": "PHP7 return namespace type",
         "result": {
             "return": "App\\Model\\TypeHint",
+            "params": []
+        }
+    },
+    {
+        "key": "php8-union-types",
+        "name": "PHP8 union types",
+        "result": {
+            "return": "int|bool|\\TypeHint|App\\Model\\TypeHint",
             "params": []
         }
     },
