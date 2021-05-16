@@ -96,6 +96,11 @@ abstract class Test
     {
     }
 
+    ////=> param-default-null
+    public function paramDefaultNull(int $arg = null)
+    {
+    }
+
     ////=> args
     public function dotArgs(...$args) {
     }
@@ -153,6 +158,11 @@ abstract class Test
 
     ////=> php7-return-namespace-full
     public function getPHP7ReturnNamespaceFull():App\Model\TypeHint
+    {
+    }
+
+    ////=> php8-union-types
+    public function getPHP8UnionTypes():int|bool|\TypeHint|App\Model\TypeHint
     {
     }
 
