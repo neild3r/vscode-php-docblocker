@@ -101,6 +101,11 @@ abstract class Test
     {
     }
 
+    ////=> param-mixed-default-null
+    public function paramMixedDefaultNull(mixed $arg = null)
+    {
+    }
+
     ////=> args
     public function dotArgs(...$args) {
     }
