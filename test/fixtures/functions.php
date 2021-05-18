@@ -17,6 +17,16 @@ abstract class Test
     {
     }
 
+    ////=> php8-constructor-with-property
+    function __construct(public $arg1, protected int $arg2, PriVate ?int $arg3)
+    {
+    }
+
+    ////=> compatibility-syntax-error
+    function compatibilitySyntaxError(syntax error int $arg)
+    {
+    }
+
     ////=> abstract-simple
     abstract public function getName();
 

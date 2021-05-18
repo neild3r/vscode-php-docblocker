@@ -40,7 +40,16 @@ export default class FunctionBlock extends Block
 
             for (let index = 0; index < args.length; index++) {
                 let arg = args[index];
-                let parts = arg.match(/^\s*(\?)?\s*([A-Za-z0-9_\\]+)?\s*\&?((?:[.]{3})?\$[A-Za-z0-9_]+)\s*\=?\s*(.*)\s*/m);
+                let parts = arg.match(/^\s*(?:(?:public|protected|private)\s+)?(\?)?\s*([a-z0-9_\\]+)?\s*\&?((?:[.]{3})?\$[a-z0-9_]+)\s*\=?\s*(.*)\s*/im);
+                if (parts === null) {
+                    // compatibility syntax error
+                    parts = arg.match(/^.*?(\?)?\s*([a-z0-9_\\]+)\s*(\$[A-Za-z0-9_]+)\s*\=?\s*(.*)\s*/m);
+                    if (parts === null) {
+                        console.error('Match parameter of failure: ', arg);
+                        continue;
+                    }
+                }
+                
                 var type = '[type]';
 
                 if (parts[2] != null) {

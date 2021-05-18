@@ -24,6 +24,40 @@
         }
     },
     {
+        "key": "php8-constructor-with-property",
+        "name": "php8 Constructor with property",
+        "result": {
+            "return": null,
+            "params": [
+                {
+                    "name": "$arg1",
+                    "type": "[type]"
+                },
+                {
+                    "name": "$arg2",
+                    "type": "int"
+                },
+                {
+                    "name": "$arg3",
+                    "type": "int|null"
+                }
+            ]
+        }
+    },
+    {
+        "key": "compatibility-syntax-error",
+        "name": "compatibility with param syntax error",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$arg",
+                    "type": "int"
+                }
+            ]
+        }
+    },
+    {
         "key": "abstract-simple",
         "name": "Abstract method simple",
         "result": {
