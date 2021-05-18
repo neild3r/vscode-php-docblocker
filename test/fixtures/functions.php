@@ -23,7 +23,7 @@ abstract class Test
     }
 
     ////=> compatibility-syntax-error
-    function compatibilitySyntaxError(syntax error int $arg)
+    function compatibilitySyntaxError(syntax error int $arg, syntax error, syntax_error)
     {
     }
 

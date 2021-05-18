@@ -35,11 +35,11 @@
                 },
                 {
                     "name": "$arg2",
-                    "type": "int"
+                    "type": "integer"
                 },
                 {
                     "name": "$arg3",
-                    "type": "int|null"
+                    "type": "integer|null"
                 }
             ]
         }
@@ -52,7 +52,15 @@
             "params": [
                 {
                     "name": "$arg",
-                    "type": "int"
+                    "type": "integer"
+                },
+                {
+                    "name": "",
+                    "type": "syntax error"
+                },
+                {
+                    "name": "",
+                    "type": "syntax_error"
                 }
             ]
         }

@@ -46,7 +46,7 @@ export default class FunctionBlock extends Block
                     parts = arg.match(/^.*?(\?)?\s*([a-z0-9_\\]+)\s*(\$[A-Za-z0-9_]+)\s*\=?\s*(.*)\s*/m);
                     if (parts === null) {
                         console.error('Match parameter of failure: ', arg);
-                        continue;
+                        parts = [arg, null, arg.trim(), '', ''];
                     }
                 }
                 
