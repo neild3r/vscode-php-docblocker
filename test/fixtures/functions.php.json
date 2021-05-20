@@ -432,8 +432,8 @@
         }
     },
     {
-        "key": "php7-return-param",
-        "name": "PHP7 return type with param",
+        "key": "php8-param-union-types",
+        "name": "PHP8 param union types",
         "config": {
             "useShortNames": true
         },
