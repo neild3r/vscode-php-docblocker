@@ -413,11 +413,42 @@
         }
     },
     {
-        "key": "php8-union-types",
-        "name": "PHP8 union types",
+        "key": "php8-return-union-types",
+        "name": "PHP8 return union types",
+        "result": {
+            "return": "integer|boolean|\\TypeHint|App\\Model\\TypeHint",
+            "params": []
+        }
+    },
+    {
+        "key": "php8-return-union-types-with-short-name",
+        "name": "PHP8 return union types with short-name",
+        "config": {
+            "useShortNames": true
+        },
         "result": {
             "return": "int|bool|\\TypeHint|App\\Model\\TypeHint",
             "params": []
+        }
+    },
+    {
+        "key": "php7-return-param",
+        "name": "PHP7 return type with param",
+        "config": {
+            "useShortNames": true
+        },
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$arg",
+                    "type": "int|bool|\\TypeHint|App\\Model\\TypeHint"
+                },
+                {
+                    "name": "...$args",
+                    "type": "string|\\Closure"
+                }
+            ]
         }
     },
     {

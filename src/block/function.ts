@@ -40,10 +40,10 @@ export default class FunctionBlock extends Block
 
             for (let index = 0; index < args.length; index++) {
                 let arg = args[index];
-                let parts = arg.match(/^\s*(?:(?:public|protected|private)\s+)?(\?)?\s*([a-z0-9_\\]+)?\s*\&?((?:[.]{3})?\$[a-z0-9_]+)\s*\=?\s*(.*)\s*/im);
+                let parts = arg.match(/^\s*(?:(?:public|protected|private)\s+)?(\?)?\s*([a-z0-9_\|\\]+)?\s*\&?((?:[.]{3})?\$[a-z0-9_]+)\s*\=?\s*(.*)\s*/im);
                 if (parts === null) {
                     // compatibility syntax error
-                    parts = arg.match(/^.*?(\?)?\s*([a-z0-9_\\]+)\s*(\$[A-Za-z0-9_]+)\s*\=?\s*(.*)\s*/m);
+                    parts = arg.match(/^.*?(\?)?\s*([a-z0-9_\|\\]+)\s*(\$[a-z0-9_]+)\s*\=?\s*(.*)\s*/im);
                     if (parts === null) {
                         console.error('Match parameter of failure: ', arg);
                         parts = [arg, null, arg.trim(), '', ''];
@@ -57,9 +57,9 @@ export default class FunctionBlock extends Block
                 }
 
                 if (parts[2] != null && parts[1] === '?') {
-                    type = TypeUtil.instance.getFormattedTypeByName(parts[2])+'|null';
+                    type = TypeUtil.instance.getFormattedTypeByName(parts[2], true);
                 } else if (parts[2] != null && parts[2] != "mixed" && parts[1] === undefined && parts[4] === "null") {// int $var = null
-                    type = TypeUtil.instance.getFormattedTypeByName(parts[2])+'|null';
+                    type = TypeUtil.instance.getFormattedTypeByName(parts[2], true);
                 } else if (parts[2] != null) {
                     type = TypeUtil.instance.getFormattedTypeByName(parts[2]);
                 } else if (parts[4] != null && parts[4] != "") {
