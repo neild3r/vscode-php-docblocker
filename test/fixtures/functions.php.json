@@ -61,6 +61,14 @@
                 {
                     "name": "",
                     "type": "syntax_error"
+                },
+                {
+                    "name": "$arg1",
+                    "type": "int"
+                },
+                {
+                    "name": "$arg2",
+                    "type": "mixed"
                 }
             ]
         }
