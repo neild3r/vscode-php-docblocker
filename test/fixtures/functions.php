@@ -23,7 +23,7 @@ abstract class Test
     }
 
     ////=> compatibility-syntax-error
-    function compatibilitySyntaxError(syntax error int $arg, syntax error, syntax_error, int| $arg1, || $arg2)
+    function compatibilitySyntaxError(syntax error int $arg,, syntax error, syntax_error, int| $arg1, || $arg2,)
     {
     }
 
@@ -288,6 +288,21 @@ abstract class Test
 
     ////=> to-string
     public function __toString()
+    {
+    }
+
+    ////=> default-message-blank
+    public function default_message_blank()
+    {
+    }
+
+    ////=> default-message-name
+    public function default_message_name()
+    {
+    }
+
+    ////=> default-message-undocumented
+    public function default_message_undocumented()
     {
     }
 }

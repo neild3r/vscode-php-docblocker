@@ -3,6 +3,7 @@ import FunctionBlock from "./block/function";
 import Property from "./block/property";
 import Class from "./block/class";
 import {Doc, Param} from "./doc";
+import Variable from "./block/Variable";
 
 /**
  * Check which type of docblock we need and instruct the components to build the
@@ -57,6 +58,11 @@ export default class Documenter
         let cla = new Class(this.targetPosition, this.editor);
         if (cla.test()) {
             return cla.parse().build();
+        }
+
+        let variable = new Variable(this.targetPosition, this.editor);
+        if (variable.test()) {
+            return variable.parse().build();
         }
 
         return new Doc().build(true);

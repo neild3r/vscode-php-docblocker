@@ -55,10 +55,23 @@
         ]
     },
     {
+        "key": "variable",
+        "name": "variable trigger",
+        "result": [
+            "/**"
+        ]
+    },
+    {
         "key": "empty",
         "name": "Empty trigger",
         "result": [
             "/**"
+        ]
+    },
+    {
+        "key": "attribute",
+        "result": [
+            "#[Attribute]"
         ]
     }
 ]

@@ -32,6 +32,12 @@ This extension contributes the following settings:
 * `php-docblocker.functionTemplate`: See below for how to set up docblock templates
 * `php-docblocker.propertyTemplate`: See below for how to set up docblock templates
 * `php-docblocker.classTemplate`: See below for how to set up docblock templates
+* `php-docblocker.autoIgnorePropertyTyp`: no `@var` is generated for the property of specified types`
+* `php-docblocker.unknownType`: You can choose `[type]` or `mixed`
+* `php-docblocker.defaultMessage`: You can choose `blank` `name`(function/class/var name) or `undocumented`(Undocumented function)
+* `php-docblocker.variableTemplate`: Specify the default template for variables
+* `php-docblocker.variableInline`: If enabled, generated doc in a line. e.g. `/** @var mixed */`
+* `php-docblocker.variableWithKey`: If enabled, generated document will contain a variable name. e.g. `@var mixed $name`
 
 ### Templating
 
@@ -152,6 +158,7 @@ and can be triggered by typing @ then another characted (Provided your vscode se
 | @link                        | @link ${1:http://url.com}               |
 | @medium                      | @medium                                 |
 | @method                      | @method ${1:mixed} ${2:methodName()}    |
+| @mixin                       | @mixin ${1:\Class}                      |
 | @package                     | @package ${1:category}                  |
 | @param                       | @param ${1:mixed} $${2:name}            |
 | @preserveGlobalState         | @preserveGlobalState                    |

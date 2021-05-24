@@ -24,8 +24,7 @@ export default class FunctionBlock extends Block
     public parse():Doc
     {
         let params = this.match();
-
-        let doc = new Doc('Undocumented function');
+        let doc = new Doc(TypeUtil.instance.getDefaultMessage(params[5], 'function'));
         doc.template = Config.instance.get('functionTemplate');
         let argString = this.getEnclosed(params[6], "(", ")");
         let head:string;
@@ -42,15 +41,20 @@ export default class FunctionBlock extends Block
                 let arg = args[index];
                 let parts = arg.match(/^\s*(?:(?:public|protected|private)\s+)?(\?)?\s*([a-z0-9_\|\\]+)?\s*\&?((?:[.]{3})?\$[a-z0-9_]+)\s*\=?\s*(.*)\s*/im);
                 if (parts === null) {
+                    // trailing comma
+                    if (arg.trim() === '') {
+                        continue;
+                    }
                     // compatibility syntax error
                     parts = arg.match(/^.*?(\?)?\s*([a-z0-9_\|\\]+)\s*(\$[a-z0-9_]+)\s*\=?\s*(.*)\s*/im);
                     if (parts === null) {
-                        console.error('Match parameter of failure: ', arg);
-                        parts = [arg, null, arg.trim(), '', ''];
+                        // console.error('Match parameter of failure: ', arg);
+                        // parts = [arg, null, arg.trim(), '', '']; # bug: array $options=[1,2]
+                        continue;
                     }
                 }
                 
-                var type = '[type]';
+                var type = TypeUtil.instance.getUnknownType();
 
                 if (parts[2] != null) {
                     parts[2] = TypeUtil.instance.getFullyQualifiedType(parts[2], head);

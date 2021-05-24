@@ -83,3 +83,12 @@ class ImplementedSubClass extends App\Model\ImplementedParentClass implements Ap
 {
 
 }
+
+////=> default-message-blank
+class default_message_blank{}
+
+////=> default-message-name
+class default_message_name{}
+
+////=> default-message-undocumented
+class default_message_undocumented{}

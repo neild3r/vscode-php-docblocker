@@ -1,6 +1,7 @@
 import { Block } from "../block";
 import { Doc, Param } from "../doc";
 import Config from "../util/config";
+import TypeUtil from "../util/TypeUtil";
 
 /**
  * Represents a class block
@@ -18,7 +19,7 @@ export default class Class extends Block
     public parse():Doc
     {
         let params = this.match();
-        let doc = new Doc('Undocumented '+ params[2]);
+        let doc = new Doc(TypeUtil.instance.getDefaultMessage(params[3], params[2]));
         doc.template = Config.instance.get('classTemplate');
 
         return doc;

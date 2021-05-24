@@ -50,5 +50,32 @@
     {
         "key": "extends-implements-namespace",
         "name": "Implement and implmentes classes with a namespaces"
+    },
+    {
+        "key": "default-message-blank",
+        "config": {
+            "defaultMessage": "blank"
+        },
+        "result": {
+            "message": ""
+        }
+    },
+    {
+        "key": "default-message-name",
+        "config": {
+            "defaultMessage": "name"
+        },
+        "result": {
+            "message": "default_message_name"
+        }
+    },
+    {
+        "key": "default-message-undocumented",
+        "config": {
+            "defaultMessage": "undocumented"
+        },
+        "result": {
+            "message": "Undocumented class"
+        }
     }
 ]

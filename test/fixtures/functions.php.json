@@ -55,14 +55,6 @@
                     "type": "integer"
                 },
                 {
-                    "name": "",
-                    "type": "syntax error"
-                },
-                {
-                    "name": "",
-                    "type": "syntax_error"
-                },
-                {
                     "name": "$arg1",
                     "type": "integer"
                 },
@@ -705,6 +697,36 @@
                     "type": "[type]"
                 }
             ]
+        }
+    },
+    {
+        "key": "default-message-blank",
+        "config": {
+            "defaultMessage": "blank"
+        },
+        "result": {
+            "return": "void",
+            "message": ""
+        }
+    },
+    {
+        "key": "default-message-name",
+        "config": {
+            "defaultMessage": "name"
+        },
+        "result": {
+            "return": "void",
+            "message": "default_message_name"
+        }
+    },
+    {
+        "key": "default-message-undocumented",
+        "config": {
+            "defaultMessage": "undocumented"
+        },
+        "result": {
+            "return": "void",
+            "message": "Undocumented function"
         }
     }
 ]

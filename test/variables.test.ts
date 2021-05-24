@@ -1,19 +1,18 @@
 import * as assert from 'assert';
 import {TextEditor, TextDocument} from 'vscode';
 import Helper from './helpers';
-import Function from '../src/block/property';
 import {Doc, Param} from '../src/doc';
-import Property from '../src/block/property';
+import Variable from '../src/block/Variable';
 
-suite("Property tests", () => {
+suite("Variable tests", () => {
     let editor:TextEditor;
     let document:TextDocument;
     let testPositions:any = {};
 
-    let map = Helper.getFixtureMap('properties.php.json');
+    let map = Helper.getFixtureMap('variables.php.json');
 
     suiteSetup(function(done) {
-        Helper.loadFixture('properties.php', (edit:TextEditor, doc:TextDocument) => {
+        Helper.loadFixture('variables.php', (edit:TextEditor, doc:TextDocument) => {
             editor = edit;
             document = doc;
             testPositions = Helper.getFixturePositions(document);
@@ -27,27 +26,31 @@ suite("Property tests", () => {
         }
         
         test("Match Test: "+ testData.name, () => {
-            let prop = new Property(testPositions[testData.key], editor);
-            assert.equal(prop.test(), true, test.name);
+            let variable = new Variable(testPositions[testData.key], editor);
+            assert.equal(variable.test(), true, test.name);
         });
 
         test("Parse Test: "+ testData.name, () => {
-            let prop = new Property(testPositions[testData.key], editor);
-            assert.ok(prop.parse(), test.name);
+            let variable = new Variable(testPositions[testData.key], editor);
+            assert.ok(variable.parse(), test.name);
         });
 
         test("Type Test: "+ testData.name, () => {
             Helper.setConfig(testData.config);
-            let prop = new Property(testPositions[testData.key], editor);
-            let actual:Doc = prop.parse();
-            let expected:Doc = new Doc('Undocumented property');
-            if (testData.result.var ===undefined) {
+            let variable = new Variable(testPositions[testData.key], editor);
+            let actual:Doc = variable.parse();
+            let expected:Doc = new Doc('Undocumented variable');
+            if (testData.result.var === undefined) {
                 expected.var = undefined;
             }
             expected.fromObject(actual);
             expected.fromObject(testData.result);
-            expected.template = Helper.getConfig().get('propertyTemplate');
+            expected.template = Helper.getConfig().get('variableTemplate');
             assert.deepEqual(actual, expected);
+
+            if (testData.doc !== undefined) {
+                assert.equal(actual.build().value, testData.doc, test.name);
+            }
         });
     });
 });

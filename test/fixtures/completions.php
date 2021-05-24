@@ -19,6 +19,10 @@
  /**
  protected $name;
 
+////=> variable
+ /**
+ $name = null;
+
 ////=> function
  /**
  protected function name()
@@ -33,3 +37,6 @@
 
  ////=> empty
  /**
+
+////=> attribute
+#

@@ -21,6 +21,9 @@ suite("Completion tests", () => {
     });
 
     map.forEach(testData => {
+        if (testData.name === undefined) {
+            testData.name = testData.key;
+        }
         test("Completion: "+ testData.name, () => {
             let pos:Position = testPositions[testData.key];
             let result:any = completions.provideCompletionItems(

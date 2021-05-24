@@ -8,6 +8,9 @@ suite("Snippet build tests", () => {
     let map = Helper.getFixtureMap('doc.json');
 
     map.forEach(testData => {
+        if (testData.name === undefined) {
+            testData.name = testData.key;
+        }
         test("Snippet test: "+ testData.name, () => {
             let doc = new Doc();
             let empty = false;

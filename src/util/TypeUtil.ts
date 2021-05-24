@@ -66,6 +66,13 @@ export default class TypeUtil {
             switch (names[index]) {
                 case '':
                     continue;
+                case 'real':
+                case 'double':
+                    names[index] = 'float';
+                    break;
+                case 'unset':
+                    names[index] = 'null';
+                    break;
                 case 'bool':
                 case 'boolean':
                     if (Config.instance.get('useShortNames')) {
@@ -94,4 +101,28 @@ export default class TypeUtil {
         return result.join('|');
     }
 
+    /**
+     * Unknown type
+     * 
+     * @returns {stirng} `[type]` or `mixed`
+     */
+    public getUnknownType():string {
+        return Config.instance.get('unknownType');
+    }
+
+    /**
+     * Default message
+     * 
+     * @param {string} defaultMessage 
+     */
+    public getDefaultMessage(name:string, type:string): string {
+        switch (Config.instance.get('defaultMessage')) {
+            case 'name':
+                return name;
+            case 'blank':
+                return '';
+            default:
+                return "Undocumented " + type;
+        }
+    }
 }

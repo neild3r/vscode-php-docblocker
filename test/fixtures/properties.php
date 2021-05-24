@@ -9,10 +9,16 @@ abstract class Test
     protected $protected;
 
     ////=> static
+    static $static;
+
+    ////=> protected-static
     protected static $static;
 
     ////=> static-alternate
     static protected $staticAlt;
+
+    ////=> ignore-case
+    STatiC ProtecteD $ignoreCase;
 
     ////=> default-string
     protected $defaultString = 'string';
@@ -54,4 +60,38 @@ abstract class Test
 
     ////=> default-null
     public $defaultNull = null;
+
+    ////=> specify-type
+    protected array $specifyType;
+
+    ////=> union-types
+    protected array|string $unionTypes;
+
+    ////=> string-with-null
+    protected ?string $stringWithNull;
+
+    ////=> string-default-null
+    protected string $stringDefaultNull = null;
+
+    ////=> syntax-error
+    protected syntax error string $stringDefaultNull = null;
+
+    ////=> auto-ignore-property-type
+    protected string|int $autoIgnorePropertyType;
+
+    ////=> auto-ignore-property-type-mixed
+    protected $autoIgnorePropertyTypeMixed;
+
+    ////=> auto-ignore-property-type-withtype
+    protected $autoIgnorePropertyTypeWithtype;
+
+    ////=> default-message-blank
+    protected $default_message_blank;
+
+    ////=> default-message-name
+    protected $default_message_name;
+
+    ////=> default-message-undocumented
+    protected $default_message_undocumented;
+
 }

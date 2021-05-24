@@ -2,7 +2,7 @@
   "name": "php-docblocker",
   "displayName": "PHP DocBlocker",
   "description": "A simple, dependency free PHP specific DocBlocking package",
-  "version": "2.1.0",
+  "version": "2.1.3",
   "license": "MIT",
   "publisher": "neilbrayfield",
   "author": "Neil Brayfield <dev@brayfield.uk>",
@@ -41,6 +41,35 @@
       "type": "object",
       "title": "PHP DocBlocker configuration",
       "properties": {
+        "php-docblocker.autoIgnorePropertyType": {
+          "type": "boolean",
+          "default": false,
+          "description": "no `@var` is generated for the property of specified types`"
+        },
+        "php-docblocker.unknownType": {
+          "type": "string",
+          "default": "[type]",
+          "enum": [
+            "[type]",
+            "mixed"
+          ],
+          "description": "Placeholder of unknown type"
+        },
+        "php-docblocker.defaultMessage": {
+          "type": "string",
+          "default": "undocumented",
+          "enum": [
+            "blank",
+            "name",
+            "undocumented"
+          ],
+          "enumDescriptions": [
+            "blank",
+            "function/class/var name",
+            "e.g. Undocumented function"
+          ],
+          "description": "Document default message"
+        },
         "php-docblocker.gap": {
           "type": "boolean",
           "default": true,
@@ -85,6 +114,21 @@
           "type": "object",
           "default": null,
           "description": "Specify the default template for classes."
+        },
+        "php-docblocker.variableTemplate": {
+          "type": "object",
+          "default": null,
+          "description": "Specify the default template for variables."
+        },
+        "php-docblocker.variableInline": {
+          "type": "boolean",
+          "default": false,
+          "description": "If enabled, generated doc in a line. e.g. /** @var mixed */"
+        },
+        "php-docblocker.variableWithKey": {
+          "type": "boolean",
+          "default": false,
+          "description": "If enabled, generated document will contain a variable name. e.g. @var mixed $name"
         },
         "php-docblocker.author": {
           "type": "object",

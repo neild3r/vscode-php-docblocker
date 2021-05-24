@@ -2,76 +2,200 @@
     {
         "key": "public",
         "name": "Public",
-        "var": "[type]"
+        "result": {
+            "var": "[type]"
+        }
     },
     {
         "key": "protected",
         "name": "Protected",
-        "var": "[type]"
+        "result": {
+            "var": "[type]"
+        }
     },
     {
         "key": "static",
-        "name": "Static",
-        "var": "[type]"
+        "result": {
+            "var": "[type]"
+        }
+    },
+    {
+        "key": "protected-static",
+        "result": {
+            "var": "[type]"
+        }
     },
     {
         "key": "static-alternate",
         "name": "Static Alternate",
-        "var": "[type]"
+        "result": {
+            "var": "[type]"
+        }
+    },
+    {
+        "key": "ignore-case",
+        "result": {
+            "var": "[type]"
+        }
     },
     {
         "key": "default-string",
         "name": "Default String",
-        "var": "string"
+        "result": {
+            "var": "string"
+        }
     },
     {
         "key": "default-string-alternate",
         "name": "Default String Alternate",
-        "var": "string"
+        "result": {
+            "var": "string"
+        }
     },
     {
         "key": "default-bool",
         "name": "Default Bool",
-        "var": "boolean"
+        "result": {
+            "var": "boolean"
+        }
     },
     {
         "key": "default-bool-alternate",
         "name": "Default Bool Alternate",
-        "var": "boolean"
+        "result": {
+            "var": "boolean"
+        }
     },
     {
         "key": "default-array",
         "name": "Default Array",
-        "var": "array"
+        "result": {
+            "var": "array"
+        }
     },
     {
         "key": "default-array-alternate",
         "name": "Default Array Alternate",
-        "var": "array"
+        "result": {
+            "var": "array"
+        }
     },
     {
         "key": "multiline",
         "name": "Multiline",
-        "var": "array"
+        "result": {
+            "var": "array"
+        }
     },
     {
         "key": "multiline-alternate",
         "name": "Multiline Alternate",
-        "var": "array"
+        "result": {
+            "var": "array"
+        }
     },
     {
         "key": "default-float",
         "name": "Default Float",
-        "var": "float"
+        "result": {
+            "var": "float"
+        }
     },
     {
         "key": "default-int",
         "name": "Default Int",
-        "var": "integer"
+        "result": {
+            "var": "integer"
+        }
     },
     {
         "key": "default-null",
         "name": "Default Null",
-        "var": "[type]"
+        "result": {
+            "var": "[type]"
+        }
+    },
+    {
+        "key": "specify-type",
+        "result": {
+            "var": "array"
+        }
+    },
+    {
+        "key": "union-types",
+        "result": {
+            "var": "array|string"
+        }
+    },
+    {
+        "key": "string-with-null",
+        "result": {
+            "var": "string|null"
+        }
+    },
+    {
+        "key": "string-default-null",
+        "result": {
+            "var": "string|null"
+        }
+    },
+    {
+        "key": "syntax-error",
+        "result": {
+            "var": "string|null"
+        }
+    },
+    {
+        "key": "auto-ignore-property-type",
+        "config": {
+            "autoIgnorePropertyType": true
+        },
+        "result": {}
+    },
+    {
+        "key": "auto-ignore-property-type-mixed",
+        "config": {
+            "autoIgnorePropertyType": true,
+            "unknownType": "mixed"
+        },
+        "result": {
+            "var": "mixed"
+        }
+    },
+    {
+        "key": "auto-ignore-property-type-withtype",
+        "config": {
+            "autoIgnorePropertyType": true
+        },
+        "result": {
+            "var": "[type]"
+        }
+    },
+    {
+        "key": "default-message-blank",
+        "config": {
+            "defaultMessage": "blank"
+        },
+        "result": {
+            "message": ""
+        }
+    },
+    {
+        "key": "default-message-name",
+        "config": {
+            "defaultMessage": "name"
+        },
+        "result": {
+            "message": "default_message_name"
+        }
+    },
+    {
+        "key": "default-message-undocumented",
+        "config": {
+            "defaultMessage": "undocumented"
+        },
+        "result": {
+            "message": "Undocumented property"
+        }
     }
 ]

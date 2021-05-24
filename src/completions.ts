@@ -150,6 +150,10 @@ export default class Completions implements CompletionItemProvider
             snippet: '@method ${1:mixed} ${2:methodName()}'
         },
         {
+            tag: '@mixin',
+            snippet: '@mixin ${1:\\MyClass}'
+        },
+        {
             tag: '@package',
             snippet: '@package ${1:category}'
         },
@@ -272,6 +276,15 @@ export default class Completions implements CompletionItemProvider
         let result = [];
         let match;
 
+        if (document.lineAt(position).text === '#') {
+            let block = new CompletionItem("#[Attribute]", CompletionItemKind.Snippet);
+            block.detail = "PHP DocBlocker";
+            block.documentation = "Generate a PHP Attribute";
+            block.insertText = new SnippetString("[\${1:Attribute}]");
+            result.push(block);
+            return result;
+        }
+
         if ((match = document.getWordRangeAtPosition(position, /\/\*\*/)) !== undefined) {
             let documenter:Documenter = new Documenter(match, window.activeTextEditor);
 
@@ -292,14 +305,16 @@ export default class Completions implements CompletionItemProvider
 
         let search = document.getText(match);
 
-        let potential = this.getTags().filter((tag) => {
+        let potential = this.tags.filter((tag) => {
             return tag.tag.match(search) !== null;
         });
 
         potential.forEach(tag => {
+            let snippet = this.replaceTagSnippet(tag.tag, tag.snippet);
+
             let item = new CompletionItem(tag.tag, CompletionItemKind.Snippet);
             item.range = match;
-            item.insertText = new SnippetString(tag.snippet);
+            item.insertText = new SnippetString(snippet);
 
             result.push(item);
         });
@@ -308,24 +323,15 @@ export default class Completions implements CompletionItemProvider
     }
 
     /**
-     * Get the tag list for completions
-     *
-     * @returns {Array<{tag:string, snippet:string}>}
+     * Replace tag
      */
-    protected getTags():Array<{tag:string, snippet:string}>
+    protected replaceTagSnippet(tag:string, snippet:string): string
     {
-        if (!this.formatted) {
-            this.tags.forEach((tag, index) => {
-                if (tag.tag == '@author') {
-                    tag.snippet = tag.snippet.replace("{{name}}", Config.instance.get('author').name);
-                    tag.snippet = tag.snippet.replace("{{email}}", Config.instance.get('author').email);
-                    this.tags[index] = tag;
-                }
-            });
-
-            this.formatted = true;
+        if (tag == '@author') {
+            snippet = snippet.replace("{{name}}", Config.instance.get('author').name);
+            snippet = snippet.replace("{{email}}", Config.instance.get('author').email);
         }
 
-        return this.tags;
+        return snippet;
     }
 }

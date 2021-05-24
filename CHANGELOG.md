@@ -2,6 +2,28 @@
 
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
+## [2.1.3] - 2021-05-24
+Patch By [tianyiw](https://github.com/tianyiw2013/vscode-php-docblocker). My English ability is very poor. Please forgive me if I have grammar mistakes.
+#### Added
+- **★ Support for PHP8 union types ★** [neild3r#150](https://github.com/neild3r/vscode-php-docblocker/issues/150)
+- **★ Support for PHP8 constructor property promotion ★** [neild3r#156](https://github.com/neild3r/vscode-php-docblocker/issues/156)
+- **★ Support for variable docblock ★**
+- Add param with default null [neild3r#140](https://github.com/neild3r/vscode-php-docblocker/issues/140)
+  - `int $num=null` to `@param int|null $num`
+  - `mixed $num=null` to `mixed $num`
+- Add option `autoIgnorePropertyType`: no `@var` is generated for the property of specified types`
+- Add option `unknownType`: You can choose `[type]` or `mixed`
+- Add option `defaultMessage`: You can choose `blank` `name`(function/class/var name) or `undocumented`(Undocumented function) [neild3r#139](https://github.com/neild3r/vscode-php-docblocker/issues/139)
+- Add option `variableTemplate`: Specify the default template for variables
+- Add option `variableInline`: If enabled, generated doc in a line. e.g. `/** @var mixed */` [neild3r#42](https://github.com/neild3r/vscode-php-docblocker/issues/42)
+- Add option `variableWithKey`: If enabled, generated document will contain a variable name. e.g. `@var mixed $name` [neild3r#106](https://github.com/neild3r/vscode-php-docblocker/issues/106)
+- Add tag `@mixin \MyClass` [neild3r#120](https://github.com/neild3r/vscode-php-docblocker/issues/120)
+- Add generate a PHP Attribute `#[Attribute]`
+- Improve the automatic detection of variable types. Such as `!1` `<<<EOF` `new class` `closure` `(string)` etc.
+- Compatibility with param syntax error, including php7.3 trailing comma [neild3r#153](https://github.com/neild3r/vscode-php-docblocker/issues/153)
+#### Fixed
+- After modifying the author config, you need to restart vscode to take effect. Now the change will take effect immediately.
+
 ## [2.1.0] - 2019-11-19
 - Add should to list of bool return type functions - Thanks @ImClarky
 - Fix issue where functions named with a bool return prefix were incorrectly given bool return type - Thanks @ImClarky
@@ -112,6 +134,7 @@ All notable changes to the "php-docblocker" extension will be documented in this
 - Initial release
 
 [Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.1.0...HEAD
+[2.1.3]: https://github.com/tianyiw2013/vscode-php-docblocker/releases/tag/2.1.3
 [2.1.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.0.1...v2.1.0
 [2.0.1]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.9.0...v2.0.0

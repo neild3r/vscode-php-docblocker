@@ -21,6 +21,9 @@ suite("Class tests", () => {
     });
 
     map.forEach(testData => {
+        if (testData.name === undefined) {
+            testData.name = testData.key;
+        }
         test("Match Test: "+ testData.name, () => {
             let func = new Class(testPositions[testData.key], editor);
             assert.equal(func.test(), true, test.name);
@@ -30,5 +33,17 @@ suite("Class tests", () => {
             let func = new Class(testPositions[testData.key], editor);
             assert.ok(func.parse(), test.name);
         });
+
+        if (testData.result) {
+            test("Type Test: "+ testData.name, () => {
+                Helper.setConfig(testData.config);
+                let prop = new Class(testPositions[testData.key], editor);
+                let actual:Doc = prop.parse();
+                let expected:Doc = new Doc('Undocumented class');
+                expected.fromObject(testData.result);
+                expected.template = Helper.getConfig().get('classTemplate');
+                assert.deepEqual(actual, expected);
+            }); 
+        }
     });
 });
