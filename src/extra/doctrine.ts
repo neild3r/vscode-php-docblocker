@@ -1,7 +1,7 @@
 export let doctrineTags = [
     {
         "tag": "@ORM\\Column",
-        "snippet": "@ORM\\Column(type=\"${1|smallint,integer,bigint,decimal,float,string,ascii_string,text,guid,binary,blob,boolean,date,date_immutable,datetime,datetime_immutable,datetimetz,datetimetz_immutable,time,time_immutable,dateinterval,array,simple_array,json,object|}\",${2: name=\"${3:column_name}\",}${4: length=${5:255},}${6: precision=${7:2},}${8: scale=${9:2},}${10: unique=${11|true,false|},}${12: nullable=${13|true,false|},}${14: options=${15|default,unsigned,fixed,comment,collation,check|},}${16: columnDefinition=${17:\"DDL SQL snippet\"}})"
+        "snippet": "@ORM\\Column(type=\"${1|smallint,integer,bigint,decimal,float,string,ascii_string,text,guid,binary,blob,boolean,date,date_immutable,datetime,datetime_immutable,datetimetz,datetimetz_immutable,time,time_immutable,dateinterval,array,simple_array,json,object|}\",${2: name=\"${3:column_name}\",}${4: length=${5:255},}${6: precision=${7:2},}${8: scale=${9:2},}${10: unique=${11|false,true|},}${12: nullable=${13|false,true|},}${14: options=${15|default,unsigned,fixed,comment,collation,check|},}${16: columnDefinition=${17:\"DDL SQL snippet\"}})"
     },
     {
         "tag": "@ORM\\ColumnResult",
