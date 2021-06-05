@@ -94,10 +94,10 @@
           },
           "description": "Default author tag"
         },
-        "php-docblocker.enableDoctrineCompletions": {
+        "php-docblocker.enableDoctrineCompilation": {
           "type": "boolean",
           "default": false,
-          "description": "Whether you want to enable auto completaion for Doctrine ORM Annonations."
+          "description": "Whether you want to enable auto compilation for Doctrine ORM Annonations."
         }
       }
     }
