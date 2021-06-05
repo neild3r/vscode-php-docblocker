@@ -93,6 +93,11 @@
             "email": "email@email.com"
           },
           "description": "Default author tag"
+        },
+        "php-docblocker.enableDoctrineCompletions": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether you want to enable auto completaion for Doctrine ORM Annonations."
         }
       }
     }
