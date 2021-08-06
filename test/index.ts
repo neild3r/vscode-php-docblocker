@@ -8,6 +8,7 @@ export async function run(): Promise<void> {
       cwd: path.join(__dirname, '..', '..'),
       exclude: ['**/test/**', '.vscode-test/**'],
       reporter: ['text', 'html'],
+      extension: ['ts'],
       all: true,
       instrument: true,
       hookRequire: true,
@@ -23,7 +24,6 @@ export async function run(): Promise<void> {
     const mocha = new Mocha({
         ui: 'tdd',
     });
-    mocha.useColors(true);
 
     const testsRoot = path.resolve(__dirname, '..');
 
@@ -54,6 +54,5 @@ export async function run(): Promise<void> {
     } finally {
         nyc.writeCoverageFile();
         nyc.report();
-        console.log(nyc);
     }
 }

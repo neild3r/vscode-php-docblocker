@@ -327,6 +327,14 @@
         }
     },
     {
+        "key": "php7-return-snake",
+        "name": "PHP7 return snake case",
+        "result": {
+            "return": "Type_Hint3",
+            "params": []
+        }
+    },
+    {
         "key": "php7-return-alt",
         "name": "PHP7 return type alternate",
         "config": {
@@ -439,6 +447,22 @@
         }
     },
     {
+        "key": "is-void",
+        "name": "Check is prefix - void",
+        "result": {
+            "return": "void",
+            "params": []
+        }
+    },
+    {
+        "key": "is-only",
+        "name": "Check is prefix - only",
+        "result": {
+            "return": "boolean",
+            "params": []
+        }
+    },
+    {
         "key": "has",
         "name": "Check has prefix",
         "result": {
@@ -447,8 +471,64 @@
         }
     },
     {
+        "key": "has-void",
+        "name": "Check has prefix - void",
+        "result": {
+            "return": "void",
+            "params": []
+        }
+    },
+    {
+        "key": "has-only",
+        "name": "Check has prefix - only",
+        "result": {
+            "return": "boolean",
+            "params": []
+        }
+    },
+    {
         "key": "can",
         "name": "Check can prefix",
+        "result": {
+            "return": "boolean",
+            "params": []
+        }
+    },
+    {
+        "key": "can-void",
+        "name": "Check can prefix - void",
+        "result": {
+            "return": "void",
+            "params": []
+        }
+    },
+    {
+        "key": "can-only",
+        "name": "Check can prefix - only",
+        "result": {
+            "return": "boolean",
+            "params": []
+        }
+    },
+    {
+        "key": "should",
+        "name": "Check should prefix",
+        "result": {
+            "return": "boolean",
+            "params": []
+        }
+    },
+    {
+        "key": "should-void",
+        "name": "Check should prefix - void",
+        "result": {
+            "return": "void",
+            "params": []
+        }
+    },
+    {
+        "key": "should-only",
+        "name": "Check should prefix - only",
         "result": {
             "return": "boolean",
             "params": []

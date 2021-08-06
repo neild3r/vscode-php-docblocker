@@ -2,6 +2,11 @@
 
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
+## [2.1.0] - 2019-11-19
+- Add should to list of bool return type functions - Thanks @ImClarky
+- Fix issue where functions named with a bool return prefix were incorrectly given bool return type - Thanks @ImClarky
+- Fix issue with snake case class names in PHP7 return types - Thanks @rmccue
+
 ## [2.0.1] - 2019-07-08
 - Fix issue in templating system where custom order was not being honored
 
@@ -106,7 +111,8 @@ All notable changes to the "php-docblocker" extension will be documented in this
 ## 0.1.0 - 2017-03-12
 - Initial release
 
-[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.0.1...HEAD
+[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.1.0...HEAD
+[2.1.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.0.1...v2.1.0
 [2.0.1]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.9.0...v2.0.0
 [1.9.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.8.0...v1.9.0
