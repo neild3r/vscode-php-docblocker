@@ -109,7 +109,7 @@
     "@types/mocha": "^5.2.6",
     "@types/node": "^6.0.40",
     "@types/vscode": "^1.17",
-    "mocha": "^6.1.4",
+    "mocha": "^9.0.3",
     "nyc": "^14.0.0",
     "typescript": "^3.5.1",
     "vscode-test": "^1.2.0"
