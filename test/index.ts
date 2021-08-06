@@ -24,7 +24,6 @@ export async function run(): Promise<void> {
     const mocha = new Mocha({
         ui: 'tdd',
     });
-    mocha.useColors(true);
 
     const testsRoot = path.resolve(__dirname, '..');
 
