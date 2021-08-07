@@ -19,7 +19,7 @@ install:
   - npm run vscode:prepublish
 
 after_success:
-  - npm run coverage
+  - cat coverage/lcov.info | coveralls
 
 cache:
   directories:
