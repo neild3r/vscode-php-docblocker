@@ -73,5 +73,50 @@
         "key": "default-null",
         "name": "Default Null",
         "var": "[type]"
+    },
+    {
+        "key": "typed-string",
+        "name": "Typed string",
+        "var": "string"
+    },
+    {
+        "key": "typed-int",
+        "name": "Typed Int",
+        "var": "integer"
+    },
+    {
+        "key": "typed-interface",
+        "name": "Typed Interface",
+        "var": "DateTimeInterface"
+    },
+    {
+        "key": "typed-namespace",
+        "name": "Typed namespace",
+        "var": "\\App\\Type\\Test"
+    },
+    {
+        "key": "typed-string-default",
+        "name": "Typed string with default",
+        "var": "string"
+    },
+    {
+        "key": "typed-int-default",
+        "name": "Typed Int with default",
+        "var": "integer"
+    },
+    {
+        "key": "typed-string-nullable",
+        "name": "Nullable typed string",
+        "var": "string|null"
+    },
+    {
+        "key": "typed-interface-nullable",
+        "name": "Nullable typed inteface",
+        "var": "DateTimeInterface|null"
+    },
+    {
+        "key": "typed-namespace-nullable",
+        "name": "Nullable typed namespace",
+        "var": "\\App\\Type\\Test|null"
     }
 ]
