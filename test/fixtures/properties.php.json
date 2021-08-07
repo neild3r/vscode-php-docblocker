@@ -117,6 +117,9 @@
     {
         "key": "typed-namespace-nullable",
         "name": "Nullable typed namespace",
-        "var": "\\App\\Type\\Test|null"
+        "var": "\\App\\Type\\Test|null",
+        "config": {
+            "qualifyClassNames": true
+        }
     }
 ]
