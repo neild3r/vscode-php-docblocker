@@ -38,6 +38,13 @@ export class Doc
     public message:string;
 
     /**
+     * Define the template for the documentor
+     *
+     * @type {Object}
+     */
+    protected _template:Object;
+
+    /**
      * Creates an instance of Doc.
      *
      * @param {string} [message='']
@@ -78,73 +85,133 @@ export class Doc
      */
     public build(isEmpty:boolean = false):SnippetString
     {
-        let snippet = new SnippetString();
+
         let extra = Config.instance.get('extra');
-        let gap = !Config.instance.get('gap');
+        let gap = Config.instance.get('gap');
         let returnGap = Config.instance.get('returnGap');
+
+        let returnString = "";
+        let varString = "";
+        let paramString = "";
+        let extraString = "";
+        let messageString = "";
 
         if (isEmpty) {
             gap = true;
             extra = [];
         }
 
-        let stop = 2;
-
-        snippet.appendText("/**");
-        snippet.appendText("\n * ");
-        snippet.appendVariable('1', this.message);
+        messageString = "\${###" + (this.message != "" ? ':' : '') + this.message + "}";
 
         if (this.params.length) {
-            if (!gap) {
-                snippet.appendText("\n *");
-                gap = true;
-            }
+            paramString = "";
             this.params.forEach(param => {
-                snippet.appendText("\n * @param ");
-                snippet.appendVariable(stop++ + '', param.type);
-                snippet.appendText(" ");
-                snippet.appendText(param.name);
+                if (paramString != "") {
+                    paramString += "\n";
+                }
+                paramString += "@param \${###:"+param.type+"} " + param.name.replace('$', '\\$');
             });
         }
 
         if (this.var) {
-            if (!gap) {
-                snippet.appendText("\n *");
-                gap = true;
-            }
-            snippet.appendText("\n * @var ");
-            snippet.appendVariable(stop++ + '', this.var);
+            varString = "@var \${###:" +this.var + "}";
         }
 
         if (this.return && (this.return != 'void' || Config.instance.get('returnVoid'))) {
-            if (!gap) {
-                snippet.appendText("\n *");
-                gap = true;
-            } else if (returnGap && this.params.length) {
-                snippet.appendText("\n *");
-            }
-            snippet.appendText("\n * @return ");
-            snippet.appendVariable(stop++ + '', this.return);
+            returnString = "@return \${###:" +this.return + "}";
         }
 
         if (Array.isArray(extra) && extra.length > 0) {
-            if (!gap) {
-                snippet.appendText("\n *");
-                gap = true;
-            }
-            for (var index = 0; index < extra.length; index++) {
-                var element = extra[index];
-                if (element != "") {
-                    element = " " + element;
+            extraString = extra.join("\n");
+        }
+
+
+        let templateArray = [];
+        for (let key in this.template) {
+            let propConfig = this.template[key];
+            let propString:string;
+            if (key == 'message' && messageString) {
+                propString = messageString;
+                if (gap) {
+                    propConfig.gapAfter = true;
                 }
-                snippet.appendText("\n *");
-                snippet.value += element;
+            } else if (key == 'var' && varString) {
+                propString = varString;
+            } else if (key == 'return' && returnString) {
+                propString = returnString;
+                if (returnGap) {
+                    propConfig.gapBefore = true;
+                }
+            } else if (key == 'param' && paramString) {
+                propString = paramString;
+            } else if (key == 'extra' && extraString) {
+                propString = extraString;
+            } else if (propConfig.content !== undefined) {
+                propString = propConfig.content;
+            }
+
+            if (propString && propConfig.gapBefore && templateArray[templateArray.length - 1] != "") {
+                templateArray.push("");
+            }
+
+            if (propString) {
+                templateArray.push(propString);
+            }
+
+            if (propString && propConfig.gapAfter) {
+                templateArray.push("");
             }
         }
 
-        snippet.appendText("\n */");
+        if (templateArray[templateArray.length - 1] == "") {
+            templateArray.pop();
+        }
+
+        let templateString:string = templateArray.join("\n");
+        templateString = "/**\n" + templateString + "\n */";
+
+        let stop = 0;
+        templateString = templateString.replace(/###/gm, function():string {
+            stop++;
+            return stop + "";
+        });
+
+        templateString = templateString.replace(/^$/gm, " *");
+        templateString = templateString.replace(/^(?!(\s\*|\/\*))/gm, " * $1");
+
+        let snippet = new SnippetString(templateString);
 
         return snippet;
+    }
+
+    /**
+     * Set the template for rendering
+     *
+     * @param {Object} template
+     */
+    public set template(template:Object)
+    {
+        this._template = template;
+    }
+
+    /**
+     * Get the template
+     *
+     * @type {Object}
+     */
+    public get template():Object
+    {
+        if (this._template == null) {
+            return {
+                message: {},
+                var: {},
+                param: {},
+                return: {},
+                extra: {}
+            }
+        }
+
+        return this._template;
     }
 }
 

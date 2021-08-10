@@ -1,5 +1,6 @@
 import { Block } from "../block";
 import { Doc, Param } from "../doc";
+import Config from "../util/config";
 
 /**
  * Represents an property block
@@ -20,6 +21,7 @@ export default class Property extends Block
         let params = this.match();
 
         let doc = new Doc('Undocumented variable');
+        doc.template = Config.instance.get('propertyTemplate');
 
         if (params[5]) {
             doc.var = this.getTypeFromValue(params[5]);

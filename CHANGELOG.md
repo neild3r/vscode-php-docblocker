@@ -2,6 +2,24 @@
 
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
+## [2.1.0] - 2019-11-19
+- Add should to list of bool return type functions - Thanks @ImClarky
+- Fix issue where functions named with a bool return prefix were incorrectly given bool return type - Thanks @ImClarky
+- Fix issue with snake case class names in PHP7 return types - Thanks @rmccue
+
+## [2.0.1] - 2019-07-08
+- Fix issue in templating system where custom order was not being honored
+
+## [2.0.0] - 2019-06-30
+- Add templating system to handle how DocBlocks are created. While not strictly a breaking change it is a major update so this is why it has been released as 2.0.0
+
+## [1.9.0] - 2019-06-30
+- Add PHPUnit annotations to docblock completions - Thanks @goodjack
+
+## [1.8.0] - 2019-03-13
+- Add a command to trigger DocBlocking
+- Update configuration description around short names - Thanks @dave470003
+
 ## [1.7.0] - 2018-12-23
 - Add description to snippet to avoid confusion 
 - Add option to turn of void return type when the return could not be detected
@@ -93,7 +111,12 @@ All notable changes to the "php-docblocker" extension will be documented in this
 ## 0.1.0 - 2017-03-12
 - Initial release
 
-[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.7.0...HEAD
+[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.1.0...HEAD
+[2.1.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.0.1...v2.1.0
+[2.0.1]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.0.0...v2.0.1
+[2.0.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.9.0...v2.0.0
+[1.9.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.8.0...v1.9.0
+[1.8.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.4.0...v1.5.0

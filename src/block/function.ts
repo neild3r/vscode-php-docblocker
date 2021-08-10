@@ -26,6 +26,7 @@ export default class FunctionBlock extends Block
         let params = this.match();
 
         let doc = new Doc('Undocumented function');
+        doc.template = Config.instance.get('functionTemplate');
         let argString = this.getEnclosed(params[6], "(", ")");
         let head:string;
 
@@ -58,7 +59,7 @@ export default class FunctionBlock extends Block
             }
         }
 
-        let returnType:Array<string> = this.signature.match(/.*\)\s*\:\s*(\?)?\s*([a-zA-Z\\]+)\s*$/m);
+        let returnType:Array<string> = this.signature.match(/.*\)\s*\:\s*(\?)?\s*([a-zA-Z_0-9\\]+)\s*$/m);
 
         if (returnType != null) {
             if (Config.instance.get('qualifyClassNames')) {
@@ -85,7 +86,7 @@ export default class FunctionBlock extends Block
      */
     public getReturnFromName(name:string):string
     {
-        if (/^(is|has|can)/.test(name)) {
+        if (/^(is|has|can|should)(?:[A-Z0-9_]|$)/.test(name)) {
             return TypeUtil.instance.getFormattedTypeByName('bool');
         }
 
