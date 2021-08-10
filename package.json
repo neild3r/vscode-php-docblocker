@@ -29,7 +29,7 @@
     "url": "https://github.com/neild3r/vscode-php-docblocker/issues"
   },
   "icon": "images/logo.png",
-  "main": "./out/extension.js",
+  "main": "./out/src/extension.js",
   "contributes": {
     "commands": [
       {
@@ -104,7 +104,7 @@
     "watch": "npm run -S esbuild-base -- --sourcemap --watch",
     "pretest": "tsc -p ./",
     "test": "node ./out/test/runTest.js",
-    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node"
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/src/extension.js --external:vscode --format=cjs --platform=node"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.6",
