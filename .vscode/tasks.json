@@ -8,6 +8,9 @@
 			"group": "build",
 			"problemMatcher": "$esbuild-watch",
 			"isBackground": true,
+			"presentation": {
+				"reveal": "never"
+			},
 			"label": "npm: watch",
 		},
 		{

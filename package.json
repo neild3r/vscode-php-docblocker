@@ -102,6 +102,7 @@
     "lint": "tslint -p ./",
     "build": "npm run -S esbuild-base -- --sourcemap",
     "watch": "npm run -S esbuild-base -- --sourcemap --watch",
+    "pretest": "tsc -p ./ && npm run build",
     "test": "node ./out/test/runTest.js",
     "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node"
   },
