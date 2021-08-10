@@ -101,8 +101,7 @@
     "vscode:prepublish": "npm run -S esbuild-base -- --minify",
     "lint": "tslint -p ./",
     "build": "npm run -S esbuild-base -- --sourcemap",
-    "watch": "npm run -S esbuild-base -- --sourcemap --watch",
-    "pretest": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
     "test": "node ./out/test/runTest.js",
     "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/src/extension.js --external:vscode --format=cjs --platform=node"
   },

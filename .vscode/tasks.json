@@ -6,11 +6,11 @@
 			"type": "npm",
 			"script": "watch",
 			"group": "build",
-			"problemMatcher": "$esbuild-watch",
-			"isBackground": true,
-			"presentation": {
-				"reveal": "never"
-			},
+            "problemMatcher": "$tsc-watch",
+            "isBackground": true,
+            "presentation": {
+                "reveal": "never"
+            },
 			"label": "npm: watch",
 		},
 		{
