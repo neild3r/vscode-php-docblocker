@@ -101,10 +101,12 @@
     "vscode:prepublish": "npm run -S esbuild-base -- --minify",
     "lint": "tslint -p ./",
     "build": "npm run -S esbuild-base -- --sourcemap",
+    "build-test": "npm run -S esbuild-test -- --sourcemap",
     "watch": "npm run -S esbuild-base -- --sourcemap --watch",
-    "pretest": "tsc -p ./ && npm run build",
+    "pretest": "npm run build-test && npm run build",
     "test": "node ./out/test/runTest.js",
-    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node"
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild-test": "esbuild ./test/runTest.ts --bundle --outfile=out/test/runTest.js --external:vscode --format=cjs --platform=node"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.6",
