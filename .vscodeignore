@@ -1,6 +1,9 @@
 .vscode/**
 .vscode-test/**
 out/test/**
+out/src/**
+!out/src/extension.js
+!out/src/extension.js.map
 test/**
 src/**
 **/*.map

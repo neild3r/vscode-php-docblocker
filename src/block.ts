@@ -76,7 +76,7 @@ export abstract class Block
      */
     public test():boolean
     {
-        return this.pattern.test(this.signature)
+        return this.pattern.test(this.signature);
     }
 
     /**
