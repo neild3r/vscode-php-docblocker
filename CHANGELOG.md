@@ -3,7 +3,7 @@
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
 ## [2.2.0] - 2021-10-11
-- Use esbundle to improve startup performance
+- Use esbuild to improve startup performance
 - Add support for PHP 7.4 typed properties
 - Fix issue where if you have a comma in a default value it incorrectly splits the arguments
 
