@@ -32,6 +32,7 @@ suite("Property tests", () => {
         });
 
         test("Type Test: "+ testData.name, () => {
+            Helper.setConfig(testData.config);
             let func = new Function(testPositions[testData.key], editor);
             let doc:Doc = func.parse();
             assert.equal(doc.var, testData.var, test.name);
