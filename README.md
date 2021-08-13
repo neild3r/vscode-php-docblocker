@@ -122,7 +122,7 @@ and can be triggered by typing @ then another characted (Provided your vscode se
 | @abstract                    | @abstract                               |
 | @after                       | @after                                  |
 | @afterClass                  | @afterClass                             |
-| @author                      | @author ${1:{{name}}} <${2:{{email}}}>  |
+| @author                      | @author \${1:name} <${2:email}>         |
 | @backupGlobals               | @backupGlobals ${1:switch}              |
 | @backupStaticAttributes      | @backupStaticAttributes ${1:switch}     |
 | @before                      | @before                                 |

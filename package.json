@@ -28,6 +28,11 @@
   "bugs": {
     "url": "https://github.com/neild3r/vscode-php-docblocker/issues"
   },
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
   "icon": "images/logo.png",
   "main": "./out/src/extension.js",
   "contributes": {
@@ -39,7 +44,7 @@
     ],
     "configuration": {
       "type": "object",
-      "title": "PHP DocBlocker configuration",
+      "title": "PHP DocBlocker",
       "properties": {
         "php-docblocker.gap": {
           "type": "boolean",
