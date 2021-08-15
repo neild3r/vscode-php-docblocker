@@ -2,12 +2,12 @@
   "name": "php-docblocker",
   "displayName": "PHP DocBlocker",
   "description": "A simple, dependency free PHP specific DocBlocking package",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "license": "MIT",
   "publisher": "neilbrayfield",
   "author": "Neil Brayfield <dev@brayfield.uk>",
   "engines": {
-    "vscode": "^1.17.0"
+    "vscode": "^1.54.0"
   },
   "categories": [
     "Programming Languages"
@@ -29,7 +29,7 @@
     "url": "https://github.com/neild3r/vscode-php-docblocker/issues"
   },
   "icon": "images/logo.png",
-  "main": "./out/src/extension",
+  "main": "./out/src/extension.js",
   "contributes": {
     "commands": [
       {
@@ -108,23 +108,24 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
+    "vscode:prepublish": "npm run -S esbuild-base -- --minify",
     "lint": "tslint -p ./",
+    "build": "npm run -S esbuild-base -- --sourcemap",
     "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile",
-    "test": "node ./out/test/runTest.js"
+    "pretest": "tsc -p ./",
+    "test": "node ./out/test/runTest.js",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/src/extension.js --external:vscode --format=cjs --platform=node"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.6",
-    "@types/node": "^6.0.40",
-    "@types/vscode": "^1.17",
-    "mocha": "^6.1.4",
+    "@types/node": "^6.14.13",
+    "@types/vscode": "^1.54.0",
+    "esbuild": "^0.12.19",
+    "coveralls": "^3.1.1",
+    "mocha": "^9.0.3",
     "nyc": "^14.0.0",
-    "typescript": "^3.5.1",
-    "vscode-test": "^1.2.0"
+    "typescript": "^3.9.10",
+    "vscode-test": "^1.6.1"
   },
-  "dependencies": {
-    "coveralls": "^3.0.7"
-  }
+  "dependencies": {}
 }

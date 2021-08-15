@@ -76,7 +76,7 @@ export abstract class Block
      */
     public test():boolean
     {
-        return this.pattern.test(this.signature)
+        return this.pattern.test(this.signature);
     }
 
     /**
@@ -158,6 +158,47 @@ export abstract class Block
         }
 
         return context.substr(0, endPos);
+    }
+
+    /**
+     * Split a string excluding any braces
+     *
+     * Currently doesn't handle string
+     *
+     * @param {string} context
+     * @param {string} [divider=","]
+     * @returns {Array<string>}
+     * @memberof Block
+     */
+    public getSplitWithoutEnclosed(context: string, divider: string = ","):Array<string>
+    {
+        let result:Array<string> = new Array();
+        let contextArray:Array<string> = context.split("");
+
+        let openers:Array<string> = ['{', '(', '['];
+        let closers:Array<string> = ['}', ')', ']'];
+        let opened = 0;
+        let startPos = 0;
+        let endPos = 0;
+
+        for (let index = 0; index < contextArray.length; index++) {
+            let char = contextArray[index];
+            if (char === divider && opened === 0) {
+                endPos = index;
+                result.push(context.substr(startPos, endPos - startPos));
+                startPos = index + 1;
+                continue;
+            } else if (openers.indexOf(char) >= 0) {
+                opened++;
+            } else if (closers.indexOf(char) >= 0) {
+                opened--;
+            }
+            endPos = index;
+        }
+
+        result.push(context.substr(startPos, endPos - startPos + 1));
+
+        return result;
     }
 
     /**

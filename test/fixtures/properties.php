@@ -54,4 +54,31 @@ abstract class Test
 
     ////=> default-null
     public $defaultNull = null;
+
+    ////=> typed-string
+    public string $typedString;
+
+    ////=> typed-int
+    public int $typedInt;
+
+    ////=> typed-interface
+    public DateTimeInterface $typedInterface;
+
+    ////=> typed-namespace
+    public \App\Type\Test $typedNamespace;
+
+    ////=> typed-string-default
+    public string $typedStringDefault = 'test';
+
+    ////=> typed-int-default
+    public int $typedIntDefault = 42;
+
+    ////=> typed-string-nullable
+    public ?string $typedStringNullable;
+
+    ////=> typed-interface-nullable
+    public ?DateTimeInterface $typedInterfaceNullable;
+
+    ////=> typed-namespace-nullable
+    public ?\App\Type\Test $typedNamespaceNullable;
 }
