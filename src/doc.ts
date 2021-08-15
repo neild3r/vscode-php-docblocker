@@ -153,8 +153,8 @@ export class Doc
         }
 
         if (this.return && (this.return != 'void' || Config.instance.get('returnVoid'))) {
-            let appendSpace = this.getReturnAlignmentSpaces(maxParamLength);
-            returnString = "@return \${###:" +this.return + "}" + appendSpace;
+            let alignmentSpaces = this.getReturnAlignmentSpaces(maxParamLength);
+            returnString = "@return \${###:" +this.return + "}" + alignmentSpaces.append;
         }
 
         if (Array.isArray(extra) && extra.length > 0) {
