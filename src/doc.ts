@@ -109,7 +109,6 @@ export class Doc
         let alignParams = Config.instance.get('alignParams');
         // Align return is false if align params is not active.
         let alignReturn = alignParams ? Config.instance.get('alignReturn') : false;
-        // let alignTrimExtraSpaces = alignParams ? Config.instance.get('alignTrimExtraSpaces') : false;
 
         let returnString = "";
         let varString = "";
@@ -301,6 +300,7 @@ export class Doc
     private getParamAlignmentSpaces(maxParamLength: MaxParamLength, paramName: string, paramType: string): AlignmentSpaces
     {
         let alignParams = Config.instance.get('alignParams');
+        let alignTrimExtraSpaces = alignParams ? Config.instance.get('alignTrimExtraSpaces') : false;
 
         let prependSpace = '';
         let appendSpace = '';
@@ -312,7 +312,7 @@ export class Doc
         }
 
         return {
-            append: appendSpace,
+            append: alignTrimExtraSpaces ? '' : appendSpace,
             prepend: prependSpace
         };
     }
@@ -327,6 +327,7 @@ export class Doc
     {
         let alignParams = Config.instance.get('alignParams');
         let alignReturn = alignParams ? Config.instance.get('alignReturn') : false;
+        let alignTrimExtraSpaces = alignParams ? Config.instance.get('alignTrimExtraSpaces') : false;
 
         let appendSpace = '';
         if (alignReturn) {
@@ -336,7 +337,7 @@ export class Doc
         }
 
         return {
-            append: appendSpace,
+            append: alignTrimExtraSpaces ? '' : appendSpace,
             prepend: ''
         };
     }

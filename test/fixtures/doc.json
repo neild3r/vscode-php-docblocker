@@ -457,5 +457,37 @@
             " * @return ${4:int}              ",
             " */"
         ]
+    },
+    {
+        "name": "Align params and shorter return statement",
+        "config": {
+            "gap": true,
+            "alignParams": true,
+            "alignReturn": true,
+            "alignTrimExtraSpaces": true
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$nameLong",
+                    "type": "int"
+                },
+                {
+                    "name": "$name",
+                    "type": "string"
+                }
+            ],
+            "return": "int"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param  ${2:int}    \\$nameLong",
+            " * @param  ${3:string} \\$name",
+            " * @return ${4:int}",
+            " */"
+        ]
     }
 ]
