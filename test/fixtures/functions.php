@@ -123,7 +123,6 @@ abstract class Test
     public function dotArgsTypedLong(int ...$args) {
     }
 
-
     ////=> php7-return
     public function getPHP7Return(): TypeHint {
     }

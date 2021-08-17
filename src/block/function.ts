@@ -49,9 +49,9 @@ export default class FunctionBlock extends Block
 
                 if (parts[2] != null && parts[1] === '?') {
                     type += '|null';
-                } else if (parts[2] != null && parts[4] != null && parts[4] == "null") {
+                } else if (parts[2] != null && parts[4] != null && parts[2] != "mixed" && parts[4] == "null") {
                     type += '|null';
-                } else if (parts[4] != null && parts[4] != "") {
+                } else if (parts[4] != null && parts[4] != "" && parts[2] != "mixed") {
                     type = TypeUtil.instance.getFormattedTypeByName(TypeUtil.instance.getTypeFromValue(parts[4]));
                 }
 

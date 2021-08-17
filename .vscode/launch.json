@@ -8,6 +8,7 @@
 			"runtimeExecutable": "${execPath}",
 			"args": ["--extensionDevelopmentPath=${workspaceFolder}"],
 			"outFiles": ["${workspaceFolder}/out/**/*.js"],
+			"stopOnEntry": false,
 			"preLaunchTask": "npm: watch"
 		},
 		{
