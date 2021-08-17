@@ -32,7 +32,7 @@ export default class Property extends Block
                 head = this.getClassHead();
             }
 
-            let varType = TypeUtil.instance.getFullyQualifiedType(parts[2], head);
+            let varType = TypeUtil.instance.getResolvedTypeHints(parts[2], head);
             varType = TypeUtil.instance.getFormattedTypeByName(varType);
 
             if (parts[1] === '?') {
