@@ -161,6 +161,21 @@ abstract class Test
     {
     }
 
+    ////=> php8-return-union-types
+    public function getPHP8ReturnUnionTypes():int|bool|\TypeHint|App\Model\TypeHint
+    {
+    }
+
+    ////=> php8-return-union-types-with-short-name
+    public function getPHP8ReturnUnionTypesShortName():int|bool|\TypeHint|App\Model\TypeHint
+    {
+    }
+
+    ////=> php8-param-union-types
+    public function getPHP8ParamUnionTypes(int|bool|\TypeHint|App\Model\TypeHint $arg, string|\Closure ...$args)
+    {
+    }
+
     ////=> function-reference
     public function &someFunction()
     {

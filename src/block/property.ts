@@ -12,7 +12,7 @@ export default class Property extends Block
     /**
      * @inheritdoc
      */
-    protected pattern:RegExp = /^\s*(static)?\s*(protected|private|public)\s+(static)?\s*(\??\\?[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff\\]+)?\s*(\$[A-Za-z0-9_]+)\s*\=?\s*([^;]*)/m;
+    protected pattern:RegExp = /^\s*(static)?\s*(protected|private|public)\s+(static)?\s*(\??\\?[a-zA-Z_\x7f-\xff][a-zA-Z0-9|_\x7f-\xff\\]+)?\s*(\$[A-Za-z0-9_]+)\s*\=?\s*([^;]*)/m;
 
     /**
      * @inheritdoc
@@ -41,7 +41,7 @@ export default class Property extends Block
 
             doc.var = varType;
         } else if (params[6]) {
-            doc.var = this.getTypeFromValue(params[6]);
+            doc.var = TypeUtil.instance.getTypeFromValue(params[6]);
         } else {
             doc.var = '[type]';
         }

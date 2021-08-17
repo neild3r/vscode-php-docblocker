@@ -221,44 +221,6 @@ export abstract class Block
     }
 
     /**
-     * Take the value and parse and try to infer its type
-     *
-     * @param {string} value
-     * @returns {string}
-     */
-    public getTypeFromValue(value:string):string
-    {
-        let result:Array<string>;
-
-        // Check for bool
-        if (value.match(/^\s*(false|true)\s*$/i) !== null) {
-            return TypeUtil.instance.getFormattedTypeByName('bool');
-        }
-
-        // Check for int
-        if (value.match(/^\s*([\d-]+)\s*$/) !== null) {
-            return TypeUtil.instance.getFormattedTypeByName('int');
-        }
-
-        // Check for float
-        if (value.match(/^\s*([\d.-]+)\s*$/) !== null) {
-            return 'float';
-        }
-
-        // Check for string
-        if (value.match(/^\s*(["'])/) !== null) {
-            return 'string';
-        }
-
-        // Check for array
-        if (value.match(/^\s*(array\(|\[)/) !== null) {
-            return 'array';
-        }
-
-        return '[type]';
-    }
-
-    /**
      * This is where we parse the code block into a Doc
      * object which represents our snippet
      *
