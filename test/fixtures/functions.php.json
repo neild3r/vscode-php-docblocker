@@ -277,6 +277,32 @@
         }
     },
     {
+        "key": "param-default-null",
+        "name": "Param with default null",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$arg",
+                    "type": "integer|null"
+                }
+            ]
+        }
+    },
+    {
+        "key": "param-mixed-default-null",
+        "name": "Param with mixed and default null",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$arg",
+                    "type": "mixed"
+                }
+            ]
+        }
+    },
+    {
         "key": "args",
         "name": "Argument with ...$args",
         "result": {
