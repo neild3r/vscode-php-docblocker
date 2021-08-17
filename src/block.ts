@@ -231,7 +231,7 @@ export abstract class Block
         let result:Array<string>;
 
         // Check for bool
-        if (value.match(/^\s*(false|true)\s*$/i) !== null) {
+        if (value.match(/^\s*(false|true)\s*$/i) !== null || value.match(/^\s*\!/i) !== null) {
             return TypeUtil.instance.getFormattedTypeByName('bool');
         }
 
@@ -246,7 +246,7 @@ export abstract class Block
         }
 
         // Check for string
-        if (value.match(/^\s*(["'])/) !== null) {
+        if (value.match(/^\s*(["'])/) !== null || value.match(/^\s*<<</) !== null) {
             return 'string';
         }
 

@@ -122,7 +122,7 @@ and can be triggered by typing @ then another characted (Provided your vscode se
 | @abstract                    | @abstract                               |
 | @after                       | @after                                  |
 | @afterClass                  | @afterClass                             |
-| @author                      | @author ${1:{{name}}} <${2:{{email}}}>  |
+| @author                      | @author \${1:name} <${2:email}>         |
 | @backupGlobals               | @backupGlobals ${1:switch}              |
 | @backupStaticAttributes      | @backupStaticAttributes ${1:switch}     |
 | @before                      | @before                                 |
@@ -152,6 +152,7 @@ and can be triggered by typing @ then another characted (Provided your vscode se
 | @link                        | @link ${1:http://url.com}               |
 | @medium                      | @medium                                 |
 | @method                      | @method ${1:mixed} ${2:methodName()}    |
+| @mixin                       | @mixin ${1:\Class}                      |
 | @package                     | @package ${1:category}                  |
 | @param                       | @param ${1:mixed} $${2:name}            |
 | @preserveGlobalState         | @preserveGlobalState                    |

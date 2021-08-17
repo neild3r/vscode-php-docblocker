@@ -1,6 +1,8 @@
 # Change Log
 
 All notable changes to the "php-docblocker" extension will be documented in this file.
+## [2.2.1] - 2021-10-13
+- Supported workspace trust
 
 ## [2.2.0] - 2021-10-11
 - Use esbuild to improve startup performance
