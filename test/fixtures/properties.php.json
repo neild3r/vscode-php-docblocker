@@ -14,12 +14,6 @@
         }
     },
     {
-        "key": "static",
-        "result": {
-            "var": "[type]"
-        }
-    },
-    {
         "key": "protected-static",
         "result": {
             "var": "[type]"
