@@ -9,10 +9,16 @@ abstract class Test
     protected $protected;
 
     ////=> static
-    protected static $static;
+    static $static;
+
+    ////=> protected-static
+    protected static $staticProtected;
 
     ////=> static-alternate
     static protected $staticAlt;
+
+    ////=> ignore-case
+    STatiC ProtecteD $ignoreCase;
 
     ////=> default-string
     protected $defaultString = 'string';
@@ -81,4 +87,14 @@ abstract class Test
 
     ////=> typed-namespace-nullable
     public ?\App\Type\Test $typedNamespaceNullable;
+
+    ////=> default-message-blank
+    protected $default_message_blank;
+
+    ////=> default-message-name
+    protected $default_message_name;
+
+    ////=> default-message-undocumented
+    protected $default_message_undocumented;
+
 }

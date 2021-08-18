@@ -107,8 +107,6 @@ export default class TypeUtil {
      * @returns {stirng} `[type]` or `mixed`
      */
     public getUnknownType(): string {
-        console.log(Config.instance.get('defaultMessage'), Config.instance.get('unknownType'));
-        
         return Config.instance.get('unknownType');
     }
     

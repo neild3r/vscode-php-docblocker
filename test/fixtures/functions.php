@@ -101,6 +101,16 @@ abstract class Test
     {
     }
 
+    ////=> param-default-null
+    public function paramDefaultNull(int $arg = null)
+    {
+    }
+
+    ////=> param-mixed-default-null
+    public function paramMixedDefaultNull(mixed $arg = null)
+    {
+    }
+
     ////=> args
     public function dotArgs(...$args) {
     }
@@ -258,6 +268,26 @@ abstract class Test
 
     ////=> to-string
     public function __toString()
+    {
+    }
+
+    ////=> default-message-blank
+    public function default_message_blank()
+    {
+    }
+
+    ////=> default-message-name
+    public function default_message_name()
+    {
+    }
+
+    ////=> default-message-undocumented
+    public function default_message_undocumented()
+    {
+    }
+
+    ////=> return-type-with-spaces
+    function return_type_with_spaces(): int| bool |  string
     {
     }
 }

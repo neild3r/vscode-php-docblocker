@@ -277,6 +277,32 @@
         }
     },
     {
+        "key": "param-default-null",
+        "name": "Param with default null",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$arg",
+                    "type": "integer|null"
+                }
+            ]
+        }
+    },
+    {
+        "key": "param-mixed-default-null",
+        "name": "Param with mixed and default null",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$arg",
+                    "type": "mixed"
+                }
+            ]
+        }
+    },
+    {
         "key": "args",
         "name": "Argument with ...$args",
         "result": {
@@ -607,6 +633,46 @@
                     "type": "[type]"
                 }
             ]
+        }
+    },
+    {
+        "key": "default-message-blank",
+        "config": {
+            "defaultMessage": "blank"
+        },
+        "result": {
+            "return": "void",
+            "message": ""
+        }
+    },
+    {
+        "key": "default-message-name",
+        "config": {
+            "defaultMessage": "name"
+        },
+        "result": {
+            "return": "void",
+            "message": "default_message_name"
+        }
+    },
+    {
+        "key": "default-message-undocumented",
+        "config": {
+            "defaultMessage": "undocumented"
+        },
+        "result": {
+            "return": "void",
+            "message": "Undocumented function"
+        }
+    },
+    {
+        "key": "return-type-with-spaces",
+        "config": {
+            "useShortNames": true
+        },
+        "result": {
+            "return": "int|bool|string",
+            "params": []
         }
     }
 ]
