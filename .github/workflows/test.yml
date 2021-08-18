@@ -3,7 +3,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
 
     - name: Checkout
@@ -18,7 +18,7 @@ jobs:
       run: npm install
       
     - name: Run tests
-      run: xvfb-run --listen-tcp -s "-ac" -- npm test
+      run: npm test
 
     - name: Coveralls
       uses: coverallsapp/github-action@master
