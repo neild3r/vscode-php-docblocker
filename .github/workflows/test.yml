@@ -17,10 +17,8 @@ jobs:
     - name: Install dependencies
       run: npm install
       
-    - name: Run headless test
-      uses: GabrielBB/xvfb-action@v1
-      with:
-        run: npm test
+    - name: Run tests
+      run: xvfb-run --listen-tcp -s "-ac" -- npm test
 
     - name: Coveralls
       uses: coverallsapp/github-action@master
