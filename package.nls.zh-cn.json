@@ -1,7 +1,7 @@
 {
     "Insert PHP Docblock": "插入PHP文档块",
-    "option.unknownType": "未知类型的默认类型",
-    "option.defaultParameterDescription": "使用参数名称作为参数描述。如 /** @param string $username username */",
+    "option.unknownType": "未知类型的默认值",
+    "option.withParameterDescription": "使用参数名称作为参数描述。如 /** @param string $username username */",
     "option.defaultMessage": "文档默认信息",
     "option.defaultMessage.blank": "空白",
     "option.defaultMessage.name": "使用方法或变量名",

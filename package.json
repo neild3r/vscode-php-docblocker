@@ -55,10 +55,10 @@
           ],
           "description": "%option.unknownType%"
         },
-        "php-docblocker.defaultParameterDescription": {
+        "php-docblocker.withParameterDescription": {
           "type": "boolean",
           "default": false,
-          "description": "%option.defaultParameterDescription%"
+          "description": "%option.withParameterDescription%"
         },
         "php-docblocker.defaultMessage": {
           "type": "string",
@@ -119,6 +119,16 @@
           "type": "object",
           "default": null,
           "description": "Specify the default template for classes."
+        },
+        "php-docblocker.constTemplate": {
+          "type": "object",
+          "default": null,
+          "description": "Specify the default template for consts."
+        },
+        "php-docblocker.enumTemplate": {
+          "type": "object",
+          "default": null,
+          "description": "Specify the default template for enums."
         },
         "php-docblocker.variableTemplate": {
           "type": "object",

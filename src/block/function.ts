@@ -42,7 +42,7 @@ export default class FunctionBlock extends Block
                 let arg = args[index];
                 
                 // `public ?Object&Object|Object &...$vars = value`
-                let parts = arg.match(/^\s*(?:(?:public|protected|private)\s+(?:static|readonly)?\s*)?(\?)?\s*([a-z0-9_\\][a-z0-9_\\\|&\s]*)?\s*\&?((?:[.]{3})?\$[a-z0-9_]+)\s*\=?\s*(.*)\s*/im);
+                let parts = arg.match(/^\s*(?:(?:public|protected|private)\s+(?:readonly)?\s*)?(\?)?\s*([a-z0-9_\\][a-z0-9_\\\|&\s]*)?\s*\&?((?:[.]{3})?\$[a-z0-9_]+)\s*\=?\s*(.*)\s*/im);
                 if (parts === null) {
                     // trailing comma
                     if (arg.trim() === '') {
@@ -53,7 +53,7 @@ export default class FunctionBlock extends Block
                     let tmp = arg.match(/^\s*(\?)?\s*(.*?)\s*(\$[a-z0-9_]+)[\s=]?/im);
                     if (tmp) {
                         parts = [];
-                        parts[1] = tmp[0];
+                        parts[1] = tmp[1];
                         parts[2] = tmp[2];
                         parts[3] = tmp[3];
                     } else {
@@ -93,7 +93,7 @@ export default class FunctionBlock extends Block
                 head = this.getClassHead();
             }
             let nullable = returnType[1] === '?';
-            doc.return = TypeUtil.instance.getFormattedTypeByName(returnType[2], nullable, this.getClassHead());
+            doc.return = TypeUtil.instance.getFormattedTypeByName(returnType[2], nullable, head);
         } else {
             doc.return = this.getReturnFromName(params[5]);
         }

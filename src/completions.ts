@@ -308,6 +308,10 @@ export default class Completions implements CompletionItemProvider
     
     /**
      * Replace tag
+     * 
+     * @param {string} tag 
+     * @param {string} snippet 
+     * @returns {string}
      */
     protected replaceTagSnippet(tag:string, snippet:string): string
     {

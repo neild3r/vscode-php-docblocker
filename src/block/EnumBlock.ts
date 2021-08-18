@@ -12,7 +12,7 @@ export default class EnumBlock extends Block
     /**
      * @inheritdoc
      */
-    protected pattern:RegExp = /^\s*enum\s+([a-z0-9_]+)[\s:]*/i;
+    protected pattern:RegExp = /^\s*enum\s+([a-z0-9_]+)[\s:]*/im;
 
     /**
      * @inheritdoc

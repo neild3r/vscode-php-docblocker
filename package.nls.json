@@ -1,7 +1,7 @@
 {
     "Insert PHP Docblock": "Insert PHP Docblock",
     "option.unknownType": "Placeholder of unknown type",
-    "option.defaultParameterDescription": "Use the parameter name as the description. e.g /** @param string $username username */",
+    "option.withParameterDescription": "Use the parameter name as the description. e.g /** @param string $username username */",
     "option.defaultMessage": "Document default message",
     "option.defaultMessage.blank": "blank",
     "option.defaultMessage.name": "function/class/var name",

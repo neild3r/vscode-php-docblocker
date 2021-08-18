@@ -317,10 +317,10 @@ abstract class Test
     {
     }
 
-    ////=> return-type-compatible-with-error-for-coveralls
-    function return_type_compatible_with_error_for_coveralls(): int||
+    ////=> return-type-compatible-with-error
+    function return_type_compatible_with_error(): int||
     {
-        n();
+        fix_highlight();
     }
 
     ////=> trailing-comma

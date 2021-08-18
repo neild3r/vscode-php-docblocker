@@ -47,7 +47,7 @@ suite("TypeUtil tests: ", () => {
         assert.equal(type.getFullyQualifiedType('BaseExample', head), '\\App\\Test\\Model\\Example');
     });
 
-    test("formatted type from namespace use with alias", () => {
+    test("Formatted type from namespace use with alias", () => {
         let type = new TypeUtil;
         Helper.setConfig({qualifyClassNames: true});
         assert.equal(type.getFormattedTypeByName('BaseExample', true, head), '\\App\\Test\\Model\\Example|null');
@@ -85,7 +85,7 @@ suite("TypeUtil tests: ", () => {
         assert.equal(type.getFormattedTypeByName(' | |   '), '[type]');
     });
 
-    test("default null", () => {
+    test("Default null", () => {
         let type = new TypeUtil;
         assert.equal(type.getFormattedTypeByName('string', true), 'string|null');
     });

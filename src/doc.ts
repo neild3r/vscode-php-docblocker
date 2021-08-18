@@ -132,7 +132,7 @@ export class Doc
                 }
                 paramString += "@param \${###:"+param.type+"} " + param.name.replace('$', '\\$');
 
-                if (Config.instance.get('defaultParameterDescription')) {
+                if (Config.instance.get('withParameterDescription')) {
                     paramString += " \${###:"+param.name.substr(1)+"}";
                 } else {
                     paramString += " \${###:}";
@@ -141,6 +141,8 @@ export class Doc
         }
 
         if (this.var) {
+            // `@var ${1:int}`
+            // `@var ${1:int} ${2:\$name}`
             varString = "@var";
             let vars = this.var.split(' ');
             for (let index = 0; index < vars.length; index++) {

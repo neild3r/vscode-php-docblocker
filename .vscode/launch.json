@@ -8,7 +8,6 @@
 			"runtimeExecutable": "${execPath}",
 			"args": ["--extensionDevelopmentPath=${workspaceFolder}"],
 			"outFiles": ["${workspaceFolder}/out/**/*.js"],
-			"stopOnEntry": false,
 			"preLaunchTask": "npm: watch"
 		},
 		{
@@ -21,7 +20,6 @@
 				"--extensionTestsPath=${workspaceFolder}/out/test/index"
 			],
 			"outFiles": ["${workspaceFolder}/out/test/**/*.js"],
-			"stopOnEntry": false,
 			"preLaunchTask": "npm: watch"
 		}
 	]
