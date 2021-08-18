@@ -1,11 +1,14 @@
 # Change Log
 
 All notable changes to the "php-docblocker" extension will be documented in this file.
-## [2.2.1] - 2021-10-13
-- Supported workspace trust
+
+## [2.2.1] - 2021-10-17
+- Supported workspace trust - Thanks @tianyiw2013
+- Add case insensitive matching - Thanks @tianyiw2013
+- Improve detection of types from certain default values - Thanks @tianyiw2013
 
 ## [2.2.0] - 2021-10-11
-- Use esbundle to improve startup performance
+- Use esbuild to improve startup performance
 - Add support for PHP 7.4 typed properties
 - Fix issue where if you have a comma in a default value it incorrectly splits the arguments
 
@@ -118,7 +121,8 @@ All notable changes to the "php-docblocker" extension will be documented in this
 ## 0.1.0 - 2017-03-12
 - Initial release
 
-[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.0...HEAD
+[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.1...HEAD
+[2.2.1]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.0...v2.2.1
 [2.2.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.0.1...v2.1.0
 [2.0.1]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.0.0...v2.0.1
