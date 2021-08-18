@@ -50,6 +50,9 @@ EOF;
 ////=> closure
 $var = function () {};
 
+////=> closure-fn
+$var = fn () => 123;
+
 ////=> array1
 $var = [1,2,3];
 

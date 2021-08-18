@@ -144,6 +144,15 @@
         }
     },
     {
+        "key": "closure-fn",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "\\Closure"
+        }
+    },
+    {
         "key": "array2",
         "config": {
             "variableWithKey": false

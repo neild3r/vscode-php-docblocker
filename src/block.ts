@@ -263,7 +263,7 @@ export abstract class Block
         }
 
         // Check for closure
-        var match = value.match(/^\s*function\s*\(/i);
+        var match = value.match(/^\s*function\s*\(/i) || value.match(/^\s*fn\s*\(/i);
         if (match) {
             return '\\Closure';
         }
