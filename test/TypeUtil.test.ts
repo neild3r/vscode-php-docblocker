@@ -35,6 +35,12 @@ suite("TypeUtil tests: ", () => {
         assert.equal(type.getFullyQualifiedType('FilterInterface', head), '\\App\\Test\\Model\\FilterInterface');
     });
 
+    test("Not Fully qualify typehint from namespace", () => {
+        let type = new TypeUtil;
+        Helper.setConfig({qualifyClassNames: false});
+        assert.equal(type.getFullyQualifiedType('FilterInterface', head), 'FilterInterface');
+    });
+
     test("Fully qualify typehint from namespace with prefix", () => {
         let type = new TypeUtil;
         Helper.setConfig({qualifyClassNames: true});
