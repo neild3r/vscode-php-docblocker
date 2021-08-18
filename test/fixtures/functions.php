@@ -287,8 +287,14 @@ abstract class Test
     }
 
     ////=> return-type-with-spaces
-    function return_type_with_spaces(): int| bool |  string
+    function return_type_with_spaces(): int| bool |			string
     {
+    }
+
+    ////=> return-type-compatible-with-error-for-coveralls
+    function return_type_compatible_with_error_for_coveralls(): ||
+    {
+        fix_highlighting();
     }
 
     ////=> intersection-types

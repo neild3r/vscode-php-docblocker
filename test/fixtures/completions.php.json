@@ -47,6 +47,13 @@
         ]
     },
     {
+        "key": "const",
+        "name": "Const trigger",
+        "result": [
+            "/**\n * ${1:Undocumented const}\n */"
+        ]
+    },
+    {
         "key": "function",
         "name": "Function trigger",
         "result": [
@@ -58,6 +65,13 @@
         "name": "Class trigger",
         "result": [
             "/**\n * ${1:Undocumented class}\n */"
+        ]
+    },
+    {
+        "key": "enum",
+        "name": "Enum trigger",
+        "result": [
+            "/**\n * ${1:Undocumented enum}\n */"
         ]
     },
     {

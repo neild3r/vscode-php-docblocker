@@ -22,6 +22,10 @@
  /**
  protected $name;
 
+////=> const
+ /**
+  const name = 1;
+
 ////=> variable
  /**
  $name = null;
@@ -35,6 +39,12 @@
 ////=> class
  /**
  class Blah
+ {
+ }
+
+////=> enum
+ /**
+  enum MyEunm
  {
  }
 

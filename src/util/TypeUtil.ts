@@ -93,9 +93,8 @@ export default class TypeUtil {
             result.push(names[index]);
         }
         if (result.length === 0) {
-            result.push('mixed');
-        }
-        if (nullable && result.indexOf('null') === -1) {
+            result.push(this.getUnknownType());
+        } else if (nullable && result.indexOf('null') === -1) {
             result.push('null');
         }
         return result.join('|');

@@ -672,5 +672,11 @@
             "return": "int|bool|string",
             "params": []
         }
+    },
+    {
+        "key": "return-type-compatible-with-error-for-coveralls",
+        "result": {
+            "return": "[type]"
+        }
     }
 ]
