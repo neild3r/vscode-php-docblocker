@@ -48,7 +48,7 @@ export default class Helper {
     public static getDefaultConfig(): object
     {
         let config = {};
-        let packageJson = JSON.parse(fs.readFileSync(__dirname + '/../../../package.json').toString());
+        let packageJson = JSON.parse(fs.readFileSync(__dirname + '/../../package.json').toString());
         let props = packageJson.contributes.configuration.properties;
         for (var key in props) {
             var item = props[key];
