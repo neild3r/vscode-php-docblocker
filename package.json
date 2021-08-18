@@ -2,7 +2,7 @@
   "name": "php-docblocker",
   "displayName": "PHP DocBlocker",
   "description": "A simple, dependency free PHP specific DocBlocking package",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "license": "MIT",
   "publisher": "neilbrayfield",
   "author": "Neil Brayfield <dev@brayfield.uk>",
