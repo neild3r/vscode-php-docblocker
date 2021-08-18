@@ -3,6 +3,7 @@ import { Doc, Param } from "../doc";
 import TypeUtil from "../util/TypeUtil";
 import { Range, Position } from "vscode";
 import Config from "../util/config";
+import { DocType } from "../DocType";
 
 /**
  * Represents a function code block
@@ -25,7 +26,7 @@ export default class FunctionBlock extends Block
     {
         let params = this.match();
 
-        let doc = new Doc('Undocumented function');
+        let doc = new Doc(DocType.function, TypeUtil.instance.getDefaultMessage(params[5], 'function'));
         doc.template = Config.instance.get('functionTemplate');
         let argString = this.getEnclosed(params[6], "(", ")");
         let head:string;
@@ -41,14 +42,16 @@ export default class FunctionBlock extends Block
             for (let index = 0; index < args.length; index++) {
                 let arg = args[index];
                 let parts = arg.match(/^\s*(\?)?\s*([A-Za-z0-9_\\]+)?\s*\&?((?:[.]{3})?\$[A-Za-z0-9_]+)\s*\=?\s*(.*)\s*/m);
-                var type = '[type]';
+                var type = TypeUtil.instance.getUnknownType();
 
                 if (parts[2] != null) {
                     parts[2] = TypeUtil.instance.getFullyQualifiedType(parts[2], head);
                 }
 
                 if (parts[2] != null && parts[1] === '?') {
-                    type = TypeUtil.instance.getFormattedTypeByName(parts[2])+'|null';
+                    type = TypeUtil.instance.getFormattedTypeByName(parts[2], true);
+                } else if (parts[2] != null && parts[2] != "mixed" && parts[1] === undefined && parts[4] === "null") {// int $var = null
+                    type = TypeUtil.instance.getFormattedTypeByName(parts[2], true);
                 } else if (parts[2] != null) {
                     type = TypeUtil.instance.getFormattedTypeByName(parts[2]);
                 } else if (parts[4] != null && parts[4] != "") {
@@ -59,9 +62,11 @@ export default class FunctionBlock extends Block
             }
         }
 
-        let returnType:Array<string> = this.signature.match(/.*\)\s*\:\s*(\?)?\s*([a-zA-Z_0-9\\]+)\s*$/m);
+        let returnType:Array<string> = this.signature.match(/.*\)\s*\:\s*(\?)?\s*([a-zA-Z_0-9\|\\\s]+)\s*$/m);
 
         if (returnType != null) {
+            returnType[2] = returnType[2].replace(/\s/g, '');
+
             if (Config.instance.get('qualifyClassNames')) {
                 returnType[2] = TypeUtil.instance.getFullyQualifiedType(returnType[2], this.getClassHead());
             }

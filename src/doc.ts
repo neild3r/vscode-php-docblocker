@@ -1,4 +1,5 @@
 import {workspace, SnippetString, WorkspaceConfiguration} from 'vscode';
+import { DocType } from './DocType';
 import Config from './util/config';
 
 /**
@@ -15,6 +16,13 @@ export class Doc
      * @type {Array<Param>}
      */
     public params:Array<Param> = [];
+    
+    /**
+     * Doc type
+     *
+     * @type {DocType}
+     */
+    public type:DocType;
 
     /**
      * Return tag
@@ -38,6 +46,13 @@ export class Doc
     public message:string;
 
     /**
+     * Doc inline
+     *
+     * @type {boolean}
+     */
+    public inline:boolean = false;
+
+    /**
      * Define the template for the documentor
      *
      * @type {Object}
@@ -47,12 +62,14 @@ export class Doc
     /**
      * Creates an instance of Doc.
      *
+     * @param {DocType} type
      * @param {string} [message='']
      */
-    public constructor(message:string = '')
-    {
-        this.message = message;
-    }
+     public constructor(type:DocType, message:string = '')
+     {
+         this.type = type;
+         this.message = message;
+     }
 
     /**
      * Set class properties from a standard object
@@ -70,7 +87,11 @@ export class Doc
         if (input.message !== undefined) {
             this.message = input.message;
         }
+        if (input.inline !== undefined) {
+            this.inline = input.inline;
+        }
         if (input.params !== undefined && Array.isArray(input.params)) {
+            this.params.length = 0;
             input.params.forEach(param => {
                 this.params.push(new Param(param.type, param.name));
             });
@@ -110,11 +131,26 @@ export class Doc
                     paramString += "\n";
                 }
                 paramString += "@param \${###:"+param.type+"} " + param.name.replace('$', '\\$');
+
+                if (Config.instance.get('defaultParameterDescription')) {
+                    paramString += " \${###:"+param.name.substr(1)+"}";
+                } else {
+                    paramString += " \${###:}";
+                }
             });
         }
 
         if (this.var) {
-            varString = "@var \${###:" +this.var + "}";
+            // TODO: need test
+            // @var $name
+            // @var int $name
+            varString = "@var";
+            let vars = this.var.split(' ');
+            for (let index = 0; index < vars.length; index++) {
+                if (vars[index] !== '') {
+                    varString += " \${###:" + vars[index].replace('$', '\\$') + "}";
+                }
+            }
         }
 
         if (this.return && (this.return != 'void' || Config.instance.get('returnVoid'))) {
@@ -167,8 +203,15 @@ export class Doc
             templateArray.pop();
         }
 
-        let templateString:string = templateArray.join("\n");
-        templateString = "/**\n" + templateString + "\n */";
+        let templateString:string;
+
+        if (this.inline && templateArray.length === 3) {
+            templateArray[0] = '\${###}';
+            templateString = "/** " + templateArray[2] + " " + templateArray[0] + " */";
+        } else {
+            templateString = templateArray.join("\n");
+            templateString = "/**\n" + templateString + "\n */";
+        }
 
         let stop = 0;
         templateString = templateString.replace(/###/gm, function():string {

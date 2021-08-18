@@ -47,8 +47,8 @@ export default class Helper {
     }
 
     public static setConfig(overrides:any) {
-        Config.instance.load();
         Config.instance.live = false;
+        Config.instance.load();
         Config.instance.override(overrides);
     }
 }

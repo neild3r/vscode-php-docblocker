@@ -57,23 +57,76 @@ export default class TypeUtil {
      * Returns the user configuration based name for the given type
      *
      * @param {string} name
+     * @param {boolean} nullable
      */
-    public getFormattedTypeByName(name:string) {
-        switch (name) {
-            case 'bool':
-            case 'boolean':
-                if (!Config.instance.get('useShortNames')) {
-                    return 'boolean';
-                }
-                return 'bool';
-            case 'int':
-            case 'integer':
-                if (!Config.instance.get('useShortNames')) {
-                    return 'integer';
-                }
-                return 'int';
+     public getFormattedTypeByName(name:string, nullable:boolean=false) {
+        let result = [];
+        let names = name.split("|");
+        for (let index = 0; index < names.length; index++) {
+            switch (names[index]) {
+                case '':
+                    continue;
+                case 'real':
+                case 'double':
+                    names[index] = 'float';
+                    break;
+                case 'unset':
+                    names[index] = 'null';
+                    break;
+                case 'bool':
+                case 'boolean':
+                    if (Config.instance.get('useShortNames')) {
+                        names[index] = 'bool';
+                    } else {
+                        names[index] = 'boolean';
+                    }
+                    break;
+                case 'int':
+                case 'integer':
+                    if (Config.instance.get('useShortNames')) {
+                        names[index] = 'int';
+                    } else {
+                        names[index] = 'integer';
+                    }
+                    break;
+            }
+            result.push(names[index]);
+        }
+        if (result.length === 0) {
+            result.push('mixed');
+        }
+        if (nullable && result.indexOf('null') === -1) {
+            result.push('null');
+        }
+        return result.join('|');
+    }
+
+    /**
+     * Unknown type
+     * 
+     * @returns {stirng} `[type]` or `mixed`
+     */
+    public getUnknownType(): string {
+        console.log(Config.instance.get('defaultMessage'), Config.instance.get('unknownType'));
+        
+        return Config.instance.get('unknownType');
+    }
+    
+    /**
+     * Default message
+     * 
+     * @param message 
+     * @param type 
+     * @returns 
+     */
+    public getDefaultMessage(message:string, type:string): string {
+        switch (Config.instance.get('defaultMessage')) {
+            case 'name':
+                return message.replace(/^_+/g, '');
+            case 'blank':
+                return '';
             default:
-                return name;
+                return "Undocumented " + type;
         }
     }
 

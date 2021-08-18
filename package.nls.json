@@ -1,0 +1,11 @@
+{
+    "Insert PHP Docblock": "Insert PHP Docblock",
+    "option.unknownType": "Placeholder of unknown type",
+    "option.defaultParameterDescription": "Use the parameter name as the description. e.g /** @param string $username username */",
+    "option.defaultMessage": "Document default message",
+    "option.defaultMessage.blank": "blank",
+    "option.defaultMessage.name": "function/class/var name",
+    "option.defaultMessage.undocumented": "e.g. Undocumented function",
+    "option.variableInline": "If enabled, generated doc in a line. e.g. /** @var mixed */",
+    "option.variableWithKey": "If enabled, generated document will contain a variable name. e.g. @var mixed $name"
+}

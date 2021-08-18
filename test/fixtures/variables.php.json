@@ -1,0 +1,287 @@
+[
+    {
+        "key": "float1",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "float"
+        }
+    },
+    {
+        "key": "float2",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "float"
+        }
+    },
+    {
+        "key": "float-with-key",
+        "config": {
+            "variableWithKey": true
+        },
+        "result": {
+            "var": "float $var"
+        }
+    },
+    {
+        "key": "int1",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "integer"
+        }
+    },
+    {
+        "key": "int2",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "integer"
+        }
+    },
+    {
+        "key": "bool1",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "boolean"
+        }
+    },
+    {
+        "key": "bool2",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "boolean"
+        }
+    },
+    {
+        "key": "bool3",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "boolean"
+        }
+    },
+    {
+        "key": "stdclass",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "stdClass"
+        }
+    },
+    {
+        "key": "object",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "object"
+        }
+    },
+    {
+        "key": "string1",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "string"
+        }
+    },
+    {
+        "key": "string2",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "string"
+        }
+    },
+    {
+        "key": "string3",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "string"
+        }
+    },
+    {
+        "key": "closure",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "\\Closure"
+        }
+    },
+    {
+        "key": "array2",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "array"
+        }
+    },
+    {
+        "key": "array2",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "array"
+        }
+    },
+    {
+        "key": "array3",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "array"
+        }
+    },
+    {
+        "key": "array4",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "array"
+        }
+    },
+    {
+        "key": "type-casting-string",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "string"
+        }
+    },
+    {
+        "key": "type-casting-float1",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "float"
+        }
+    },
+    {
+        "key": "type-casting-float2",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "float"
+        }
+    },
+    {
+        "key": "type-casting-float3",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "float"
+        }
+    },
+    {
+        "key": "type-casting-null",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "null"
+        }
+    },
+    {
+        "key": "mixed1",
+        "config": {
+            "variableWithKey": false,
+            "unknownType": "mixed"
+        },
+        "result": {
+            "var": "mixed"
+        }
+    },
+    {
+        "key": "mixed2",
+        "config": {
+            "variableWithKey": false,
+            "unknownType": "mixed"
+        },
+        "result": {
+            "var": "mixed"
+        }
+    },
+    {
+        "key": "default-message-blank",
+        "config": {
+            "defaultMessage": "blank",
+            "variableInline": false
+        },
+        "result": {
+            "message": ""
+        }
+    },
+    {
+        "key": "default-message-name",
+        "config": {
+            "defaultMessage": "name",
+            "variableInline": false
+        },
+        "result": {
+            "message": "default_message_name"
+        }
+    },
+    {
+        "key": "default-message-undocumented",
+        "config": {
+            "defaultMessage": "undocumented",
+            "variableInline": false
+        },
+        "result": {
+            "message": "Undocumented variable"
+        }
+    },
+    {
+        "key": "inline",
+        "config": {
+            "defaultMessage": "name",
+            "variableInline": true,
+            "variableWithKey": false
+        },
+        "result": {
+            "inline": true,
+            "message": "inline",
+            "var": "integer"
+        },
+        "doc": "/** @var ${1:integer} ${2} */"
+    },
+    {
+        "key": "inline-with-key",
+        "config": {
+            "defaultMessage": "name",
+            "variableInline": true,
+            "variableWithKey": true
+        },
+        "result": {
+            "inline": true,
+            "message": "inline",
+            "var": "integer $inline"
+        },
+        "doc": "/** @var ${1:integer} ${2:\\$inline} ${3} */"
+    }
+]

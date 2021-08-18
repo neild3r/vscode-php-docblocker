@@ -21,6 +21,9 @@ suite("Property tests", () => {
     });
 
     map.forEach(testData => {
+        if (testData.name === undefined) {
+            testData.name = testData.key;
+        }
         test("Match Test: "+ testData.name, () => {
             let func = new Function(testPositions[testData.key], editor);
             assert.equal(func.test(), true, test.name);

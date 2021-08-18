@@ -39,13 +39,42 @@
     "commands": [
       {
         "command": "php-docblocker.trigger",
-        "title": "Insert PHP Docblock"
+        "title": "%Insert PHP Docblock%"
       }
     ],
     "configuration": {
       "type": "object",
       "title": "PHP DocBlocker",
       "properties": {
+        "php-docblocker.unknownType": {
+          "type": "string",
+          "default": "[type]",
+          "enum": [
+            "[type]",
+            "mixed"
+          ],
+          "description": "%option.unknownType%"
+        },
+        "php-docblocker.defaultParameterDescription": {
+          "type": "boolean",
+          "default": false,
+          "description": "%option.defaultParameterDescription%"
+        },
+        "php-docblocker.defaultMessage": {
+          "type": "string",
+          "default": "undocumented",
+          "enum": [
+            "blank",
+            "name",
+            "undocumented"
+          ],
+          "enumDescriptions": [
+            "%option.defaultMessage.blank%",
+            "%option.defaultMessage.name%",
+            "%option.defaultMessage.undocumented%"
+          ],
+          "description": "%option.defaultMessage%"
+        },
         "php-docblocker.gap": {
           "type": "boolean",
           "default": true,
@@ -90,6 +119,21 @@
           "type": "object",
           "default": null,
           "description": "Specify the default template for classes."
+        },
+        "php-docblocker.variableTemplate": {
+          "type": "object",
+          "default": null,
+          "description": "Specify the default template for variables."
+        },
+        "php-docblocker.variableInline": {
+          "type": "boolean",
+          "default": true,
+          "description": "%option.variableInline%"
+        },
+        "php-docblocker.variableWithKey": {
+          "type": "boolean",
+          "default": true,
+          "description": "%option.variableWithKey%"
         },
         "php-docblocker.author": {
           "type": "object",

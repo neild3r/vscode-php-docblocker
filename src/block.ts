@@ -228,8 +228,6 @@ export abstract class Block
      */
     public getTypeFromValue(value:string):string
     {
-        let result:Array<string>;
-
         // Check for bool
         if (value.match(/^\s*(false|true)\s*$/i) !== null || value.match(/^\s*\!/i) !== null) {
             return TypeUtil.instance.getFormattedTypeByName('bool');
@@ -254,8 +252,29 @@ export abstract class Block
         if (value.match(/^\s*(array\(|\[)/) !== null) {
             return 'array';
         }
+        
+        // Check for class
+        var match = value.match(/^\s*new\s+([a-z0-9_\\\|]+)/i);
+        if (match) {
+            if (match[1] === 'class') {
+                return 'object';
+            }
+            return match[1];
+        }
 
-        return '[type]';
+        // Check for closure
+        var match = value.match(/^\s*function\s*\(/i);
+        if (match) {
+            return '\\Closure';
+        }
+
+        // Check for type casting
+        var match = value.match(/^\s*\(\s*(int|integer|bool|boolean|float|double|real|string|array|object|unset)\s*\)/i);
+        if (match) {
+            return TypeUtil.instance.getFormattedTypeByName(match[1]);
+        }
+
+        return TypeUtil.instance.getUnknownType();
     }
 
     /**

@@ -3,28 +3,34 @@
         "key": "param",
         "name": "Param tag",
         "result": [
-            "@param"
+            "@param ${1:mixed} $${2:name} ${3:}"
         ]
     },
     {
         "key": "return",
         "name": "Return tag",
         "result": [
-            "@return"
+            "@return ${1:mixed}"
         ]
     },
     {
         "key": "package",
         "name": "Package tag",
         "result": [
-            "@package"
+            "@package ${1:category}"
+        ]
+    },
+    {
+        "key": "author",
+        "result": [
+            "@author ${1:Name} <${2:email@email.com}>"
         ]
     },
     {
         "key": "var",
         "name": "Var tag",
         "result": [
-            "@var"
+            "@var ${1:mixed}"
         ]
     },
     {
@@ -37,28 +43,74 @@
         "key": "property",
         "name": "Property trigger",
         "result": [
-            "/**"
+            "/**\n * ${1:Undocumented property}\n *\n * @var ${2:[type]}\n */"
         ]
     },
     {
         "key": "function",
         "name": "Function trigger",
         "result": [
-            "/**"
+            "/**\n * ${1:Undocumented function}\n *\n * @return ${2:void}\n */"
         ]
     },
     {
         "key": "class",
         "name": "Class trigger",
         "result": [
-            "/**"
+            "/**\n * ${1:Undocumented class}\n */"
         ]
     },
     {
         "key": "empty",
         "name": "Empty trigger",
         "result": [
-            "/**"
+            "/**\n * ${1}\n */"
+        ]
+    },
+    {
+        "key": "var-with-key",
+        "config": {
+            "variableWithKey": true,
+            "variableInline": true
+        },
+        "result": [
+            "/** @var ${1:boolean} ${2:\\$var} ${3} */"
+        ]
+    },
+    {
+        "key": "foreach",
+        "config": {
+            "variableWithKey": true,
+            "variableInline": true
+        },
+        "result": [
+            "/** @var ${1:[type]} ${2:\\$value} ${3} */"
+        ]
+    },
+    {
+        "key": "foreach-with-key",
+        "config": {
+            "variableWithKey": true,
+            "variableInline": true
+        },
+        "result": [
+            "/** @var ${1:[type]} ${2:\\$value} ${3} */"
+        ]
+    },
+    {
+        "key": "while",
+        "config": {
+            "variableWithKey": true,
+            "variableInline": true
+        },
+        "result": [
+            "/** @var ${1:[type]} ${2:\\$value} ${3} */"
+        ]
+    },
+    {
+        "key": "while-no-var",
+        "result": [
+            "/**\n * ${1}\n */"
         ]
     }
 ]

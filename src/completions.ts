@@ -1,4 +1,4 @@
-import {workspace, TextDocument, Position, CancellationToken, ProviderResult, CompletionItem, CompletionItemProvider, Range, SnippetString, CompletionItemKind, window} from "vscode";
+import {TextDocument, Position, CancellationToken, ProviderResult, CompletionItem, CompletionItemProvider, SnippetString, CompletionItemKind, window} from "vscode";
 import Documenter from "./documenter";
 import Config from "./util/config";
 
@@ -159,7 +159,7 @@ export default class Completions implements CompletionItemProvider
         },
         {
             tag: '@param',
-            snippet: '@param ${1:mixed} \$${2:name}'
+            snippet: '@param ${1:mixed} \$${2:name} ${3:}'
         },
         {
             tag: '@preserveGlobalState',
@@ -256,13 +256,6 @@ export default class Completions implements CompletionItemProvider
     ];
 
     /**
-     * Have we injected in tag data yet
-     *
-     * @type {{}}
-     */
-    protected formatted = false;
-
-    /**
      * Implemented function to find and return completions either from
      * the tag list or initiate a complex completion
      *
@@ -296,40 +289,33 @@ export default class Completions implements CompletionItemProvider
 
         let search = document.getText(match);
 
-        let potential = this.getTags().filter((tag) => {
+        let potential = this.tags.filter((tag) => {
             return tag.tag.match(search) !== null;
         });
 
         potential.forEach(tag => {
+            let snippet = this.replaceTagSnippet(tag.tag, tag.snippet);
+
             let item = new CompletionItem(tag.tag, CompletionItemKind.Snippet);
             item.range = match;
-            item.insertText = new SnippetString(tag.snippet);
+            item.insertText = new SnippetString(snippet);
 
             result.push(item);
         });
 
         return result;
     }
-
+    
     /**
-     * Get the tag list for completions
-     *
-     * @returns {Array<{tag:string, snippet:string}>}
+     * Replace tag
      */
-    protected getTags():Array<{tag:string, snippet:string}>
+    protected replaceTagSnippet(tag:string, snippet:string): string
     {
-        if (!this.formatted) {
-            this.tags.forEach((tag, index) => {
-                if (tag.tag == '@author') {
-                    tag.snippet = tag.snippet.replace("{{name}}", Config.instance.get('author').name);
-                    tag.snippet = tag.snippet.replace("{{email}}", Config.instance.get('author').email);
-                    this.tags[index] = tag;
-                }
-            });
-
-            this.formatted = true;
+        if (tag == '@author') {
+            snippet = snippet.replace("{{name}}", Config.instance.get('author').name);
+            snippet = snippet.replace("{{email}}", Config.instance.get('author').email);
         }
 
-        return this.tags;
+        return snippet;
     }
 }

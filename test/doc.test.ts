@@ -3,13 +3,20 @@ import {SnippetString} from 'vscode';
 import Helper from './helpers';
 import {Doc, Param} from '../src/doc';
 import Config from '../src/util/config';
+import { DocType } from '../src/DocType';
 
 suite("Snippet build tests", () => {
     let map = Helper.getFixtureMap('doc.json');
 
     map.forEach(testData => {
+        if (testData.name === undefined) {
+            testData.name = testData.key;
+        }
         test("Snippet test: "+ testData.name, () => {
-            let doc = new Doc();
+            if (!testData.type) {
+                testData.type = DocType.empty;
+            }
+            let doc = new Doc(testData.type);
             let empty = false;
             if (testData.config != undefined) {
                 Helper.setConfig(testData.config);

@@ -1,5 +1,6 @@
 import { Block } from "../block";
 import { Doc, Param } from "../doc";
+import { DocType } from "../DocType";
 import Config from "../util/config";
 import TypeUtil from "../util/TypeUtil";
 
@@ -12,7 +13,7 @@ export default class Property extends Block
     /**
      * @inheritdoc
      */
-    protected pattern:RegExp = /^\s*(static)?\s*(protected|private|public)\s+(static)?\s*(\??\\?[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff\\]+)?\s*(\$[A-Za-z0-9_]+)\s*\=?\s*([^;]*)/m;
+    protected pattern:RegExp = /^\s*(static)?\s*(protected|private|public)\s+(static)?\s*(\??\\?[a-z_\x7f-\xff][a-z0-9_\x7f-\xff\\]+)?\s*(\$[a-z0-9_]+)\s*\=?\s*([^;]*)/im;
 
     /**
      * @inheritdoc
@@ -21,7 +22,7 @@ export default class Property extends Block
     {
         let params = this.match();
 
-        let doc = new Doc('Undocumented variable');
+        let doc = new Doc(DocType.property, TypeUtil.instance.getDefaultMessage(String(params[5]).substr(1), 'property'));
         doc.template = Config.instance.get('propertyTemplate');
 
         if (params[4]) {
@@ -33,17 +34,19 @@ export default class Property extends Block
             }
 
             let varType = TypeUtil.instance.getFullyQualifiedType(parts[2], head);
-            varType = TypeUtil.instance.getFormattedTypeByName(varType);
 
+            let nullable:boolean;
             if (parts[1] === '?') {
-                varType += '|null';
+                nullable = true;
+            } else {
+                nullable = false;
             }
 
-            doc.var = varType;
+            doc.var = TypeUtil.instance.getFormattedTypeByName(varType, nullable);
         } else if (params[6]) {
             doc.var = this.getTypeFromValue(params[6]);
         } else {
-            doc.var = '[type]';
+            doc.var = TypeUtil.instance.getUnknownType();
         }
 
         return doc;
