@@ -8,8 +8,10 @@ jobs:
         os: [macos-latest, ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
+
     - name: Checkout
       uses: actions/checkout@v2
+      
     - name: Install Node.js
       uses: actions/setup-node@v1
       with:
@@ -19,3 +21,8 @@ jobs:
       if: runner.os == 'Linux'
     - run: npm test
       if: runner.os != 'Linux'
+
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
