@@ -58,11 +58,13 @@ export default class TypeUtil {
      *
      * @param {string} name
      * @param {boolean} nullable
+     * @param {string} head
      */
-     public getFormattedTypeByName(name:string, nullable:boolean=false) {
+     public getFormattedTypeByName(name:string, nullable:boolean=false, head:string=undefined) {
         let result = [];
         let names = name.split("|");
         for (let index = 0; index < names.length; index++) {
+            names[index] = names[index].trim();
             switch (names[index]) {
                 case '':
                     continue;
@@ -89,6 +91,10 @@ export default class TypeUtil {
                         names[index] = 'integer';
                     }
                     break;
+                default:
+                    if (head) {
+                        names[index] = TypeUtil.instance.getFullyQualifiedType(names[index], head);
+                    }
             }
             result.push(names[index]);
         }

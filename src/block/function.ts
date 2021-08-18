@@ -31,7 +31,6 @@ export default class FunctionBlock extends Block
         let argString = this.getEnclosed(params[6], "(", ")");
         let head:string;
 
-
         if (argString != "") {
             let args = this.getSplitWithoutEnclosed(argString);
 
@@ -41,39 +40,49 @@ export default class FunctionBlock extends Block
 
             for (let index = 0; index < args.length; index++) {
                 let arg = args[index];
-                let parts = arg.match(/^\s*(\?)?\s*([A-Za-z0-9_\\]+)?\s*\&?((?:[.]{3})?\$[A-Za-z0-9_]+)\s*\=?\s*(.*)\s*/m);
-                var type = TypeUtil.instance.getUnknownType();
-
-                if (parts[2] != null) {
-                    parts[2] = TypeUtil.instance.getFullyQualifiedType(parts[2], head);
+                
+                // `public Object&Object|Object &...$vars = new Object`
+                let parts = arg.match(/^\s*(?:(?:public|protected|private)\s+)?(\?)?\s*([a-z0-9_\\][a-z0-9_\\\|&\s]*)?\s*\&?((?:[.]{3})?\$[a-z0-9_]+)\s*\=?\s*(.*)\s*/im);
+                if (parts === null) {
+                    // trailing comma
+                    if (arg.trim() === '') {
+                        continue;
+                    }
+                    console.error('match failed: ' , arg);
+                    continue;
+                }
+                
+                if (parts[2] !== undefined) {
+                    parts[2] = parts[2].trim();
                 }
 
+                var type:string;
+
                 if (parts[2] != null && parts[1] === '?') {
-                    type = TypeUtil.instance.getFormattedTypeByName(parts[2], true);
+                    type = TypeUtil.instance.getFormattedTypeByName(parts[2], true, head);
                 } else if (parts[2] != null && parts[2] != "mixed" && parts[1] === undefined && parts[4] === "null") {// int $var = null
-                    type = TypeUtil.instance.getFormattedTypeByName(parts[2], true);
+                    type = TypeUtil.instance.getFormattedTypeByName(parts[2], true, head);
                 } else if (parts[2] != null) {
-                    type = TypeUtil.instance.getFormattedTypeByName(parts[2]);
+                    type = TypeUtil.instance.getFormattedTypeByName(parts[2], false, head);
                 } else if (parts[4] != null && parts[4] != "") {
-                    type = TypeUtil.instance.getFormattedTypeByName(this.getTypeFromValue(parts[4]));
+                    type = TypeUtil.instance.getFormattedTypeByName(this.getTypeFromValue(parts[4]), false,head);
+                } else {
+                    type = TypeUtil.instance.getUnknownType();
                 }
 
                 doc.params.push(new Param(type, parts[3]));
             }
         }
 
-        let returnType:Array<string> = this.signature.match(/.*\)\s*\:\s*(\?)?\s*([a-zA-Z_0-9\|\\\s]+)\s*$/m);
+        let returnType:Array<string> = this.signature.match(/.*\)\s*\:\s*(\?)?\s*([a-z0-9_\\][a-z0-9_\\\|&\s]*)\s*$/im);
 
         if (returnType != null) {
-            returnType[2] = returnType[2].replace(/\s/g, '');
-
+            let head:string;
             if (Config.instance.get('qualifyClassNames')) {
-                returnType[2] = TypeUtil.instance.getFullyQualifiedType(returnType[2], this.getClassHead());
+                head = this.getClassHead();
             }
-
-            doc.return = (returnType[1] === '?')
-                ? TypeUtil.instance.getFormattedTypeByName(returnType[2])+'|null'
-                : TypeUtil.instance.getFormattedTypeByName(returnType[2]);
+            let nullable = returnType[1] === '?';
+            doc.return = TypeUtil.instance.getFormattedTypeByName(returnType[2], nullable, this.getClassHead());
         } else {
             doc.return = this.getReturnFromName(params[5]);
         }

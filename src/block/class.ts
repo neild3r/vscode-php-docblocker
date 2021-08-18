@@ -12,7 +12,7 @@ export default class Class extends Block
     /**
      * @inheritdoc
      */
-    protected pattern:RegExp = /^\s*(abstract|final)?\s*(class|trait|interface|enum)\s+([a-z0-9_]+)\s*/i;
+    protected pattern:RegExp = /^\s*(abstract|final)?\s*(class|trait|interface)\s+([a-z0-9_]+)\s*/i;
 
     /**
      * @inheritdoc

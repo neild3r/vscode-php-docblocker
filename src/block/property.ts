@@ -33,16 +33,9 @@ export default class Property extends Block
                 head = this.getClassHead();
             }
 
-            let varType = TypeUtil.instance.getFullyQualifiedType(parts[2], head);
+            let nullable = parts[1] === '?';
 
-            let nullable:boolean;
-            if (parts[1] === '?') {
-                nullable = true;
-            } else {
-                nullable = false;
-            }
-
-            doc.var = TypeUtil.instance.getFormattedTypeByName(varType, nullable);
+            doc.var = TypeUtil.instance.getFormattedTypeByName(parts[2], nullable, head);
         } else if (params[6]) {
             doc.var = this.getTypeFromValue(params[6]);
         } else {

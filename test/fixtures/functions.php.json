@@ -674,9 +674,15 @@
         }
     },
     {
-        "key": "return-type-compatible-with-error-for-coveralls",
+        "key": "intersection-types",
         "result": {
-            "return": "[type]"
+            "return": "Iterator&\\Countable",
+            "params": [
+                {
+                    "name": "$var",
+                    "type": "Iterator&\\Countable"
+                }
+            ]
         }
     }
 ]
