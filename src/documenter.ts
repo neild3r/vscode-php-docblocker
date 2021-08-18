@@ -7,6 +7,7 @@ import VariableBlock from "./block/VariableBlock";
 import ForeachBlock from "./block/ForeachBlock";
 import WhileBlock from "./block/WhileBlock";
 import { DocType } from "./DocType";
+import EnumBlock from "./block/EnumBlock";
 
 /**
  * Check which type of docblock we need and instruct the components to build the
@@ -76,6 +77,11 @@ export default class Documenter
         let while_ = new WhileBlock(this.targetPosition, this.editor);
         if (while_.test()) {
             return while_.parse().build();
+        }
+
+        let enum_ = new EnumBlock(this.targetPosition, this.editor);
+        if (enum_.test()) {
+            return enum_.parse().build();
         }
 
         return new Doc(DocType.empty).build(true);

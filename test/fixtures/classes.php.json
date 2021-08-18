@@ -77,5 +77,14 @@
         "result": {
             "message": "Undocumented class"
         }
+    },
+    {
+        "key": "case-insensitive-with-space",
+        "config": {
+            "defaultMessage": "undocumented"
+        },
+        "result": {
+            "message": "Undocumented class"
+        }
     }
 ]

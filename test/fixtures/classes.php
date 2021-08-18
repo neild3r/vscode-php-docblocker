@@ -92,3 +92,8 @@ class default_message_name{}
 
 ////=> default-message-undocumented
 class default_message_undocumented{}
+
+////=> case-insensitive-with-space
+CLaSS 
+    case_insensitive_with_space
+{}

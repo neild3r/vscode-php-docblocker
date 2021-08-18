@@ -1,0 +1,14 @@
+[
+    {
+        "key": "enum"
+    },
+    {
+        "key": "enum-with-type"
+    },
+    {
+        "key": "enum-with-implements"
+    },
+    {
+        "key": "enum-with-type-implements"
+    }
+]

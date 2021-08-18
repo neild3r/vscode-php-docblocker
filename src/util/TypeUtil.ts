@@ -124,7 +124,7 @@ export default class TypeUtil {
             case 'blank':
                 return '';
             default:
-                return "Undocumented " + type;
+                return "Undocumented " + type.toLowerCase();
         }
     }
 
