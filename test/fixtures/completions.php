@@ -51,6 +51,10 @@
  ////=> empty
  /**
 
+  ////=> var-no-with-key
+ /**
+ $var = true;
+
   ////=> var-with-key
  /**
  $var = true;

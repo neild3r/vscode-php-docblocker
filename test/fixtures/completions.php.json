@@ -82,6 +82,16 @@
         ]
     },
     {
+        "key": "var-no-with-key",
+        "config": {
+            "variableWithKey": false,
+            "variableInline": true
+        },
+        "result": [
+            "/** @var ${1:boolean} ${2} */"
+        ]
+    },
+    {
         "key": "var-with-key",
         "config": {
             "variableWithKey": true,
