@@ -3,7 +3,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
 
     - name: Checkout
@@ -18,7 +18,7 @@ jobs:
       run: npm install
       
     - name: Run tests
-      run: npm test
+      run: xvfb-run -a npm test
 
     - name: Coveralls
       uses: coverallsapp/github-action@master
