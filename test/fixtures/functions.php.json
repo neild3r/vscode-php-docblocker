@@ -277,6 +277,32 @@
         }
     },
     {
+        "key": "param-default-null",
+        "name": "Param with default null",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$arg",
+                    "type": "integer|null"
+                }
+            ]
+        }
+    },
+    {
+        "key": "param-mixed-default-null",
+        "name": "Param with mixed and default null",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$arg",
+                    "type": "mixed"
+                }
+            ]
+        }
+    },
+    {
         "key": "args",
         "name": "Argument with ...$args",
         "result": {
@@ -359,6 +385,45 @@
         "result": {
             "return": "App\\Model\\TypeHint",
             "params": []
+        }
+    },
+    {
+        "key": "php8-return-union-types",
+        "name": "PHP8 return union types",
+        "result": {
+            "return": "integer|boolean|\\TypeHint|App\\Model\\TypeHint",
+            "params": []
+        }
+    },
+    {
+        "key": "php8-return-union-types-with-short-name",
+        "name": "PHP8 return union types with short-name",
+        "config": {
+            "useShortNames": true
+        },
+        "result": {
+            "return": "int|bool|\\TypeHint|App\\Model\\TypeHint",
+            "params": []
+        }
+    },
+    {
+        "key": "php8-param-union-types",
+        "name": "PHP8 param union types",
+        "config": {
+            "useShortNames": true
+        },
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$arg",
+                    "type": "int|bool|\\TypeHint|App\\Model\\TypeHint"
+                },
+                {
+                    "name": "...$args",
+                    "type": "string|\\Closure"
+                }
+            ]
         }
     },
     {
