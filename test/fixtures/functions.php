@@ -290,4 +290,9 @@ abstract class Test
     function return_type_with_spaces(): int| bool |  string
     {
     }
+
+    ////=> intersection-types
+    function intersection_types(Iterator&\Countable $var): Iterator&\Countable
+    {
+    }
 }

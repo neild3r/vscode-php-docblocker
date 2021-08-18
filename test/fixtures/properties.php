@@ -20,6 +20,9 @@ abstract class Test
     ////=> ignore-case
     STatiC ProtecteD $ignoreCase;
 
+    ////=> readonly
+    public readonly int $readonly;
+
     ////=> default-string
     protected $defaultString = 'string';
 

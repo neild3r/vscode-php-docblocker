@@ -250,7 +250,6 @@
                     "name": "$hint",
                     "type": "\\TypeHint"
                 },
-
                 {
                     "name": "$test",
                     "type": "[type]"
@@ -268,7 +267,6 @@
                     "name": "$hint",
                     "type": "App\\Model\\TypeHint"
                 },
-
                 {
                     "name": "$test",
                     "type": "[type]"
@@ -673,6 +671,18 @@
         "result": {
             "return": "int|bool|string",
             "params": []
+        }
+    },
+    {
+        "key": "intersection-types",
+        "result": {
+            "return": "Iterator&\\Countable",
+            "params": [
+                {
+                    "name": "$var",
+                    "type": "Iterator&\\Countable"
+                }
+            ]
         }
     }
 ]

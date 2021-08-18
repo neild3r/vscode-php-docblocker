@@ -1,0 +1,14 @@
+[
+    {
+        "key": "const"
+    },
+    {
+        "key": "public"
+    },
+    {
+        "key": "final-public"
+    },
+    {
+        "key": "public-final"
+    }
+]
