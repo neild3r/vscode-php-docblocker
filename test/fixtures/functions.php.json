@@ -750,5 +750,26 @@
                 }
             ]
         }
+    },
+    {
+        "key": "return-type-compatible-with-error-for-coveralls",
+        "result": {
+            "return": "integer"
+        }
+    },
+    {
+        "key": "trailing-comma",
+        "config": {
+            "useShortNames": true
+        },
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$var",
+                    "type": "int"
+                }
+            ]
+        }
     }
 ]

@@ -316,4 +316,15 @@ abstract class Test
     public function getPHP8ParamUnionTypes(int|bool|\TypeHint|App\Model\TypeHint $arg, string|\Closure ...$args)
     {
     }
+
+    ////=> return-type-compatible-with-error-for-coveralls
+    function return_type_compatible_with_error_for_coveralls(): int||
+    {
+        n();
+    }
+
+    ////=> trailing-comma
+    public function trailing_comma(int $var,,,,)
+    {
+    }
 }

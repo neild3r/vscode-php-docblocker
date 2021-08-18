@@ -325,5 +325,34 @@
             " * @param ${4:int} \\$name ${5:}",
             " */"
         ]
+    },
+    {
+        "name": "Function multiple params AND use name as description",
+        "config": {
+            "defaultParameterDescription": true
+        },
+        "input": {
+            "message": "Undocumented function",
+            "return": "void",
+            "params": [
+                {
+                    "name": "$name",
+                    "type": "int"
+                },
+                {
+                    "name": "$message",
+                    "type": "string"
+                }
+            ]
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param ${2:int} \\$name ${3:name}",
+            " * @param ${4:string} \\$message ${5:message}",
+            " * @return ${6:void}",
+            " */"
+        ]
     }
 ]
