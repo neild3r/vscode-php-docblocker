@@ -2,6 +2,9 @@
 
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
+## [2.2.3] - 2021-10-18
+- Remove usage of FS module to fix start up errors in vscode web
+
 ## [2.2.2] - 2021-10-18
 - Improve compatability with vscode web
 
@@ -124,7 +127,8 @@ All notable changes to the "php-docblocker" extension will be documented in this
 ## 0.1.0 - 2017-03-12
 - Initial release
 
-[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.2...HEAD
+[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.3...HEAD
+[2.2.3]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.2...v2.2.3
 [2.2.2]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.1...v2.2.2
 [2.2.1]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.0...v2.2.1
 [2.2.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.1.0...v2.2.0
