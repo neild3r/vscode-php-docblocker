@@ -228,18 +228,18 @@ export abstract class Block
      */
     public getTypeFromValue(value:string):string
     {
-        // Check for bool
+        // Check for bool `false|true` `!exp`
         if (value.match(/^\s*(false|true)\s*$/i) !== null || value.match(/^\s*\!/i) !== null) {
             return TypeUtil.instance.getFormattedTypeByName('bool');
         }
 
-        // Check for int
-        if (value.match(/^\s*([\d-]+)\s*$/) !== null) {
+        // Check for int `-1` `1` `1_000_000`
+        if (value.match(/^\s*(\-?\d[\d_]*)\s*$/) !== null) {
             return TypeUtil.instance.getFormattedTypeByName('int');
         }
 
-        // Check for float
-        if (value.match(/^\s*([\d.-]+)\s*$/) !== null) {
+        // Check for float `.1` `1.1` `-1.1` `0.1_000_1`
+        if (value.match(/^\s*(\-?[\d_\.]*)\s*$/) !== null) {
             return 'float';
         }
 

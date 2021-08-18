@@ -27,6 +27,15 @@
         }
     },
     {
+        "key": "float4",
+        "config": {
+            "variableWithKey": true
+        },
+        "result": {
+            "var": "float $var"
+        }
+    },
+    {
         "key": "int1",
         "config": {
             "variableWithKey": false
@@ -37,6 +46,15 @@
     },
     {
         "key": "int2",
+        "config": {
+            "variableWithKey": false
+        },
+        "result": {
+            "var": "integer"
+        }
+    },
+    {
+        "key": "int3",
         "config": {
             "variableWithKey": false
         },

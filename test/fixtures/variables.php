@@ -9,11 +9,17 @@ $var = 0.3;
 ////=> float-with-key
 $var = .3;
 
+////=> float4
+$var = .1_000_1;
+
 ////=> int1
 $var = 3;
 
 ////=> int2
 $var = 03;
+
+////=> int3
+$var = 1_000_000;
 
 ////=> bool1
 $var = true;

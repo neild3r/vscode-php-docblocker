@@ -5,15 +5,15 @@ import {Doc, Param} from '../src/doc';
 import { DocType } from '../src/DocType';
 import ConstBlock from '../src/block/ConstBlock';
 
-suite("Property tests", () => {
+suite("Const tests", () => {
     let editor:TextEditor;
     let document:TextDocument;
     let testPositions:any = {};
 
-    let map = Helper.getFixtureMap('properties.php.json');
+    let map = Helper.getFixtureMap('consts.php.json');
 
     suiteSetup(function(done) {
-        Helper.loadFixture('properties.php', (edit:TextEditor, doc:TextDocument) => {
+        Helper.loadFixture('consts.php', (edit:TextEditor, doc:TextDocument) => {
             editor = edit;
             document = doc;
             testPositions = Helper.getFixturePositions(document);
@@ -35,18 +35,20 @@ suite("Property tests", () => {
             assert.ok(block.parse(), test.name);
         });
 
-        test("Type Test: "+ testData.name, () => {
-            Helper.setConfig(testData.config);
-            let block = new ConstBlock(testPositions[testData.key], editor);
-            let actual:Doc = block.parse();
-            let expected:Doc = new Doc(DocType.const, 'Undocumented const');
-            if (testData.result.var === undefined) {
-                expected.var = undefined;
-            }
-            expected.fromObject(actual);
-            expected.fromObject(testData.result);
-            expected.template = Helper.getConfig().get('constTemplate');
-            assert.deepEqual(actual, expected);
-        });
+        if (testData.result) {
+            test("Type Test: "+ testData.name, () => {
+                Helper.setConfig(testData.config);
+                let block = new ConstBlock(testPositions[testData.key], editor);
+                let actual:Doc = block.parse();
+                let expected:Doc = new Doc(DocType.const, 'Undocumented const');
+                if (testData.result.var === undefined) {
+                    expected.var = undefined;
+                }
+                expected.fromObject(actual);
+                expected.fromObject(testData.result);
+                expected.template = Helper.getConfig().get('constTemplate');
+                assert.deepEqual(actual, expected);
+            });
+        }
     });
 });

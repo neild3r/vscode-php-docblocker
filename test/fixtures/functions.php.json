@@ -672,17 +672,5 @@
             "return": "int|bool|string",
             "params": []
         }
-    },
-    {
-        "key": "intersection-types",
-        "result": {
-            "return": "Iterator&\\Countable",
-            "params": [
-                {
-                    "name": "$var",
-                    "type": "Iterator&\\Countable"
-                }
-            ]
-        }
     }
 ]
