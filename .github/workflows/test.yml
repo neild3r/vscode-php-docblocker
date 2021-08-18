@@ -1,4 +1,4 @@
-name: run-tests
+name: Test Suite
 on: [push]
 
 jobs:
@@ -11,7 +11,7 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v2
-      
+
     - name: Install Node.js
       uses: actions/setup-node@v1
       with:
