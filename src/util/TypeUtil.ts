@@ -103,8 +103,8 @@ export default class TypeUtil {
      * @param {string} value
      * @returns {string}
      */
-     public getTypeFromValue(value:string):string
-     {
+    public getTypeFromValue(value:string):string
+    {
         let result:Array<string>;
 
         // Check for bool
