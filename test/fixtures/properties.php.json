@@ -14,6 +14,12 @@
         }
     },
     {
+        "key": "static",
+        "result": {
+            "var": "[type]"
+        }
+    },
+    {
         "key": "protected-static",
         "result": {
             "var": "[type]"
@@ -173,6 +179,18 @@
         },
         "result": {
             "var": "\\App\\Type\\Test|null"
+        }
+    },
+    {
+        "key": "union-types",
+        "result": {
+            "var": "array|string"
+        }
+    },
+    {
+        "key": "readonly",
+        "result": {
+            "var": "string"
         }
     },
     {

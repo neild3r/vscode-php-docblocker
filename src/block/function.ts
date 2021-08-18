@@ -42,7 +42,7 @@ export default class FunctionBlock extends Block
                 let arg = args[index];
                 
                 // `public Object&Object|Object &...$vars = new Object`
-                let parts = arg.match(/^\s*(?:(?:public|protected|private)\s+)?(\?)?\s*([a-z0-9_\\][a-z0-9_\\\|&\s]*)?\s*\&?((?:[.]{3})?\$[a-z0-9_]+)\s*\=?\s*(.*)\s*/im);
+                let parts = arg.match(/^\s*(?:(?:public|protected|private)\s+(?:static|readonly)?\s*)?(\?)?\s*([a-z0-9_\\][a-z0-9_\\\|&\s]*)?\s*\&?((?:[.]{3})?\$[a-z0-9_]+)\s*\=?\s*(.*)\s*/im);
                 if (parts === null) {
                     // trailing comma
                     if (arg.trim() === '') {

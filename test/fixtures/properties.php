@@ -20,9 +20,6 @@ abstract class Test
     ////=> ignore-case
     STatiC ProtecteD $ignoreCase;
 
-    ////=> readonly
-    public readonly int $readonly;
-
     ////=> default-string
     protected $defaultString = 'string';
 
@@ -90,6 +87,12 @@ abstract class Test
 
     ////=> typed-namespace-nullable
     public ?\App\Type\Test $typedNamespaceNullable;
+
+    ////=> union-types
+    protected array|string $unionTypes;
+
+    ////=> readonly
+    public readonly string $readonly;
 
     ////=> default-message-blank
     protected $default_message_blank;

@@ -24,6 +24,33 @@
         }
     },
     {
+        "key": "php8-constructor-with-property",
+        "config": {
+            "useShortNames": true
+        },
+        "result": {
+            "return": null,
+            "params": [
+                {
+                    "name": "$arg1",
+                    "type": "[type]"
+                },
+                {
+                    "name": "$arg2",
+                    "type": "int"
+                },
+                {
+                    "name": "$arg3",
+                    "type": "int|null"
+                },
+                {
+                    "name": "$arg4",
+                    "type": "string"
+                }
+            ]
+        }
+    },
+    {
         "key": "abstract-simple",
         "name": "Abstract method simple",
         "result": {
@@ -674,13 +701,52 @@
         }
     },
     {
-        "key": "intersection-types",
+        "key": "php81-intersection-types",
         "result": {
             "return": "Iterator&\\Countable",
             "params": [
                 {
                     "name": "$var",
                     "type": "Iterator&\\Countable"
+                }
+            ]
+        }
+    },
+    {
+        "key": "return-union-types",
+        "config": {
+            "useShortNames": true
+        },
+        "result": {
+            "return": "int|bool|\\TypeHint|App\\Model\\TypeHint",
+            "params": []
+        }
+    },
+    {
+        "key": "return-union-types-with-short-name",
+        "config": {
+            "useShortNames": true
+        },
+        "result": {
+            "return": "int|bool|\\TypeHint|App\\Model\\TypeHint",
+            "params": []
+        }
+    },
+    {
+        "key": "param-union-types",
+        "config": {
+            "useShortNames": true
+        },
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$arg",
+                    "type": "int|bool|\\TypeHint|App\\Model\\TypeHint"
+                },
+                {
+                    "name": "...$args",
+                    "type": "string|\\Closure"
                 }
             ]
         }

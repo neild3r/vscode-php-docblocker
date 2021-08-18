@@ -17,6 +17,11 @@ abstract class Test
     {
     }
 
+    ////=> php8-constructor-with-property
+    function __construct(public $arg1, protected int $arg2, PriVate ?int $arg3 = 1, public readonly string $arg4 = 'var')
+    {
+    }
+
     ////=> abstract-simple
     abstract public function getName();
 
@@ -291,14 +296,24 @@ abstract class Test
     {
     }
 
-    ////=> return-type-compatible-with-error-for-coveralls
-    function return_type_compatible_with_error_for_coveralls(): ||
+    ////=> php81-intersection-types
+    function intersection_types(Iterator&\Countable $var): Iterator&\Countable
     {
-        fix_highlighting();
+        php81_fix_highlight();
     }
 
-    ////=> intersection-types
-    function intersection_types(Iterator&\Countable $var): Iterator&\Countable
+    ////=> return-union-types
+    public function getPHP8ReturnUnionTypes():int|bool|\TypeHint|App\Model\TypeHint
+    {
+    }
+
+    ////=> return-union-types-with-short-name
+    public function getPHP8ReturnUnionTypesShortName():int|bool|\TypeHint|App\Model\TypeHint
+    {
+    }
+
+    ////=> param-union-types
+    public function getPHP8ParamUnionTypes(int|bool|\TypeHint|App\Model\TypeHint $arg, string|\Closure ...$args)
     {
     }
 }

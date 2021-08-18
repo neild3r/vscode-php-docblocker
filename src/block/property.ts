@@ -13,7 +13,7 @@ export default class Property extends Block
     /**
      * @inheritdoc
      */
-    protected pattern:RegExp = /^\s*(static)?\s*(protected|private|public)\s+(static)?\s*(\??\\?[a-z_\x7f-\xff][a-z0-9_\x7f-\xff\\]+)?\s*(\$[a-z0-9_]+)\s*\=?\s*([^;]*)/im;
+    protected pattern:RegExp = /^\s*(static)?\s*(protected|private|public)?\s+(static|readonly)?\s*(\??\\?[a-z_\x7f-\xff][a-z0-9_\x7f-\xff\\\|&\s]+)?\s*(\$[a-z0-9_]+)\s*\=?\s*([^;]*)/im;
 
     /**
      * @inheritdoc
