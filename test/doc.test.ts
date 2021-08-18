@@ -14,7 +14,7 @@ suite("Snippet build tests", () => {
             if (testData.config != undefined) {
                 Helper.setConfig(testData.config);
             } else {
-                Config.instance.load();
+                Config.instance.setFallback(Helper.getDefaultConfig());
             }
             if (testData.input != undefined) {
                 doc.fromObject(testData.input);

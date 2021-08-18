@@ -1,6 +1,5 @@
 import {TextEditor, TextDocument, WorkspaceConfiguration, workspace, window, Position} from 'vscode';
 import * as fs from 'fs';
-import TypeUtil from '../src/util/TypeUtil';
 import Config from '../src/util/config';
 
 export default class Helper {
@@ -46,8 +45,20 @@ export default class Helper {
         return Config.instance;
     }
 
+    public static getDefaultConfig(): object
+    {
+        let config = {};
+        let packageJson = JSON.parse(fs.readFileSync(__dirname + '/../../../package.json').toString());
+        let props = packageJson.contributes.configuration.properties;
+        for (var key in props) {
+            var item = props[key];
+            config[key.replace('php-docblocker.', '')] = item.default;
+        }
+        return config;
+    }
+
     public static setConfig(overrides:any) {
-        Config.instance.load();
+        Config.instance.setFallback(Helper.getDefaultConfig());
         Config.instance.live = false;
         Config.instance.override(overrides);
     }
