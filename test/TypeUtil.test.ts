@@ -47,6 +47,12 @@ suite("TypeUtil tests: ", () => {
         assert.equal(type.getFullyQualifiedType('BaseExample', head), '\\App\\Test\\Model\\Example');
     });
 
+    test("formatted type from namespace use with alias", () => {
+        let type = new TypeUtil;
+        Helper.setConfig({qualifyClassNames: true});
+        assert.equal(type.getFormattedTypeByName('BaseExample', true, head), '\\App\\Test\\Model\\Example|null');
+    });
+
     test("With default settings the integer type formatted is integer", () => {
         let type = new TypeUtil;
         assert.equal(type.getFormattedTypeByName('int'), 'integer');
@@ -72,6 +78,34 @@ suite("TypeUtil tests: ", () => {
     test("Unknown types won't be touched", () => {
         let type = new TypeUtil;
         assert.equal(type.getFormattedTypeByName('helloWorld'), 'helloWorld');
+    });
+
+    test("Empty types", () => {
+        let type = new TypeUtil;
+        assert.equal(type.getFormattedTypeByName(' | |   '), '[type]');
+    });
+
+    test("default null", () => {
+        let type = new TypeUtil;
+        assert.equal(type.getFormattedTypeByName('string', true), 'string|null');
+    });
+
+    test("Default message - name", () => {
+        let type = new TypeUtil;
+        Helper.setConfig({defaultMessage: 'name'});
+        assert.equal(type.getDefaultMessage('test', 'class'), 'test');
+    });
+
+    test("Default message - blank", () => {
+        let type = new TypeUtil;
+        Helper.setConfig({defaultMessage: 'blank'});
+        assert.equal(type.getDefaultMessage('test', 'class'), '');
+    });
+
+    test("Default message - undocumented", () => {
+        let type = new TypeUtil;
+        Helper.setConfig({defaultMessage: 'undocumented'});
+        assert.equal(type.getDefaultMessage('test', 'cLaSs'), 'Undocumented class');
     });
 
 });

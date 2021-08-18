@@ -327,4 +327,9 @@ abstract class Test
     public function trailing_comma(int $var,,,,)
     {
     }
+
+    ////=> ignore-syntax-error
+    function ignoreSyntaxError(syntax error int $arg,, syntax error, syntax_error, int| $arg1, || $arg2,)
+    {
+    }
 }

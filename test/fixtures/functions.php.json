@@ -771,5 +771,33 @@
                 }
             ]
         }
+    },
+    {
+        "key": "ignore-syntax-error",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$arg",
+                    "type": "syntax error int"
+                },
+                {
+                    "name": "",
+                    "type": "syntax error"
+                },
+                {
+                    "name": "",
+                    "type": "syntax_error"
+                },
+                {
+                    "name": "$arg1",
+                    "type": "integer"
+                },
+                {
+                    "name": "$arg2",
+                    "type": "[type]"
+                }
+            ]
+        }
     }
 ]

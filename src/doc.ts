@@ -141,15 +141,10 @@ export class Doc
         }
 
         if (this.var) {
-            // TODO: need test
-            // @var $name
-            // @var int $name
             varString = "@var";
             let vars = this.var.split(' ');
             for (let index = 0; index < vars.length; index++) {
-                if (vars[index] !== '') {
-                    varString += " \${###:" + vars[index].replace('$', '\\$') + "}";
-                }
+                varString += " \${###:" + vars[index].replace('$', '\\$') + "}";
             }
         }
 

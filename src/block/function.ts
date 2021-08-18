@@ -41,15 +41,26 @@ export default class FunctionBlock extends Block
             for (let index = 0; index < args.length; index++) {
                 let arg = args[index];
                 
-                // `public Object&Object|Object &...$vars = new Object`
+                // `public ?Object&Object|Object &...$vars = value`
                 let parts = arg.match(/^\s*(?:(?:public|protected|private)\s+(?:static|readonly)?\s*)?(\?)?\s*([a-z0-9_\\][a-z0-9_\\\|&\s]*)?\s*\&?((?:[.]{3})?\$[a-z0-9_]+)\s*\=?\s*(.*)\s*/im);
                 if (parts === null) {
                     // trailing comma
                     if (arg.trim() === '') {
                         continue;
                     }
-                    console.error('match failed: ' , arg);
-                    continue;
+
+                    // ignore syntax error
+                    let tmp = arg.match(/^\s*(\?)?\s*(.*?)\s*(\$[a-z0-9_]+)[\s=]?/im);
+                    if (tmp) {
+                        parts = [];
+                        parts[1] = tmp[0];
+                        parts[2] = tmp[2];
+                        parts[3] = tmp[3];
+                    } else {
+                        parts = [];
+                        parts[2] = arg;
+                        parts[3] = '';
+                    }
                 }
                 
                 if (parts[2] !== undefined) {
