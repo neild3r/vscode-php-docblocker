@@ -70,13 +70,13 @@ export default class FunctionBlock extends Block
                 var type:string;
 
                 if (parts[2] != null && parts[1] === '?') {
-                    type = TypeUtil.instance.getFormattedTypeByName(parts[2], true, head);
+                    type = TypeUtil.instance.getResolvedTypeHints(parts[2], true, head);
                 } else if (parts[2] != null && parts[2] != "mixed" && parts[1] === undefined && parts[4] === "null") {// int $var = null
-                    type = TypeUtil.instance.getFormattedTypeByName(parts[2], true, head);
+                    type = TypeUtil.instance.getResolvedTypeHints(parts[2], true, head);
                 } else if (parts[2] != null) {
-                    type = TypeUtil.instance.getFormattedTypeByName(parts[2], false, head);
+                    type = TypeUtil.instance.getResolvedTypeHints(parts[2], false, head);
                 } else if (parts[4] != null && parts[4] != "") {
-                    type = TypeUtil.instance.getFormattedTypeByName(TypeUtil.instance.getTypeFromValue(parts[4]), false,head);
+                    type = TypeUtil.instance.getResolvedTypeHints(TypeUtil.instance.getTypeFromValue(parts[4]), false,head);
                 } else {
                     type = TypeUtil.instance.getUnknownType();
                 }
@@ -93,7 +93,7 @@ export default class FunctionBlock extends Block
                 head = this.getClassHead();
             }
             let nullable = returnType[1] === '?';
-            doc.return = TypeUtil.instance.getFormattedTypeByName(returnType[2], nullable, head);
+            doc.return = TypeUtil.instance.getResolvedTypeHints(returnType[2], nullable, head);
         } else {
             doc.return = this.getReturnFromName(params[5]);
         }

@@ -35,7 +35,7 @@ export default class Property extends Block
 
             let nullable = parts[1] === '?';
 
-            doc.var = TypeUtil.instance.getFormattedTypeByName(parts[2], nullable, head);
+            doc.var = TypeUtil.instance.getResolvedTypeHints(parts[2], nullable, head);
         } else if (params[6]) {
             doc.var = TypeUtil.instance.getTypeFromValue(params[6]);
         } else {

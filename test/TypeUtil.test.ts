@@ -56,7 +56,7 @@ suite("TypeUtil tests: ", () => {
     test("Formatted type from namespace use with alias", () => {
         let type = new TypeUtil;
         Helper.setConfig({qualifyClassNames: true});
-        assert.equal(type.getFormattedTypeByName('BaseExample', true, head), '\\App\\Test\\Model\\Example|null');
+        assert.equal(type.getResolvedTypeHints('BaseExample', true, head), '\\App\\Test\\Model\\Example|null');
     });
 
     test("With default settings the integer type formatted is integer", () => {
@@ -88,12 +88,12 @@ suite("TypeUtil tests: ", () => {
 
     test("Empty types", () => {
         let type = new TypeUtil;
-        assert.equal(type.getFormattedTypeByName(' | |   '), '[type]');
+        assert.equal(type.getResolvedTypeHints(' | |   '), '[type]');
     });
 
     test("Default null", () => {
         let type = new TypeUtil;
-        assert.equal(type.getFormattedTypeByName('string', true), 'string|null');
+        assert.equal(type.getResolvedTypeHints('string', true), 'string|null');
     });
 
     test("Default message - name", () => {

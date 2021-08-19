@@ -22,6 +22,39 @@ export default class TypeUtil {
     }
 
     /**
+     * Resolve a type string that may contain union types
+     * 
+     * @param {string} types 
+     * @param {boolean} nullable 
+     * @param {string} head 
+     * @returns {string}
+     */
+    public getResolvedTypeHints(types:string, nullable:boolean=false, head:string = null): string
+    {
+        let union:string[] = types.split("|");
+        let result:string[] = [];
+
+        for (let index = 0; index < union.length; index++) {
+            let type = union[index].trim();
+            if (type === '') {
+                continue;
+            }
+            if (head) {
+                type = this.getFullyQualifiedType(type, head);
+            }
+            type = this.getFormattedTypeByName(type);
+            result.push(type);
+        }
+
+        if (result.length === 0) {
+            result.push(this.getUnknownType());
+        } else if (nullable && result.indexOf('null') === -1) {
+            result.push('null');
+        }
+        return result.join('|');
+    }
+
+    /**
      * Get the full qualified class namespace for a type
      * we'll need to access the document
      *
@@ -57,53 +90,29 @@ export default class TypeUtil {
      * Returns the user configuration based name for the given type
      *
      * @param {string} name
-     * @param {boolean} nullable
-     * @param {string} head
      */
-     public getFormattedTypeByName(name:string, nullable:boolean=false, head:string=undefined) {
-        let result = [];
-        let names = name.split("|");
-        for (let index = 0; index < names.length; index++) {
-            names[index] = names[index].trim();
-            switch (names[index]) {
-                case '':
-                    continue;
-                case 'real':
-                case 'double':
-                    names[index] = 'float';
-                    break;
-                case 'unset':
-                    names[index] = 'null';
-                    break;
-                case 'bool':
-                case 'boolean':
-                    if (Config.instance.get('useShortNames')) {
-                        names[index] = 'bool';
-                    } else {
-                        names[index] = 'boolean';
-                    }
-                    break;
-                case 'int':
-                case 'integer':
-                    if (Config.instance.get('useShortNames')) {
-                        names[index] = 'int';
-                    } else {
-                        names[index] = 'integer';
-                    }
-                    break;
-                default:
-                    if (head) {
-                        names[index] = TypeUtil.instance.getFullyQualifiedType(names[index], head);
-                    }
-            }
-            result.push(names[index]);
+    public getFormattedTypeByName(name:string) {
+        switch (name) {
+            case 'bool':
+            case 'boolean':
+                if (!Config.instance.get('useShortNames')) {
+                    return 'boolean';
+                }
+                return 'bool';
+            case 'int':
+            case 'integer':
+                if (!Config.instance.get('useShortNames')) {
+                    return 'integer';
+                }
+                return 'int';
+            case 'real':
+            case 'double':
+                return 'float';
+            case 'unset':
+                return 'null';
+            default:
+                return name;
         }
-        if (result.length === 0) {
-            result.push(this.getUnknownType());
-        } else if (nullable && result.indexOf('null') === -1) {
-            result.push('null');
-        }
-        return result.join('|');
     }
 
     /**
@@ -143,12 +152,12 @@ export default class TypeUtil {
     {
         // Check for bool `false|true` `!exp`
         if (value.match(/^\s*(false|true)\s*$/i) !== null || value.match(/^\s*\!/i) !== null) {
-            return TypeUtil.instance.getFormattedTypeByName('bool');
+            return this.getFormattedTypeByName('bool');
         }
 
         // Check for int `-1` `1` `1_000_000`
         if (value.match(/^\s*(\-?\d[\d_]*)\s*$/) !== null) {
-            return TypeUtil.instance.getFormattedTypeByName('int');
+            return this.getFormattedTypeByName('int');
         }
 
         // Check for float `.1` `1.1` `-1.1` `0.1_000_1`
@@ -184,9 +193,9 @@ export default class TypeUtil {
         // Check for type casting
         var match = value.match(/^\s*\(\s*(int|integer|bool|boolean|float|double|real|string|array|object|unset)\s*\)/i);
         if (match) {
-            return TypeUtil.instance.getFormattedTypeByName(match[1]);
+            return this.getFormattedTypeByName(match[1]);
         }
 
-        return TypeUtil.instance.getUnknownType();
+        return this.getUnknownType();
     }
 }
