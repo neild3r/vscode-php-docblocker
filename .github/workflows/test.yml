@@ -2,7 +2,7 @@ name: Test Suite
 on: [push, pull_request]
 
 jobs:
-  build:
+  Test:
     runs-on: ubuntu-latest
     steps:
 
