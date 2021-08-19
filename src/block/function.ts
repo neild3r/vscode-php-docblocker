@@ -42,7 +42,7 @@ export default class FunctionBlock extends Block
                 let arg = args[index];
                 
                 // `public ?Object&Object|Object &...$vars = value`
-                let parts = arg.match(/^\s*(?:(?:public|protected|private)\s+(?:readonly)?\s*)?(\?)?\s*([a-z0-9_\\][a-z0-9_\\\|&\s]*)?\s*\&?((?:[.]{3})?\$[a-z0-9_]+)\s*\=?\s*(.*)\s*/im);
+                let parts = arg.match(/^\s*(?:(?:public|protected|private)\s+(?:readonly)?\s*)?(\?)?\s*([a-z_\\][a-z0-9_\\\|&\s]*)?\s*\&?((?:[.]{3})?\$[a-z0-9_]+)\s*\=?\s*(.*)\s*/im);
                 if (parts === null) {
                     // trailing comma
                     if (arg.trim() === '') {
@@ -76,7 +76,7 @@ export default class FunctionBlock extends Block
                 } else if (parts[2] != null) {
                     type = TypeUtil.instance.getResolvedTypeHints(parts[2], false, head);
                 } else if (parts[4] != null && parts[4] != "") {
-                    type = TypeUtil.instance.getResolvedTypeHints(TypeUtil.instance.getTypeFromValue(parts[4]), false,head);
+                    type = TypeUtil.instance.getResolvedTypeHints(TypeUtil.instance.getTypeFromValue(parts[4]), false, head);
                 } else {
                     type = TypeUtil.instance.getUnknownType();
                 }
@@ -85,7 +85,7 @@ export default class FunctionBlock extends Block
             }
         }
 
-        let returnType:Array<string> = this.signature.match(/.*\)\s*\:\s*(\?)?\s*([a-z0-9_\\][a-z0-9_\\\|&\s]*)\s*$/im);
+        let returnType:Array<string> = this.signature.match(/.*\)\s*\:\s*(\?)?\s*([a-z_\\][a-z0-9_\\\|&\s]*)\s*$/im);
 
         if (returnType != null) {
             let head:string;

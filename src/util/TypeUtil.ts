@@ -29,7 +29,7 @@ export default class TypeUtil {
      * @param {string} head 
      * @returns {string}
      */
-    public getResolvedTypeHints(types:string, nullable:boolean=false, head:string = null): string
+    public getResolvedTypeHints(types:string, nullable:boolean = false, head:string = null): string
     {
         let union:string[] = types.split("|");
         let result:string[] = [];
