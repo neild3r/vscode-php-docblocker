@@ -221,63 +221,6 @@ export abstract class Block
     }
 
     /**
-     * Take the value and parse and try to infer its type
-     *
-     * @param {string} value
-     * @returns {string}
-     */
-    public getTypeFromValue(value:string):string
-    {
-        // Check for bool `false|true` `!exp`
-        if (value.match(/^\s*(false|true)\s*$/i) !== null || value.match(/^\s*\!/i) !== null) {
-            return TypeUtil.instance.getFormattedTypeByName('bool');
-        }
-
-        // Check for int `-1` `1` `1_000_000`
-        if (value.match(/^\s*(\-?\d[\d_]*)\s*$/) !== null) {
-            return TypeUtil.instance.getFormattedTypeByName('int');
-        }
-
-        // Check for float `.1` `1.1` `-1.1` `0.1_000_1`
-        if (value.match(/^\s*(\-?[\d_\.]*)\s*$/) !== null) {
-            return 'float';
-        }
-
-        // Check for string
-        if (value.match(/^\s*(["'])/) !== null || value.match(/^\s*<<</) !== null) {
-            return 'string';
-        }
-
-        // Check for array
-        if (value.match(/^\s*(array\(|\[)/) !== null) {
-            return 'array';
-        }
-        
-        // Check for class
-        var match = value.match(/^\s*new\s+([a-z0-9_\\\|]+)/i);
-        if (match) {
-            if (match[1] === 'class') {
-                return 'object';
-            }
-            return match[1];
-        }
-
-        // Check for closure
-        var match = value.match(/^\s*function\s*\(/i) || value.match(/^\s*fn\s*\(/i);
-        if (match) {
-            return '\\Closure';
-        }
-
-        // Check for type casting
-        var match = value.match(/^\s*\(\s*(int|integer|bool|boolean|float|double|real|string|array|object|unset)\s*\)/i);
-        if (match) {
-            return TypeUtil.instance.getFormattedTypeByName(match[1]);
-        }
-
-        return TypeUtil.instance.getUnknownType();
-    }
-
-    /**
      * This is where we parse the code block into a Doc
      * object which represents our snippet
      *

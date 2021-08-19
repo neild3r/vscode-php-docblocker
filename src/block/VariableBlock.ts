@@ -37,7 +37,7 @@ export default class VariableBlock extends Block
         doc.template = Config.instance.get('variableTemplate');
 
         if (value) {
-            doc.var = this.getTypeFromValue(value);
+            doc.var = TypeUtil.instance.getTypeFromValue(value);
         } else {
             doc.var = TypeUtil.instance.getUnknownType();
         }

@@ -182,12 +182,6 @@
         }
     },
     {
-        "key": "union-types",
-        "result": {
-            "var": "array|string"
-        }
-    },
-    {
         "key": "readonly",
         "result": {
             "var": "string"
@@ -218,6 +212,34 @@
         },
         "result": {
             "message": "Undocumented property"
+        }
+    },
+    {
+        "key": "union-type-simple",
+        "name": "Simple PHP8 union type",
+        "result": {
+            "var": "string|array"
+        }
+    },
+    {
+        "key": "union-type-namespace",
+        "name": "PHP8 union type with one namespace",
+        "result": {
+            "var": "string|\\DateTimeInterface"
+        }
+    },
+    {
+        "key": "union-type-full-namespace",
+        "name": "PHP8 union type with one namespace",
+        "result": {
+            "var": "string|\\App\\Type\\Test"
+        }
+    },
+    {
+        "key": "union-type-nullable",
+        "name": "PHP8 union type that can be null",
+        "result": {
+            "var": "string|array|null"
         }
     }
 ]

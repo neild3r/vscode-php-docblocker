@@ -76,7 +76,7 @@ export default class FunctionBlock extends Block
                 } else if (parts[2] != null) {
                     type = TypeUtil.instance.getFormattedTypeByName(parts[2], false, head);
                 } else if (parts[4] != null && parts[4] != "") {
-                    type = TypeUtil.instance.getFormattedTypeByName(this.getTypeFromValue(parts[4]), false,head);
+                    type = TypeUtil.instance.getFormattedTypeByName(TypeUtil.instance.getTypeFromValue(parts[4]), false,head);
                 } else {
                     type = TypeUtil.instance.getUnknownType();
                 }

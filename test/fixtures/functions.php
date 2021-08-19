@@ -128,7 +128,6 @@ abstract class Test
     public function dotArgsTypedLong(int ...$args) {
     }
 
-
     ////=> php7-return
     public function getPHP7Return(): TypeHint {
     }
@@ -173,6 +172,21 @@ abstract class Test
 
     ////=> php7-return-namespace-full
     public function getPHP7ReturnNamespaceFull():App\Model\TypeHint
+    {
+    }
+
+    ////=> php8-return-union-types
+    public function getPHP8ReturnUnionTypes():int|bool|\TypeHint|App\Model\TypeHint
+    {
+    }
+
+    ////=> php8-return-union-types-with-short-name
+    public function getPHP8ReturnUnionTypesShortName():int|bool|\TypeHint|App\Model\TypeHint
+    {
+    }
+
+    ////=> php8-param-union-types
+    public function getPHP8ParamUnionTypes(int|bool|\TypeHint|App\Model\TypeHint $arg, string|\Closure ...$args)
     {
     }
 
