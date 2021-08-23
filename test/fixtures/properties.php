@@ -47,10 +47,8 @@ abstract class Test
     ////=> default-float
     public $defaultFloat = -124124.50;
 
-
     ////=> default-int
     public $defaultInt = -214221;
-
 
     ////=> default-null
     public $defaultNull = null;
@@ -81,4 +79,16 @@ abstract class Test
 
     ////=> typed-namespace-nullable
     public ?\App\Type\Test $typedNamespaceNullable;
+    
+    ////=> union-type-simple
+    public string|array $unionTypeSimple;
+
+    ////=> union-type-namespace
+    public string|\DateTimeInterface $unionTypeNamespace;
+
+    ////=> union-type-full-namespace
+    public string|\App\Type\Test $unionTypeFullNamespace;
+
+    ////=> union-type-nullable
+    public string|array|null $unionTypeNullable;
 }

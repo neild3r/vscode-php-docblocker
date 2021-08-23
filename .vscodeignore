@@ -1,5 +1,8 @@
 .vscode/**
 .vscode-test/**
+.vscode-test-web/**
+node_modules/**
+coverage/**
 out/test/**
 out/src/**
 !out/src/extension.js
