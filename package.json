@@ -91,10 +91,15 @@
           "default": false,
           "description": "Vertically aligns return with above param statements."
         },
-        "php-docblocker.alignTrimExtraSpaces": {
-          "type": "boolean",
+        "php-docblocker.paramDescription": {
+          "type": ["string", "boolean"],
           "default": false,
-          "description": "Remove additional spaces after param names."
+          "description": "Include a description placeholder for @param tags"
+        },
+        "php-docblocker.returnDescription": {
+          "type": ["string", "boolean"],
+          "default": false,
+          "description": "Include a description placeholder for @return tags"
         },
         "php-docblocker.functionTemplate": {
           "type": "object",

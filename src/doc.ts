@@ -144,6 +144,13 @@ export class Doc
                     (alignReturn ? this.indentCharacter : '') +
                     "\${###:"+paramType+"} " +
                     alignmentSpaces.prepend + paramName + alignmentSpaces.append;
+
+                let description = Config.instance.get('paramDescription');
+                if (description === true) {
+                    paramString += "\${###}"
+                } else if (typeof description == 'string') {
+                    paramString += "\${###:" + description + "}"
+                }
             });
         }
 
@@ -154,6 +161,13 @@ export class Doc
         if (this.return && (this.return != 'void' || Config.instance.get('returnVoid'))) {
             let alignmentSpaces = this.getReturnAlignmentSpaces(maxParamLength);
             returnString = "@return \${###:" +this.return + "}" + alignmentSpaces.append;
+
+            let description = Config.instance.get('returnDescription');
+            if (description === true) {
+                returnString += "\${###}"
+            } else if (typeof description == 'string') {
+                returnString += "\${###:" + description + "}"
+            }
         }
 
         if (Array.isArray(extra) && extra.length > 0) {
@@ -300,7 +314,7 @@ export class Doc
     private getParamAlignmentSpaces(maxParamLength: MaxParamLength, paramName: string, paramType: string): AlignmentSpaces
     {
         let alignParams = Config.instance.get('alignParams');
-        let alignTrimExtraSpaces = alignParams ? Config.instance.get('alignTrimExtraSpaces') : false;
+        let paramDescription = Config.instance.get('paramDescription');
 
         let prependSpace = '';
         let appendSpace = '';
@@ -312,7 +326,7 @@ export class Doc
         }
 
         return {
-            append: alignTrimExtraSpaces ? '' : appendSpace,
+            append: paramDescription ? (alignParams ? appendSpace : this.indentCharacter) : '',
             prepend: prependSpace
         };
     }
@@ -327,7 +341,7 @@ export class Doc
     {
         let alignParams = Config.instance.get('alignParams');
         let alignReturn = alignParams ? Config.instance.get('alignReturn') : false;
-        let alignTrimExtraSpaces = alignParams ? Config.instance.get('alignTrimExtraSpaces') : false;
+        let returnDescription = Config.instance.get('returnDescription');
 
         let appendSpace = '';
         if (alignReturn) {
@@ -337,7 +351,7 @@ export class Doc
         }
 
         return {
-            append: alignTrimExtraSpaces ? '' : appendSpace,
+            append: returnDescription ? (alignReturn ? appendSpace : this.indentCharacter) : '',
             prepend: ''
         };
     }
