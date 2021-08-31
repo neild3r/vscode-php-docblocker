@@ -427,6 +427,22 @@
         }
     },
     {
+        "key": "trailing-comma",
+        "name": "Trailing comma after params",
+        "result": {
+            "params": [
+                {
+                    "name": "$var",
+                    "type": "integer"
+                },
+                {
+                    "name": "$var2",
+                    "type": "string"
+                }
+            ]
+        }
+    },
+    {
         "key": "function-reference",
         "name": "Function with reference ampersand",
         "result": {
