@@ -173,7 +173,7 @@ export abstract class Block
     public getSplitWithoutEnclosed(context: string, divider: string = ","):Array<string>
     {
         let result:Array<string> = new Array();
-        let contextArray:Array<string> = context.trim(divider).split("");
+        let contextArray:Array<string> = context.split("");
 
         let openers:Array<string> = ['{', '(', '['];
         let closers:Array<string> = ['}', ')', ']'];
@@ -183,7 +183,9 @@ export abstract class Block
 
         for (let index = 0; index < contextArray.length; index++) {
             let char = contextArray[index];
-            if (char === divider && opened === 0) {
+            if (char === divider && index === contextArray.length - 1) {
+                return result;
+            } else if (char === divider && opened === 0) {
                 endPos = index;
                 result.push(context.substr(startPos, endPos - startPos));
                 startPos = index + 1;
