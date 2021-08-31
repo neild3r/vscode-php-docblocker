@@ -113,6 +113,7 @@
     "build": "npm run -S esbuild-base -- --sourcemap",
     "watch": "tsc -watch -p ./",
     "pretest": "tsc -p ./",
+    "version": "node ./scripts/updateChangelog.js && git add CHANGELOG.md",
     "test": "node ./out/test/runTest.js",
     "web": "npm run build && vscode-test-web --browserType=webkit --extensionDevelopmentPath=./",
     "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/src/extension.js --external:vscode --format=cjs --platform=node"
