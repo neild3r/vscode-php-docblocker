@@ -184,7 +184,7 @@ export abstract class Block
         for (let index = 0; index < contextArray.length; index++) {
             let char = contextArray[index];
             if (char === divider && index === contextArray.length - 1) {
-                return result;
+                break;
             } else if (char === divider && opened === 0) {
                 endPos = index;
                 result.push(context.substr(startPos, endPos - startPos));
