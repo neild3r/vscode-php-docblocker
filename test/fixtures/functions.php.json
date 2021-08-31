@@ -430,6 +430,7 @@
         "key": "trailing-comma",
         "name": "Trailing comma after params",
         "result": {
+            "return": "void",
             "params": [
                 {
                     "name": "$var",
