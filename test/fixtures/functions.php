@@ -190,6 +190,11 @@ abstract class Test
     {
     }
 
+    ////=> trailing-comma
+    public function trailingComma(int $var, string $var2,)
+    {
+    }
+
     ////=> function-reference
     public function &someFunction()
     {
