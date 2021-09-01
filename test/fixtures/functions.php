@@ -185,6 +185,11 @@ abstract class Test
     {
     }
 
+    ////=> php8-constructor-promotion
+    function __construct($arg1, protected int $arg2, private ?int $arg3 = 1, public string $arg4 = 'var')
+    {
+    }
+
     ////=> trailing-comma
     public function trailingComma(int $var, string $var2,)
     {

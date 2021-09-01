@@ -427,6 +427,31 @@
         }
     },
     {
+        "key": "php8-constructor-promotion",
+        "name": "Constructor with promotion",
+        "result": {
+            "return": null,
+            "params": [
+                {
+                    "name": "$arg1",
+                    "type": "[type]"
+                },
+                {
+                    "name": "$arg2",
+                    "type": "integer"
+                },
+                {
+                    "name": "$arg3",
+                    "type": "integer|null"
+                },
+                {
+                    "name": "$arg4",
+                    "type": "string"
+                }
+            ]
+        }
+    },
+    {
         "key": "trailing-comma",
         "name": "Trailing comma after params",
         "result": {
