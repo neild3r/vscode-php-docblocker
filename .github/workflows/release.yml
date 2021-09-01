@@ -1,0 +1,58 @@
+name: Release
+on:
+  workflow_dispatch:
+    inputs:
+        version:
+          description: 'Version'
+          required: true
+          default: 'patch'
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+    - run: |
+        git config user.name "github-actions"
+        git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+
+    - name: Install Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Verify PAT
+      run: npm run verify-pat -- --pat ${{ secrets.VSCE_PAT }} 
+
+    - name: Update version number
+      run: |
+        npm version ${{ github.event.inputs.version }} -m "Release v%s"
+        echo "npm_package_version=$(<./out/version.txt)" >> $GITHUB_ENV
+
+    - name: Run tests
+      run: xvfb-run -a npm test
+
+    - name: Package
+      run: npm run package
+
+    - name: Push tag
+      run: git push && git push --tags
+
+    - name: Create release
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: ./out/package.vsix
+        bodyFile: "./out/RELEASE.md"
+        tag: ${{ env.npm_package_version }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Publish
+      run: npm run publish
+      env:
+        VSCE_PAT: ${{ secrets.VSCE_PAT }}
