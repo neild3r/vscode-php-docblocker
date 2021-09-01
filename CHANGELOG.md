@@ -3,6 +3,7 @@
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
 ## [Unreleased]
+- Add support for params which have a trailing comma
 - Add GitHub workflow to prepare and publish releases
 
 ## [2.3.0] - 2021-10-23
