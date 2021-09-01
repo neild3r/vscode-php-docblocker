@@ -108,25 +108,31 @@
     }
   },
   "scripts": {
+    "verify-pat": "vsce verify-pat",
     "vscode:prepublish": "npm run -S esbuild-base -- --minify",
     "lint": "tslint -p ./",
     "build": "npm run -S esbuild-base -- --sourcemap",
     "watch": "tsc -watch -p ./",
     "pretest": "tsc -p ./",
+    "version": "node ./scripts/updateChangelog.js && git add CHANGELOG.md",
     "test": "node ./out/test/runTest.js",
     "web": "npm run build && vscode-test-web --browserType=webkit --extensionDevelopmentPath=./",
-    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/src/extension.js --external:vscode --format=cjs --platform=node"
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/src/extension.js --external:vscode --format=cjs --platform=node",
+    "package": "vsce package --out ./out/package.vsix",
+    "publish": "vsce publish --packagePath ./out/package.vsix",
+    "deploy": "npm run package && npm run publish"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.6",
     "@types/node": "^6.14.13",
     "@types/vscode": "^1.54.0",
     "@vscode/test-web": "^0.0.7",
-    "esbuild": "^0.12.19",
     "coveralls": "^3.1.1",
+    "esbuild": "^0.12.19",
     "mocha": "^9.0.3",
     "nyc": "^14.0.0",
     "typescript": "^3.9.10",
+    "vsce": "^1.96.3",
     "vscode-test": "^1.6.1"
   },
   "dependencies": {}
