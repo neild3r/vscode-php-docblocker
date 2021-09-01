@@ -40,7 +40,7 @@ export default class FunctionBlock extends Block
 
             for (let index = 0; index < args.length; index++) {
                 let arg:string = args[index];
-                let parts:string[] = arg.match(/^\s*(\?)?\s*([A-Za-z0-9|_\\]+)?\s*\&?((?:[.]{3})?\$[A-Za-z0-9_]+)\s*\=?\s*(.*)\s*/m);
+                let parts:string[] = arg.match(/^\s*(?:(?:public|protected|private)\s+)?(\?)?\s*([A-Za-z0-9|_\\]+)?\s*\&?((?:[.]{3})?\$[A-Za-z0-9_]+)\s*\=?\s*(.*)\s*/im);
                 var type:string = '[type]';
 
                 if (parts[2] != null) {                    
