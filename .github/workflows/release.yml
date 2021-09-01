@@ -1,14 +1,23 @@
 name: Release
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+        version:
+          description: 'Version'
+          required: true
+          default: 'patch'
 
 jobs:
   release:
-    name: Test
+    name: Release
     runs-on: ubuntu-latest
     steps:
 
     - name: Checkout
       uses: actions/checkout@v2
+    - run: |
+        git config user.name "github-actions"
+        git config user.email 41898282+github-actions[bot]@users.noreply.github.com
 
     - name: Install Node.js
       uses: actions/setup-node@v1
@@ -17,3 +26,9 @@ jobs:
 
     - name: Install dependencies
       run: npm install
+
+    - name: Update version number
+      run: npm version ${{ github.event.inputs.version }} -m "Release v%s"
+
+    - name: Push
+      run: git push && git push --tags
