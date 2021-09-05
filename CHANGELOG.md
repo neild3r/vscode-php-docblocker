@@ -3,6 +3,8 @@
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
 ## [Unreleased]
+
+## [2.4.0] - 2021-09-05
 - Add support for params which have a trailing comma
 - Add support for constructor promotion
 - Add GitHub workflow to prepare and publish releases
@@ -138,7 +140,8 @@ All notable changes to the "php-docblocker" extension will be documented in this
 ## 0.1.0 - 2017-03-12
 - Initial release
 
-[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.3.0...HEAD
+[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.4.0...HEAD
+[2.4.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.3.0...v2.4.0
 [2.3.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.3...v2.3.0
 [2.2.3]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.2...v2.2.3
 [2.2.2]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.1...v2.2.2
