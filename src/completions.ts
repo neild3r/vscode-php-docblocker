@@ -150,6 +150,10 @@ export default class Completions implements CompletionItemProvider
             snippet: '@method ${1:mixed} ${2:methodName()}'
         },
         {
+            tag: '@mixin',
+            snippet: '@mixin ${1:\\MyClass}'
+        },
+        {
             tag: '@package',
             snippet: '@package ${1:category}'
         },

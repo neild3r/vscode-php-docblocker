@@ -1,5 +1,6 @@
 .DS_Store
 .vscode-test
+.vscode-test-web
 .nyc_output
 out
 node_modules

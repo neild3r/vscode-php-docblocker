@@ -1,6 +1,6 @@
 # PHP DocBlocker
 
-[![Latest Release](https://vsmarketplacebadge.apphb.com/version-short/neilbrayfield.php-docblocker.svg)](https://marketplace.visualstudio.com/items?itemName=neilbrayfield.php-docblocker) [![Installs](https://vsmarketplacebadge.apphb.com/installs/neilbrayfield.php-docblocker.svg)](https://marketplace.visualstudio.com/items?itemName=neilbrayfield.php-docblocker) [![Rating](https://vsmarketplacebadge.apphb.com/rating-short/neilbrayfield.php-docblocker.svg)](https://marketplace.visualstudio.com/items?itemName=neilbrayfield.php-docblocker) [![Build status](https://travis-ci.org/neild3r/vscode-php-docblocker.svg?branch=master)](https://travis-ci.org/neild3r/vscode-php-docblocker) [![Coverage status](https://coveralls.io/repos/github/neild3r/vscode-php-docblocker/badge.svg)](https://coveralls.io/github/neild3r/vscode-php-docblocker)
+[![Latest Release](https://vsmarketplacebadge.apphb.com/version-short/neilbrayfield.php-docblocker.svg)](https://marketplace.visualstudio.com/items?itemName=neilbrayfield.php-docblocker) [![Installs](https://vsmarketplacebadge.apphb.com/installs/neilbrayfield.php-docblocker.svg)](https://marketplace.visualstudio.com/items?itemName=neilbrayfield.php-docblocker) [![Rating](https://vsmarketplacebadge.apphb.com/rating-short/neilbrayfield.php-docblocker.svg)](https://marketplace.visualstudio.com/items?itemName=neilbrayfield.php-docblocker) [![Test Suite](https://github.com/neild3r/vscode-php-docblocker/actions/workflows/test.yml/badge.svg)](https://github.com/neild3r/vscode-php-docblocker/actions/workflows/test.yml) [![Coverage status](https://coveralls.io/repos/github/neild3r/vscode-php-docblocker/badge.svg)](https://coveralls.io/github/neild3r/vscode-php-docblocker)
 
 Basic PHP DocBlocking extension.
 
@@ -122,7 +122,7 @@ and can be triggered by typing @ then another characted (Provided your vscode se
 | @abstract                    | @abstract                               |
 | @after                       | @after                                  |
 | @afterClass                  | @afterClass                             |
-| @author                      | @author ${1:{{name}}} <${2:{{email}}}>  |
+| @author                      | @author \${1:name} <${2:email}>         |
 | @backupGlobals               | @backupGlobals ${1:switch}              |
 | @backupStaticAttributes      | @backupStaticAttributes ${1:switch}     |
 | @before                      | @before                                 |
@@ -152,6 +152,7 @@ and can be triggered by typing @ then another characted (Provided your vscode se
 | @link                        | @link ${1:http://url.com}               |
 | @medium                      | @medium                                 |
 | @method                      | @method ${1:mixed} ${2:methodName()}    |
+| @mixin                       | @mixin ${1:\Class}                      |
 | @package                     | @package ${1:category}                  |
 | @param                       | @param ${1:mixed} $${2:name}            |
 | @preserveGlobalState         | @preserveGlobalState                    |

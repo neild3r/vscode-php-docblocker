@@ -24,7 +24,6 @@ export async function run(): Promise<void> {
     const mocha = new Mocha({
         ui: 'tdd',
     });
-    mocha.useColors(true);
 
     const testsRoot = path.resolve(__dirname, '..');
 
@@ -44,7 +43,7 @@ export async function run(): Promise<void> {
                         if (failures > 0) {
                             e(new Error(`${failures} tests failed.`));
                         } else {
-                            c();
+                            c(failures);
                         }
                     });
                 } catch (err) {

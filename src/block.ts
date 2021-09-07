@@ -76,7 +76,7 @@ export abstract class Block
      */
     public test():boolean
     {
-        return this.pattern.test(this.signature)
+        return this.pattern.test(this.signature);
     }
 
     /**
@@ -161,6 +161,49 @@ export abstract class Block
     }
 
     /**
+     * Split a string excluding any braces
+     *
+     * Currently doesn't handle string
+     *
+     * @param {string} context
+     * @param {string} [divider=","]
+     * @returns {Array<string>}
+     * @memberof Block
+     */
+    public getSplitWithoutEnclosed(context: string, divider: string = ","):Array<string>
+    {
+        let result:Array<string> = new Array();
+        let contextArray:Array<string> = context.split("");
+
+        let openers:Array<string> = ['{', '(', '['];
+        let closers:Array<string> = ['}', ')', ']'];
+        let opened = 0;
+        let startPos = 0;
+        let endPos = 0;
+
+        for (let index = 0; index < contextArray.length; index++) {
+            let char = contextArray[index];
+            if (char === divider && index === contextArray.length - 1) {
+                break;
+            } else if (char === divider && opened === 0) {
+                endPos = index;
+                result.push(context.substr(startPos, endPos - startPos));
+                startPos = index + 1;
+                continue;
+            } else if (openers.indexOf(char) >= 0) {
+                opened++;
+            } else if (closers.indexOf(char) >= 0) {
+                opened--;
+            }
+            endPos = index;
+        }
+
+        result.push(context.substr(startPos, endPos - startPos + 1));
+
+        return result;
+    }
+
+    /**
      * Get the header for the class
      *
      * @returns {string}
@@ -177,44 +220,6 @@ export abstract class Block
         }
 
         return this.classHead;
-    }
-
-    /**
-     * Take the value and parse and try to infer its type
-     *
-     * @param {string} value
-     * @returns {string}
-     */
-    public getTypeFromValue(value:string):string
-    {
-        let result:Array<string>;
-
-        // Check for bool
-        if (value.match(/^\s*(false|true)\s*$/i) !== null) {
-            return TypeUtil.instance.getFormattedTypeByName('bool');
-        }
-
-        // Check for int
-        if (value.match(/^\s*([\d-]+)\s*$/) !== null) {
-            return TypeUtil.instance.getFormattedTypeByName('int');
-        }
-
-        // Check for float
-        if (value.match(/^\s*([\d.-]+)\s*$/) !== null) {
-            return 'float';
-        }
-
-        // Check for string
-        if (value.match(/^\s*(["'])/) !== null) {
-            return 'string';
-        }
-
-        // Check for array
-        if (value.match(/^\s*(array\(|\[)/) !== null) {
-            return 'array';
-        }
-
-        return '[type]';
     }
 
     /**
