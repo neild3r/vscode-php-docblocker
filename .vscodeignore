@@ -9,6 +9,7 @@ out/src/**
 !out/src/extension.js.map
 test/**
 src/**
+scripts/**
 **/*.map
 .travis.yml
 .gitignore
