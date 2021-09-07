@@ -50,7 +50,7 @@ jobs:
         artifacts: ./out/package.vsix
         body: ${{ github.event.pull_request.body }}
         tag: v${{ steps.extract_version.outputs.version }}
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.BOT_GITHUB_PAT }}
 
     - name: Publish
       run: npm run publish
