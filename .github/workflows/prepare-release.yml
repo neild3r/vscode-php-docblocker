@@ -58,3 +58,10 @@ jobs:
           branch: releases/${{ env.npm_package_version }}
           body: ${{ env.release_notes }}
           labels: release candidate
+
+    - name: Enable Pull Request Automerge
+      if: steps.create-pull-request.outputs.pull-request-operation == 'created'
+      uses: peter-evans/enable-pull-request-automerge@v1
+      with:
+        token: ${{ secrets.BOT_GITHUB_PAT }}
+        pull-request-number: ${{ steps.create-pull-request.outputs.pull-request-number }}
