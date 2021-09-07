@@ -306,10 +306,6 @@ export default class Tags
             snippet: '@psalm-readonly'
         },
         {
-            tag: '@readonly (Psalm)',
-            snippet: '@readonly'
-        },
-        {
             tag: '@psalm-mutation-free (Psalm)',
             snippet: '@psalm-mutation-free'
         },

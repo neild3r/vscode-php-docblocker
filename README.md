@@ -116,68 +116,106 @@ will be calculated at generation time.
 Please see below for a list of supported tags and their snippets. These tags are available within a DocBlock
 and can be triggered by typing @ then another characted (Provided your vscode settings allow).
 
-| Tag                          | Snippet                                 |
-| ---------------------------- | --------------------------------------- |
-| @api                         | @api                                    |
-| @abstract                    | @abstract                               |
-| @after                       | @after                                  |
-| @afterClass                  | @afterClass                             |
-| @author                      | @author ${1:name} <${2:email}>          |
-| @backupGlobals               | @backupGlobals ${1:switch}              |
-| @backupStaticAttributes      | @backupStaticAttributes ${1:switch}     |
-| @before                      | @before                                 |
-| @beforeClass                 | @beforeClass                            |
-| @category                    | @category ${1:description}              |
-| @codeCoverageIgnore          | @codeCoverageIgnore                     |
-| @codeCoverageIgnoreEnd       | @codeCoverageIgnoreEnd                  |
-| @codeCoverageIgnoreStart     | @codeCoverageIgnoreStart                |
-| @copyright                   | @copyright ${1:2021} ${2:Name}          |
-| @covers                      | @covers ${1:fqcn}                       |
-| @coversDefaultClass          | @coversDefaultClass ${1:fqcn}           |
-| @coversNothing               | @coversNothing                          |
-| @dataProvider                | @dataProvider ${1:methodName}           |
-| @depends                     | @depends ${1:methodName}                |
-| @deprecated                  | @deprecated ${1:version}                |
-| @doesNotPerformAssertions    | @doesNotPerformAssertions               |
-| @example                     | @example ${1:location} ${2:description} |
-| @filesource                  | @filesource                             |
-| @final                       | @final                                  |
-| @group                       | @group ${1:group}                       |
-| @global                      | @global                                 |
-| @ignore                      | @ignore ${1:description}                |
-| @inheritDoc                  | @inheritDoc                             |
-| @internal                    | @internal ${1:description}              |
-| @large                       | @large                                  |
-| @license                     | @license ${1:MIT}                       |
-| @link                        | @link ${1:http://url.com}               |
-| @medium                      | @medium                                 |
-| @method                      | @method ${1:mixed} ${2:methodName()}    |
-| @mixin                       | @mixin ${1:\MyClass}                    |
-| @package                     | @package ${1:category}                  |
-| @param                       | @param ${1:mixed} $${2:name}            |
-| @preserveGlobalState         | @preserveGlobalState ${1:switch}        |
-| @property                    | @property ${1:mixed} $${2:name}         |
-| @property-read               | @property-read ${1:mixed} $${2:name}    |
-| @property-write              | @property-write ${1:mixed} $${2:name}   |
-| @requires                    | @requires ${1:mixed}                    |
-| @return                      | @return ${1:mixed}                      |
-| @runInSeparateProcess        | @runInSeparateProcess                   |
-| @runTestsInSeparateProcesses | @runTestsInSeparateProcesses            |
-| @see                         | @see ${1:http://url.com}                |
-| @since                       | @since ${1:1.0.0}                       |
-| @small                       | @small                                  |
-| @source                      | @source ${1:location} ${2:description}  |
-| @static                      | @static                                 |
-| @subpackage                  | @subpackage ${1:category}               |
-| @test                        | @test                                   |
-| @testdox                     | @testdox ${1:description}               |
-| @testWith                    | @testWith ${1:elements}                 |
-| @throws                      | @throws ${1:Exception}                  |
-| @ticket                      | @ticket ${1:ticket}                     |
-| @todo                        | @todo ${1:Something}                    |
-| @uses                        | @uses ${1:MyClass::function} ${2:Name}  |
-| @var                         | @var ${1:mixed}                         |
-| @version                     | @version ${1:1.0.0}                     |
+| Tag                                   | Snippet                                                  |
+| ------------------------------------- | -------------------------------------------------------- |
+| @api                                  | @api                                                     |
+| @abstract                             | @abstract                                                |
+| @after                                | @after                                                   |
+| @afterClass                           | @afterClass                                              |
+| @author                               | @author ${1:{{name}}} <${2:{{email}}}>                   |
+| @backupGlobals                        | @backupGlobals ${1:switch}                               |
+| @backupStaticAttributes               | @backupStaticAttributes ${1:switch}                      |
+| @before                               | @before                                                  |
+| @beforeClass                          | @beforeClass                                             |
+| @category                             | @category ${1:description}                               |
+| @codeCoverageIgnore                   | @codeCoverageIgnore                                      |
+| @codeCoverageIgnoreEnd                | @codeCoverageIgnoreEnd                                   |
+| @codeCoverageIgnoreStart              | @codeCoverageIgnoreStart                                 |
+| @copyright                            | @copyright ${1:2021} ${2:Name}                           |
+| @covers                               | @covers ${1:fqcn}                                        |
+| @coversDefaultClass                   | @coversDefaultClass ${1:fqcn}                            |
+| @coversNothing                        | @coversNothing                                           |
+| @dataProvider                         | @dataProvider ${1:methodName}                            |
+| @depends                              | @depends ${1:methodName}                                 |
+| @deprecated                           | @deprecated ${1:version}                                 |
+| @doesNotPerformAssertions             | @doesNotPerformAssertions                                |
+| @example                              | @example ${1:location} ${2:description}                  |
+| @filesource                           | @filesource                                              |
+| @final                                | @final                                                   |
+| @group                                | @group ${1:group}                                        |
+| @global                               | @global                                                  |
+| @ignore                               | @ignore ${1:description}                                 |
+| @inheritDoc                           | @inheritDoc                                              |
+| @internal                             | @internal ${1:description}                               |
+| @large                                | @large                                                   |
+| @license                              | @license ${1:MIT}                                        |
+| @link                                 | @link ${1:http://url.com}                                |
+| @medium                               | @medium                                                  |
+| @method                               | @method ${1:mixed} ${2:methodName()}                     |
+| @mixin                                | @mixin ${1:\MyClass}                                     |
+| @package                              | @package ${1:category}                                   |
+| @param                                | @param ${1:mixed} $${2:name}                             |
+| @preserveGlobalState                  | @preserveGlobalState ${1:switch}                         |
+| @property                             | @property ${1:mixed} $${2:name}                          |
+| @property-read                        | @property-read ${1:mixed} $${2:name}                     |
+| @property-write                       | @property-write ${1:mixed} $${2:name}                    |
+| @requires                             | @requires ${1:mixed}                                     |
+| @return                               | @return ${1:mixed}                                       |
+| @runInSeparateProcess                 | @runInSeparateProcess                                    |
+| @runTestsInSeparateProcesses          | @runTestsInSeparateProcesses                             |
+| @see                                  | @see ${1:http://url.com}                                 |
+| @since                                | @since ${1:1.0.0}                                        |
+| @small                                | @small                                                   |
+| @source                               | @source ${1:location} ${2:description}                   |
+| @static                               | @static                                                  |
+| @subpackage                           | @subpackage ${1:category}                                |
+| @test                                 | @test                                                    |
+| @testdox                              | @testdox ${1:description}                                |
+| @testWith                             | @testWith ${1:elements}                                  |
+| @throws                               | @throws ${1:Exception}                                   |
+| @ticket                               | @ticket ${1:ticket}                                      |
+| @todo                                 | @todo ${1:Something}                                     |
+| @uses                                 | @uses ${1:MyClass::function} ${2:Name}                   |
+| @var                                  | @var ${1:mixed}                                          |
+| @version                              | @version ${1:1.0.0}                                      |
+| @psalm-var (Psalm)                    | @psalm-var ${1:mixed}                                    |
+| @psalm-param (Psalm)                  | @psalm-param ${1:mixed} $${2:name}                       |
+| @psalm-return (Psalm)                 | @psalm-return ${1:mixed}                                 |
+| @psalm-suppress (Psalm)               | @psalm-suppress ${1:IssueName}                           |
+| @psalm-assert (Psalm)                 | @psalm-assert ${1:[assertion]} $${2:var}                 |
+| @psalm-assert-if-true (Psalm)         | @psalm-assert-if-true ${1:[assertion]} $${2:var}         |
+| @psalm-assert-if-false (Psalm)        | @psalm-assert-if-false ${1:[assertion]} $${2:var}        |
+| @psalm-ignore-nullable-return (Psalm) | @psalm-ignore-nullable-return                            |
+| @psalm-ignore-falsable-return (Psalm) | @psalm-ignore-falsable-return                            |
+| @psalm-seal-properties (Psalm)        | @psalm-seal-properties                                   |
+| @psalm-internal (Psalm)               | @psalm-internal ${1:Namespace}                           |
+| @psalm-readonly (Psalm)               | @psalm-readonly                                          |
+| @psalm-mutation-free (Psalm)          | @psalm-mutation-free                                     |
+| @psalm-external-mutation-free (Psalm) | @psalm-external-mutation-free                            |
+| @psalm-immutable (Psalm)              | @psalm-immutable                                         |
+| @psalm-pure (Psalm)                   | @psalm-pure                                              |
+| @phan-suppress (Phan)                 | @phan-suppress ${1:IssueName}                            |
+| @suppress (Phan)                      | @suppress ${1:IssueName}                                 |
+| @phan-suppress-current-line (Phan)    | @phan-suppress-current-line ${1:IssueName, IssueName}    |
+| @phan-suppress-next-line (Phan)       | @phan-suppress-next-line ${1:IssueName, IssueName}       |
+| @phan-file-suppress (Phan)            | @phan-file-suppress ${1:IssueName}                       |
+| @override (Phan)                      | @override                                                |
+| @inherits (Phan)                      | @inherits                                                |
+| @phan-assert (Phan)                   | @phan-assert ${1:[assertion]} $${2:var}                  |
+| @phan-assert-true-condition (Phan)    | @phan-assert-true-condition ${1:[assertion]} $${2:var}   |
+| @phan-assert-false-condition (Phan)   | @phan-assert-false-condition ${1:[assertion]} $${2:var}  |
+| @phan-closure-scope (Phan)            | @phan-closure-scope                                      |
+| @phan-read-only (Phan)                | @phan-read-only                                          |
+| @phan-write-only (Phan)               | @phan-write-only                                         |
+| @phan-pure (Phan)                     | @phan-pure                                               |
+| @phan-phan-output-reference (Phan)    | @param ${1:mixed} $${2:name} @phan-phan-output-reference |
+| @phan-phan-ignore-reference (Phan)    | @param ${1:mixed} $${2:name} @phan-phan-ignore-reference |
+| @phan-var (Phan)                      | @phan-var ${1:mixed}                                     |
+| @phan-param (Phan)                    | @phan-param ${1:mixed} $${2:name}                        |
+| @phan-return (Phan)                   | @phan-return ${1:mixed}                                  |
+| @phan-return (Phan)                   | @phan-return ${1:mixed}                                  |
+| @phan-method (Phan)                   | @phan-method ${1:mixed} ${2:methodName()}                |
+| @template (Phan)                      | @template                                                |
 
 ## Future development
 
