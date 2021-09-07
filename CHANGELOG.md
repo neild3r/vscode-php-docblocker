@@ -4,6 +4,9 @@ All notable changes to the "php-docblocker" extension will be documented in this
 
 ## [Unreleased]
 
+### Added
+- Psalm and Phan annotations - Thanks @imliam
+
 ### Operational
 - Add auto-merge to release workflow
 - Create release using bot token
