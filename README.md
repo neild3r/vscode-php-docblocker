@@ -122,7 +122,7 @@ and can be triggered by typing @ then another characted (Provided your vscode se
 | @abstract                    | @abstract                               |
 | @after                       | @after                                  |
 | @afterClass                  | @afterClass                             |
-| @author                      | @author \${1:name} <${2:email}>         |
+| @author                      | @author ${1:name} <${2:email}>          |
 | @backupGlobals               | @backupGlobals ${1:switch}              |
 | @backupStaticAttributes      | @backupStaticAttributes ${1:switch}     |
 | @before                      | @before                                 |
@@ -131,7 +131,7 @@ and can be triggered by typing @ then another characted (Provided your vscode se
 | @codeCoverageIgnore          | @codeCoverageIgnore                     |
 | @codeCoverageIgnoreEnd       | @codeCoverageIgnoreEnd                  |
 | @codeCoverageIgnoreStart     | @codeCoverageIgnoreStart                |
-| @copyright                   | @copyright ${1:2018} ${2:Name}          |
+| @copyright                   | @copyright ${1:2021} ${2:Name}          |
 | @covers                      | @covers ${1:fqcn}                       |
 | @coversDefaultClass          | @coversDefaultClass ${1:fqcn}           |
 | @coversNothing               | @coversNothing                          |
@@ -152,10 +152,10 @@ and can be triggered by typing @ then another characted (Provided your vscode se
 | @link                        | @link ${1:http://url.com}               |
 | @medium                      | @medium                                 |
 | @method                      | @method ${1:mixed} ${2:methodName()}    |
-| @mixin                       | @mixin ${1:\Class}                      |
+| @mixin                       | @mixin ${1:\MyClass}                    |
 | @package                     | @package ${1:category}                  |
 | @param                       | @param ${1:mixed} $${2:name}            |
-| @preserveGlobalState         | @preserveGlobalState                    |
+| @preserveGlobalState         | @preserveGlobalState ${1:switch}        |
 | @property                    | @property ${1:mixed} $${2:name}         |
 | @property-read               | @property-read ${1:mixed} $${2:name}    |
 | @property-write              | @property-write ${1:mixed} $${2:name}   |

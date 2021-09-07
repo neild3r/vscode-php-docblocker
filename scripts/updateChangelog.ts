@@ -1,5 +1,3 @@
-'use strict';
-
 import * as fs from 'fs';
 
 const version = process.env.npm_package_version
