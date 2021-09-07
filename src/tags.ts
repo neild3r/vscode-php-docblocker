@@ -258,10 +258,6 @@ export default class Tags
             snippet: '@version ${1:1.0.0}'
         },
         {
-            tag: '@param-out (Psalm)',
-            snippet: '@param-out \$${1:var}'
-        },
-        {
             tag: '@psalm-var (Psalm)',
             snippet: '@psalm-var ${1:mixed}'
         },
