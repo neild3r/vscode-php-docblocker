@@ -1,6 +1,6 @@
 'use strict';
 
-const fs = require('fs');
+import * as fs from 'fs';
 
 const version = process.env.npm_package_version
     ? process.env.npm_package_version

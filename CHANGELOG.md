@@ -6,6 +6,7 @@ All notable changes to the "php-docblocker" extension will be documented in this
 - Add auto-merge to release workflow
 - Create release using bot token
 - Make tests run on push only
+- Convert `updateChangelog.js` script to use typescript 
 
 ## [2.4.0] - 2021-09-05
 - Add support for params which have a trailing comma
