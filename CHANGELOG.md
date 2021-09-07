@@ -3,6 +3,8 @@
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
 ## [Unreleased]
+- Add auto-merge to release workflow
+- Create release using bot token
 
 ## [2.4.0] - 2021-09-05
 - Add support for params which have a trailing comma
