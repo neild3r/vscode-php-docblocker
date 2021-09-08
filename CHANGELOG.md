@@ -2,6 +2,29 @@
 
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
+## [Unreleased]
+
+### Added
+- Psalm and Phan annotations - Thanks @imliam
+
+### Operational
+- Add auto-merge to release workflow
+- Create release using bot token
+- Make tests run on push only
+- Convert `updateChangelog.js` script to use typescript
+- Add script to generate the table of tags for the README.md
+
+## [2.4.0] - 2021-09-05
+- Add support for params which have a trailing comma
+- Add support for constructor promotion
+- Add GitHub workflow to prepare and publish releases
+
+## [2.3.0] - 2021-10-23
+- Add support for PHP8 union types in function params - Thanks @tianyiw2013
+- Add support for PHP8 union types in function return types - Thanks @tianyiw2013
+- Add support for PHP8 union types in class properties - Thanks @tianyiw2013
+- Switched build checks system to GitHub actions
+
 ## [2.2.3] - 2021-10-18
 - Remove usage of FS module to fix start up errors in vscode web
 
@@ -127,7 +150,9 @@ All notable changes to the "php-docblocker" extension will be documented in this
 ## 0.1.0 - 2017-03-12
 - Initial release
 
-[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.3...HEAD
+[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.4.0...HEAD
+[2.4.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.3.0...v2.4.0
+[2.3.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.3...v2.3.0
 [2.2.3]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.2...v2.2.3
 [2.2.2]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.1...v2.2.2
 [2.2.1]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.0...v2.2.1
