@@ -1,0 +1,23 @@
+name: 'Setup'
+description: 'Setup environment'
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        git config user.name "php-docblocker"
+        git config user.email php-docblocker@brayfield.co.uk
+      shell: bash
+
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+
+    - uses: actions/cache@v2
+      env:
+        cache-name: vscode
+      with:
+        path: ~/.vscode-test/
+        key: ${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
+
+    - run: npm install
+      shell: bash
