@@ -350,8 +350,8 @@
             "/**",
             " * ${1:Undocumented function}",
             " *",
-            " * @param ${2:int}    \\$nameLong ",
-            " * @param ${3:string} \\$name     ",
+            " * @param ${2:int}    \\$nameLong",
+            " * @param ${3:string} \\$name",
             " * @return ${4:LongClassName}",
             " */"
         ]
@@ -389,10 +389,10 @@
             "/**",
             " * ${1:Undocumented function}",
             " *",
-            " * @param ${2:int}           \\$nameLong       ",
-            " * @param ${3:string}        \\$name           ",
-            " * @param ${4:LongClassName} \\$nameEvenLonger ",
-            " * @param ${5:bool}          \\$n              ",
+            " * @param ${2:int}           \\$nameLong",
+            " * @param ${3:string}        \\$name",
+            " * @param ${4:LongClassName} \\$nameEvenLonger",
+            " * @param ${5:bool}          \\$n",
             " */"
         ]
     },
@@ -422,8 +422,8 @@
             " * ${1:Undocumented function}",
             " *",
             " * @param  ${2:int}           \\$nameLong ",
-            " * @param  ${3:string}        \\$name     ",
-            " * @return ${4:LongClassName}           ",
+            " * @param  ${3:string}        \\$name",
+            " * @return ${4:LongClassName}",
             " */"
         ]
     },
@@ -452,9 +452,9 @@
             "/**",
             " * ${1:Undocumented function}",
             " *",
-            " * @param  ${2:int}    \\$nameLong ",
-            " * @param  ${3:string} \\$name     ",
-            " * @return ${4:int}              ",
+            " * @param  ${2:int}    \\$nameLong",
+            " * @param  ${3:string} \\$name",
+            " * @return ${4:int}",
             " */"
         ]
     },
@@ -463,8 +463,7 @@
         "config": {
             "gap": true,
             "alignParams": true,
-            "alignReturn": true,
-            "alignTrimExtraSpaces": true
+            "alignReturn": true
         },
         "input": {
             "message": "Undocumented function",
