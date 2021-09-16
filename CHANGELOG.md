@@ -6,6 +6,9 @@ All notable changes to the "php-docblocker" extension will be documented in this
 
 ### Added
 - Psalm and Phan annotations - Thanks @imliam
+- Aligning of @param and @return - Thanks @MGApcDev
+- Added option for param description
+- Added option for return description
 
 ### Operational
 - Add auto-merge to release workflow
