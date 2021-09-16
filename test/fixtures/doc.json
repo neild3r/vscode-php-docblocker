@@ -484,9 +484,42 @@
             "/**",
             " * ${1:Undocumented function}",
             " *",
-            " * @param  ${2:int}    \\$nameLong \\${3}",
-            " * @param  ${4:string} \\$name     \\${5}",
+            " * @param  ${2:int}    \\$nameLong ${3}",
+            " * @param  ${4:string} \\$name     ${5}",
             " * @return ${6:int}",
+            " */"
+        ]
+    },
+    {
+        "name": "Align params and return statement with description and return description",
+        "config": {
+            "gap": true,
+            "alignParams": true,
+            "alignReturn": true,
+            "paramDescription": "description",
+            "returnDescription": true
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$nameLong",
+                    "type": "int"
+                },
+                {
+                    "name": "$name",
+                    "type": "string"
+                }
+            ],
+            "return": "int"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param  ${2:int}    \\$nameLong ${3:description}",
+            " * @param  ${4:string} \\$name     ${5:description}",
+            " * @return ${6:int}              ${7}",
             " */"
         ]
     }
