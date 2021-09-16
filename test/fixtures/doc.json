@@ -550,9 +550,9 @@
             "/**",
             " * ${1:Undocumented function}",
             " *",
-            " * @param  ${2:int}    \\$nameLong ${3:description}",
-            " * @param  ${4:string} \\$name     ${5:description}",
-            " * @return ${6:LongClassName}    ${7:description}",
+            " * @param  ${2:int}           \\$nameLong ${3:description}",
+            " * @param  ${4:string}        \\$name     ${5:description}",
+            " * @return ${6:LongClassName}           ${7:description}",
             " */"
         ]
     }
