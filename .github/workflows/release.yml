@@ -10,28 +10,14 @@ jobs:
       github.event.pull_request.merged == true
       && github.event.pull_request.user.login == 'php-docblocker'
       && contains(github.event.pull_request.labels.*.name, 'release candidate')
-    name: Release PR Merged
     runs-on: ubuntu-latest
     steps:
 
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Install Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: 14.x
-
-    - name: Cache vscode binary
-      uses: actions/cache@v2
-      env:
-        cache-name: vscode
-      with:
-        path: ~/.vscode-test/
-        key: ${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
-
-    - name: Install dependencies
-      run: npm install
+    - name: Setup
+      uses: ./.github/actions/setup
 
     - name: Verify PAT
       run: npm run verify-pat -- --pat ${{ secrets.VSCE_PAT }}
