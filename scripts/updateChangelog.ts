@@ -19,7 +19,7 @@ fs.readFile('CHANGELOG.md', 'utf8', function (err, data) {
         fs.mkdirSync('./out');
     }
 
-    var body = data.match(/## \[Unreleased\]\s+(.*?)\s*##/s);
+    var body = data.match(/## \[Unreleased\]\s+(.*?)\s*## \[\d+/s);
     fs.writeFile('./out/RELEASE.md', body[1], 'utf8', function (err) {
         if (err) {
             throw err;
