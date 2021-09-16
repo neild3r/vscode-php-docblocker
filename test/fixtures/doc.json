@@ -544,7 +544,7 @@
                     "type": "string"
                 }
             ],
-            "return": "int"
+            "return": "LongClassName"
         },
         "expected": [
             "/**",
