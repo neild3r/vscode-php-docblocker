@@ -15,25 +15,12 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v2
-    - run: |
-        git config user.name "php-docblocker"
-        git config user.email php-docblocker@brayfield.co.uk
 
-    - name: Install Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: 14.x
+    - name: Setup
+      uses: ./.github/actions/setup
 
-    - name: Cache vscode binary
-      uses: actions/cache@v2
-      env:
-        cache-name: vscode
-      with:
-        path: ~/.vscode-test/
-        key: ${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
-
-    - name: Install dependencies
-      run: npm install
+    - name: Verify PAT
+      run: npm run verify-pat -- --pat ${{ secrets.VSCE_PAT }}
 
     - name: Update version number
       run: |
@@ -49,6 +36,7 @@ jobs:
         git commit -m "Release ${{ env.npm_package_version }}"
 
     - name: Create Pull Request
+      id: create-pull-request
       uses: peter-evans/create-pull-request@v3
       with:
           author: php-docblocker <php-docblocker@brayfield.co.uk>

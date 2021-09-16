@@ -10,7 +10,7 @@ All notable changes to the "php-docblocker" extension will be documented in this
 ### Operational
 - Add auto-merge to release workflow
 - Create release using bot token
-- Make tests run on push only
+- Make tests run on push and PR sychronize only
 - Convert `updateChangelog.js` script to use typescript
 - Add script to generate the table of tags for the README.md
 
