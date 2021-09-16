@@ -555,5 +555,36 @@
             " * @return ${6:LongClassName}           ${7:description}",
             " */"
         ]
+    },
+    {
+        "name": "Param and return descriptions",
+        "config": {
+            "gap": true,
+            "paramDescription": "placeholder",
+            "returnDescription": "placeholder"
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$nameLong",
+                    "type": "int"
+                },
+                {
+                    "name": "$name",
+                    "type": "string"
+                }
+            ],
+            "return": "int"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param ${2:int} \\$nameLong ${3:placeholder}",
+            " * @param ${4:string} \\$name ${5:placeholder}",
+            " * @return ${6:int} ${7:placeholder}",
+            " */"
+        ]
     }
 ]
