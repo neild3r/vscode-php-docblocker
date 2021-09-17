@@ -7,6 +7,9 @@ All notable changes to the "php-docblocker" extension will be documented in this
 ### Added
 - Psalm and Phan annotations - Thanks @imliam
 
+### Updated
+- Fixes issue with multi-line functions that have a trailing comma
+
 ### Operational
 - Add auto-merge to release workflow
 - Create release using bot token
