@@ -469,6 +469,23 @@
         }
     },
     {
+        "key": "trailing-comma-multi",
+        "name": "Trailing comma after params multi-line",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$var",
+                    "type": "integer"
+                },
+                {
+                    "name": "$var2",
+                    "type": "Class_Name"
+                }
+            ]
+        }
+    },
+    {
         "key": "function-reference",
         "name": "Function with reference ampersand",
         "result": {
