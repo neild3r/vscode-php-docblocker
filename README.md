@@ -31,7 +31,7 @@ This extension contributes the following settings:
 * `php-docblocker.alignParams`: set to `true` to align params vertically and add appropriate spaces after param names
 * `php-docblocker.alignReturn`: set to `true` to align return vertically with above params statements, this setting requires align params to also be active
 * `php-docblocker.paramDescription`: set to `true` to include a description placeholder for `@param` completions. If you specify a string this will be the default placeholder text
-* `php-docblocker.returnDescription`: set to `true` to include a description placeholder for `@param` completions. If you specify a string this will be the default placeholder text
+* `php-docblocker.returnDescription`: set to `true` to include a description placeholder for `@return` completions. If you specify a string this will be the default placeholder text
 * `php-docblocker.author`: An object containing your default author tag settings
 * `php-docblocker.functionTemplate`: See below for how to set up docblock templates
 * `php-docblocker.propertyTemplate`: See below for how to set up docblock templates
