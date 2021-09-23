@@ -198,7 +198,11 @@ export abstract class Block
             endPos = index;
         }
 
-        result.push(context.substr(startPos, endPos - startPos + 1));
+        let arg:string = context.substr(startPos, endPos - startPos + 1);
+
+        if (!arg.match(/^\s*$/)) {
+            result.push(context.substr(startPos, endPos - startPos + 1));
+        }
 
         return result;
     }

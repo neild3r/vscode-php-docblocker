@@ -195,6 +195,13 @@ abstract class Test
     {
     }
 
+    ////=> trailing-comma-multi
+    public function trailingCommaMulit(
+        int $var,
+        Class_Name $var2,
+    ) {
+    }
+
     ////=> function-reference
     public function &someFunction()
     {

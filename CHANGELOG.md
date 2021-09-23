@@ -4,11 +4,16 @@ All notable changes to the "php-docblocker" extension will be documented in this
 
 ## [Unreleased]
 
+## [2.5.0] - 2021-09-22
+
 ### Added
 - Psalm and Phan annotations - Thanks @imliam
 - Aligning of @param and @return - Thanks @MGApcDev
 - Added option for param description
 - Added option for return description
+
+### Updated
+- Fixes issue with multi-line functions that have a trailing comma
 
 ### Operational
 - Add auto-merge to release workflow
@@ -153,7 +158,8 @@ All notable changes to the "php-docblocker" extension will be documented in this
 ## 0.1.0 - 2017-03-12
 - Initial release
 
-[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.4.0...HEAD
+[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.5.0...HEAD
+[2.5.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.4.0...v2.5.0
 [2.4.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.3.0...v2.4.0
 [2.3.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.3...v2.3.0
 [2.2.3]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.2...v2.2.3
