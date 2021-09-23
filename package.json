@@ -92,7 +92,10 @@
           "description": "Vertically aligns return with above param statements."
         },
         "php-docblocker.varDescription": {
-          "type": ["string", "boolean"],
+          "type": [
+            "string",
+            "boolean"
+          ],
           "default": false,
           "description": "Include a description placeholder for @var tags"
         },
