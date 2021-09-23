@@ -29,24 +29,24 @@ All notable changes to the "php-docblocker" extension will be documented in this
 - Add support for constructor promotion
 - Add GitHub workflow to prepare and publish releases
 
-## [2.3.0] - 2021-10-23
+## [2.3.0] - 2021-08-23
 - Add support for PHP8 union types in function params - Thanks @tianyiw2013
 - Add support for PHP8 union types in function return types - Thanks @tianyiw2013
 - Add support for PHP8 union types in class properties - Thanks @tianyiw2013
 - Switched build checks system to GitHub actions
 
-## [2.2.3] - 2021-10-18
+## [2.2.3] - 2021-08-18
 - Remove usage of FS module to fix start up errors in vscode web
 
-## [2.2.2] - 2021-10-18
+## [2.2.2] - 2021-08-18
 - Improve compatability with vscode web
 
-## [2.2.1] - 2021-10-17
+## [2.2.1] - 2021-08-17
 - Supported workspace trust - Thanks @tianyiw2013
 - Add case insensitive matching - Thanks @tianyiw2013
 - Improve detection of types from certain default values - Thanks @tianyiw2013
 
-## [2.2.0] - 2021-10-11
+## [2.2.0] - 2021-08-11
 - Use esbuild to improve startup performance
 - Add support for PHP 7.4 typed properties
 - Fix issue where if you have a comma in a default value it incorrectly splits the arguments
