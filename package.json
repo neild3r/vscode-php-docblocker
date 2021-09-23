@@ -97,12 +97,18 @@
           "description": "Include a description placeholder for @var tags"
         },
         "php-docblocker.paramDescription": {
-          "type": ["string", "boolean"],
+          "type": [
+            "string",
+            "boolean"
+          ],
           "default": false,
           "description": "Include a description placeholder for @param tags"
         },
         "php-docblocker.returnDescription": {
-          "type": ["string", "boolean"],
+          "type": [
+            "string",
+            "boolean"
+          ],
           "default": false,
           "description": "Include a description placeholder for @return tags"
         },
@@ -151,15 +157,15 @@
   "devDependencies": {
     "@types/mocha": "^5.2.6",
     "@types/node": "^6.14.13",
-    "@types/vscode": "^1.54.0",
+    "@types/vscode": "^1.60.0",
     "@vscode/test-web": "^0.0.7",
     "coveralls": "^3.1.1",
-    "esbuild": "^0.12.19",
+    "esbuild": "^0.12.29",
     "markdown-table-ts": "^1.0.3",
-    "mocha": "^9.0.3",
-    "nyc": "^14.0.0",
+    "mocha": "^9.1.1",
+    "nyc": "^15.0.0",
     "typescript": "^3.9.10",
-    "vsce": "^1.96.3",
+    "vsce": "^1.100.0",
     "vscode-test": "^1.6.1"
   },
   "dependencies": {}
