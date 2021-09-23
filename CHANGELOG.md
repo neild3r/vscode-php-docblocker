@@ -4,6 +4,11 @@ All notable changes to the "php-docblocker" extension will be documented in this
 
 ## [Unreleased]
 
+### Added
+- Aligning of @param and @return - Thanks @MGApcDev
+- Added option for param description
+- Added option for return description
+
 ## [2.5.0] - 2021-09-22
 
 ### Added
