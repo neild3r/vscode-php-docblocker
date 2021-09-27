@@ -156,6 +156,13 @@ export class Doc
 
         if (this.var) {
             varString = "@var \${###:" +this.var + "}";
+
+            let varDescription = Config.instance.get('varDescription');
+            if (varDescription === true) {
+                varString += " \${###}"
+            } else if (typeof varDescription == 'string') {
+                varString += " \${###:" + varDescription + "}"
+            }
         }
 
         if (this.return && (this.return != 'void' || Config.instance.get('returnVoid'))) {

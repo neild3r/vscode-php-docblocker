@@ -30,6 +30,7 @@ This extension contributes the following settings:
 * `php-docblocker.qualifyClassNames`: When adding type hints for class names search namespace use statements and qualify the class
 * `php-docblocker.alignParams`: set to `true` to align params vertically and add appropriate spaces after param names
 * `php-docblocker.alignReturn`: set to `true` to align return vertically with above params statements, this setting requires align params to also be active
+* `php-docblocker.varDescription`: set to `true` to include a description placeholder for `@var` completions. If you specify a string this will be the default placeholder text
 * `php-docblocker.paramDescription`: set to `true` to include a description placeholder for `@param` completions. If you specify a string this will be the default placeholder text
 * `php-docblocker.returnDescription`: set to `true` to include a description placeholder for `@return` completions. If you specify a string this will be the default placeholder text
 * `php-docblocker.author`: An object containing your default author tag settings
