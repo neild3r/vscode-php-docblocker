@@ -74,6 +74,10 @@ export default class Config {
     public get(setting:string)
     {
         if (this.isLive) {
+            if (setting === "autoClosingBrackets") {
+                return workspace.getConfiguration('editor').get(setting);
+            }
+
             return workspace.getConfiguration('php-docblocker').get(setting);
         }
 
