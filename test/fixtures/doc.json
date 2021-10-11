@@ -1,9 +1,30 @@
 [
     {
         "name": "Empty",
+        "config": {
+            "gap": false
+        },
         "expected": [
             "/**",
             " * ${1}",
+            " */"
+        ]
+    },
+    {
+        "name": "AutoClosingBrackets: never",
+        "config": {
+            "gap": false,
+            "returnVoid": true,
+            "extra": [],
+            "autoClosingBrackets": "never"
+        },
+        "input": {
+            "return": "void"
+        },
+        "expected": [
+            "",
+            " * ${1}",
+            " * @return ${2:void}",
             " */"
         ]
     },
