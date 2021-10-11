@@ -212,15 +212,21 @@ export abstract class Block
      *
      * @returns {string}
      */
-    public getClassHead():string
+    public getClassHead(): string
     {
         if (this.classHead === undefined) {
-            let text = this.editor.document.getText(new Range(new Position(0, 0), new Position(150,0)));
+            let limit = this.editor.document.lineCount < 300 ? this.editor.document.lineCount - 1 : 300;
+            let text = this.editor.document.getText(new Range(new Position(0, 0), new Position(limit, 0)));
             let regex = /\s*(abstract|final)?\s*(class|trait|interface)/gm;
             let match = regex.exec(text);
-            let end = this.editor.document.positionAt(match.index);
-            let range = new Range(new Position(0, 0), end);
-            this.classHead = this.editor.document.getText(range);
+
+            if (match === null) {
+                this.classHead = null;
+            } else {
+                let end = this.editor.document.positionAt(match.index);
+                let range = new Range(new Position(0, 0), end);
+                this.classHead = this.editor.document.getText(range);
+            }
         }
 
         return this.classHead;
