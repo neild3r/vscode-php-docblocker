@@ -102,7 +102,6 @@ export class Doc
      */
     public build(isEmpty:boolean = false):SnippetString
     {
-
         let extra = Config.instance.get('extra');
         let gap = Config.instance.get('gap');
         let returnGap = Config.instance.get('returnGap');
@@ -224,8 +223,6 @@ export class Doc
         }
 
         let templateString:string = templateArray.join("\n");
-        templateString = "/**\n" + templateString + "\n */";
-
         let stop = 0;
         templateString = templateString.replace(/###/gm, function():string {
             stop++;
@@ -234,6 +231,12 @@ export class Doc
 
         templateString = templateString.replace(/^$/gm, " *");
         templateString = templateString.replace(/^(?!(\s\*|\/\*))/gm, " * $1");
+
+        if (Config.instance.get('autoClosingBrackets') == "never") {
+            templateString = "\n" + templateString + "\n */";
+        } else {
+            templateString = "/**\n" + templateString + "\n */";
+        }
 
         let snippet = new SnippetString(templateString);
 

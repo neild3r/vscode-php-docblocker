@@ -54,6 +54,8 @@ export default class Helper {
             var item = props[key];
             config[key.replace('php-docblocker.', '')] = item.default;
         }
+        config["autoClosingBrackets"] = "always";
+
         return config;
     }
 
