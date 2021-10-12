@@ -4,6 +4,8 @@ All notable changes to the "php-docblocker" extension will be documented in this
 
 ## [Unreleased]
 - Fix double start delimeter when vscode setting `editor.autoClosingBrackets` is set to `never`
+- Improve class head tolerance when there isn't one or it's too long
+- Increased class head limit to 300 lines
 
 ## [2.6.0] - 2021-09-27
 

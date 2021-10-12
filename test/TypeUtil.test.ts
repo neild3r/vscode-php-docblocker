@@ -75,3 +75,27 @@ suite("TypeUtil tests: ", () => {
     });
 
 });
+
+suite("TypeUtil issue test: ", () => {
+    let editor:TextEditor;
+
+    suiteSetup(function(done) {
+        workspace.openTextDocument(Helper.fixturePath+'namespace-issue.php').then(doc => {
+            window.showTextDocument(doc).then(textEditor => {
+                editor = textEditor;
+                done();
+            }, error => {
+                console.log(error);
+            })
+        }, error => {
+            console.log(error);
+        });
+    });
+
+    test("Ensure class head does not fail if there isn't one", () => {
+        let block = new FunctionBlock(new Position(0, 0), editor);
+        let head = block.getClassHead();
+
+        assert.equal(head, null);
+    });
+});
