@@ -61,6 +61,11 @@
           "default": false,
           "description": "If there should be a gap between params and return"
         },
+        "php-docblocker.defaultType": {
+          "type": "string",
+          "default": "[type]",
+          "description": "Default type to use if a type wasn't able to be detected"
+        },
         "php-docblocker.returnVoid": {
           "type": "boolean",
           "default": true,
