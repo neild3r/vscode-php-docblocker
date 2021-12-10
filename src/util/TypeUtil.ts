@@ -71,10 +71,11 @@ export default class TypeUtil {
             let prefix: string;
             let with_bracket = value.indexOf('{') !== -1;
             if (with_bracket) {
+                value += '}'; // fault-tolerant
                 let bracket_begin = value.indexOf('{');
                 let bracket_end = value.indexOf('}');
                 prefix = value.substring(0, bracket_begin).trim();
-                classes = value.substring(bracket_begin + 1, bracket_end === -1 ? undefined : bracket_end).split(',');
+                classes = value.substring(bracket_begin + 1, bracket_end).split(',');
             } else {
                 prefix = '';
                 classes = value.split(',');
@@ -87,10 +88,7 @@ export default class TypeUtil {
                 }
                 value = prefix + value;
                 let [clazz, alias] = value.split(/\s+as\s+/gmi, 2);
-                if (!clazz) {
-                    continue;
-                }
-                if (alias === undefined && clazz.endsWith('\\' + type)) {
+                if (!alias && clazz.endsWith('\\' + type)) {
                     // aa\bb
                 } else if (alias === type) {
                     // aa\bb as cc
