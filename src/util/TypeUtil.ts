@@ -30,14 +30,18 @@ export default class TypeUtil {
      */
     public getResolvedTypeHints(types:string, head:string = null): string
     {
-        let union:string[] = types.split("|");
-        
-        for (let index = 0; index < union.length; index++) {
+        let union:string[] = types.split(/([|&])/);
+        for (let index = 0; index < union.length; index += 2) {
+            if (union[index] === '') {
+                delete union[index];
+                delete union[index+1];
+                continue;
+            }
             union[index] = this.getFullyQualifiedType(union[index], head);
             union[index] = this.getFormattedTypeByName(union[index]);
         }
 
-        return union.join("|");
+        return union.join('');
     }
 
     /**
