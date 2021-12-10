@@ -91,4 +91,7 @@ abstract class Test
 
     ////=> union-type-nullable
     public string|array|null $unionTypeNullable;
+
+    ////=> readonly
+    public readonly string $readonly;
 }
