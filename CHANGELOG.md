@@ -3,6 +3,8 @@
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
 ## [Unreleased]
+- Supported PHP 8.1 Readonly Properties
+- Supported PHP 8.1 Intersection Types
 
 ## [2.6.1] - 2021-10-12
 - Fix double start delimeter when vscode setting `editor.autoClosingBrackets` is set to `never`
