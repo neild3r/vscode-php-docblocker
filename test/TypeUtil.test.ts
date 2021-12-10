@@ -47,6 +47,48 @@ suite("TypeUtil tests: ", () => {
         assert.equal(type.getFullyQualifiedType('BaseExample', head), '\\App\\Test\\Model\\Example');
     });
 
+    test("Fully qualify typehint from namespace use with _", () => {
+        let type = new TypeUtil;
+        Helper.setConfig({qualifyClassNames: true});
+        assert.equal(type.getFullyQualifiedType('ExampleInterface', head), '\\App\\Example\\ExampleInterface');
+    });
+
+    test("Fully qualify typehint from namespace use with bracket", () => {
+        let type = new TypeUtil;
+        Helper.setConfig({qualifyClassNames: true});
+        assert.equal(type.getFullyQualifiedType('ClassA', head), '\\some\\namespace\\ClassA');
+    });
+
+    test("Fully qualify typehint from namespace use with bracket+alias", () => {
+        let type = new TypeUtil;
+        Helper.setConfig({qualifyClassNames: true});
+        assert.equal(type.getFullyQualifiedType('ClassB_alias', head), '\\some\\namespace\\ClassB');
+    });
+
+    test("Fully qualify typehint from namespace use with comma", () => {
+        let type = new TypeUtil;
+        Helper.setConfig({qualifyClassNames: true});
+        assert.equal(type.getFullyQualifiedType('ClassD', head), '\\some\\namespace\\ClassD');
+    });
+
+    test("Fully qualify typehint from namespace use with comma+alias", () => {
+        let type = new TypeUtil;
+        Helper.setConfig({qualifyClassNames: true});
+        assert.equal(type.getFullyQualifiedType('ClassE_alias', head), '\\some\\namespace\\ClassE');
+    });
+
+    test("Fully qualify typehint from namespace use const", () => {
+        let type = new TypeUtil;
+        Helper.setConfig({qualifyClassNames: true});
+        assert.equal(type.getFullyQualifiedType('myconst', head), 'myconst');
+    });
+
+    test("Fully qualify typehint from namespace use function", () => {
+        let type = new TypeUtil;
+        Helper.setConfig({qualifyClassNames: true});
+        assert.equal(type.getFullyQualifiedType('myfunction', head), 'myfunction');
+    });
+
     test("With default settings the integer type formatted is integer", () => {
         let type = new TypeUtil;
         assert.equal(type.getFormattedTypeByName('int'), 'integer');

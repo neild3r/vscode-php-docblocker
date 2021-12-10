@@ -1,4 +1,4 @@
-import { workspace, TextEditor, Range, Position, TextDocument } from "vscode";
+import { TextEditor, Range, Position, TextDocument } from "vscode";
 import Config from "./config";
 
 /**
@@ -50,23 +50,58 @@ export default class TypeUtil {
      */
     public getFullyQualifiedType(type:string, head:string):string
     {
+        if (!head) {
+            return type;
+        }
         if (!Config.instance.get('qualifyClassNames')) {
             return type;
         }
 
-        let useEx = new RegExp("use\\s+([^ ]*?)((?:\\s+as\\s+))?("+type+");", 'gm');
-        let full = useEx.exec(head);
+        let useEx = /[\s;]?use\s+(?:(const|function)\s*)?([\s\S]*?)\s*;/gmi;
+        let exec: RegExpExecArray;
+        while (exec = useEx.exec(head)) {
+            let is_const_or_func = exec[1];
+            let value = exec[2];
 
-        if (full != null && full[3] == type) {
-            if (full[1].charAt(0) != '\\') {
-                full[1] = '\\' + full[1];
+            if (is_const_or_func) {
+                continue;
             }
 
-            if (full[2] != null) {
-                return full[1];
+            let classes: string[];
+            let prefix: string;
+            let with_bracket = value.indexOf('{') !== -1;
+            if (with_bracket) {
+                let bracket_begin = value.indexOf('{');
+                let bracket_end = value.indexOf('}');
+                prefix = value.substring(0, bracket_begin).trim();
+                classes = value.substring(bracket_begin + 1, bracket_end === -1 ? undefined : bracket_end).split(',');
+            } else {
+                prefix = '';
+                classes = value.split(',');
             }
 
-            return full[1] + type;
+            for (let index = 0; index < classes.length; index++) {
+                value = classes[index].trim();
+                if (!value) {
+                    continue;
+                }
+                value = prefix + value;
+                let [clazz, alias] = value.split(/\s+as\s+/gmi, 2);
+                if (!clazz) {
+                    continue;
+                }
+                if (alias === undefined && clazz.endsWith('\\' + type)) {
+                    // aa\bb
+                } else if (alias === type) {
+                    // aa\bb as cc
+                } else {
+                    continue;
+                }
+                if (clazz.charAt(0) != '\\') {
+                    clazz = '\\' + clazz;
+                }
+                return clazz;
+            }
         }
 
         return type;
