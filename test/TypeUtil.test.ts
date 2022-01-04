@@ -23,6 +23,14 @@ suite("TypeUtil tests: ", () => {
         });
     });
 
+    test("Test the classes returned from use is correct", () => {
+        let type = new TypeUtil;
+        assert.deepEqual(type.getClassesFromUse('ClassA'), { 'ClassA': 'ClassA' });
+        assert.deepEqual(type.getClassesFromUse('ClassB as B'), { 'B': 'ClassB' });
+        assert.deepEqual(type.getClassesFromUse('ClassA, namespace\\ClassB as B'), { 'ClassA': 'ClassA', 'B': 'namespace\\ClassB' });
+        assert.deepEqual(type.getClassesFromUse('namespace\\{ ClassA, ClassB as B }'), { 'ClassA': 'namespace\\ClassA', 'B': 'namespace\\ClassB' });
+    });
+
     test("Ensure typehint is not mismatched", () => {
         let type = new TypeUtil;
         Helper.setConfig({qualifyClassNames: true});

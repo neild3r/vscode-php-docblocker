@@ -60,49 +60,66 @@ export default class TypeUtil {
         let useEx = /[\s;]?use\s+(?:(const|function)\s*)?([\s\S]*?)\s*;/gmi;
         let exec: RegExpExecArray;
         while (exec = useEx.exec(head)) {
-            let is_const_or_func = exec[1];
-            let value = exec[2];
+            let isConstOrFunc = exec[1];
+            let use = exec[2];
 
-            if (is_const_or_func) {
+            if (isConstOrFunc) {
                 continue;
             }
 
-            let classes: string[];
-            let prefix: string;
-            let with_bracket = value.indexOf('{') !== -1;
-            if (with_bracket) {
-                value += '}'; // fault-tolerant
-                let bracket_begin = value.indexOf('{');
-                let bracket_end = value.indexOf('}');
-                prefix = value.substring(0, bracket_begin).trim();
-                classes = value.substring(bracket_begin + 1, bracket_end).split(',');
-            } else {
-                prefix = '';
-                classes = value.split(',');
+            let clazz = this.getClassesFromUse(use)[type];
+            if (clazz === undefined) {
+                continue;
             }
 
-            for (let index = 0; index < classes.length; index++) {
-                value = classes[index].trim();
-                if (!value) {
-                    continue;
-                }
-                value = prefix + value;
-                let [clazz, alias] = value.split(/\s+as\s+/gmi, 2);
-                if (!alias && clazz.endsWith('\\' + type)) {
-                    // aa\bb
-                } else if (alias === type) {
-                    // aa\bb as cc
-                } else {
-                    continue;
-                }
-                if (clazz.charAt(0) != '\\') {
-                    clazz = '\\' + clazz;
-                }
-                return clazz;
+            if (clazz.charAt(0) != '\\') {
+                clazz = '\\' + clazz;
             }
+            return clazz;
         }
 
         return type;
+    }
+
+    /**
+     * Returns the classes from the use
+     * 
+     * @param use 
+     * @returns 
+     */
+    public getClassesFromUse(use: string): { [index: string]: string } {
+        let namespace: string;
+        let classes: string[];
+        let hasBracket = use.indexOf('{') !== -1;
+        if (hasBracket) {
+            let bracketBegin = use.indexOf('{');
+            let bracketEnd = (use + '}').indexOf('}');
+            namespace = use.substring(0, bracketBegin).trim();
+            classes = use.substring(bracketBegin + 1, bracketEnd).split(',');
+        } else {
+            namespace = '';
+            classes = use.split(',');
+        }
+
+        var results: { [index: string]: string } = {};
+        for (let index = 0; index < classes.length; index++) {
+            let alias: string;
+            let clazz = classes[index].trim();
+            if (clazz === '') {
+                continue;
+            }
+
+            clazz = namespace + clazz;
+
+            [clazz, alias] = clazz.split(/\s+as\s+/gmi, 2);
+
+            if (alias === undefined || alias === '') {
+                alias = clazz.substring(clazz.lastIndexOf('\\') + 1);
+            }
+
+            results[alias] = clazz;
+        }
+        return results;
     }
 
     /**
