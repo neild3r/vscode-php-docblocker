@@ -19,6 +19,10 @@ jobs:
     - name: Run tests
       run: xvfb-run -a npm test
 
+    - name: Pause
+      run: sleep 2s
+      shell: bash
+
     - name: Coveralls
       uses: coverallsapp/github-action@master
       with:
