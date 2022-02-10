@@ -52,7 +52,13 @@ export async function run(): Promise<void> {
             });
         });
     } finally {
-        nyc.writeCoverageFile();
-        nyc.report();
+        try {
+            nyc.writeCoverageFile();
+            nyc.report();
+        } catch (e) {
+            console.log(e);
+        }
+
+        console.log('Completed');
     }
 }
