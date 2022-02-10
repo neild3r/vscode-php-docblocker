@@ -20,7 +20,7 @@ jobs:
       run: xvfb-run -a npm test
 
     - name: Pause
-      run: sleep 2s
+      run: sleep 5s
       shell: bash
 
     - name: Coveralls
