@@ -3,6 +3,7 @@
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
 ## [Unreleased]
+- Fix issue with coverage reports not firing
 
 ## [2.6.1] - 2021-10-12
 - Fix double start delimeter when vscode setting `editor.autoClosingBrackets` is set to `never`
