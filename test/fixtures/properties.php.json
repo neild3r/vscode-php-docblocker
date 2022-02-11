@@ -141,5 +141,10 @@
         "key": "union-type-nullable",
         "name": "PHP8 union type that can be null",
         "var": "string|array|null"
+    },
+    {
+        "key": "readonly",
+        "name": "PHP8.1 readonly",
+        "var": "string"
     }
 ]
