@@ -4,12 +4,12 @@ All notable changes to the "php-docblocker" extension will be documented in this
 
 ## [Unreleased]
 - Allow configuration of default type
-- Fixed fully qualifies class namespace detection can be incorrect with _ [#214](https://github.com/neild3r/vscode-php-docblocker/issues/214)
-- Supported fully qualifies class namespace use with bracket `use some\namespace\{ ClassA, ClassB, ... }`
-- Supported fully qualifies class namespace use with comma `use some\namespace\ClassA, some\namespace\ClassB, ...`
+- Fixed fully qualifies class namespace detection can be incorrect with _ [#214](https://github.com/neild3r/vscode-php-docblocker/issues/214)  - Thanks @tianyiw2013
+- Supported fully qualifies class namespace use with bracket `use some\namespace\{ ClassA, ClassB, ... }`  - Thanks @tianyiw2013
+- Supported fully qualifies class namespace use with comma `use some\namespace\ClassA, some\namespace\ClassB, ...`  - Thanks @tianyiw2013
 - Fix issue with coverage reports not firing
-- Supported PHP 8.1 Readonly Properties
-- Supported PHP 8.1 Intersection Types
+- Supported PHP 8.1 Readonly Properties - Thanks @tianyiw2013
+- Supported PHP 8.1 Intersection Types - Thanks @tianyiw2013
 
 ## [2.6.1] - 2021-10-12
 - Fix double start delimeter when vscode setting `editor.autoClosingBrackets` is set to `never`
