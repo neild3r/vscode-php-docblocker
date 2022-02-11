@@ -23,15 +23,15 @@ export default class TypeUtil {
 
     /**
      * Resolve a type string that may contain union types
-     * 
-     * @param {string} types 
-     * @param {string} head 
+     *
+     * @param {string} types
+     * @param {string} head
      * @returns {string}
      */
     public getResolvedTypeHints(types:string, head:string = null): string
     {
         let union:string[] = types.split("|");
-        
+
         for (let index = 0; index < union.length; index++) {
             union[index] = this.getFullyQualifiedType(union[index], head);
             union[index] = this.getFormattedTypeByName(union[index]);
@@ -182,6 +182,16 @@ export default class TypeUtil {
             return 'array';
         }
 
-        return '[type]';
+        return this.getDefaultType();
+    }
+
+    /**
+     * Get the default type
+     *
+     * @returns {string}
+     */
+    public getDefaultType(): string
+    {
+        return Config.instance.get('defaultType');
     }
 }

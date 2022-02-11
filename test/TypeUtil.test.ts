@@ -124,6 +124,11 @@ suite("TypeUtil tests: ", () => {
         assert.equal(type.getFormattedTypeByName('helloWorld'), 'helloWorld');
     });
 
+    test("Undefined type uses config", () => {
+        let type = new TypeUtil;
+        Helper.setConfig({defaultType: 'mixed'});
+        assert.equal(type.getDefaultType(), 'mixed');
+    });
 });
 
 suite("TypeUtil issue test: ", () => {

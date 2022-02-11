@@ -43,7 +43,7 @@ export default class Property extends Block
         } else if (params[6]) {
             doc.var = TypeUtil.instance.getTypeFromValue(params[6]);
         } else {
-            doc.var = '[type]';
+            doc.var = TypeUtil.instance.getDefaultType();
         }
 
         return doc;
