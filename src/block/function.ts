@@ -41,7 +41,7 @@ export default class FunctionBlock extends Block
             for (let index = 0; index < args.length; index++) {
                 let arg:string = args[index];
                 let parts:string[] = arg.match(/^\s*(?:(?:public|protected|private)\s+)?(?:readonly\s+)?(\?)?\s*([A-Za-z0-9_\\][A-Za-z0-9_\\|&]+)?\s*\&?((?:[.]{3})?\$[A-Za-z0-9_]+)\s*\=?\s*(.*)\s*/im);
-                var type:string = '[type]';
+                var type:string = TypeUtil.instance.getDefaultType();
 
                 if (parts[2] != null) {
                     type = TypeUtil.instance.getResolvedTypeHints(parts[2], head);
