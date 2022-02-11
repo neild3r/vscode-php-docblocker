@@ -202,6 +202,16 @@ abstract class Test
     ) {
     }
 
+    ////=> php81-intersection-types
+    function intersection_types(Iterator&\Countable $var)
+    {
+    }
+
+    ////=> php81-union-intersection-types-fault-tolerant
+    function union_intersection_types_fault_tolerant(Iterator&\Countable|Aaa||&|&Bbb &$var)
+    {
+    }
+
     ////=> function-reference
     public function &someFunction()
     {
