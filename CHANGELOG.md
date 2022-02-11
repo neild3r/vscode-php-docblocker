@@ -3,6 +3,8 @@
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
 ## [Unreleased]
+
+## [2.7.0] - 2022-02-11
 - Allow configuration of default type
 - Fixed fully qualifies class namespace detection can be incorrect with _ [#214](https://github.com/neild3r/vscode-php-docblocker/issues/214)  - Thanks @tianyiw2013
 - Supported fully qualifies class namespace use with bracket `use some\namespace\{ ClassA, ClassB, ... }`  - Thanks @tianyiw2013
@@ -175,7 +177,8 @@ All notable changes to the "php-docblocker" extension will be documented in this
 ## 0.1.0 - 2017-03-12
 - Initial release
 
-[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.6.1...HEAD
+[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.7.0...HEAD
+[2.7.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.6.1...v2.7.0
 [2.6.1]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.6.0...v2.6.1
 [2.6.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.5.0...v2.6.0
 [2.5.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.4.0...v2.5.0
