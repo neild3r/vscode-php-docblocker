@@ -6,6 +6,7 @@ All notable changes to the "php-docblocker" extension will be documented in this
 - Fixed fully qualifies class namespace detection can be incorrect with _ [#214](https://github.com/neild3r/vscode-php-docblocker/issues/214)
 - Supported fully qualifies class namespace use with bracket `use some\namespace\{ ClassA, ClassB, ... }`
 - Supported fully qualifies class namespace use with comma `use some\namespace\ClassA, some\namespace\ClassB, ...`
+- Fix issue with coverage reports not firing
 
 ## [2.6.1] - 2021-10-12
 - Fix double start delimeter when vscode setting `editor.autoClosingBrackets` is set to `never`
