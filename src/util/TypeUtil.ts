@@ -1,4 +1,4 @@
-import { workspace, TextEditor, Range, Position, TextDocument } from "vscode";
+import { TextEditor, Range, Position, TextDocument } from "vscode";
 import Config from "./config";
 
 /**
@@ -23,9 +23,9 @@ export default class TypeUtil {
 
     /**
      * Resolve a type string that may contain union types
-     * 
-     * @param {string} types 
-     * @param {string} head 
+     *
+     * @param {string} types
+     * @param {string} head
      * @returns {string}
      */
     public getResolvedTypeHints(types:string, head:string = null): string
@@ -54,26 +54,76 @@ export default class TypeUtil {
      */
     public getFullyQualifiedType(type:string, head:string):string
     {
+        if (!head) {
+            return type;
+        }
         if (!Config.instance.get('qualifyClassNames')) {
             return type;
         }
 
-        let useEx = new RegExp("use\\s+([^ ]*?)((?:\\s+as\\s+))?("+type+");", 'gm');
-        let full = useEx.exec(head);
+        let useEx = /[\s;]?use\s+(?:(const|function)\s*)?([\s\S]*?)\s*;/gmi;
+        let exec: RegExpExecArray;
+        while (exec = useEx.exec(head)) {
+            let isConstOrFunc = exec[1];
+            let use = exec[2];
 
-        if (full != null && full[3] == type) {
-            if (full[1].charAt(0) != '\\') {
-                full[1] = '\\' + full[1];
+            if (isConstOrFunc) {
+                continue;
             }
 
-            if (full[2] != null) {
-                return full[1];
+            let clazz = this.getClassesFromUse(use)[type];
+            if (clazz === undefined) {
+                continue;
             }
 
-            return full[1] + type;
+            if (clazz.charAt(0) != '\\') {
+                clazz = '\\' + clazz;
+            }
+            return clazz;
         }
 
         return type;
+    }
+
+    /**
+     * Returns the classes from the use
+     * 
+     * @param use 
+     * @returns 
+     */
+    public getClassesFromUse(use: string): { [index: string]: string } {
+        let namespace: string;
+        let classes: string[];
+        let hasBracket = use.indexOf('{') !== -1;
+        if (hasBracket) {
+            let bracketBegin = use.indexOf('{');
+            let bracketEnd = (use + '}').indexOf('}');
+            namespace = use.substring(0, bracketBegin).trim();
+            classes = use.substring(bracketBegin + 1, bracketEnd).split(',');
+        } else {
+            namespace = '';
+            classes = use.split(',');
+        }
+
+        var results: { [index: string]: string } = {};
+        for (let index = 0; index < classes.length; index++) {
+            let alias: string;
+            let clazz = classes[index].trim();
+            if (clazz === '') {
+                continue;
+            }
+
+            clazz = namespace + clazz;
+
+            [clazz, alias] = clazz.split(/\s+as\s+/gmi, 2);
+
+            if (alias === undefined || alias === '') {
+                alias = clazz.substring(clazz.lastIndexOf('\\') + 1);
+            }
+
+            results[alias] = clazz;
+        }
+        return results;
     }
 
     /**
@@ -136,6 +186,16 @@ export default class TypeUtil {
             return 'array';
         }
 
-        return '[type]';
+        return this.getDefaultType();
+    }
+
+    /**
+     * Get the default type
+     *
+     * @returns {string}
+     */
+    public getDefaultType(): string
+    {
+        return Config.instance.get('defaultType');
     }
 }
