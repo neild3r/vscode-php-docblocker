@@ -45,6 +45,10 @@
       {
         "command": "php-docblocker.trigger",
         "title": "Insert PHP Docblock"
+      },
+      {
+        "command": "php-docblocker.re-parse",
+        "title": "Re-parse existing PHP Docblock"
       }
     ],
     "configuration": {
