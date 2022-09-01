@@ -1,5 +1,4 @@
 import { workspace, TextEditor, Range, Position, TextDocument, WorkspaceConfiguration } from "vscode";
-import * as fs from 'fs';
 
 /**
  * Provides helper function to types
@@ -35,7 +34,6 @@ export default class Config {
     public static get instance(): Config {
         if (this._instance == null) {
             this._instance = new this();
-            this._instance.load();
         }
         return this._instance;
     }
@@ -53,19 +51,9 @@ export default class Config {
     /**
      * Load in the defaults or the config
      */
-    public load()
+    public setFallback(config)
     {
-        if (!this.isLive) {
-            let config = {};
-            let packageJson = JSON.parse(fs.readFileSync(__dirname + '/../../../package.json').toString());
-            let props = packageJson.contributes.configuration.properties;
-            for (var key in props) {
-                var item = props[key];
-                config[key.replace('php-docblocker.', '')] = item.default;
-            }
-
-            this.data = config;
-        }
+        this.data = config;
     }
 
     /**
@@ -86,6 +74,10 @@ export default class Config {
     public get(setting:string)
     {
         if (this.isLive) {
+            if (setting === "autoClosingBrackets") {
+                return workspace.getConfiguration('editor').get(setting);
+            }
+
             return workspace.getConfiguration('php-docblocker').get(setting);
         }
 

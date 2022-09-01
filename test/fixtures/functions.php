@@ -86,6 +86,11 @@ abstract class Test
     ) {
     }
 
+    ////=> array-params
+    public function arrayParams($var = array('a', array()), $var2 = array())
+    {
+    }
+
     ////=> param-namespace
     public function paramNamespaced(\TypeHint $hint, $test)
     {
@@ -93,6 +98,16 @@ abstract class Test
 
     ////=> param-namespace-full
     public function paramNamespacedFull(App\Model\TypeHint $hint, $test)
+    {
+    }
+
+    ////=> param-default-null
+    public function paramDefaultNull(int $arg = null)
+    {
+    }
+
+    ////=> param-mixed-default-null
+    public function paramMixedDefaultNull(mixed $arg = null)
     {
     }
 
@@ -107,7 +122,6 @@ abstract class Test
     ////=> args-typed-long
     public function dotArgsTypedLong(int ...$args) {
     }
-
 
     ////=> php7-return
     public function getPHP7Return(): TypeHint {
@@ -153,6 +167,48 @@ abstract class Test
 
     ////=> php7-return-namespace-full
     public function getPHP7ReturnNamespaceFull():App\Model\TypeHint
+    {
+    }
+
+    ////=> php8-return-union-types
+    public function getPHP8ReturnUnionTypes():int|bool|\TypeHint|App\Model\TypeHint
+    {
+    }
+
+    ////=> php8-return-union-types-with-short-name
+    public function getPHP8ReturnUnionTypesShortName():int|bool|\TypeHint|App\Model\TypeHint
+    {
+    }
+
+    ////=> php8-param-union-types
+    public function getPHP8ParamUnionTypes(int|bool|\TypeHint|App\Model\TypeHint $arg, string|\Closure ...$args)
+    {
+    }
+
+    ////=> php8-constructor-promotion
+    function __construct($arg1, protected int $arg2, private ?int $arg3 = 1, public string $arg4 = 'var')
+    {
+    }
+
+    ////=> trailing-comma
+    public function trailingComma(int $var, string $var2,)
+    {
+    }
+
+    ////=> trailing-comma-multi
+    public function trailingCommaMulit(
+        int $var,
+        Class_Name $var2,
+    ) {
+    }
+
+    ////=> php81-intersection-types
+    function intersection_types(Iterator&\Countable $var)
+    {
+    }
+
+    ////=> php81-union-intersection-types-fault-tolerant
+    function union_intersection_types_fault_tolerant(Iterator&\Countable|Aaa||&|&Bbb &$var)
     {
     }
 

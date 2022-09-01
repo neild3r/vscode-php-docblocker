@@ -21,7 +21,7 @@ suite("Completion tests", () => {
     });
 
     map.forEach(testData => {
-        test("Completion: "+ testData.name, () => {
+        test("Completion: " + testData.name, () => {
             let pos:Position = testPositions[testData.key];
             let result:any = completions.provideCompletionItems(
                 document,

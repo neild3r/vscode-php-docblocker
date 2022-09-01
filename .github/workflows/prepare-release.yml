@@ -1,0 +1,55 @@
+name: Prepare Release
+on:
+  workflow_dispatch:
+    inputs:
+        version:
+          description: 'Version'
+          required: true
+          default: 'patch'
+
+jobs:
+  prepare-release:
+    name: Prepare Release
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup
+      uses: ./.github/actions/setup
+
+    - name: Verify PAT
+      run: npm run verify-pat -- --pat ${{ secrets.VSCE_PAT }}
+
+    - name: Update version number
+      run: |
+        npm version ${{ github.event.inputs.version }}
+        echo "npm_package_version=$(<./out/version.txt)" >> $GITHUB_ENV
+        echo "release_notes<<EOF" >> $GITHUB_ENV
+        echo "$(<./out/RELEASE.md)" >> $GITHUB_ENV
+        echo "EOF" >> $GITHUB_ENV
+
+    - name: Stage changes
+      run: |
+        git add CHANGELOG.md package.json package-lock.json
+        git commit -m "Release ${{ env.npm_package_version }}"
+
+    - name: Create Pull Request
+      id: create-pull-request
+      uses: peter-evans/create-pull-request@v3
+      with:
+          author: php-docblocker <php-docblocker@brayfield.co.uk>
+          committer: php-docblocker <php-docblocker@brayfield.co.uk>
+          token: ${{ secrets.BOT_GITHUB_PAT }}
+          title: ${{ env.npm_package_version }}
+          branch: releases/${{ env.npm_package_version }}
+          body: ${{ env.release_notes }}
+          labels: release candidate
+
+    - name: Enable Pull Request Automerge
+      if: steps.create-pull-request.outputs.pull-request-operation == 'created'
+      uses: peter-evans/enable-pull-request-automerge@v1
+      with:
+        token: ${{ secrets.BOT_GITHUB_PAT }}
+        pull-request-number: ${{ steps.create-pull-request.outputs.pull-request-number }}

@@ -16,7 +16,7 @@ export default class FunctionBlock extends Block
     /**
      * @inheritdoc
      */
-    protected pattern:RegExp = /^\s*((.*)(protected|private|public))?(.*)?\s*function\s+&?([A-Za-z0-9_]+)\s*\(([^{;]*)/m;
+    protected pattern:RegExp = /^\s*((.*)(protected|private|public))?(.*)?\s*function\s+&?([a-z0-9_]+)\s*\(([^{;]*)/im;
 
     /**
      * @inheritdoc
@@ -32,39 +32,37 @@ export default class FunctionBlock extends Block
 
 
         if (argString != "") {
-            let args = argString.split(',');
+            let args = this.getSplitWithoutEnclosed(argString);
 
             if (Config.instance.get('qualifyClassNames')) {
                 head = this.getClassHead();
             }
 
             for (let index = 0; index < args.length; index++) {
-                let arg = args[index];
-                let parts = arg.match(/^\s*(\?)?\s*([A-Za-z0-9_\\]+)?\s*\&?((?:[.]{3})?\$[A-Za-z0-9_]+)\s*\=?\s*(.*)\s*/m);
-                var type = '[type]';
+                let arg:string = args[index];
+                let parts:string[] = arg.match(/^\s*(?:(?:public|protected|private)\s+)?(?:readonly\s+)?(\?)?\s*([A-Za-z0-9_\\][A-Za-z0-9_\\|&]+)?\s*\&?((?:[.]{3})?\$[A-Za-z0-9_]+)\s*\=?\s*(.*)\s*/im);
+                var type:string = TypeUtil.instance.getDefaultType();
 
                 if (parts[2] != null) {
-                    parts[2] = TypeUtil.instance.getFullyQualifiedType(parts[2], head);
+                    type = TypeUtil.instance.getResolvedTypeHints(parts[2], head);
                 }
 
                 if (parts[2] != null && parts[1] === '?') {
-                    type = TypeUtil.instance.getFormattedTypeByName(parts[2])+'|null';
-                } else if (parts[2] != null) {
-                    type = TypeUtil.instance.getFormattedTypeByName(parts[2]);
-                } else if (parts[4] != null && parts[4] != "") {
-                    type = TypeUtil.instance.getFormattedTypeByName(this.getTypeFromValue(parts[4]));
+                    type += '|null';
+                } else if (parts[2] != null && parts[4] != null && parts[2] != "mixed" && parts[4] == "null") {
+                    type += '|null';
+                } else if (parts[4] != null && parts[4] != "" && parts[2] != "mixed") {
+                    type = TypeUtil.instance.getFormattedTypeByName(TypeUtil.instance.getTypeFromValue(parts[4]));
                 }
 
                 doc.params.push(new Param(type, parts[3]));
             }
         }
 
-        let returnType:Array<string> = this.signature.match(/.*\)\s*\:\s*(\?)?\s*([a-zA-Z_0-9\\]+)\s*$/m);
+        let returnType:Array<string> = this.signature.match(/.*\)\s*\:\s*(\?)?\s*([a-zA-Z_|0-9\\]+)\s*$/m);
 
         if (returnType != null) {
-            if (Config.instance.get('qualifyClassNames')) {
-                returnType[2] = TypeUtil.instance.getFullyQualifiedType(returnType[2], this.getClassHead());
-            }
+            returnType[2] = TypeUtil.instance.getResolvedTypeHints(returnType[2], this.getClassHead());
 
             doc.return = (returnType[1] === '?')
                 ? TypeUtil.instance.getFormattedTypeByName(returnType[2])+'|null'

@@ -1,6 +1,16 @@
 import {workspace, SnippetString, WorkspaceConfiguration} from 'vscode';
 import Config from './util/config';
 
+interface MaxParamLength {
+    type: number,
+    name: number
+}
+
+interface AlignmentSpaces {
+    prepend: string,
+    append: string
+}
+
 /**
  * Represents a comment block.
  *
@@ -55,6 +65,13 @@ export class Doc
     }
 
     /**
+     * Define indent character for param alignment.
+     *
+     * @type {string}
+     */
+    public indentCharacter:string = ' ';
+
+    /**
      * Set class properties from a standard object
      *
      * @param {*} input
@@ -85,10 +102,12 @@ export class Doc
      */
     public build(isEmpty:boolean = false):SnippetString
     {
-
         let extra = Config.instance.get('extra');
         let gap = Config.instance.get('gap');
         let returnGap = Config.instance.get('returnGap');
+        let alignParams = Config.instance.get('alignParams');
+        // Align return is false if align params is not active.
+        let alignReturn = alignParams ? Config.instance.get('alignReturn') : false;
 
         let returnString = "";
         let varString = "";
@@ -103,22 +122,58 @@ export class Doc
 
         messageString = "\${###" + (this.message != "" ? ':' : '') + this.message + "}";
 
+        // Loop through params and find max length of type and name.
+        let maxParamLength = this.getMaxParamLength(this.params, this.return);
+
         if (this.params.length) {
             paramString = "";
             this.params.forEach(param => {
                 if (paramString != "") {
                     paramString += "\n";
                 }
-                paramString += "@param \${###:"+param.type+"} " + param.name.replace('$', '\\$');
+
+                let paramType = param.type;
+                let paramName = param.name.replace('$', '\\$');
+
+                let alignmentSpaces = this.getParamAlignmentSpaces(maxParamLength, paramName, paramType);
+
+                paramString +=
+                    "@param " +
+                    // Add extra space to align '@param' and '@return'.
+                    (alignReturn ? this.indentCharacter : '') +
+                    "\${###:"+paramType+"} " +
+                    alignmentSpaces.prepend + paramName + alignmentSpaces.append;
+
+                let description = Config.instance.get('paramDescription');
+                if (description === true) {
+                    paramString += "\${###}"
+                } else if (typeof description == 'string') {
+                    paramString += "\${###:" + description + "}"
+                }
             });
         }
 
         if (this.var) {
             varString = "@var \${###:" +this.var + "}";
+
+            let varDescription = Config.instance.get('varDescription');
+            if (varDescription === true) {
+                varString += " \${###}"
+            } else if (typeof varDescription == 'string') {
+                varString += " \${###:" + varDescription + "}"
+            }
         }
 
         if (this.return && (this.return != 'void' || Config.instance.get('returnVoid'))) {
-            returnString = "@return \${###:" +this.return + "}";
+            let alignmentSpaces = this.getReturnAlignmentSpaces(maxParamLength);
+            returnString = "@return \${###:" +this.return + "}" + alignmentSpaces.append;
+
+            let description = Config.instance.get('returnDescription');
+            if (description === true) {
+                returnString += "\${###}"
+            } else if (typeof description == 'string') {
+                returnString += "\${###:" + description + "}"
+            }
         }
 
         if (Array.isArray(extra) && extra.length > 0) {
@@ -168,8 +223,6 @@ export class Doc
         }
 
         let templateString:string = templateArray.join("\n");
-        templateString = "/**\n" + templateString + "\n */";
-
         let stop = 0;
         templateString = templateString.replace(/###/gm, function():string {
             stop++;
@@ -178,6 +231,12 @@ export class Doc
 
         templateString = templateString.replace(/^$/gm, " *");
         templateString = templateString.replace(/^(?!(\s\*|\/\*))/gm, " * $1");
+
+        if (Config.instance.get('autoClosingBrackets') == "never") {
+            templateString = "\n" + templateString + "\n */";
+        } else {
+            templateString = "/**\n" + templateString + "\n */";
+        }
 
         let snippet = new SnippetString(templateString);
 
@@ -213,6 +272,100 @@ export class Doc
 
         return this._template;
     }
+
+    /**
+     * Get the max param type length and param name length.
+     *
+     * @param {Array<Param>} params
+     * @param {string} returnStatement
+     * @returns {MaxParamLength}
+     */
+    private getMaxParamLength(params: Array<Param>, returnStatement: string): MaxParamLength
+    {
+        let alignParams = Config.instance.get('alignParams');
+        let alignReturn = alignParams ? Config.instance.get('alignReturn') : false;
+
+
+        let maxParamTypeLength = 0;
+        let maxParamNameLength = 0;
+        if (params.length && alignParams) {
+            params.forEach(param => {
+                let paramType = param.type;
+                if (paramType.length > maxParamTypeLength) {
+                    maxParamTypeLength = paramType.length;
+                }
+                let paramName = param.name.replace('$', '\\$')
+                if (paramName.length > maxParamNameLength) {
+                    maxParamNameLength = paramName.length;
+                }
+            });
+        }
+        // If align return is active, check if it has a longer type.
+        if (returnStatement && (returnStatement != 'void' || Config.instance.get('returnVoid')) && alignReturn) {
+            if (returnStatement.length > maxParamTypeLength) {
+                maxParamTypeLength = returnStatement.length;
+            }
+        }
+
+        return {
+            type: maxParamTypeLength,
+            name: maxParamNameLength
+        }
+    }
+
+    /**
+     * Get extra spaces for alignment of params.
+     *
+     * @param {MaxParamLength} maxParamLength
+     * @param {string} paramName
+     * @param {string} paramType
+     * @returns {AlignmentSpaces}
+     */
+    private getParamAlignmentSpaces(maxParamLength: MaxParamLength, paramName: string, paramType: string): AlignmentSpaces
+    {
+        let alignParams = Config.instance.get('alignParams');
+        let paramDescription = Config.instance.get('paramDescription');
+
+        let prependSpace = '';
+        let appendSpace = '';
+        if (alignParams) {
+            // Append additional spaces on param type and param name.
+            prependSpace = Array(maxParamLength.type - paramType.length).fill(this.indentCharacter).join('');
+            // Add 1 to array size, so there is already a space appended for typing comments.
+            appendSpace = Array(1 + maxParamLength.name - paramName.length).fill(this.indentCharacter).join('');
+        }
+
+        return {
+            append: paramDescription ? (alignParams ? appendSpace : this.indentCharacter) : '',
+            prepend: prependSpace
+        };
+    }
+
+    /**
+     * Get extra spaces for alignment of return statement.
+     *
+     * @param {MaxParamLength} maxParamLength
+     * @returns {AlignmentSpaces}
+     */
+    private getReturnAlignmentSpaces(maxParamLength: MaxParamLength): AlignmentSpaces
+    {
+        let alignParams = Config.instance.get('alignParams');
+        let alignReturn = alignParams ? Config.instance.get('alignReturn') : false;
+        let returnDescription = Config.instance.get('returnDescription');
+
+        let appendSpace = '';
+        if (alignReturn) {
+            appendSpace =
+                Array(1 + maxParamLength.type - this.return.length).fill(this.indentCharacter).join('') +
+                Array(maxParamLength.name).fill(this.indentCharacter).join('');
+        }
+
+        return {
+            append: returnDescription ? (alignReturn ? appendSpace : this.indentCharacter) : '',
+            prepend: ''
+        };
+    }
+
 }
 
 /**

@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  pull_request:
+    types: [ closed ]
+
+jobs:
+  merged:
+    if: |
+      github.event.pull_request.merged == true
+      && github.event.pull_request.user.login == 'php-docblocker'
+      && contains(github.event.pull_request.labels.*.name, 'release candidate')
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup
+      uses: ./.github/actions/setup
+
+    - name: Verify PAT
+      run: npm run verify-pat -- --pat ${{ secrets.VSCE_PAT }}
+
+    - name: Package
+      run: npm run package
+
+    - name: Extract version
+      id: extract_version
+      uses: Saionaro/extract-package-version@v1.0.6
+
+    - name: Create release
+      uses: ncipollo/release-action@v1
+      with:
+        name: ${{ github.event.pull_request.title }}
+        artifacts: ./out/package.vsix
+        body: ${{ github.event.pull_request.body }}
+        tag: v${{ steps.extract_version.outputs.version }}
+        token: ${{ secrets.BOT_GITHUB_PAT }}
+
+    - name: Publish
+      run: npm run publish
+      env:
+        VSCE_PAT: ${{ secrets.VSCE_PAT }}

@@ -2,6 +2,72 @@
 
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
+## [Unreleased]
+
+## [2.7.0] - 2022-02-11
+- Allow configuration of default type
+- Fixed fully qualifies class namespace detection can be incorrect with _ [#214](https://github.com/neild3r/vscode-php-docblocker/issues/214)  - Thanks @tianyiw2013
+- Supported fully qualifies class namespace use with bracket `use some\namespace\{ ClassA, ClassB, ... }`  - Thanks @tianyiw2013
+- Supported fully qualifies class namespace use with comma `use some\namespace\ClassA, some\namespace\ClassB, ...`  - Thanks @tianyiw2013
+- Fix issue with coverage reports not firing
+- Supported PHP 8.1 Readonly Properties - Thanks @tianyiw2013
+- Supported PHP 8.1 Intersection Types - Thanks @tianyiw2013
+
+## [2.6.1] - 2021-10-12
+- Fix double start delimeter when vscode setting `editor.autoClosingBrackets` is set to `never`
+- Improve class head tolerance when there isn't one or it's too long
+- Increased class head limit to 300 lines
+
+## [2.6.0] - 2021-09-27
+
+### Added
+- Aligning of @param and @return - Thanks @MGApcDev
+- Added option for param description
+- Added option for return description
+- Added option for var description
+
+## [2.5.0] - 2021-09-22
+
+### Added
+- Psalm and Phan annotations - Thanks @imliam
+
+### Updated
+- Fixes issue with multi-line functions that have a trailing comma
+
+### Operational
+- Add auto-merge to release workflow
+- Create release using bot token
+- Make tests run on push and PR sychronize only
+- Convert `updateChangelog.js` script to use typescript
+- Add script to generate the table of tags for the README.md
+
+## [2.4.0] - 2021-09-05
+- Add support for params which have a trailing comma
+- Add support for constructor promotion
+- Add GitHub workflow to prepare and publish releases
+
+## [2.3.0] - 2021-08-23
+- Add support for PHP8 union types in function params - Thanks @tianyiw2013
+- Add support for PHP8 union types in function return types - Thanks @tianyiw2013
+- Add support for PHP8 union types in class properties - Thanks @tianyiw2013
+- Switched build checks system to GitHub actions
+
+## [2.2.3] - 2021-08-18
+- Remove usage of FS module to fix start up errors in vscode web
+
+## [2.2.2] - 2021-08-18
+- Improve compatability with vscode web
+
+## [2.2.1] - 2021-08-17
+- Supported workspace trust - Thanks @tianyiw2013
+- Add case insensitive matching - Thanks @tianyiw2013
+- Improve detection of types from certain default values - Thanks @tianyiw2013
+
+## [2.2.0] - 2021-08-11
+- Use esbuild to improve startup performance
+- Add support for PHP 7.4 typed properties
+- Fix issue where if you have a comma in a default value it incorrectly splits the arguments
+
 ## [2.1.0] - 2019-11-19
 - Add should to list of bool return type functions - Thanks @ImClarky
 - Fix issue where functions named with a bool return prefix were incorrectly given bool return type - Thanks @ImClarky
@@ -111,7 +177,17 @@ All notable changes to the "php-docblocker" extension will be documented in this
 ## 0.1.0 - 2017-03-12
 - Initial release
 
-[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.1.0...HEAD
+[Unreleased]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.7.0...HEAD
+[2.7.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.6.1...v2.7.0
+[2.6.1]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.6.0...v2.6.1
+[2.6.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.5.0...v2.6.0
+[2.5.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.4.0...v2.5.0
+[2.4.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.3.0...v2.4.0
+[2.3.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.3...v2.3.0
+[2.2.3]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.2...v2.2.3
+[2.2.2]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.1...v2.2.2
+[2.2.1]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.2.0...v2.2.1
+[2.2.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.0.1...v2.1.0
 [2.0.1]: https://github.com/neild3r/vscode-php-docblocker/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/neild3r/vscode-php-docblocker/compare/v1.9.0...v2.0.0

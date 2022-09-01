@@ -154,6 +154,23 @@
         }
     },
     {
+        "key": "array-params",
+        "name": "Complex Array params",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$var",
+                    "type": "array"
+                },
+                {
+                    "name": "$var2",
+                    "type": "array"
+                }
+            ]
+        }
+    },
+    {
         "key": "nullable-return-type",
         "name": "Nullable return type",
         "result": {
@@ -260,6 +277,32 @@
         }
     },
     {
+        "key": "param-default-null",
+        "name": "Param with default null",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$arg",
+                    "type": "integer|null"
+                }
+            ]
+        }
+    },
+    {
+        "key": "param-mixed-default-null",
+        "name": "Param with mixed and default null",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$arg",
+                    "type": "mixed"
+                }
+            ]
+        }
+    },
+    {
         "key": "args",
         "name": "Argument with ...$args",
         "result": {
@@ -342,6 +385,130 @@
         "result": {
             "return": "App\\Model\\TypeHint",
             "params": []
+        }
+    },
+    {
+        "key": "php8-return-union-types",
+        "name": "PHP8 return union types",
+        "result": {
+            "return": "integer|boolean|\\TypeHint|App\\Model\\TypeHint",
+            "params": []
+        }
+    },
+    {
+        "key": "php8-return-union-types-with-short-name",
+        "name": "PHP8 return union types with short-name",
+        "config": {
+            "useShortNames": true
+        },
+        "result": {
+            "return": "int|bool|\\TypeHint|App\\Model\\TypeHint",
+            "params": []
+        }
+    },
+    {
+        "key": "php8-param-union-types",
+        "name": "PHP8 param union types",
+        "config": {
+            "useShortNames": true
+        },
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$arg",
+                    "type": "int|bool|\\TypeHint|App\\Model\\TypeHint"
+                },
+                {
+                    "name": "...$args",
+                    "type": "string|\\Closure"
+                }
+            ]
+        }
+    },
+    {
+        "key": "php8-constructor-promotion",
+        "name": "Constructor with promotion",
+        "result": {
+            "return": null,
+            "params": [
+                {
+                    "name": "$arg1",
+                    "type": "[type]"
+                },
+                {
+                    "name": "$arg2",
+                    "type": "integer"
+                },
+                {
+                    "name": "$arg3",
+                    "type": "integer|null"
+                },
+                {
+                    "name": "$arg4",
+                    "type": "string"
+                }
+            ]
+        }
+    },
+    {
+        "key": "trailing-comma",
+        "name": "Trailing comma after params",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$var",
+                    "type": "integer"
+                },
+                {
+                    "name": "$var2",
+                    "type": "string"
+                }
+            ]
+        }
+    },
+    {
+        "key": "trailing-comma-multi",
+        "name": "Trailing comma after params multi-line",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$var",
+                    "type": "integer"
+                },
+                {
+                    "name": "$var2",
+                    "type": "Class_Name"
+                }
+            ]
+        }
+    },
+    {
+        "key": "php81-intersection-types",
+        "name": "PHP8.1 intersection types",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$var",
+                    "type": "Iterator&\\Countable"
+                }
+            ]
+        }
+    },
+    {
+        "key": "php81-union-intersection-types-fault-tolerant",
+        "name": "PHP8.1 unionin types AND tersection types with fault-tolerant",
+        "result": {
+            "return": "void",
+            "params": [
+                {
+                    "name": "$var",
+                    "type": "Iterator&\\Countable|Aaa|Bbb"
+                }
+            ]
         }
     },
     {

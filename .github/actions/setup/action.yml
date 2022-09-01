@@ -1,0 +1,36 @@
+name: 'Setup'
+description: 'Setup environment'
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        git config user.name "php-docblocker"
+        git config user.email php-docblocker@brayfield.co.uk
+      shell: bash
+
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 14.x
+
+    - id: npm-cache-dir
+      run: echo "::set-output name=npm_cache_dir::$(npm config get cache)"
+      shell: bash
+
+    - uses: actions/cache@v2
+      env:
+        cache-name: vscode-test
+      with:
+        path: ./.vscode-test/
+        key: ${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
+
+    - uses: actions/cache@v2
+      env:
+        cache-name: npm
+      with:
+        path: ${{ steps.npm-cache-dir.outputs.npm_cache_dir }}
+        key: ${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
+
+    - run: npm install
+      env:
+        PLAYWRIGHT_BROWSERS_PATH: ${{ steps.npm-cache-dir.outputs.npm_cache_dir }}/pw-browsers
+      shell: bash

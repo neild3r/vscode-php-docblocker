@@ -1,9 +1,30 @@
 [
     {
         "name": "Empty",
+        "config": {
+            "gap": false
+        },
         "expected": [
             "/**",
             " * ${1}",
+            " */"
+        ]
+    },
+    {
+        "name": "AutoClosingBrackets: never",
+        "config": {
+            "gap": false,
+            "returnVoid": true,
+            "extra": [],
+            "autoClosingBrackets": "never"
+        },
+        "input": {
+            "return": "void"
+        },
+        "expected": [
+            "",
+            " * ${1}",
+            " * @return ${2:void}",
             " */"
         ]
     },
@@ -38,6 +59,42 @@
             "/**",
             " * ${1:Undocumented var}",
             " * @var ${2:mixed}",
+            " */"
+        ]
+    },
+    {
+        "name": "Property with description placeholder",
+        "config": {
+            "gap": false,
+            "extra": [],
+            "varDescription": true
+        },
+        "input": {
+            "message": "Undocumented var",
+            "var": "mixed"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented var}",
+            " * @var ${2:mixed} ${3}",
+            " */"
+        ]
+    },
+    {
+        "name": "Property with custom description placeholder",
+        "config": {
+            "gap": false,
+            "extra": [],
+            "varDescription": "description"
+        },
+        "input": {
+            "message": "Undocumented var",
+            "var": "mixed"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented var}",
+            " * @var ${2:mixed} ${3:description}",
             " */"
         ]
     },
@@ -323,6 +380,267 @@
             " * @author ${2:Neil Brayfield} <${3:neil@test.com}>",
             " *",
             " * @param ${4:int} \\$name",
+            " */"
+        ]
+    },
+    {
+        "name": "Align params",
+        "config": {
+            "gap": true,
+            "alignParams": true
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$nameLong",
+                    "type": "int"
+                },
+                {
+                    "name": "$name",
+                    "type": "string"
+                }
+            ],
+            "return": "LongClassName"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param ${2:int}    \\$nameLong",
+            " * @param ${3:string} \\$name",
+            " * @return ${4:LongClassName}",
+            " */"
+        ]
+    },
+    {
+        "name": "Align params without return statement",
+        "config": {
+            "gap": true,
+            "alignParams": true,
+            "returnVoid": false
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$nameLong",
+                    "type": "int"
+                },
+                {
+                    "name": "$name",
+                    "type": "string"
+                },
+                {
+                    "name": "$nameEvenLonger",
+                    "type": "LongClassName"
+                },
+                {
+                    "name": "$n",
+                    "type": "bool"
+                }
+            ],
+            "return": "void"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param ${2:int}           \\$nameLong",
+            " * @param ${3:string}        \\$name",
+            " * @param ${4:LongClassName} \\$nameEvenLonger",
+            " * @param ${5:bool}          \\$n",
+            " */"
+        ]
+    },
+    {
+        "name": "Align params and return statement",
+        "config": {
+            "gap": true,
+            "alignParams": true,
+            "alignReturn": true
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$nameLong",
+                    "type": "int"
+                },
+                {
+                    "name": "$name",
+                    "type": "string"
+                }
+            ],
+            "return": "LongClassName"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param  ${2:int}           \\$nameLong",
+            " * @param  ${3:string}        \\$name",
+            " * @return ${4:LongClassName}",
+            " */"
+        ]
+    },
+    {
+        "name": "Align params and shorter return statement",
+        "config": {
+            "gap": true,
+            "alignParams": true,
+            "alignReturn": true
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$nameLong",
+                    "type": "int"
+                },
+                {
+                    "name": "$name",
+                    "type": "string"
+                }
+            ],
+            "return": "int"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param  ${2:int}    \\$nameLong",
+            " * @param  ${3:string} \\$name",
+            " * @return ${4:int}",
+            " */"
+        ]
+    },
+    {
+        "name": "Align params and return statement with description",
+        "config": {
+            "gap": true,
+            "alignParams": true,
+            "alignReturn": true,
+            "paramDescription": true
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$nameLong",
+                    "type": "int"
+                },
+                {
+                    "name": "$name",
+                    "type": "string"
+                }
+            ],
+            "return": "int"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param  ${2:int}    \\$nameLong ${3}",
+            " * @param  ${4:string} \\$name     ${5}",
+            " * @return ${6:int}",
+            " */"
+        ]
+    },
+    {
+        "name": "Align params and return statement with description and return description",
+        "config": {
+            "gap": true,
+            "alignParams": true,
+            "alignReturn": true,
+            "paramDescription": "description",
+            "returnDescription": true
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$nameLong",
+                    "type": "int"
+                },
+                {
+                    "name": "$name",
+                    "type": "string"
+                }
+            ],
+            "return": "int"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param  ${2:int}    \\$nameLong ${3:description}",
+            " * @param  ${4:string} \\$name     ${5:description}",
+            " * @return ${6:int}              ${7}",
+            " */"
+        ]
+    },
+    {
+        "name": "Align params and return statement with description and return description text",
+        "config": {
+            "gap": true,
+            "alignParams": true,
+            "alignReturn": true,
+            "paramDescription": "description",
+            "returnDescription": "description"
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$nameLong",
+                    "type": "int"
+                },
+                {
+                    "name": "$name",
+                    "type": "string"
+                }
+            ],
+            "return": "LongClassName"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param  ${2:int}           \\$nameLong ${3:description}",
+            " * @param  ${4:string}        \\$name     ${5:description}",
+            " * @return ${6:LongClassName}           ${7:description}",
+            " */"
+        ]
+    },
+    {
+        "name": "Param and return descriptions",
+        "config": {
+            "gap": true,
+            "paramDescription": "placeholder",
+            "returnDescription": "placeholder"
+        },
+        "input": {
+            "message": "Undocumented function",
+            "params": [
+                {
+                    "name": "$nameLong",
+                    "type": "int"
+                },
+                {
+                    "name": "$name",
+                    "type": "string"
+                }
+            ],
+            "return": "int"
+        },
+        "expected": [
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @param ${2:int} \\$nameLong ${3:placeholder}",
+            " * @param ${4:string} \\$name ${5:placeholder}",
+            " * @return ${6:int} ${7:placeholder}",
             " */"
         ]
     }

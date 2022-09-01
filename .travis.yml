@@ -16,7 +16,6 @@ before_install:
 
 install:
   - npm install
-  - npm run vscode:prepublish
 
 after_success:
   - cat coverage/lcov.info | coveralls

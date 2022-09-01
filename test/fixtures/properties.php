@@ -47,11 +47,51 @@ abstract class Test
     ////=> default-float
     public $defaultFloat = -124124.50;
 
-
     ////=> default-int
     public $defaultInt = -214221;
 
-
     ////=> default-null
     public $defaultNull = null;
+
+    ////=> typed-string
+    public string $typedString;
+
+    ////=> typed-int
+    public int $typedInt;
+
+    ////=> typed-interface
+    public DateTimeInterface $typedInterface;
+
+    ////=> typed-namespace
+    public \App\Type\Test $typedNamespace;
+
+    ////=> typed-string-default
+    public string $typedStringDefault = 'test';
+
+    ////=> typed-int-default
+    public int $typedIntDefault = 42;
+
+    ////=> typed-string-nullable
+    public ?string $typedStringNullable;
+
+    ////=> typed-interface-nullable
+    public ?DateTimeInterface $typedInterfaceNullable;
+
+    ////=> typed-namespace-nullable
+    public ?\App\Type\Test $typedNamespaceNullable;
+    
+    ////=> union-type-simple
+    public string|array $unionTypeSimple;
+
+    ////=> union-type-namespace
+    public string|\DateTimeInterface $unionTypeNamespace;
+
+    ////=> union-type-full-namespace
+    public string|\App\Type\Test $unionTypeFullNamespace;
+
+    ////=> union-type-nullable
+    public string|array|null $unionTypeNullable;
+
+    ////=> readonly
+    public readonly string $readonly;
 }

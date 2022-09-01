@@ -1,8 +1,15 @@
 .vscode/**
 .vscode-test/**
+.vscode-test-web/**
+node_modules/**
+coverage/**
 out/test/**
+out/src/**
+!out/src/extension.js
+!out/src/extension.js.map
 test/**
 src/**
+scripts/**
 **/*.map
 .travis.yml
 .gitignore
