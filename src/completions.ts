@@ -87,8 +87,6 @@ export default class Completions implements CompletionItemProvider
 
     protected addDoctrineTags() 
     {
-        if (Config.instance.get('enableDoctrineCompilation')) {
-            this.tags = this.tags.concat(doctrineTags)
-        }
+        this.tags = this.tags.concat(doctrineTags);
     }
 }
