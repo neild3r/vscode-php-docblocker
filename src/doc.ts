@@ -27,6 +27,13 @@ export class Doc
     public params:Array<Param> = [];
 
     /**
+     * Doc inline
+     * 
+     * Currently only used for variable block.
+     */
+    public inline:boolean = false;
+
+    /**
      * Return tag
      *
      * @type {string}
@@ -86,6 +93,9 @@ export class Doc
         }
         if (input.message !== undefined) {
             this.message = input.message;
+        }
+        if (input.inline !== undefined) {
+            this.inline = input.inline;
         }
         if (input.params !== undefined && Array.isArray(input.params)) {
             input.params.forEach(param => {
@@ -222,21 +232,25 @@ export class Doc
             templateArray.pop();
         }
 
-        let templateString:string = templateArray.join("\n");
+        let templateString: string;
+        if (this.inline && templateArray.length === 3) {
+            templateString = "/** " + templateArray[2] + " \$" + templateArray[0] + " \${###} */";
+        } else {
+            templateString = templateArray.join("\n");
+            templateString = templateString.replace(/^$/gm, " *");
+            templateString = templateString.replace(/^(?!(\s\*|\/\*))/gm, " * $1");
+            if (Config.instance.get('autoClosingBrackets') == "never") {
+                templateString = "\n" + templateString + "\n */";
+            } else {
+                templateString = "/**\n" + templateString + "\n */";
+            }
+        }
+
         let stop = 0;
         templateString = templateString.replace(/###/gm, function():string {
             stop++;
             return stop + "";
         });
-
-        templateString = templateString.replace(/^$/gm, " *");
-        templateString = templateString.replace(/^(?!(\s\*|\/\*))/gm, " * $1");
-
-        if (Config.instance.get('autoClosingBrackets') == "never") {
-            templateString = "\n" + templateString + "\n */";
-        } else {
-            templateString = "/**\n" + templateString + "\n */";
-        }
 
         let snippet = new SnippetString(templateString);
 

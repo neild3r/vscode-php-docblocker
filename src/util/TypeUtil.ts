@@ -145,6 +145,11 @@ export default class TypeUtil {
                     return 'integer';
                 }
                 return 'int';
+            case 'real':
+            case 'double':
+                return 'float';
+            case 'unset':
+                return 'null';
             default:
                 return name;
         }
@@ -159,20 +164,23 @@ export default class TypeUtil {
      */
     public getTypeFromValue(value:string):string
     {
-        let result:Array<string>;
-
-        // Check for bool
+        // Check for bool `false` `true` `!exp`
         if (value.match(/^\s*(false|true)\s*$/i) !== null || value.match(/^\s*\!/i) !== null) {
             return this.getFormattedTypeByName('bool');
         }
 
-        // Check for int
-        if (value.match(/^\s*([\d-]+)\s*$/) !== null) {
+        // Check for int `-1` `1` `1_000_000`
+        if (value.match(/^\s*(\-?\d[\d_]*)\s*$/) !== null) {
             return this.getFormattedTypeByName('int');
         }
 
         // Check for float
         if (value.match(/^\s*([\d.-]+)\s*$/) !== null) {
+            return 'float';
+        }
+
+        // Check for float `.1` `1.1` `-1.1` `0.1_000_1`
+        if (value.match(/^\s*(\-?[\d_\.]*)\s*$/) !== null) {
             return 'float';
         }
 
@@ -184,6 +192,27 @@ export default class TypeUtil {
         // Check for array
         if (value.match(/^\s*(array\(|\[)/) !== null) {
             return 'array';
+        }
+        
+        // Check for class
+        var match = value.match(/^\s*new\s+([a-z0-9_\\\|]+)/i);
+        if (match) {
+            if (match[1] === 'class') {
+                return 'object';
+            }
+            return match[1];
+        }
+
+        // Check for closure
+        var match = value.match(/^\s*function\s*\(/i) || value.match(/^\s*fn\s*\(/i);
+        if (match) {
+            return '\\Closure';
+        }
+
+        // Check for type casting
+        var match = value.match(/^\s*\(\s*(int|integer|bool|boolean|float|double|real|string|array|object|unset)\s*\)/i);
+        if (match) {
+            return this.getFormattedTypeByName(match[1]);
         }
 
         return this.getDefaultType();

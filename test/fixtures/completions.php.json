@@ -3,28 +3,28 @@
         "key": "param",
         "name": "Param tag",
         "result": [
-            "@param"
+            "@param ${1:mixed} $${2:name}"
         ]
     },
     {
         "key": "return",
         "name": "Return tag",
         "result": [
-            "@return"
+            "@return ${1:mixed}"
         ]
     },
     {
         "key": "package",
         "name": "Package tag",
         "result": [
-            "@package"
+            "@package ${1:category}"
         ]
     },
     {
         "key": "var",
         "name": "Var tag",
         "result": [
-            "@var"
+            "@var ${1:mixed}"
         ]
     },
     {
@@ -37,28 +37,72 @@
         "key": "property",
         "name": "Property trigger",
         "result": [
-            "/**"
+            "/**",
+            " * ${1:Undocumented variable}",
+            " *",
+            " * @var ${2:[type]}",
+            " */"
         ]
     },
     {
         "key": "function",
         "name": "Function trigger",
         "result": [
-            "/**"
+            "/**",
+            " * ${1:Undocumented function}",
+            " *",
+            " * @return ${2:void}",
+            " */"
         ]
     },
     {
         "key": "class",
         "name": "Class trigger",
         "result": [
-            "/**"
+            "/**",
+            " * ${1:Undocumented class}",
+            " */"
+        ]
+    },
+    {
+        "key": "variable",
+        "result": [
+            "/** @var ${1:[type]} $${2:var} ${3} */"
+        ]
+    },
+    {
+        "key": "foreach",
+        "result": [
+            "/** @var ${1:[type]} $${2:value} ${3} */"
+        ]
+    },
+    {
+        "key": "foreach-with-key",
+        "result": [
+            "/** @var ${1:[type]} $${2:value} ${3} */"
+        ]
+    },
+    {
+        "key": "while",
+        "result": [
+            "/** @var ${1:[type]} $${2:value} ${3} */"
+        ]
+    },
+    {
+        "key": "while-no-var",
+        "result": [
+            "/**",
+            " * ${1}",
+            " */"
         ]
     },
     {
         "key": "empty",
         "name": "Empty trigger",
         "result": [
-            "/**"
+            "/**",
+            " * ${1}",
+            " */"
         ]
     }
 ]

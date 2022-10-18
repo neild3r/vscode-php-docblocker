@@ -3,6 +3,9 @@ import FunctionBlock from "./block/function";
 import Property from "./block/property";
 import Class from "./block/class";
 import {Doc, Param} from "./doc";
+import VariableBlock from "./block/VariableBlock";
+import ForeachBlock from "./block/ForeachBlock";
+import WhileBlock from "./block/WhileBlock";
 
 /**
  * Check which type of docblock we need and instruct the components to build the
@@ -57,6 +60,21 @@ export default class Documenter
         let cla = new Class(this.targetPosition, this.editor);
         if (cla.test()) {
             return cla.parse().build();
+        }
+
+        let variable = new VariableBlock(this.targetPosition, this.editor);
+        if (variable.test()) {
+            return variable.parse().build();
+        }
+
+        let foreach = new ForeachBlock(this.targetPosition, this.editor);
+        if (foreach.test()) {
+            return foreach.parse().build();
+        }
+
+        let while_ = new WhileBlock(this.targetPosition, this.editor);
+        if (while_.test()) {
+            return while_.parse().build();
         }
 
         return new Doc().build(true);
