@@ -21,6 +21,9 @@ suite("Completion tests", () => {
     });
 
     map.forEach(testData => {
+        if (testData.name === undefined) {
+            testData.name = testData.key;
+        }
         test("Completion: " + testData.name, () => {
             let pos:Position = testPositions[testData.key];
             let result:any = completions.provideCompletionItems(
@@ -31,10 +34,12 @@ suite("Completion tests", () => {
 
             let matched:Array<string> = [];
             result.forEach(data => {
-                matched.push(data.label);
+                matched.push(data.insertText.value);
             });
+            let actual = matched.join("\n");
+            let expected = testData.result.join("\n");
 
-            assert.deepEqual(testData.result, matched);
+            assert.deepEqual(actual, expected);
         });
     });
 });

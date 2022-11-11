@@ -3,6 +3,26 @@
 All notable changes to the "php-docblocker" extension will be documented in this file.
 
 ## [Unreleased]
+- Supported variable docblock
+```php
+# Example
+
+/** @var int $var  */
+$var = 1;
+
+/** @var stdClass $object  */
+$object = new stdClass;
+
+/** @var \Closure $callback  */
+$callback = function () {};
+$callback = fn () => 1;
+
+/** @var [type] $item  */
+foreach ($data as $item) {}
+
+/** @var [type] $item  */
+while ($item = array_pop($data)) {}
+```
 
 ## [2.7.0] - 2022-02-11
 - Allow configuration of default type
