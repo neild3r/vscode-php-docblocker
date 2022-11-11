@@ -174,7 +174,7 @@
     "mocha": "^9.1.1",
     "nyc": "^15.1.0",
     "typescript": "^3.9.10",
-    "vsce": "^1.100.0",
+    "vsce": "^2.14.0",
     "vscode-test": "^1.6.1"
   },
   "dependencies": {}
