@@ -76,8 +76,12 @@ export default class Config {
         if (this.isLive) {
             if (setting === "autoClosingBrackets") {
                 return workspace.getConfiguration('editor').get(setting);
+            } else if (setting.indexOf('env:') > 0) {
+                const key = setting.replace('env:', '');
+                if (process.env.hasOwnProperty(key)) {
+                    return process.env[key];
+                }
             }
-
             return workspace.getConfiguration('php-docblocker').get(setting);
         }
 

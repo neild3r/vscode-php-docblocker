@@ -238,8 +238,16 @@ export class Doc
             templateString = "/**\n" + templateString + "\n */";
         }
 
-        let snippet = new SnippetString(templateString);
+        // Replace environment variables.
+        const envReg = new RegExp('(?!=\$\{env:)([^}]+)(?!=})', 'g');
+        if (templateString.match(envReg) !== null) {
+            let matches = templateString.match(envReg);
+            matches.forEach(envVar => {
+                templateString = templateString.replace('${env:' + envVar + '}', Config.instance.get(envVar));
+            });
+        }
 
+        let snippet = new SnippetString(templateString);
         return snippet;
     }
 
