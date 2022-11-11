@@ -171,7 +171,7 @@
     "coveralls": "^3.1.1",
     "esbuild": "^0.12.29",
     "markdown-table-ts": "^1.0.3",
-    "mocha": "^9.1.1",
+    "mocha": "^9.2.2",
     "nyc": "^15.1.0",
     "typescript": "^3.9.10",
     "vsce": "^1.100.0",
