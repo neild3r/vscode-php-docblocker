@@ -40,6 +40,7 @@ All notable changes to the "php-docblocker" extension will be documented in this
 - Make tests run on push and PR sychronize only
 - Convert `updateChangelog.js` script to use typescript
 - Add script to generate the table of tags for the README.md
+- Migrate to codecov due to coveralls outage
 
 ## [2.4.0] - 2021-09-05
 - Add support for params which have a trailing comma
