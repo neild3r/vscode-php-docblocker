@@ -2,6 +2,7 @@ import {workspace, TextDocument, Position, CancellationToken, ProviderResult, Co
 import Documenter from "./documenter";
 import Tags, { Tag } from "./tags";
 import Config from "./util/config";
+import {doctrineTags} from './extra/doctrine'
 
 /**
  * Completions provider that can be registered to the language
@@ -82,5 +83,10 @@ export default class Completions implements CompletionItemProvider
         });
 
         return tags;
+    }
+
+    protected addDoctrineTags() 
+    {
+        this.tags = this.tags.concat(doctrineTags);
     }
 }
